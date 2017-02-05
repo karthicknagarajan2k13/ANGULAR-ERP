@@ -1,0 +1,100 @@
+#register {
+    height: 100%;
+	background: #242841;
+
+    #register-form-wrapper {
+        flex: 1 0 auto;
+        padding: 15px;
+
+        #register-form {
+            width: 450px;
+            max-width: 450px;
+            padding: 15px;
+            background: #FFFFFF;
+            text-align: center;
+			border: 5px solid #cbcbcc;
+			border-radius: 5px;
+
+            .logo {
+                width: 128px;
+                height: 128px;
+                line-height: 128px;
+                font-size: 86px;
+                font-weight: 500;
+                margin: 0px auto;
+                color: #FFFFFF;
+                border-radius: 2px;
+            }
+
+            .title {
+                font-size: 38px;
+                margin: 0px 0 0px 0;
+				color: #0fb0ee;
+				font-weight: bolder;
+            }
+
+
+            form {
+                width: 100%;
+                text-align: left;
+
+                md-checkbox {
+                    margin: 0;
+                }
+
+                .terms {
+                    font-size: 13px;
+                    margin: 16px 0 32px 0;
+
+                    a {
+                        margin-left: 4px;
+                    }
+                }
+
+                .submit-button {
+                    width: 100%;
+                    margin: 16px auto;
+                    display: block;
+                }
+            }
+
+            .login {
+                margin: 32px auto 24px auto;
+                width: 250px;
+                font-weight: 500;
+
+                .text {
+                    margin-right: 8px;
+                }
+
+                .link {
+
+                }
+            }
+        }
+    }
+}
+
+// RESPONSIVE
+@media screen and (max-width: $layout-breakpoint-xs) {
+
+    #register {
+
+        #register-form-wrapper {
+            padding: 16px;
+
+            #register-form {
+                padding: 24px;
+                width: 100%;
+
+                form {
+
+                    .md-button {
+                        width: 90%;
+                    }
+                }
+            }
+        }
+    }
+
+}

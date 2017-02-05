@@ -1,0 +1,67 @@
+<div class="top-bg"></div>
+
+<div id="login" class="flex-scrollable" layout="column" ms-scroll>
+    
+	<div id="login-form-wrapper" layout="column" layout-align="center center">
+		<div style="margin-bottom:20px;">
+			<img class="huge" src="assets/images/logos/login-logo.png">
+		</div>
+		
+        <div id="login-form" class="md-whiteframe-8dp">
+		
+			<div class="title">LOGIN</div>
+            <form ng-submit="login()" name="loginForm" novalidate>
+                <md-input-container class="md-block" md-no-float>
+                    <input type="email" name="email" ng-model="user.email" placeholder="Email"
+                           translate translate-attr-placeholder="LOGIN.EMAIL"
+                           ng-pattern="/^.+@.+\..+$/" required>
+                    <div ng-messages="loginForm.email.$error" role="alert" multiple>
+                        <div ng-message="required">
+                            <span translate="LOGIN.ERRORS.EMAIL_REQUIRED">Email field is required</span>
+                        </div>
+                        <div ng-message="pattern">
+                            <span translate="LOGIN.ERRORS.EMAIL_MUST_VALID">Email must be a valid e-mail address</span>
+                        </div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block" md-no-float>
+                    <input type="password" name="password" ng-model="user.password" placeholder="Password"
+                           translate translate-attr-placeholder="LOGIN.PASSWORD"
+                           required>
+                    <div ng-messages="loginForm.password.$error" role="alert">
+                        <div ng-message="required">
+                            <span translate="LOGIN.ERRORS.PASSWORD_REQUIRED">Password field is required</span>
+                        </div>
+                    </div>
+                </md-input-container>
+
+                <div class="remember-forgot-password" layout="row" layout-xs="column"
+                     layout-align="space-between center">
+                    <md-checkbox class="remember-me" ng-model="user.remember_me" aria-label="Remember Me">
+                        <span translate="LOGIN.REMEMBER_ME">Remember Me</span>
+                    </md-checkbox>
+
+                    <a ng-click="forgotPasswordPage()" ui-sref="app.pages_auth_forgot-password" class="forgot-password md-accent-color"
+                       translate="LOGIN.FORGOT_PASSWORD">Forgot Password?</a>
+                </div>
+
+                <md-button type="submit" class="md-raised md-accent submit-button" aria-label="LOG IN"
+                           ng-disabled="loginForm.$invalid || loginForm.$pristine"
+                           translate="LOGIN.LOG_IN" translate-attr-aria-label="LOGIN.LOG_IN">
+                    LOG IN
+                </md-button>
+
+
+              
+</form>
+            <div class="register" layout="row" layout-sm="column" layout-align="start center">
+				<md-button ng-click="signupPage()" type="button" class="md-raised md-accent submit-button">
+                    Sign Up
+                </md-button>
+                <span class="text">Did't Receive Confirmation Instructions?</span>
+            </div>
+                        
+        </div>
+    </div>
+</div>

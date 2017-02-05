@@ -1,0 +1,88 @@
+<div id="e-commerce-product" class="page-layout simple tabbed" layout="column">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="space-between">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">CRM </a> / <a href="">Contact </a> </span> / View
+            </div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <md-tabs md-dynamic-height>
+
+             <md-tab>
+                <md-tab-label>
+                    <span>General Info</span>
+                </md-tab-label>
+
+                <md-tab-body>
+                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+                        <form>
+                            <div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Note ID</label>
+										<input type="text" value="{{vm.note_data.code}}" disabled>
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Subject</label>
+										<input type="text" value="{{vm.note_data.subject}}" disabled>
+									</md-input-container>
+
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Decription</label>
+										<input type="text" value="{{vm.note_data.decription}}" disabled>
+									</md-input-container>
+                                </div>
+								<div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Customer</label>
+										<input type="text" value="{{vm.note_data.customer}}" disabled>
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Contact</label>
+										<input type="text" value="{{vm.note_data.contact}}" disabled>
+									</md-input-container>
+
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Date Created</label>
+										<input type="text" value="{{vm.note_data.created_at}}" disabled>
+									</md-input-container>
+                                </div>
+								<div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Created By</label>
+										<input type="text" value="{{vm.note_data.created_by}}" disabled>
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Date Modified</label>
+										<input type="text" value="{{vm.note_data.updated_at}}" disabled>
+									</md-input-container>
+
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Modified By</label>
+										<input type="text" value="{{vm.note_data.updated_by}}" disabled>
+									</md-input-container>
+                                </div>
+								
+                        </form>
+						<div class="actions" layout="row" layout-align="start center">
+							<md-button ng-click="vm.editNotePage(vm.note_data)" class="md-raised md-accent">Edit</md-button>
+							<md-button ng-click="vm.deleteNote(vm.note_data.id)" class="md-raised md-accent">Delete</md-button>
+						</div>
+                    </div>
+                </md-tab-body>
+            </md-tab>
+        </md-tabs>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>

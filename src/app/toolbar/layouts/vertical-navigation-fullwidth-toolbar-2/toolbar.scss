@@ -1,0 +1,83 @@
+#layout-vertical-navigation-fullwidth-toolbar-2 {
+
+    #toolbar {
+
+        .logo {
+            width: $navigationWidth;
+            padding: 0 16px;
+
+            .logo-image {
+                display: block;
+                background: material-color('light-blue', '600');
+                width: 32px;
+                min-width: 32px;
+                height: 32px;
+                line-height: 32px;
+                text-align: center;
+                color: #FFFFFF;
+                font-size: 16px;
+                font-weight: 500;
+                border-radius: 2px;
+            }
+
+            .logo-text {
+                color: rgba(0, 0, 0, 0.87);
+                margin-left: 16px;
+                font-size: 16px;
+            }
+        }
+
+        .navigation-fold-toggle {
+            width: $toolbarWidth;
+            min-width: $toolbarWidth;
+            height: $toolbarHeight;
+            margin: 0;
+            border-right: none;
+            border-radius: 0;
+			background: #00bcff;
+
+            md-icon {
+                transition: transform 0.3s ease-in-out 0.1s;
+                transform: rotate(0deg);
+            }
+        }
+		
+		background: #0c1224;
+    }
+}
+
+md-icon[md-font-icon].s24, i.s24 { color:#fff;}
+md-icon[md-font-icon].s18, i.s18 { color:#fff;}
+
+// RESPONSIVE
+@media only screen and (min-width: $layout-breakpoint-sm) {
+
+    .ms-navigation-folded {
+
+        #layout-vertical-navigation-fullwidth-toolbar-2 {
+
+            #toolbar {
+
+                .navigation-fold-toggle {
+
+                    md-icon {
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: $layout-breakpoint-sm) {
+
+    #layout-vertical-navigation-fullwidth-toolbar-2 {
+
+        #toolbar {
+
+            .logo {
+                width: auto
+            }
+        }
+    }
+}

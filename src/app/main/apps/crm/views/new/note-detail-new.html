@@ -1,0 +1,94 @@
+<div id="e-commerce-product" class="page-layout simple tabbed" layout="column">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="space-between">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">CRM </a> / <a href="">Note </a> </span> / New
+            </div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <md-tabs md-dynamic-height>
+
+            <md-tab>
+                <md-tab-label>
+                    <span>General Info</span>
+                </md-tab-label>
+
+                <md-tab-body>
+                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+                        <form ng-submit="vm.saveNote()" name="newNoteForm" novalidate>
+                            <div layout="column" layout-gt-xs="row" flex>			
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Subject</label>
+										<input type="text" name="subject" ng-model="vm.note.subject" required>
+                                        <div ng-messages="newNoteForm.subject.$error" role="alert">
+                                            <div ng-message="required">
+                                                <span >Subject field is required</span>
+                                            </div>
+                                        </div>
+									</md-input-container>
+
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Customer</label>
+                                        <md-select ng-model="vm.note.customer_id">
+                                            <md-option ng-repeat="customer in vm.get_customers" value="{{customer.customer_id}}">
+                                                {{customer.name}}
+                                            </md-option>
+                                        </md-select>
+									</md-input-container>
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Contact</label>
+                                        <md-select ng-model="vm.note.contact_id">
+                                            <md-option ng-repeat="contact in vm.get_contacts" value="{{contact.contact_id}}">
+                                                {{contact.name}}
+                                            </md-option>
+                                        </md-select>
+									</md-input-container>
+                                </div>
+								<div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Decription</label>
+										<input type="text" name="decription" ng-model="vm.note.decription" required>
+                                        <div ng-messages="newNoteForm.decription.$error" role="alert">
+                                            <div ng-message="required">
+                                                <span >Decription field is required</span>
+                                            </div>
+                                        </div>
+									</md-input-container>
+                                </div>
+								<div layout="column" layout-gt-xs="row" flex>
+                                </div>
+
+
+
+
+
+
+						<div class="actions" layout="row" layout-align="start center">
+                            <md-button type="submit" class="md-raised md-accent submit-button" aria-label="Save"
+                                       ng-disabled="newNoteForm.$invalid || newNoteForm.$pristine"
+                                       translate="Save" translate-attr-aria-label="Save">
+                                Save
+                            </md-button>
+
+
+							<md-button ng-click="vm.noteDataClear()" class="md-raised md-accent">Clear</md-button>
+						</div>
+
+                        </form>
+                    </div>
+                </md-tab-body>
+            </md-tab>
+
+        </md-tabs>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>

@@ -1,0 +1,222 @@
+<div id="e-commerce-product" class="page-layout simple tabbed" layout="column">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="space-between">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">CRM </a> / <a href="">Customer </a> </span> / New
+            </div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <md-tabs md-dynamic-height>
+
+            <md-tab>
+                <md-tab-label>
+                    <span>General Info</span>
+                </md-tab-label>
+
+                <md-tab-body>
+                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+                        <form ng-submit="vm.saveCustomer()" name="newCustomerForm" novalidate>
+                            <div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Customer Code</label>
+										<input type="text" ng-model="vm.customer.id">
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Customer Name</label>
+										<input type="text" name="first_name" ng-model="vm.customer.first_name" required>
+                                        <div ng-messages="newCustomerForm.first_name.$error" role="alert">
+                                            <div ng-message="required">
+                                                <span >Customer Name field is required</span>
+                                            </div>
+                                        </div>
+									</md-input-container>
+
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Phone#</label>
+										<input type="text" name="phone" ng-model="vm.customer.customer_attributes.phone" required>
+                                        <div ng-messages="newCustomerForm.phone.$error" role="alert">
+                                            <div ng-message="required">
+                                                <span >Phone field is required</span>
+                                            </div>
+                                        </div>
+									</md-input-container>
+                                </div>
+								<div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Email</label>
+										<input type="text" name="email" ng-model="vm.customer.email" ng-pattern="/^.+@.+\..+$/" required>
+                                        <div ng-messages="newCustomerForm.email.$error" role="alert">
+                                            <div ng-message="required">
+                                                <span >Email field is required</span>
+                                            </div>
+                                            <div ng-message="pattern">
+                            					<span translate="LOGIN.ERRORS.EMAIL_MUST_VALID">Email must be a valid e-mail address</span>
+                        					</div>
+                                        </div>
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Street</label>
+										<input type="text" name="street" ng-model="vm.customer.customer_attributes.street" required>
+                                        <div ng-messages="newCustomerForm.street.$error" role="alert">
+                                            <div ng-message="required">
+                                                <span >Street field is required</span>
+                                            </div>
+                                        </div>
+									</md-input-container>
+
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>City</label>
+										<input type="text" name="city" ng-model="vm.customer.customer_attributes.city" required>
+                                        <div ng-messages="newCustomerForm.city.$error" role="alert">
+                                            <div ng-message="required">
+                                                <span >City field is required</span>
+                                            </div>
+                                        </div>
+									</md-input-container>
+                                </div>
+								<div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>State</label>
+										<input type="text" name="state" ng-model="vm.customer.customer_attributes.state" required>
+                                        <div ng-messages="newCustomerForm.state.$error" role="alert">
+                                            <div ng-message="required">
+                                                <span >State field is required</span>
+                                            </div>
+                                        </div>
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Country</label>
+										<input type="text" name="country" ng-model="vm.customer.customer_attributes.country" required>
+                                        <div ng-messages="newCustomerForm.country.$error" role="alert">
+                                            <div ng-message="required">
+                                                <span >Country field is required</span>
+                                            </div>
+                                        </div>
+									</md-input-container>
+
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Postal Code</label>
+										<input type="text" name="postal_code" ng-model="vm.customer.customer_attributes.postal_code" required>
+                                        <div ng-messages="newCustomerForm.postal_code.$error" role="alert">
+                                            <div ng-message="required">
+                                                <span >Postal Code field is required</span>
+                                            </div>
+                                        </div>
+									</md-input-container>
+                                </div>
+								<div layout="row" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex="33">
+										<label>Customer Type</label>
+										<md-select name="c_type" ng-model="vm.customer.customer_attributes.c_type" required>
+											<md-option ng-repeat="type in ['Contractor', 'Sales Customer']" value="{{type}}">
+												{{type}}
+											</md-option>
+										</md-select>
+                                        <div ng-messages="newCustomerForm.c_type.$error" role="alert">
+                                            <div ng-message="required">
+                                                <span >Customer Type is required</span>
+                                            </div>
+                                        </div>
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex="33">
+										<label>Customer Since</label>
+                                        <md-datepicker ng-model="vm.customer.customer_attributes.customer_since" md-placeholder=""></md-datepicker>
+                                    </md-input-container>
+
+                                </div>
+								<div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Decription</label>
+										<input type="text" name="decription" ng-model="vm.customer.customer_attributes.decription" required>
+                                        <div ng-messages="newCustomerForm.decription.$error" role="alert">
+                                            <div ng-message="required">
+                                                <span >Decription field is required</span>
+                                            </div>
+                                        </div>
+									</md-input-container>
+
+                                </div>
+                        
+						<div class="actions" layout="row" layout-align="start center">
+                            <md-button type="submit" class="md-raised md-accent submit-button" aria-label="Save"
+                                       ng-disabled="newCustomerForm.$invalid || newCustomerForm.$pristine"
+                                       translate="Save" translate-attr-aria-label="Save">
+                                Save
+                            </md-button>
+							<md-button ng-click="vm.customerDataClear()" class="md-raised md-accent">Clear</md-button>
+						</div>
+						</form>
+                    </div>
+                </md-tab-body>
+            </md-tab>
+
+            <md-tab>
+                <md-tab-label>
+                    <span>Payment Info</span>
+                </md-tab-label>
+
+                <md-tab-body>
+                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+                        <form>
+                            <div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Discount Percent</label>
+										<input type="text" ng-model="vm.customer.customer_attributes.discount_percent">
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Credit Limit</label>
+										<input type="text" ng-model="vm.customer.customer_attributes.credit_limit">
+									</md-input-container>
+
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Tax Reference</label>
+										<input type="text" ng-model="vm.customer.customer_attributes.tax_reference">
+									</md-input-container>
+                                </div>
+								<div layout="column" layout-gt-xs="row" flex>
+								<md-input-container class="md-block" flex-gt-sm>
+									<label>Payment Terms</label>
+										<md-select ng-model="vm.customer.customer_attributes.payment_terms" >
+											<md-option ng-repeat="type in ['Cash Only','Payment due within 7 days','Due By End of the following month']" value="{{type}}">
+												{{type}}
+											</md-option>
+										</md-select>
+									</md-input-container>
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Customer Currency</label>
+
+										<md-select ng-model="vm.customer.customer_attributes.customer_currency" >
+											<md-option ng-repeat="type in ['USD', 'CAD', 'AUD']" value="{{type}}">
+												{{type}}
+											</md-option>
+										</md-select>
+
+									</md-input-container>
+                                </div>
+								
+                        </form>
+						<div class="actions" layout="row" layout-align="start center">
+							<md-button ng-click="vm.saveCustomer()" class="md-raised md-accent">Save</md-button>
+							<md-button ng-click="vm.customerDataClear()" class="md-raised md-accent">Clear</md-button>
+						</div>
+                    </div>
+                </md-tab-body>
+            </md-tab>
+        </md-tabs>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>

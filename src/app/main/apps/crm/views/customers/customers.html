@@ -1,0 +1,205 @@
+<div id="forms" class="page-layout simple fullwidth doc-page" layout="column" style="min-height:auto;">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="space-between">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <span style="color:#00bcff;" class="parent"> CRM </span> / Customer
+            </div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content" layout="column">
+        <div layout="row">
+
+            <!-- FORM WIZARD -->
+            <ms-form-wizard flex>
+                <md-tabs md-dynamic-height>
+                    <md-tab>
+                        <md-tab-label>
+                            <span class="ms-form-wizard-step-label">
+                                <span class="ms-form-wizard-step-text">Search</span>
+                            </span>
+                        </md-tab-label>
+
+                        <md-tab-body>
+                            <form name="wizardStep1" class="md-inline-form" ms-form-wizard-form novalidate>
+                                <div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Customer Code</label>
+										<input ng-model="vm.search_data.code">
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Customer Name</label>
+										<input ng-model="vm.search_data.name">
+									</md-input-container>
+
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Phone#</label>
+										<input ng-model="vm.search_data.phone">
+									</md-input-container>
+                                </div>
+								<div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container flex>
+										<label>Customer Type</label>
+										<md-select ng-model="vm.search_data.c_type" multiple>
+											<md-option ng-repeat="type in ['Contractor', 'Sales Customer']" value="{{type}}">
+												{{type}}
+											</md-option>
+										</md-select>
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Address Country</label>
+										<input ng-model="vm.search_data.country">
+									</md-input-container>
+
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <md-datepicker ng-model="vm.search_data.created_at" md-placeholder="Date Created"></md-datepicker>
+                                    </md-input-container>
+                                </div>
+                                <div layout="row" layout-gt-xs="row" flex>
+								
+								<md-input-container class="md-block" flex="33">
+									<label>Created By</label>
+                                    <md-select ng-model="vm.search_data.created_by_id">
+                                        <md-option ng-repeat="user in vm.get_users" value="{{user.id}}">
+                                            {{user.name}}
+                                        </md-option>
+                                    </md-select>
+								</md-input-container>
+                                </div>
+								
+								<div class="actions" layout="row" layout-align="start center">
+									<md-button ng-click="vm.searchCustomerData()" class="md-raised md-accent">Search</md-button>
+									<md-button ng-click="vm.searchCustomerDataClear()" class="md-raised md-accent">Clear</md-button>
+								</div>
+                            </form>
+                        </md-tab-body>
+                    </md-tab>
+                </md-tabs>
+
+               
+
+            </ms-form-wizard>
+            <!-- / FORM WIZARD -->
+
+        </div>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>
+
+
+<div id="e-commerce-orders" class="page-layout carded fullwidth" layout="row">
+
+    <!-- CENTER -->
+    <div class="center" layout="column" flex>
+
+        <!-- CONTENT CARD -->
+        <div class="content-card" layout="column" flex>
+			
+			<div style="padding:25px; font-size:18px;"> Customer </div>
+
+            <!-- CONTENT TOOLBAR -->
+
+            <!-- / CONTENT TOOLBAR -->
+
+            <!-- CONTENT -->
+            <div class="content fullpage-datatable" layout="column" flex>
+
+                <table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance" bDestroy="true"
+                       dt-options="vm.dtOptions">
+                    <thead>
+                        <tr>
+                            <th class="secondary-text">
+                                <div class="">
+                                    <span class="column-title">#</span>
+                                </div>
+                            </th>
+                            <th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">Customer Name</span>
+                                </div>
+                            </th>
+                            <th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">Phone#</span>
+                                </div>
+                            </th>
+                            <th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">Customer Type</span>
+                                </div>
+                            </th>
+                            <th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">Country</span>
+                                </div>
+                            </th>
+                            <th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">Created Date</span>
+                                </div>
+                            </th>
+                            <th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">Created By</span>
+                                </div>
+                            </th>
+                            <th class="secondary-text">
+                                <div class="">
+                                    <span class="column-title">Action</span>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="customer in vm.customers_data">
+                            <td><md-checkbox ng-model="customer.checked" aria-label="Checkbox 1">
+								</md-checkbox>
+							</td>
+                            <td>{{customer.name}}</td>
+                            <td>{{customer.phone}}</td>
+                            <td>{{customer.c_type}}</td>
+                            <td>{{customer.country}}</td>
+                            <td>{{customer.created_at}}</td>
+                            <td>{{customer.created_by}}</td>
+                            <td>
+								<a class="edit-button md-icon-button"
+                                   ng-click="vm.editCustomerPage(customer)"
+                                   aria-label="Product details" href="">
+								   <md-icon md-font-icon="icon-pencil" class="s16"></md-icon>
+								</a>
+								<a class="edit-button md-icon-button"
+                                   ng-click="vm.viewCustomerPage(customer.id)"
+                                   aria-label="Product details" href="">
+								   <md-icon md-font-icon="icon-eye" class="s16"></md-icon>
+								</a>
+								<a ng-click="vm.deleteCustomer(customer.id)" href="">
+								   <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
+								</a>
+								
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <!-- / CONTENT -->
+			<div class="actions" layout="row" layout-align="start center">
+				<md-button ng-click="vm.deleteAllCustomer()" class="md-raised md-accent">Delete</md-button>
+				<md-button ng-click="vm.newCustomerPage()" class="md-raised md-accent">Add</md-button>
+			</div>
+
+        </div>
+        <!-- / CONTENT CARD -->
+
+    </div>
+    <!-- / CENTER -->
+
+</div>

@@ -1,0 +1,303 @@
+<div id="e-commerce-product" class="page-layout simple tabbed" layout="column">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="space-between">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">CRM </a> / <a href="">Contact </a> </span> / View
+            </div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <md-tabs md-dynamic-height>
+
+            <md-tab>
+                <md-tab-label>
+                    <span>Personal Info</span>
+                </md-tab-label>
+
+                <md-tab-body>
+                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+                        <form>
+                            <div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Contact ID</label>
+										<input type="text" value="{{vm.contact_data.code}}" disabled>
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Salutation</label>
+										<input type="text" value="{{vm.contact_data.salutation}}" disabled>
+									</md-input-container>
+
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>First Name</label>
+										<input type="text" value="{{vm.contact_data.first_name}}" disabled>
+									</md-input-container>
+                                </div>
+								<div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Middle Name</label>
+										<input type="text" value="{{vm.contact_data.middle_name}}" disabled>
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Last name</label>
+										<input type="text" value="{{vm.contact_data.last_name}}" disabled>
+									</md-input-container>
+
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Phone Mobile</label>
+										<input type="text" value="{{vm.contact_data.phone_mobile}}" disabled>
+									</md-input-container>
+                                </div>
+								<div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Phone Work</label>
+										<input type="text" value="{{vm.contact_data.phone_work}}" disabled>
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Email</label>
+										<input type="text" value="{{vm.contact_data.email}}" disabled>
+									</md-input-container>
+
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Customer</label>
+										<input type="text" value="{{vm.contact_data.customer}}" disabled>
+									</md-input-container>
+                                </div>
+								<div layout="row" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex="33">
+										<label>Designation</label>
+										<input type="text" value="{{vm.contact_data.designation}}" disabled>
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex="33">
+										<label>Department</label>
+										<input type="text" value="{{vm.contact_data.department}}" disabled>
+                                    </md-input-container>
+
+                                </div>
+								<div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Description</label>
+										<input type="text" value="{{vm.contact_data.decription}}" disabled>
+									</md-input-container>
+                                </div>
+                        </form>
+						<div class="actions" layout="row" layout-align="start center">
+							<md-button ng-click="vm.editContactPage(vm.contact_data)" class="md-raised md-accent">Edit</md-button>
+							<md-button ng-click="vm.deleteContact(vm.contact_data.id)" class="md-raised md-accent">Delete</md-button>
+						</div>
+                    </div>
+                </md-tab-body>
+            </md-tab>
+
+            <md-tab>
+                <md-tab-label>
+                    <span>Address Info</span>
+                </md-tab-label>
+
+                <md-tab-body>
+                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+                        <form>
+                            <div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Primary Address Street</label>
+										<input type="text" value="{{vm.contact_data.primary_street}}" disabled>
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Primary Address City</label>
+										<input type="text" value="{{vm.contact_data.primary_city}}" disabled>
+									</md-input-container>
+
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Primary Address State</label>
+										<input type="text" value="{{vm.contact_data.primary_state}}" disabled>
+									</md-input-container>
+                                </div>
+								<div layout="row" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Primary Address Country</label>
+										<input type="text" value="{{vm.contact_data.primary_country}}" disabled>
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Primary Address Postal Code</label>
+										<input type="text" value="{{vm.contact_data.primary_postal_code}}" disabled>
+									</md-input-container>
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Alt Address Street</label>
+										<input type="text" value="{{vm.contact_data.alternative_street}}" disabled>
+									</md-input-container>
+                                </div>
+								<div layout="row" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Alt Address City</label>
+										<input type="text" value="{{vm.contact_data.alternative_city}}" disabled>
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Alt Address State</label>
+										<input type="text" value="{{vm.contact_data.alternative_state}}" disabled>
+									</md-input-container>
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Alt Address Country</label>
+										<input type="text" value="{{vm.contact_data.alternative_country}}" disabled>
+									</md-input-container>
+                                </div>
+								<div layout="row" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex="33">
+										<label>Alt Address Postal Code</label>
+										<input type="text" value="{{vm.contact_data.alternative_postal_code}}" disabled>
+									</md-input-container>
+                                </div>
+								
+                        </form>
+						<div class="actions" layout="row" layout-align="start center">
+							<md-button ng-click="vm.editContactPage(vm.contact_data)" class="md-raised md-accent">Edit</md-button>
+							<md-button ng-click="vm.deleteContact(vm.contact_data.id)" class="md-raised md-accent">Delete</md-button>
+						</div>
+                    </div>
+                </md-tab-body>
+            </md-tab>
+
+            <md-tab>
+                <md-tab-label>
+                    <span>Other Info</span>
+                </md-tab-label>
+
+                <md-tab-body>
+                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+                        <form>
+                            <div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Created Date</label>
+										<input type="text" value="{{vm.contact_data.created_at}}" disabled>
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Created by</label>
+										<input type="text" value="{{vm.contact_data.created_by}}" disabled>
+									</md-input-container>
+
+                                   <md-input-container class="md-block" flex-gt-sm>
+										<label>Modified Date</label>
+										<input type="text" value="{{vm.contact_data.updated_at}}" disabled>
+									</md-input-container>
+                                </div>
+								<div layout="row" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex="33">
+										<label>Modified by</label>
+										<input type="text" value="{{vm.contact_data.updated_by}}" disabled> 
+									</md-input-container>
+                                </div>
+								
+                        </form>
+						
+						<div class="actions" layout="row" layout-align="start center">
+							<md-button ng-click="vm.editContactPage(vm.contact_data)" class="md-raised md-accent">Edit</md-button>
+							<md-button ng-click="vm.deleteContact(vm.contact_data.id)" class="md-raised md-accent">Delete</md-button>
+						</div>
+                    </div>
+                </md-tab-body>
+            </md-tab>
+			
+			<md-tab>
+                <md-tab-label>
+                    <span>Notes</span>
+                </md-tab-label>
+
+                <md-tab-body>
+                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+					
+						<table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance"
+							   dt-options="vm.dtOptions">
+							<thead>
+								<tr>
+									<th class="secondary-text">
+										<div class="">
+											<span class="column-title">#</span>
+										</div>
+									</th>
+									<th class="secondary-text">
+										<div class="table-header">
+											<span class="column-title">Note ID</span>
+										</div>
+									</th>
+									<th class="secondary-text">
+										<div class="table-header">
+											<span class="column-title">Subject</span>
+										</div>
+									</th>
+									<th class="secondary-text">
+										<div class="table-header">
+											<span class="column-title">Customer Name</span>
+										</div>
+									</th>
+									<th class="secondary-text">
+										<div class="table-header">
+											<span class="column-title">Date Created</span>
+										</div>
+									</th>
+									
+									<th class="secondary-text">
+										<div class="table-header">
+											<span class="column-title">Created By</span>
+										</div>
+									</th>
+									<th class="secondary-text">
+										<div class="">
+											<span class="column-title">Action</span>
+										</div>
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="note in vm.contact_data.notes">
+									<td><md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+										</md-checkbox>
+									</td>
+									<td>{{note.code}}</td>
+									<td>{{note.subject}}</td>
+									<td>{{note.customer}}</td>
+									<td>{{note.created_at}}</td>
+									<td>{{note.created_by}}</td>
+									<td>
+										<a class="edit-button md-icon-button"
+										   ng-click="vm.editpage(note.id)"
+										   aria-label="Product details" href="">
+										   <md-icon md-font-icon="icon-pencil" class="s16"></md-icon>
+										</a>
+										<a class="edit-button md-icon-button"
+										   ng-click="vm.viewpage(note.id)"
+										   aria-label="Product details" href="">
+										   <md-icon md-font-icon="icon-eye" class="s16"></md-icon>
+										</a>
+										<a href="">
+										   <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
+										</a>
+										
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="actions" layout="row" layout-align="start center">
+							<md-button class="md-raised md-accent">Delete</md-button>
+							<md-button class="md-raised md-accent">ADD</md-button>
+						</div>
+					</div>
+                </md-tab-body>
+            </md-tab>
+        </md-tabs>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>

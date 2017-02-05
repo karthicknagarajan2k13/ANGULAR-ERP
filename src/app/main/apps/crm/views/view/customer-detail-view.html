@@ -1,0 +1,353 @@
+<div id="e-commerce-product" class="page-layout simple tabbed" layout="column">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="space-between">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">CRM </a> / <a href="">Customer </a> </span> / View
+            </div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <md-tabs md-dynamic-height>
+
+            <md-tab>
+                <md-tab-label>
+                    <span>General Info</span>
+                </md-tab-label>
+
+                <md-tab-body>
+                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+                        <form>
+                            <div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Customer Code</label>
+										<input type="text" value="{{vm.customer_data.code}}" disabled>
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Customer Name</label>
+										<input type="text" value="{{vm.customer_data.name}}" disabled>
+									</md-input-container>
+
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Phone#</label>
+										<input type="text" value="{{vm.customer_data.phone}}" disabled>
+									</md-input-container>
+                                </div>
+								<div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Email</label>
+										<input type="text" value="{{vm.customer_data.email}}" disabled>
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Street</label>
+										<input type="text" value="{{vm.customer_data.street}}" disabled>
+									</md-input-container>
+
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>City</label>
+										<input type="text" value="{{vm.customer_data.city}}" disabled>
+									</md-input-container>
+                                </div>
+								<div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>State</label>
+										<input type="text" value="{{vm.customer_data.state}}" disabled>
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Country</label>
+										<input type="text" value="{{vm.customer_data.country}}" disabled>
+									</md-input-container>
+
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Postal Code</label>
+										<input type="text" value="{{vm.customer_data.postal_code}}" disabled>
+									</md-input-container>
+                                </div>
+								<div layout="row" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex="33">
+										<label>Customer Type</label>
+										<input type="text" value="{{vm.customer_data.c_type}}" disabled>
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex="33">
+										<label>Customer Since</label>
+                                        <input type="text" value="{{vm.customer_data.customer_since}}" disabled>
+                                    </md-input-container>
+
+                                </div>
+								<div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Decription</label>
+										<input disabled type="text" value="{{vm.customer_data.decription}}">
+									</md-input-container>
+                                </div>
+                        </form>
+						<div class="actions" layout="row" layout-align="start center">
+							<md-button ng-click="vm.editCustomerPage(vm.customer_data)" class="md-raised md-accent">Edit</md-button>
+							<md-button ng-click="vm.deleteCustomer(vm.customer_data.id)" class="md-raised md-accent">Delete</md-button>
+						</div>
+                    </div>
+                </md-tab-body>
+            </md-tab>
+
+            <md-tab>
+                <md-tab-label>
+                    <span>Payment Info</span>
+                </md-tab-label>
+
+                <md-tab-body>
+                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+                        <form>
+                            <div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Discount Percent</label>
+										<input type="text" value="${{vm.customer_data.discount_percent}}" disabled>
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Credit Limit</label>
+										<input type="text" value="${{vm.customer_data.credit_limit}}" disabled>
+									</md-input-container>
+
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Tax Reference</label>
+										<input type="text" value="{{vm.customer_data.tax_reference}}" disabled>
+									</md-input-container>
+                                </div>
+								<div layout="row" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex="33">
+										<label>Payment Terms</label>
+										<input type="text" value="{{vm.customer_data.payment_terms}}" disabled>
+									</md-input-container>
+									
+									<md-input-container class="md-block" fflex="33">
+										<label>Customer Currency</label>
+										<input type="text" value="{{vm.customer_data.customer_currency}}" disabled>
+									</md-input-container>
+                                </div>
+								
+                        </form>
+						<div class="actions" layout="row" layout-align="start center">
+							<md-button ng-click="vm.editCustomerPage(vm.customer_data)" class="md-raised md-accent">Edit</md-button>
+							<md-button ng-click="vm.deleteCustomer(vm.customer_data.id)" class="md-raised md-accent">Delete</md-button>
+						</div>
+                    </div>
+                </md-tab-body>
+            </md-tab>
+
+            <md-tab>
+                <md-tab-label>
+                    <span>Other Info</span>
+                </md-tab-label>
+
+                <md-tab-body>
+                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+                        <form>
+                            <div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Created Date</label>
+										<input type="text" value="{{vm.customer_data.created_at}}" disabled>
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Created by</label>
+										<input type="text" value="{{vm.customer_data.created_by}}" disabled>
+									</md-input-container>
+
+                                   <md-input-container class="md-block" flex-gt-sm>
+										<label>Modified Date</label>
+										<input type="text" value="{{vm.customer_data.updated_at}}" disabled>
+									</md-input-container>
+                                </div>
+								<div layout="row" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex="33">
+										<label>Modified by</label>
+										<input type="text" value="{{vm.customer_data.updated_by}}" disabled>
+									</md-input-container>
+                                </div>
+								
+                        </form>
+						
+						<div class="actions" layout="row" layout-align="start center">
+							<md-button ng-click="vm.editCustomerPage(vm.customer_data)" class="md-raised md-accent">Edit</md-button>
+							<md-button ng-click="vm.deleteCustomer(vm.customer_data.id)" class="md-raised md-accent">Delete</md-button>
+						</div>
+                    </div>
+                </md-tab-body>
+            </md-tab>
+			
+			<md-tab>
+                <md-tab-label>
+                    <span>Notes</span>
+                </md-tab-label>
+
+                <md-tab-body>
+                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+					
+						<table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance"
+							   dt-options="vm.dtOptions">
+							<thead>
+								<tr>
+									<th class="secondary-text">
+										<div class="">
+											<span class="column-title">#</span>
+										</div>
+									</th>
+									<th class="secondary-text">
+										<div class="table-header">
+											<span class="column-title">Note ID</span>
+										</div>
+									</th>
+									<th class="secondary-text">
+										<div class="table-header">
+											<span class="column-title">Subject</span>
+										</div>
+									</th>
+									<th class="secondary-text">
+										<div class="table-header">
+											<span class="column-title">Contact Name</span>
+										</div>
+									</th>
+									<th class="secondary-text">
+										<div class="table-header">
+											<span class="column-title">Created Date</span>
+										</div>
+									</th>
+									<th class="secondary-text">
+										<div class="table-header">
+											<span class="column-title">Created By</span>
+										</div>
+									</th>
+									<th class="secondary-text">
+										<div class="">
+											<span class="column-title">Action</span>
+										</div>
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="note in vm.customer_data.notes">
+									<td><md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+										</md-checkbox>
+									</td>
+									<td>{{note.code}}</td>
+									<td>{{note.subject}}</td>
+									<td>{{note.contact}}</td>
+									<td>{{note.created_at}}</td>
+									<td>{{note.created_by}}</td>
+									<td>
+										<a class="edit-button md-icon-button"
+										   ng-click="vm.editpage(contact.id)"
+										   aria-label="Product details" href="">
+										   <md-icon md-font-icon="icon-pencil" class="s16"></md-icon>
+										</a>
+										<a class="edit-button md-icon-button"
+										   ng-click="vm.viewpage(contact.id)"
+										   aria-label="Product details" href="">
+										   <md-icon md-font-icon="icon-eye" class="s16"></md-icon>
+										</a>
+										<a href="">
+										   <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
+										</a>
+										
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="actions" layout="row" layout-align="start center">
+							<md-button class="md-raised md-accent">Delete</md-button>
+							<md-button class="md-raised md-accent">ADD</md-button>
+						</div>
+					</div>
+                </md-tab-body>
+            </md-tab>
+
+			<md-tab>
+                <md-tab-label>
+                    <span>Contacts</span>
+                </md-tab-label>
+
+                <md-tab-body>
+                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+					
+						<table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance"
+							   dt-options="vm.dtOptions">
+		                    <thead>
+		                        <tr>
+		                            <th class="secondary-text">
+		                                <div class="">
+		                                    <span class="column-title">#</span>
+		                                </div>
+		                            </th>
+		                            <th class="secondary-text">
+		                                <div class="table-header">
+		                                    <span class="column-title">Contact ID</span>
+		                                </div>
+		                            </th>
+		                            <th class="secondary-text">
+		                                <div class="table-header">
+		                                    <span class="column-title">Full Name</span>
+		                                </div>
+		                            </th>
+		                            <th class="secondary-text">
+		                                <div class="table-header">
+		                                    <span class="column-title">Mobile #</span>
+		                                </div>
+		                            </th>
+		                            <th class="secondary-text">
+		                                <div class="">
+		                                    <span class="column-title">Action</span>
+		                                </div>
+		                            </th>
+		                        </tr>
+		                    </thead>
+							<tbody>
+								<tr ng-repeat="contact in vm.customer_data.contacts">
+									<td><md-checkbox ng-model="contact.checked" aria-label="Checkbox 1">
+										</md-checkbox>
+									</td>
+									<td>{{contact.code}}</td>
+									<td>{{contact.name}}</td>
+									<td>{{contact.phone_mobile}}</td>
+									<td>
+										<a class="edit-button md-icon-button"
+										   ng-click="vm.editContactPage(contact)"
+										   aria-label="Product details" href="">
+										   <md-icon md-font-icon="icon-pencil" class="s16"></md-icon>
+										</a>
+										<a class="edit-button md-icon-button"
+										   ng-click="vm.viewContactPage(contact.id)"
+										   aria-label="Product details" href="">
+										   <md-icon md-font-icon="icon-eye" class="s16"></md-icon>
+										</a>
+										<a ng-click="vm.deleteContact(contact.id)" href="">
+										   <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
+										</a>
+										
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="actions" layout="row" layout-align="start center">
+							<md-button ng-click="vm.deleteAllContact()" class="md-raised md-accent">Delete</md-button>
+							<md-button ng-click="vm.newContactPage()" class="md-raised md-accent">ADD</md-button>
+						</div>
+					</div>
+                </md-tab-body>
+            </md-tab>
+
+
+        </md-tabs>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>
