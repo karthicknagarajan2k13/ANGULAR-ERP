@@ -26,23 +26,23 @@
                             <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>ID</label>
-										<input type="text" value="CUS0001" disabled>
+										<input type="text" value="{{sales_order_invoice_data.code}}" disabled>
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Subject</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<input type="text" value="{{sales_order_invoice_data.name}}" disabled>
 									</md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Order ID</label>
-										<input type="text" value="580-269-9087" disabled>
+										<input type="text" value="{{sales_order_invoice_data.uid}}" disabled>
 									</md-input-container>
                                 </div>
 								<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Order Date</label>
-                                        <input type="text" value="22/12/2016" disabled>
+                                        <input type="text" value="{{sales_order_invoice_data.status}}" disabled>
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
@@ -52,59 +52,72 @@
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Cancelled At</label>
-										<input type="text" value="Kaw City" >
+										<input type="text" value="{{sales_order_invoice_data.cancelled_at}}" >
 									</md-input-container>
                                 </div>
 								<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Cancellation Reason</label>
-										<input type="text" value="Oklahoma" disabled>
+										<input type="text" value="{{sales_order_invoice_data.cancel_reason}}" disabled>
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Payed At</label>
-										<input type="text" value="australia" disabled>
+										<input type="text" value="{{sales_order_invoice_data.paid_at}}" disabled>
 									</md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Payment Method</label>
-										<input type="text" value="74641" disabled>
+										<input type="text" value="{{sales_order_invoice_data.payment_method}}" disabled>
 									</md-input-container>
                                 </div>
 								<div layout="row" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex="33">
 										<label>Refunded At</label>
-										<input type="text" value="Type 1" disabled>
+										<input type="text" value="{{sales_order_invoice_data.refunded_at}}" disabled>
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex="33">
 										<label>Subtotal </label>
-                                        <input type="text" value="22/12/2016" disabled>
+                                        <input type="text" value="{{sales_order_invoice_data.subtotal}}" disabled>
                                     </md-input-container>
 									<md-input-container class="md-block" flex="33">
 										<label>Tax </label>
-                                        <input type="text" value="22/12/2016" disabled>
+                                        <input type="text" value="{{sales_order_invoice_data.tax}}" disabled>
                                     </md-input-container>
 
                                 </div>
 								<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Shipping</label>
-										<input  type="text" value="Lorem Ipsum" disabled>
+										<input  type="text" value="{{sales_order_invoice_data.shipping_name}}" disabled>
 									</md-input-container>
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Discount</label>
-										<input  type="text" value="Lorem Ipsum" disabled>
+										<input  type="text" value="{{sales_order_invoice_data.discount}}" disabled>
 									</md-input-container>
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Total</label>
-										<input  type="text" value="Lorem Ipsum" disabled>
+										<input  type="text" value="{{sales_order_invoice_data.grand_total}}" disabled>
 									</md-input-container>
                                 </div>
+								<div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Customer</label>
+										<input  type="text" value="{{sales_order_invoice_data.customer}}" disabled>
+									</md-input-container>
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Contact</label>
+										<input  type="text" value="{{sales_order_invoice_data.contact}}" disabled>
+									</md-input-container>
+									<md-input-container class="md-block" flex-gt-sm>
+									</md-input-container>
+                                </div>
+
+                                
                         </form>
 						<div class="actions" layout="row" layout-align="start center" >
-							<md-button class="md-raised md-accent">Edit</md-button>
-							<md-button class="md-raised md-accent">Delete</md-button>
+							<md-button ng-click="vm.deleteSalesOrderInvoice(sales_order_invoice_data.id)" class="md-raised md-accent">Delete</md-button>
 						</div>
                     </div>
                 </md-tab-body>
@@ -121,31 +134,30 @@
                             <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Buyer ID</label>
-										<input type="text" value="$525" disabled>
+										<input type="text" value="{{sales_order_invoice_data.buyer_id}}" disabled>
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Name</label>
-										<input type="text" value="$5648" disabled>
+										<input type="text" value="{{sales_order_invoice_data.buyer_name}}" disabled>
 									</md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Email</label>
-										<input type="text" value="Lorem Ipsum" disabled>
+										<input type="text" value="{{sales_order_invoice_data.buyer_email}}" disabled>
 									</md-input-container>
                                 </div>
 								<div layout="row" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex="33">
 										<label>Phone</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<input type="text" value="{{sales_order_invoice_data.buyer_phone_number}}" disabled>
 									</md-input-container>
 									
                                 </div>
 								
                         </form>
 						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Edit</md-button>
-							<md-button class="md-raised md-accent">Delete</md-button>
+							<md-button ng-click="vm.deleteSalesOrderInvoice(sales_order_invoice_data.id)" class="md-raised md-accent">Delete</md-button>
 						</div>
                     </div>
                 </md-tab-body>
@@ -162,55 +174,55 @@
                             <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Shipping Paid</label>
-										<input type="text" value="22/12/2016" disabled>
+										<input type="text" value="{{sales_order_invoice_data.shipped}}" disabled>
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Shipping Cost</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<input type="text" value="{{sales_order_invoice_data.shipping_price}}" disabled>
 									</md-input-container>
 
                                    <md-input-container class="md-block" flex-gt-sm>
 										<label>Receiver Name</label>
-										<input type="text" value="12/01/2017" disabled>
+										<input type="text" value="{{sales_order_invoice_data.shipping_name}}" disabled>
 									</md-input-container>
                                 </div>
 								<div layout="row" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex="33">
 										<label>Receiver Address Street</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<input type="text" value="{{sales_order_invoice_data.shipping_address_line_1}}" disabled>
 									</md-input-container>
 									<md-input-container class="md-block" flex="33">
 										<label>City</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<input type="text" value="{{sales_order_invoice_data.shipping_city}}" disabled>
 									</md-input-container>
 									<md-input-container class="md-block" flex="33">
 										<label>State</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<input type="text" value="{{sales_order_invoice_data.shipping_state}}" disabled>
 									</md-input-container>
                                 </div>
 								<div layout="row" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex="33">
 										<label>Postal Code</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<input type="text" value="{{sales_order_invoice_data.shipping_postal_code}}" disabled>
 									</md-input-container>
 									<md-input-container class="md-block" flex="33">
 										<label>Country</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<input type="text" value="{{sales_order_invoice_data.shipping_country}}" disabled>
 									</md-input-container>
 									<md-input-container class="md-block" flex="33">
 										<label>Phone</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<input type="text" value="{{sales_order_invoice_data.shipping_phone}}" disabled>
 									</md-input-container>
                                 </div>
 								<div layout="row" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex="33">
 										<label>Tracking</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<input type="text" value="{{sales_order_invoice_data.shipping_tracking_code}}" disabled>
 									</md-input-container>
 									<md-input-container class="md-block" flex="33">
 										<label>Notes</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<input type="text" value="{{sales_order_invoice_data.shipping_notes}}" disabled>
 									</md-input-container>
 									
                                 </div>
@@ -218,8 +230,7 @@
                         </form>
 						
 						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Edit</md-button>
-							<md-button class="md-raised md-accent">Delete</md-button>
+							<md-button ng-click="vm.deleteSalesOrderInvoice(sales_order_invoice_data.id)" class="md-raised md-accent">Delete</md-button>
 						</div>
                     </div>
                 </md-tab-body>
@@ -265,11 +276,11 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr ng-repeat="order in ::vm.orders">
-									<td>{{order.itemname}}</td>
-									<td>{{order.itemprice}}</td>
-									<td>{{order.qty}}</td>
-									<td>{{order.itemprice}}</td>
+								<tr ng-repeat="item in sales_order_invoice_data.items">
+									<td></td>
+									<td>{{item.item_price}}</td>
+									<td>{{item.quantity}}</td>
+									<td>{{item.item_price * item.quantity}}</td>
 									<td>
 										<a href="">
 										   <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
@@ -286,10 +297,10 @@
 										Total
 									</td>
 									<td class="secondary-text7">
-										545
+										{{ sales_order_invoice_data.total_quantity }}
 									</td>
 									<td class="secondary-text7">
-										56985
+										{{ sales_order_invoice_data.total_price }}
 									</td>
 									<td class="secondary-text7">
 										
@@ -315,27 +326,27 @@
                             <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Marketplace Fee</label>
-										<input type="text" value="22/12/2016" disabled>
+										<input type="text" value="{{sales_order_invoice_data.marketplace_fee}}" disabled>
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Processing Fee</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<input type="text" value="{{sales_order_invoice_data.processing_fee}}" disabled>
 									</md-input-container>
 
                                    <md-input-container class="md-block" flex-gt-sm>
 										<label>Acquisition Cost</label>
-										<input type="text" value="12/01/2017" disabled>
+										<input type="text" value="" disabled>
 									</md-input-container>
                                 </div>
 								<div layout="row" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex="33">
 										<label>Profit Share Deductions</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<input type="text" value="" disabled>
 									</md-input-container>
 									<md-input-container class="md-block" flex="33">
 										<label>Net</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<input type="text" value="" disabled>
 									</md-input-container>
 									
                                 </div>
@@ -343,8 +354,7 @@
                         </form>
 						
 						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Edit</md-button>
-							<md-button class="md-raised md-accent">Delete</md-button>
+							<md-button ng-click="vm.deleteSalesOrderInvoice(sales_order_invoice_data.id)" class="md-raised md-accent">Delete</md-button>
 						</div>
                     </div>
                 </md-tab-body>
@@ -361,140 +371,23 @@
                             <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Date Created</label>
-										<input type="text" value="22/12/2016" disabled>
+										<input type="text" value="{{sales_order_invoice_data.create_timestamp}}" disabled>
 									</md-input-container>
-									
-									<md-input-container class="md-block" flex-gt-sm>
-										<label>Created By</label>
-										<input type="text" value="Lola J Bolden" disabled>
-									</md-input-container>
-
-                                   <md-input-container class="md-block" flex-gt-sm>
-										<label>Date Modified By</label>
-										<input type="text" value="12/01/2017" disabled>
-									</md-input-container>
-                                </div>
-								<div layout="row" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex="33">
-										<label>Modified By</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<label>Date Modified</label>
+										<input type="text" value="{{sales_order_invoice_data.update_timestamp}}" disabled>
 									</md-input-container>
-									
+                                    <md-input-container class="md-block" flex="33">
+									</md-input-container>				
                                 </div>
-								
                         </form>
-						
 						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Edit</md-button>
-							<md-button class="md-raised md-accent">Delete</md-button>
+							<md-button ng-click="vm.deleteSalesOrderInvoice(sales_order_invoice_data.id)" class="md-raised md-accent">Delete</md-button>
 						</div>
                     </div>
                 </md-tab-body>
             </md-tab>
-			
-			<md-tab>
-                <md-tab-label>
-                    <span>Invoices</span>
-                </md-tab-label>
-
-                <md-tab-body>
-                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
-					
-						<table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance"
-							   dt-options="vm.dtOptions">
-							<thead>
-								<tr>
-									<th class="secondary-text">
-										<div class="">
-											<span class="column-title">#</span>
-										</div>
-									</th>
-									<th class="secondary-text">
-										<div class="table-header">
-											<span class="column-title">Invoice ID</span>
-										</div>
-									</th>
-									<th class="secondary-text">
-										<div class="table-header">
-											<span class="column-title">Subject</span>
-										</div>
-									</th>
-									<th class="secondary-text">
-										<div class="table-header">
-											<span class="column-title">Subtotal</span>
-										</div>
-									</th>
-									<th class="secondary-text">
-										<div class="table-header">
-											<span class="column-title">Tax</span>
-										</div>
-									</th>
-									<th class="secondary-text">
-										<div class="table-header">
-											<span class="column-title">Grand Total</span>
-										</div>
-									</th>
-									<th class="secondary-text">
-										<div class="table-header">
-											<span class="column-title">Date Created</span>
-										</div>
-									</th>
-									<th class="secondary-text">
-										<div class="table-header">
-											<span class="column-title">Created By</span>
-										</div>
-									</th>
-									<th class="secondary-text">
-										<div class="">
-											<span class="column-title">Action</span>
-										</div>
-									</th>
-								   <!--  <th class="secondary-text">
-										<div class="table-header">
-											<span class="column-title">Actions</span>
-										</div>
-									</th> -->
-								</tr>
-							</thead>
-							<tbody>
-								<tr ng-repeat="order in ::vm.orders">
-									<td><md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
-										</md-checkbox>
-									</td>
-									<td>{{order.name}}</td>
-									<td>{{order.phone}}</td>
-									<td>{{order.type}}</td>
-									<td>{{order.country}}</td>
-									<td>{{order.date}}</td>
-									<td>{{order.date}}</td>
-									<td>{{order.createdby}}</td>
-									<!-- <td>{{order.test}}</td> -->
-									<td>
-										<a class="edit-button md-icon-button"
-										   aria-label="Product details" href="">
-										   <md-icon md-font-icon="icon-pencil" class="s16"></md-icon>
-										</a>
-										<a class="edit-button md-icon-button"
-										   aria-label="Product details" href="">
-										   <md-icon md-font-icon="icon-eye" class="s16"></md-icon>
-										</a>
-										<a href="">
-										   <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
-										</a>
-										
-									</td>
-								</tr>
-							</tbody>
-						</table>
-						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Delete</md-button>
-							<md-button class="md-raised md-accent">Add</md-button>
-						</div>
-					</div>
-                </md-tab-body>
-            </md-tab>
         </md-tabs>
-
     </div>
     <!-- / CONTENT -->
 

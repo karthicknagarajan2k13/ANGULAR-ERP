@@ -4,48 +4,39 @@
 
     angular
         .module('app.order-management')
-        .controller('SalesOrdersEditController', SalesOrdersEditController);
+        .controller('viewSalesOrdersController', viewSalesOrdersController);
 
     /** @ngInject */
-    function SalesOrdersEditController($scope, omApi, $document, $state, Product)
+    function viewSalesOrdersController($scope, omApi, $document, $state, Product)
     {
 
         var vm = this;
 
-        var dataPromise = omApi.editSalesOrder({id:$state.params.obj.id});
+        //Api Call
+        var dataPromise = omApi.viewSalesOrder($state.params.obj.id);
         dataPromise.then(function(result) { 
-            $scope.sales_order = result;
-        });
+            $scope.sales_order_data = result; 
 
-        var dataPromise = omApi.getCustomers();
-        dataPromise.then(function(result) { 
-            $scope.get_customers = result;
-            console.log("get_customers",$scope.get_customers)
-        });
-        
-        var dataPromise = omApi.getContacts();
-        dataPromise.then(function(result) { 
-            $scope.get_contacts = result;
-            console.log("get_contacts",$scope.get_contacts)
-        });
+            var total_quantity = 0;
+            var total_price = 0;
+            angular.forEach($scope.sales_order_data.items, function(value, key) {
+              total_quantity += value.quantity ;
+              total_price += (value.quantity * value.item_price);
+            });
+            $scope.sales_order_data.total_quantity = total_quantity;
+            $scope.sales_order_data.total_price = total_price;
 
-        vm.updateSalesOrder = function(){
-           var dataPromise = omApi.updateSalesOrder($scope.sales_order.id,$scope.sales_order);
-            dataPromise.then(function(result) { 
-                $scope.data = result;
-                console.log("$scope.data",$scope.data)
-                if( typeof($scope.data.message) !== "undefined"){
-                    console.log("response",$scope.data.message)
-                }else{
-                    if( typeof($scope.data.sales_order_id) !== "undefined"){
-                        $state.go('app.order-management.sales-order-view', {obj:{id: $scope.data.sales_order_id}}); 
-                    }
-                }
-            }); 
-        }
-
+        }); 
+	
 		vm.ssName = "s"
 	    vm.orders = Product.data;
+
+        vm.deleteSalesOrder = function (id) {
+            var delete_ids = JSON.stringify([id])
+            omApi.deleteAllSalesOrder({ids: delete_ids})
+            $state.go('app.order-management.sales-orders')
+        };
+
         /**
          * File upload success callback
          * Triggers when single upload completed

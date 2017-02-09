@@ -29,59 +29,53 @@
                                 <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>ID</label>
-										<input ng-model="user.firstName">
+										<input ng-model="vm.search_data.code">
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Order ID</label>
-										<input ng-model="user.firstName">
+										<input ng-model="vm.search_data.uid">
 									</md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Subject</label>
-										<input ng-model="user.firstName">
+										<input ng-model="vm.search_data.name">
 									</md-input-container>
                                 </div>
 								<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container flex>
-										<md-datepicker ng-model="myDate" md-placeholder="Order Date"></md-datepicker>
+										<md-datepicker ng-model="vm.search_data.create_timestamp"  md-placeholder="Order Date"></md-datepicker>
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Total</label>
-										<input ng-model="user.firstName">
+										<input ng-model="vm.search_data.grand_total">
 									</md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Customer</label>
-										<input ng-model="user.firstName">
+										<input ng-model="vm.search_data.customer_user_id">
 									</md-input-container>
                                 </div>
 								
 								<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container flex>
 										<label>Status</label>
-										<md-select ng-model="vm.basicForm.state" multiple>
-											<md-option ng-repeat="order in ::vm.orders" value="{{order.id}}">
-												{{order.name}}
-											</md-option>
-										</md-select>
+										<input ng-model="vm.search_data.status">
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
-										<md-datepicker ng-model="myDate" md-placeholder="Date Created"></md-datepicker>
+										<md-datepicker ng-model="vm.search_data.created_at" md-placeholder="Date Created"></md-datepicker>
 									</md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
-                                        <label>Created By</label>
-										<input ng-model="user.firstName">
                                     </md-input-container>
                                 </div>
 								
 								
 								<div class="actions" layout="row" layout-align="start center">
-									<md-button class="md-raised md-accent">Search</md-button>
-									<md-button class="md-raised md-accent">Clear</md-button>
+									<md-button ng-click="vm.searchSalesOrderInvoicesData()" class="md-raised md-accent">Search</md-button>
+									<md-button ng-click="vm.searchSalesOrderInvoicesDataClear()" class="md-raised md-accent">Clear</md-button>
 								</div>
                             </form>
                         </md-tab-body>
@@ -109,7 +103,7 @@
         <!-- CONTENT CARD -->
         <div class="content-card" layout="column" flex>
 			
-			<div style="padding:25px; font-size:18px;"> Customer </div>
+			<div style="padding:25px; font-size:18px;"> List </div>
 
             <!-- CONTENT TOOLBAR -->
 
@@ -177,30 +171,25 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="order in ::vm.orders">
-                            <td><md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+                        <tr ng-repeat="invoice in sales_order_invoices_data">
+                            <td><md-checkbox ng-model="invoice.checked" aria-label="Checkbox 1">
 								</md-checkbox>
 							</td>
-                            <td>{{order.name}}</td>
-                            <td>{{order.phone}}</td>
-							<td>{{order.test}}</td>
-							<td>{{order.test}}</td>
-							<td>{{order.country}}</td>
-                            <td>{{order.date}}</td>
-                            <td>{{order.createdby}}</td>
+                            <td>{{invoice.code}}</td>
+                            <td>{{invoice.uid}}</td>
+							<td>{{invoice.create_timestamp}}</td>
+							<td>{{invoice.grand_total}}</td>
+							<td>{{invoice.customer}}</td>
+                            <td>{{invoice.status}}</td>
+                            <td>{{invoice.created_at}}</td>
                             <!-- <td>{{order.test}}</td> -->
                             <td>
 								<a class="edit-button md-icon-button"
-                                   ng-click="vm.invoiceeditpage(product.id)"
-                                   aria-label="Product details" href="">
-								   <md-icon md-font-icon="icon-pencil" class="s16"></md-icon>
-								</a>
-								<a class="edit-button md-icon-button"
-                                   ng-click="vm.invoiceviewpage(product.id)"
+                                   ng-click="vm.salesOrderView(invoice.id)"
                                    aria-label="Product details" href="">
 								   <md-icon md-font-icon="icon-eye" class="s16"></md-icon>
 								</a>
-								<a href="">
+								<a ng-click="vm.deleteSalesOrderInvoice(invoice.id)" href="">
 								   <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
 								</a>
 								
@@ -212,8 +201,7 @@
             </div>
             <!-- / CONTENT -->
 			<div class="actions" layout="row" layout-align="start center">
-				<md-button class="md-raised md-accent">Delete</md-button>
-				<md-button class="md-raised md-accent">Add</md-button>
+				<md-button ng-click="vm.deleteAllSalesOrderInvoice()" class="md-raised md-accent">Delete</md-button>
 			</div>
 
         </div>

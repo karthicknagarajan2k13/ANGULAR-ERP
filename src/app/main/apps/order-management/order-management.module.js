@@ -51,7 +51,7 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/order-management/views/pages/invoices.html',
-                        controller : 'SalesOrdersController as vm'
+                        controller : 'SalesOrderInvoicesController as vm'
                     }
                 },
                 resolve  : {
@@ -66,7 +66,27 @@
                 },
                 bodyClass: 'order-management'
             })
-			
+
+            .state('app.order-management.sales-order-edit', {
+                url      : '/sales-order-edit',
+                views    : {
+                    'content@app': {
+                        templateUrl: 'app/main/apps/order-management/views/edit/sales-order-edit.html',
+                        controller : 'SalesOrdersEditController as vm'
+                    }
+                },
+                params: {
+                 obj: null
+                },
+                resolve  : {
+                    Product: function (msApi)
+                    {
+                        return msApi.resolve('crm.orders@get');
+                    }
+                },
+                bodyClass: 'order-management'
+            })
+
 			.state('app.order-management.return-wizard', {
                 url      : '/return-wizard',
                 views    : {
@@ -87,50 +107,17 @@
                 },
                 bodyClass: 'order-management'
             })
-			
-			
-			.state('app.order-management.sales-order-edit', {
-                url      : '/sales-order-edit',
-                views    : {
-                    'content@app': {
-                        templateUrl: 'app/main/apps/order-management/views/edit/sales-order-edit.html',
-                        controller : 'SalesOrderseditController as vm'
-                    }
-                },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
-                },
-                bodyClass: 'order-management'
-            })
-			
-			.state('app.order-management.invoices-edit', {
-                url      : '/invoices-edit',
-                views    : {
-                    'content@app': {
-                        templateUrl: 'app/main/apps/order-management/views/edit/invoices-edit.html',
-                        controller : 'SalesOrderseditController as vm'
-                    }
-                },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
-                },
-                bodyClass: 'order-management'
-            })
-			
-			
+					
 			.state('app.order-management.sales-order-view', {
                 url      : '/sales-order-view',
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/order-management/views/view/sales-order-view.html',
-                        controller : 'SalesOrdersviewController as vm'
+                        controller : 'viewSalesOrdersController as vm'
                     }
+                },
+                params: {
+                 obj: null
                 },
                 resolve  : {
                     Product: function (msApi)
@@ -146,8 +133,11 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/order-management/views/view/invoices-view.html',
-                        controller : 'SalesOrdersviewController as vm'
+                        controller : 'viewSalesOrderInvoiceController as vm'
                     }
+                },
+                params: {
+                 obj: null
                 },
                 resolve  : {
                     Product: function (msApi)

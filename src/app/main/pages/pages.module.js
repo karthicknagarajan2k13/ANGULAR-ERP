@@ -15,7 +15,7 @@
             require: 'ngModel',
             link: function(scope, element, attrs, ngModel) {
               ngModel.$asyncValidators.emailNotUsed = function(modelValue, viewValue) {
-                return $http.get('http://localhost:8000/users/check_email.json?email='+modelValue).then(function(response) {
+                return $http.get('https://ror-erp.herokuapp.com/users/check_email.json?email='+modelValue).then(function(response) {
                   console.log("resonse",response.data.data)
                   return response.data.data == true ? $q.reject('Email is already used.') : true;
                 });

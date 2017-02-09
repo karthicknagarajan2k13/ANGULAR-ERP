@@ -7,7 +7,7 @@
         .factory('crmApi', apiService);
 
     /** @ngInject */
-    function apiService($resource,$q,$http)
+    function apiService($resource,$http)
     {
         var api = {};
 
