@@ -1,0 +1,95 @@
+<div id="e-commerce-product" class="page-layout simple tabbed" layout="column">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="space-between">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">Inventory Management </a> / <a href="">Item category </a> </span> / New
+            </div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <md-tabs md-dynamic-height>
+
+            <md-tab>
+                <md-tab-label>
+                    <span>General Info</span>
+                </md-tab-label>
+
+                <md-tab-body>
+                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+                        <form ng-submit="vm.saveCategory()" name="newCategoryForm" novalidate> 
+                            <div layout="column" layout-gt-xs="row" flex>
+								<md-input-container class="md-block" flex-gt-sm>
+									<label>Category Name</label>
+									<input type="text" name="name" ng-model="vm.category.name" required>
+                                    <div ng-messages="newCategoryForm.name.$error" role="alert">
+                                        <div ng-message="required">
+                                            <span >Category Name field is required</span>
+                                        </div>
+                                    </div>
+								</md-input-container>
+								<md-input-container class="md-block" flex-gt-sm>
+									<label>Unit</label>
+									<input type="text" name="unit" ng-model="vm.category.unit" required>
+                                    <div ng-messages="newCategoryForm.unit.$error" role="alert">
+                                        <div ng-message="required">
+                                            <span >Unit field is required</span>
+                                        </div>
+                                    </div>
+								</md-input-container>
+                                <md-input-container class="md-block" flex-gt-sm>
+									<label>Tax</label>
+									<input type="text" name="tax" ng-model="vm.category.tax" required>
+                                    <div ng-messages="newCategoryForm.tax.$error" role="alert">
+                                        <div ng-message="required">
+                                            <span >Tax field is required</span>
+                                        </div>
+                                    </div>								
+                                    </md-input-container>
+                            </div>
+							<div layout="column" layout-gt-xs="row" flex>
+                                <md-input-container class="md-block" flex-gt-sm>
+									<label>Description</label>
+									<input type="text" name="description" ng-model="vm.category.description" required>
+                                    <div ng-messages="newCategoryForm.description.$error" role="alert">
+                                        <div ng-message="required">
+                                            <span >Description field is required</span>
+                                        </div>
+                                    </div>									
+                                    </md-input-container>
+                            </div>
+							<div layout="column" layout-gt-xs="row" flex>
+                                <md-input-container class="md-block" flex-gt-sm>
+									<label>Manufacturer</label>
+									<input type="text" name="manufacturer" ng-model="vm.category.manufacturer" required>
+                                    <div ng-messages="newCategoryForm.manufacturer.$error" role="alert">
+                                        <div ng-message="required">
+                                            <span >Manufacturer field is required</span>
+                                        </div>
+                                    </div>									
+                                    </md-input-container>
+                            </div>
+						<div class="actions" layout="row" layout-align="start center">
+                            <md-button type="submit" class="md-raised md-accent submit-button" aria-label="Save"
+                                       ng-disabled="newCategoryForm.$invalid || newCategoryForm.$pristine"
+                                       translate="Save" translate-attr-aria-label="Save">
+                                Save
+                            </md-button>
+							<md-button ng-click="vm.categoryDataClear()" class="md-raised md-accent">Clear</md-button>
+						</div>
+						                        </form>
+
+                    </div>
+                </md-tab-body>
+            </md-tab>
+        </md-tabs>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>

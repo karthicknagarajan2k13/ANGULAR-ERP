@@ -1,0 +1,141 @@
+<div id="e-commerce-product" class="page-layout simple tabbed" layout="column">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="space-between">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">Inventory Management </a> / <a href="">Supplier </a> </span> / New
+            </div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <md-tabs md-dynamic-height>
+
+            <md-tab>
+                <md-tab-label>
+                    <span>General Info</span>
+                </md-tab-label>
+
+                <md-tab-body>
+                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+                        <form ng-submit="vm.saveSupplier()" name="newSupplierForm" novalidate>
+                            <div layout="column" layout-gt-xs="row" flex>
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Supplier Name</label>
+										<input ng-model="vm.supplier.first_name" name="first_name"  type="text" required>
+	                                    <div ng-messages="newSupplierForm.first_name.$error" role="alert">
+	                                        <div ng-message="required">
+	                                            <span >Supplier Name field is required</span>
+	                                        </div>
+	                                    </div>
+									</md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Email</label>
+										<input type="text" name="email" ng-model="vm.supplier.email" ng-pattern="/^.+@.+\..+$/" required>
+                                        <div ng-messages="newSupplierForm.email.$error" role="alert">
+                                            <div ng-message="required">
+                                                <span >Email field is required</span>
+                                            </div>
+                                            <div ng-message="pattern">
+                            					<span translate="LOGIN.ERRORS.EMAIL_MUST_VALID">Email must be a valid e-mail address</span>
+                        					</div>
+                                        </div>
+									</md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Phone</label>
+										<input ng-model="vm.supplier.supplier_attributes.phone" name="phone" type="text" required>
+	                                    <div ng-messages="newSupplierForm.phone.$error" role="alert">
+	                                        <div ng-message="required">
+	                                            <span >Phone field is required</span>
+	                                        </div>
+	                                    </div>
+									</md-input-container>
+                                </div>
+								<div layout="column" layout-gt-xs="row" flex>
+
+									
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <md-datepicker name="supplier_since" ng-model="vm.supplier.supplier_attributes.supplier_since" md-placeholder="Supplier Since" required></md-datepicker>
+	                                    <div ng-messages="newSupplierForm.supplier_since.$error" role="alert">
+	                                        <div ng-message="required">
+	                                            <span >Supplier Since is required</span>
+	                                        </div>
+	                                    </div>
+                                    </md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Supplier Currency</label>
+										<input name="supplier_currency" ng-model="vm.supplier.supplier_attributes.supplier_currency" type="text" required>
+	                                    <div ng-messages="newSupplierForm.supplier_currency.$error" role="alert">
+	                                        <div ng-message="required">
+	                                            <span >Supplier Currency is required</span>
+	                                        </div>
+	                                    </div>
+									</md-input-container>
+                                </div>
+						<div class="actions" layout="row" layout-align="start center">
+                            <md-button type="submit" class="md-raised md-accent submit-button" aria-label="Save"
+                                       ng-disabled="newSupplierForm.$invalid || newSupplierForm.$pristine"
+                                       translate="Save" translate-attr-aria-label="Save">
+                                Save
+                            </md-button>
+							<md-button ng-click="vm.supplierDataClear()" class="md-raised md-accent">Clear</md-button>
+						</div>
+					</form>
+                    </div>
+                </md-tab-body>
+            </md-tab>
+
+            <md-tab>
+                <md-tab-label>
+                    <span>Address Information</span>
+                </md-tab-label>
+
+                <md-tab-body>
+                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+                        <form>
+                            <div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Address Street</label>
+										<input type="text" ng-model="vm.supplier.supplier_attributes.street" >
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Address City</label>
+										<input type="text" ng-model="vm.supplier.supplier_attributes.city">
+									</md-input-container>
+
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Address State</label>
+										<input type="text" ng-model="vm.supplier.supplier_attributes.state" >
+									</md-input-container>
+                                </div>
+								<div layout="row" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex="33">
+										<label>Address Country</label>
+										<input type="text" ng-model="vm.supplier.supplier_attributes.country">
+									</md-input-container>
+									<md-input-container class="md-block" flex="33">
+										<label>Address Postal Code</label>
+										<input type="text" ng-model="vm.supplier.supplier_attributes.postal_code" >
+									</md-input-container>
+									
+                                </div>
+								
+                        </form>
+						<div class="actions" layout="row" layout-align="start center">
+							<md-button ng-click="vm.saveSupplier()" class="md-raised md-accent">Save</md-button>
+							<md-button ng-click="vm.supplierDataClear()" class="md-raised md-accent">Clear</md-button>
+						</div>
+                    </div>
+                </md-tab-body>
+            </md-tab>			
+        </md-tabs>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>

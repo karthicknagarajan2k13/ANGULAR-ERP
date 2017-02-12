@@ -28,6 +28,8 @@
 			'app.crm',
 			'app.order-management',
 			'app.inventory-management',
+			'app.hr',
+			'app.warehouse-management',
 			
 			//pages
 			'app.pages'

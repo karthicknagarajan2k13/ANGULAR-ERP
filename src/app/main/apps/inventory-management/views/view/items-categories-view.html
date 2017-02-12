@@ -26,46 +26,43 @@
                             <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Category ID</label>
-										<input type="text" value="CUS0001" disabled>
+										<input type="text" value="{{category_data.code}}" disabled>
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Category Name</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<input type="text" value="{{category_data.name}}" disabled>
+									</md-input-container>
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Unit</label>
+										<input type="text" value="{{category_data.unit}}" disabled>
 									</md-input-container>
 
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Description</label>
-										<input type="text" value="580-269-9087" disabled>
-									</md-input-container>
                                 </div>
 								<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>Image</label>
-                                        <input type="text" value="2946 Luke Lane" disabled>
-									</md-input-container>
-									
-									<md-input-container class="md-block" flex-gt-sm>
-										<label>Unit</label>
-										<input type="text" value="2946 Luke Lane" disabled>
+										<label>Tax</label>
+										<input type="text" value="{{category_data.tax}}" disabled>
 									</md-input-container>
 
+                                </div>
+								<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>Tax</label>
-										<input type="text" value="Kaw City" disabled>
+										<label>Description</label>
+										<input type="text" value="{{category_data.description}}" disabled>
 									</md-input-container>
                                 </div>
 								<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Manufacturer</label>
-										<input type="text" value="Oklahoma" disabled>
+										<input type="text" value="{{category_data.manufacturer}}" disabled>
 									</md-input-container>
 									
                                 </div>
                         </form>
 						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Save</md-button>
-							<md-button class="md-raised md-accent">Clear</md-button>
+							<md-button ng-click="vm.editItemCategoryPage(category_data)" class="md-raised md-accent">Edit</md-button>
+							<md-button ng-click="vm.deleteItemCategory(category_data.id)" class="md-raised md-accent">Delete</md-button>
 						</div>
                     </div>
                 </md-tab-body>
@@ -82,31 +79,33 @@
                             <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Date Created</label>
-										<input type="text" value="$525" disabled>
+										<input type="text" value="{{category_data.created_at}}" disabled>
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Created By</label>
-										<input type="text" value="$5648" disabled>
+										<input type="text" value="{{category_data.created_by}}" disabled>
 									</md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Date Modified</label>
-										<input type="text" value="Lorem Ipsum" disabled>
+										<input type="text" value="{{category_data.updated_at}}" disabled>
 									</md-input-container>
                                 </div>
 								<div layout="row" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex="33">
 										<label>Modified By</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<input type="text" value="{{category_data.updated_by}}" disabled>
 									</md-input-container>
 									
                                 </div>
 								
                         </form>
 						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Save</md-button>
-							<md-button class="md-raised md-accent">Clear</md-button>
+						<div class="actions" layout="row" layout-align="start center">
+							<md-button ng-click="vm.editItemCategoryPage(category_data)" class="md-raised md-accent">Edit</md-button>
+							<md-button ng-click="vm.deleteItemCategory(category_data.id)" class="md-raised md-accent">Delete</md-button>
+						</div>
 						</div>
                     </div>
                 </md-tab-body>
@@ -178,38 +177,40 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr ng-repeat="order in ::vm.orders">
-									<td><md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+								<tr ng-repeat="item in category_data.items">
+									<td><md-checkbox ng-model="item.checked" aria-label="Checkbox 1">
 										</md-checkbox>
 									</td>
-									<td>{{order.name}}</td>
-									<td>{{order.type}}</td>
-									<td>{{order.country}}</td>
-									<td>{{order.date}}</td>
-									<td>{{order.date}}</td>
-									<td>{{order.date}}</td>
-									<td>{{order.createdby}}</td>
+									<td>{{item.code}}</td>
+									<td>{{item.name}}</td>
+									<td>{{item.unit}}</td>
+									<td>{{item.selling_price}}</td>
+									<td>{{item.purchase_price}}</td>
+									<td>{{item.item_in_stock}}</td>
+									<td>{{item.created_by}}</td>
 									<!-- <td>{{order.test}}</td> -->
 									<td>
-										<a class="edit-button md-icon-button"
-										   aria-label="Product details" href="">
-										   <md-icon md-font-icon="icon-pencil" class="s16"></md-icon>
-										</a>
-										<a class="edit-button md-icon-button"
-										   aria-label="Product details" href="">
-										   <md-icon md-font-icon="icon-eye" class="s16"></md-icon>
-										</a>
-										<a href="">
-										   <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
-										</a>
+		                                <a class="edit-button md-icon-button"
+		                                   ng-click="vm.editItemPage(item)"
+		                                   aria-label="Product details" href="">
+		                                   <md-icon md-font-icon="icon-pencil" class="s16"></md-icon>
+		                                </a>
+		                                <a class="edit-button md-icon-button"
+		                                   ng-click="vm.viewItemPage(item.id)"
+		                                   aria-label="Product details" href="">
+		                                   <md-icon md-font-icon="icon-eye" class="s16"></md-icon>
+		                                </a>
+		                                <a ng-click="vm.deleteItem(item.id)" href="">
+		                                   <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
+		                                </a>
 										
 									</td>
 								</tr>
 							</tbody>
 						</table>
 						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Delete</md-button>
-							<md-button class="md-raised md-accent">Add</md-button>
+			                <md-button ng-click="vm.deleteAllItem()" class="md-raised md-accent">Delete</md-button>
+			                <md-button ng-click="vm.newItemPage()" class="md-raised md-accent">Add</md-button>
 						</div>
 					</div>
                 </md-tab-body>

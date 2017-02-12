@@ -4,7 +4,7 @@
     <div class="header md-accent-bg" layout="row" layout-align="space-between">
         <div layout="column" layout-align="space-between">
             <div class="breadcrumb" layout="row" layout-align="start center">
-                <span style="color:#00bcff;" class="parent"> CRM </span> / Contacts
+                <span style="color:#00bcff;" class="parent"> CRM </span> / Contact
             </div>
         </div>
     </div>
@@ -55,7 +55,11 @@
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Customer</label>
-										<input ng-model="vm.search_data.customer_id">
+                                        <md-select ng-model="vm.search_data.customer_id">
+                                            <md-option ng-repeat="customer in vm.get_customers" value="{{customer.customer_id}}">
+                                                {{customer.name}}
+                                            </md-option>
+                                        </md-select>
 									</md-input-container>
                                 </div>
 								
@@ -105,7 +109,7 @@
         <!-- CONTENT CARD -->
         <div class="content-card" layout="column" flex>
 			
-			<div style="padding:25px; font-size:18px;"> Contact </div>
+			<div style="padding:25px; font-size:18px;"> Contacts </div>
 
             <!-- CONTENT TOOLBAR -->
 

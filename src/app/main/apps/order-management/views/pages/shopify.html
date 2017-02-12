@@ -1,0 +1,62 @@
+<div id="forms" class="page-layout simple fullwidth doc-page" layout="column" style="min-height:auto;">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="space-between">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <span style="color:#00bcff; font-weight:normal;" class="parent"> <a href="">Order Management</a> </span>  / Shopify
+            </div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content" layout="column">
+        <div layout="row">
+
+            <!-- FORM WIZARD -->
+            <ms-form-wizard flex>
+                <md-tabs md-dynamic-height>
+                    <md-tab>
+                        <md-tab-label>
+                            <span class="ms-form-wizard-step-label">
+                                <span class="ms-form-wizard-step-text">Connect Shopify Account</span>
+                            </span>
+                        </md-tab-label>
+
+                        <md-tab-body>
+                            <form name="wizardStep1" class="md-inline-form" ms-form-wizard-form novalidate>
+                                <div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Shopify Seller ID</label>
+										<input ng-model="user.firstName">
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Shopify MWC Auth Token</label>
+										<input ng-model="user.firstName">
+									</md-input-container>
+
+                                </div>
+								
+								<div class="actions" layout="row" layout-align="start center">
+									<md-button class="md-raised md-accent">Connect</md-button>
+									<md-button class="md-raised md-accent">Cancel</md-button>
+								</div>
+                            </form>
+                        </md-tab-body>
+                    </md-tab>
+                </md-tabs>
+
+               
+
+            </ms-form-wizard>
+            <!-- / FORM WIZARD -->
+
+        </div>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>
+

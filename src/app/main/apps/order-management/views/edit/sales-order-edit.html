@@ -25,10 +25,9 @@
                         <form>
                             <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>ID</label>
-										<input type="text" value="">
-									</md-input-container>
-                                    
+                                        <label>ID</label>
+                                        <input type="text" value="{{sales_order.code}}" disabled>
+                                    </md-input-container>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Customer</label>
                                         <md-select ng-model="sales_order.customer_user_id">

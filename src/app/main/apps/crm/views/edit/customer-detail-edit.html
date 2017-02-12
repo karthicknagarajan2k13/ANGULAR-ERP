@@ -24,10 +24,6 @@
                     <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
                         <form ng-submit="vm.updateCustomer()" name="editCustomerForm" novalidate>
                             <div layout="column" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Customer Code</label>
-										<input type="text" ng-model="vm.customer.code" disabled>
-									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Customer Name</label>
@@ -48,20 +44,23 @@
                                             </div>
                                         </div>
 									</md-input-container>
-                                </div>
-								<div layout="column" layout-gt-xs="row" flex>
+
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>Email</label>
-										<input type="text" name="email" ng-model="vm.customer.email" ng-pattern="/^.+@.+\..+$/" required>
+                                        <label>Email</label>
+                                        <input type="text" name="email" ng-model="vm.customer.email" ng-pattern="/^.+@.+\..+$/" required>
                                         <div ng-messages="editCustomerForm.email.$error" role="alert">
                                             <div ng-message="required">
                                                 <span >Email field is required</span>
                                             </div>
                                             <div ng-message="pattern">
-                            					<span translate="LOGIN.ERRORS.EMAIL_MUST_VALID">Email must be a valid e-mail address</span>
-                        					</div>
+                                                <span translate="LOGIN.ERRORS.EMAIL_MUST_VALID">Email must be a valid e-mail address</span>
+                                            </div>
                                         </div>
-									</md-input-container>
+                                    </md-input-container>
+
+                                </div>
+								<div layout="column" layout-gt-xs="row" flex>
+
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Street</label>
@@ -82,17 +81,19 @@
                                             </div>
                                         </div>
 									</md-input-container>
-                                </div>
-								<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>State</label>
-										<input type="text" name="state" ng-model="vm.customer.customer_attributes.state" required>
+                                        <label>State</label>
+                                        <input type="text" name="state" ng-model="vm.customer.customer_attributes.state" required>
                                         <div ng-messages="editCustomerForm.state.$error" role="alert">
                                             <div ng-message="required">
                                                 <span >State field is required</span>
                                             </div>
                                         </div>
-									</md-input-container>
+                                    </md-input-container>
+
+                                </div>
+								<div layout="column" layout-gt-xs="row" flex>
+
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Country</label>
@@ -113,21 +114,24 @@
                                             </div>
                                         </div>
 									</md-input-container>
-                                </div>
-								<div layout="row" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex="33">
-										<label>Customer Type</label>
-										<md-select name="c_type" ng-model="vm.customer.customer_attributes.c_type" required>
-											<md-option ng-repeat="type in ['Contractor', 'Sales Customer']" value="{{type}}">
-												{{type}}
-											</md-option>
-										</md-select>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Customer Type</label>
+                                        <md-select name="c_type" ng-model="vm.customer.customer_attributes.c_type" required>
+                                            <md-option ng-repeat="type in ['Contractor', 'Sales Customer']" value="{{type}}">
+                                                {{type}}
+                                            </md-option>
+                                        </md-select>
                                         <div ng-messages="editCustomerForm.c_type.$error" role="alert">
                                             <div ng-message="required">
                                                 <span >Customer Type is required</span>
                                             </div>
                                         </div>
-									</md-input-container>
+                                    </md-input-container>
+
+                                    
+                                </div>
+								<div layout="row" layout-gt-xs="row" flex>
+
 									
 									<md-input-container class="md-block" flex="33">
 										<label>Customer Since</label>

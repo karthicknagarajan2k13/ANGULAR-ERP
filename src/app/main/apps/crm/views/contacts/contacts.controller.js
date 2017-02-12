@@ -7,7 +7,7 @@
         .controller('contactsController', contactsController);
 
     /** @ngInject */
-    function contactsController($rootScope, $window, ContactDeleteAll, $state, Statuses, Orders, Contacts, Contact)
+    function contactsController(User, $rootScope, $window, ContactDeleteAll, $state, Statuses, Orders, Contacts, Contact)
     {
 		
         var vm = this;
@@ -17,6 +17,9 @@
         vm.search_data = {};
         vm.orders = Orders.data;
         vm.statuses = Statuses.data;
+
+        var session = $window.JSON.parse($window.localStorage.getItem('current_user'))
+        vm.get_customers = User.get_customers({token:session.email});
 
         vm.dtInstance = {};
         vm.dtOptions = {

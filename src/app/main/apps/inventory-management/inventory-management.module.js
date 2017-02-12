@@ -30,7 +30,7 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/inventory-management/views/pages/items.html',
-                        controller : 'inventoryController as vm'
+                        controller : 'itemController as vm'
                     }
                 },
                 resolve  : {
@@ -51,7 +51,7 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/inventory-management/views/pages/item-categories.html',
-                        controller : 'inventoryController as vm'
+                        controller : 'itemCategoryController as vm'
                     }
                 },
                 resolve  : {
@@ -73,7 +73,7 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/inventory-management/views/pages/suppliers.html',
-                        controller : 'inventoryController as vm'
+                        controller : 'suppliersController as vm'
                     }
                 },
                 resolve  : {
@@ -94,7 +94,7 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/inventory-management/views/pages/purchase-orders.html',
-                        controller : 'inventoryController as vm'
+                        controller : 'purchaseOrdersController as vm'
                     }
                 },
                 resolve  : {
@@ -158,8 +158,11 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/inventory-management/views/edit/items-edit.html',
-                        controller : 'inventoryeditController as vm'
+                        controller : 'editItemController as vm'
                     }
+                },
+                params: {
+                 obj: null
                 },
                 resolve  : {
                     Product: function (msApi)
@@ -169,14 +172,37 @@
                 },
                 bodyClass: 'crm'
             })
-			
+
+            .state('app.inventory-management.items-new', {
+                url      : '/items-new',
+                views    : {
+                    'content@app': {
+                        templateUrl: 'app/main/apps/inventory-management/views/new/items-new.html',
+                        controller : 'newItemController as vm'
+                    }
+                },
+                params: {
+                 obj: null
+                },
+                resolve  : {
+                    Product: function (msApi)
+                    {
+                        return msApi.resolve('crm.orders@get');
+                    }
+                },
+                bodyClass: 'crm'
+            })
+
 			.state('app.inventory-management.item-categories-edit', {
                 url      : '/item-categories-edit',
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/inventory-management/views/edit/item-categories-edit.html',
-                        controller : 'inventoryeditController as vm'
+                        controller : 'editItemCategoryController as vm'
                     }
+                },
+                params: {
+                 obj: null
                 },
                 resolve  : {
                     Product: function (msApi)
@@ -186,13 +212,53 @@
                 },
                 bodyClass: 'crm'
             })
-			
+
+            .state('app.inventory-management.item-categories-new', {
+                url      : '/item-categories-new',
+                views    : {
+                    'content@app': {
+                        templateUrl: 'app/main/apps/inventory-management/views/new/item-categories-new.html',
+                        controller : 'newItemCategoryController as vm'
+                    }
+                },
+                params: {
+                 obj: null
+                },
+                resolve  : {
+                    Product: function (msApi)
+                    {
+                        return msApi.resolve('crm.orders@get');
+                    }
+                },
+                bodyClass: 'crm'
+            })
+
 			.state('app.inventory-management.suppliers-edit', {
                 url      : '/suppliers-edit',
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/inventory-management/views/edit/suppliers-edit.html',
-                        controller : 'inventoryeditController as vm'
+                        controller : 'editSupplierController as vm'
+                    }
+                },
+                params: {
+                 obj: null
+                },
+                resolve  : {
+                    Product: function (msApi)
+                    {
+                        return msApi.resolve('crm.orders@get');
+                    }
+                },
+                bodyClass: 'crm'
+            })
+
+            .state('app.inventory-management.suppliers-new', {
+                url      : '/suppliers-new',
+                views    : {
+                    'content@app': {
+                        templateUrl: 'app/main/apps/inventory-management/views/new/suppliers-new.html',
+                        controller : 'newSupplierController as vm'
                     }
                 },
                 resolve  : {
@@ -203,13 +269,33 @@
                 },
                 bodyClass: 'crm'
             })
-			
+
 			.state('app.inventory-management.purchase-orders-edit', {
                 url      : '/purchase-orders-edit',
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/inventory-management/views/edit/purchase-orders-edit.html',
-                        controller : 'inventoryeditController as vm'
+                        controller : 'editPurchaseOrderController as vm'
+                    }
+                },
+                params: {
+                 obj: null
+                },
+                resolve  : {
+                    Product: function (msApi)
+                    {
+                        return msApi.resolve('crm.orders@get');
+                    }
+                },
+                bodyClass: 'crm'
+            })
+
+            .state('app.inventory-management.purchase-orders-new', {
+                url      : '/purchase-orders-new',
+                views    : {
+                    'content@app': {
+                        templateUrl: 'app/main/apps/inventory-management/views/new/purchase-orders-new.html',
+                        controller : 'newPurchaseOrderController as vm'
                     }
                 },
                 resolve  : {
@@ -220,14 +306,17 @@
                 },
                 bodyClass: 'crm'
             })
-			
+
 			.state('app.inventory-management.items-view', {
                 url      : '/items-view',
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/inventory-management/views/view/items-view.html',
-                        controller : 'CustomerController as vm'
+                        controller : 'viewItemController as vm'
                     }
+                },
+                params: {
+                 obj: null
                 },
                 resolve  : {
                     Product: function (msApi)
@@ -243,8 +332,11 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/inventory-management/views/view/items-categories-view.html',
-                        controller : 'CustomerController as vm'
+                        controller : 'viewItemCategoryController as vm'
                     }
+                },
+                params: {
+                 obj: null
                 },
                 resolve  : {
                     Product: function (msApi)
@@ -260,8 +352,11 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/inventory-management/views/view/suppliers-view.html',
-                        controller : 'CustomerController as vm'
+                        controller : 'viewSupplierController as vm'
                     }
+                },
+                params: {
+                 obj: null
                 },
                 resolve  : {
                     Product: function (msApi)
@@ -277,8 +372,11 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/inventory-management/views/view/purchase-orders-view.html',
-                        controller : 'CustomerController as vm'
+                        controller : 'viewPurchaseOrderController as vm'
                     }
+                },
+                params: {
+                 obj: null
                 },
                 resolve  : {
                     Product: function (msApi)
@@ -322,15 +420,15 @@
             state: 'app.inventory-management.purchase-orders'
         });
 		
-		msNavigationServiceProvider.saveItem('apps.inventory-management.sales-orders', {
-            title: 'Sales Orders',
-            state: 'app.inventory-management.sales-orders'
-        });
+		// msNavigationServiceProvider.saveItem('apps.inventory-management.sales-orders', {
+  //           title: 'Sales Orders',
+  //           state: 'app.inventory-management.sales-orders'
+  //       });
 		
-		msNavigationServiceProvider.saveItem('apps.inventory-management.return-wizard', {
-            title: 'Return Wizard',
-            state: 'app.inventory-management.return-wizard'
-        });
+		// msNavigationServiceProvider.saveItem('apps.inventory-management.return-wizard', {
+  //           title: 'Return Wizard',
+  //           state: 'app.inventory-management.return-wizard'
+  //       });
 		
 		
     }

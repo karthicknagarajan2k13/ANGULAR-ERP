@@ -14,6 +14,7 @@
         // Data
         vm.customers_data = Customers.query();
         vm.search_data = {};
+        vm.search_data.c_type1 = []
         vm.orders = Orders.data;
         vm.statuses = Statuses.data;
 
@@ -64,7 +65,10 @@
             $state.go('app.crm.customer-detail-new'); 
         }
         vm.searchCustomerData = function(){
+            vm.search_data.c_type =  JSON.stringify(vm.search_data.c_type1)
+            console.log("vm.search_data",vm.search_data)
             vm.customers_data = Customers.query(vm.search_data);
+            vm.search_data.c_type = ''
         }	
         vm.searchCustomerDataClear = function(){
             vm.search_data = {}

@@ -3,19 +3,45 @@
     'use strict';
 
     angular
-        .module('app.order-management')
-        .controller('SalesOrdersviewController', SalesOrdersviewController);
+        .module('app.inventory-management')
+        .controller('newItemController', newItemController);
 
     /** @ngInject */
-    function SalesOrdersviewController($document, $state, Product)
+    function newItemController(imApi, $scope, $document, $state, Product)
     {
 
         var vm = this;
+        vm.item = {}
 		
 		vm.ssName = "s"
 	    vm.orders = Product.data;
 
-       
+        var dataPromise = imApi.get_categories({});
+        dataPromise.then(function(result) { 
+            $scope.get_categories = result;
+        }); 
+        var dataPromise = imApi.get_suppliers({});
+        dataPromise.then(function(result) { 
+            $scope.get_suppliers = result;
+        });  
+        vm.saveItem = function(){
+            var dataPromise = imApi.createItem({item:vm.item});
+            dataPromise.then(function(result) { 
+                $scope.data = result; 
+                if( typeof($scope.data.message) !== "undefined"){
+                    console.log("response",$scope.data.message)
+                }else{
+                    if( typeof($scope.data.item_id) !== "undefined"){
+                        $state.go('app.inventory-management.items-view', {obj:{id: $scope.data.item_id}}); 
+                    }
+                }
+            }); 
+        }
+        vm.itemDataClear = function(){
+            vm.item = {}
+        }
+
+
         /**
          * File upload success callback
          * Triggers when single upload completed

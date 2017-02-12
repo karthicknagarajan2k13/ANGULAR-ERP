@@ -4,7 +4,7 @@
     <div class="header md-accent-bg" layout="row" layout-align="space-between">
         <div layout="column" layout-align="space-between">
             <div class="breadcrumb" layout="row" layout-align="start center">
-                <span style="color:#00bcff; font-weight:normal;" class="parent"> <a href="">Inventory Management</a> </span>  / Items
+                <span style="color:#00bcff; font-weight:normal;" class="parent"> <a href="">Inventory Management</a> </span>  / Item
             </div>
         </div>
     </div>
@@ -29,30 +29,39 @@
                                 <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Item ID</label>
-										<input ng-model="user.firstName">
+										<input ng-model="vm.search_data.code">
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Item Name</label>
-										<input ng-model="user.firstName">
+										<input ng-model="vm.search_data.name">
 									</md-input-container>
 
+
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>Category</label>
-										<input ng-model="user.firstName">
-									</md-input-container>
+                                        <label>Category</label>
+                                        <md-select ng-model="vm.search_data.category_id">
+                                            <md-option ng-repeat="category in get_categories" value="{{category.category_id}}">
+                                                {{category.name}}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
                                 </div>
-								<div layout="column" layout-gt-xs="row" flex>
-									<md-input-container class="md-block" flex-gt-sm>
-										<label>Supplier</label>
-										<input ng-model="user.firstName">
-									</md-input-container>
-                                </div>
-								
-								
+
+                                <div layout="row" layout-gt-xs="row" flex>
+                                
+                                <md-input-container class="md-block" flex="33">
+                                    <label>Supplier</label>
+                                    <md-select ng-model="vm.search_data.supplier_id">
+                                        <md-option ng-repeat="supplier in get_suppliers" value="{{supplier.supplier_id}}">
+                                            {{supplier.name}}
+                                        </md-option>
+                                    </md-select>
+                                </md-input-container>
+                                </div>								
 								<div class="actions" layout="row" layout-align="start center">
-									<md-button class="md-raised md-accent">Search</md-button>
-									<md-button class="md-raised md-accent">Clear</md-button>
+                                    <md-button ng-click="vm.searchItemData()" class="md-raised md-accent">Search</md-button>
+                                    <md-button ng-click="vm.searchItemDataClear()" class="md-raised md-accent">Clear</md-button>
 								</div>
                             </form>
                         </md-tab-body>
@@ -144,31 +153,31 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="order in ::vm.orders">
-                            <td><md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+                        <tr ng-repeat="item in items_data">
+                            <td><md-checkbox ng-model="item.checked" aria-label="Checkbox 1">
 								</md-checkbox>
 							</td>
-                            <td>{{order.name}}</td>
-                            <td>{{order.phone}}</td>
-							<td>{{order.test}}</td>
-							<td>{{order.test}}</td>
-                            <td>{{order.date}}</td>
-                            <td>{{order.createdby}}</td>
-                            <td>{{order.test}}</td>
+                            <td>{{item.code}}</td>
+                            <td>{{item.name}}</td>
+							<td>{{item.category}}</td>
+							<td>{{item.unit}}</td>
+                            <td>{{item.purchase_price}}</td>
+                            <td>{{item.selling_price}}</td>
+                            <td>{{item.created_at}}</td>
                             <td>
-								<a class="edit-button md-icon-button"
-                                   ng-click="vm.itemseditpage(product.id)"
+                                <a class="edit-button md-icon-button"
+                                   ng-click="vm.editItemPage(item)"
                                    aria-label="Product details" href="">
-								   <md-icon md-font-icon="icon-pencil" class="s16"></md-icon>
-								</a>
-								<a class="edit-button md-icon-button"
-                                   ng-click="vm.itemsviewpage(product.id)"
+                                   <md-icon md-font-icon="icon-pencil" class="s16"></md-icon>
+                                </a>
+                                <a class="edit-button md-icon-button"
+                                   ng-click="vm.viewItemPage(item.id)"
                                    aria-label="Product details" href="">
-								   <md-icon md-font-icon="icon-eye" class="s16"></md-icon>
-								</a>
-								<a href="">
-								   <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
-								</a>
+                                   <md-icon md-font-icon="icon-eye" class="s16"></md-icon>
+                                </a>
+                                <a ng-click="vm.deleteItem(item.id)" href="">
+                                   <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
+                                </a>
 								
                             </td>
                         </tr>
@@ -178,8 +187,8 @@
             </div>
             <!-- / CONTENT -->
 			<div class="actions" layout="row" layout-align="start center">
-				<md-button class="md-raised md-accent">Delete</md-button>
-				<md-button class="md-raised md-accent">Add</md-button>
+                <md-button ng-click="vm.deleteAllItem()" class="md-raised md-accent">Delete</md-button>
+                <md-button ng-click="vm.newItemPage()" class="md-raised md-accent">Add</md-button>
 			</div>
 
         </div>

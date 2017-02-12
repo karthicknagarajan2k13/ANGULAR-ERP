@@ -12,7 +12,7 @@
         var api = {};
 
         // Base Url
-        api.baseUrl = 'http://localhost:8000/';
+        api.baseUrl = 'https://ror-erp.herokuapp.com/';
 
         api.createCustomer = function(data) {
            return $http({data: data, method:"POST", url: api.baseUrl+"customers.json"}).then(function(result){
@@ -41,6 +41,11 @@
         };
         api.updateNote = function(id,data) {
            return $http({data: data, method:"PUT", url: api.baseUrl+"notes/"+id+".json"}).then(function(result){
+               return result.data;
+           });
+        };
+        api.editCustomer = function(data) {
+           return $http({method:"GET", url: api.baseUrl+"customers/edit_form.json",params: data}).then(function(result){
                return result.data;
            });
         };

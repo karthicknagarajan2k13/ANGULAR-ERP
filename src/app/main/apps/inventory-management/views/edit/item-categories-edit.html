@@ -4,7 +4,7 @@
     <div class="header md-accent-bg" layout="row" layout-align="space-between">
         <div layout="column" layout-align="space-between">
             <div class="breadcrumb" layout="row" layout-align="start center">
-                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">Inventory Management </a> / <a href="">Item categories </a> </span> / Edit
+                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">Inventory Management </a> / <a href="">Item category </a> </span> / Edit
             </div>
         </div>
     </div>
@@ -22,96 +22,71 @@
 
                 <md-tab-body>
                     <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
-                        <form>
+                        <form ng-submit="vm.updateCategory()" name="editCategoryForm" novalidate> 
                             <div layout="column" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Category ID</label>
-										<input type="text" value="CUS0001">
-									</md-input-container>
-									
-									<md-input-container class="md-block" flex-gt-sm>
-										<label>Category Name</label>
-										<input type="text" value="Lola J Bolden" >
-									</md-input-container>
-
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Description</label>
-										<input type="text" value="580-269-9087" >
-									</md-input-container>
-                                </div>
-								<div layout="column" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Image</label>
-                                        <md-datepicker ng-model="myDate" md-placeholder="22/12/2016"></md-datepicker>
-									</md-input-container>
-									
-									<md-input-container class="md-block" flex-gt-sm>
-										<label>Unit</label>
-										<input type="text" value="2946 Luke Lane" >
-									</md-input-container>
-
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Tax</label>
-										<input type="text" value="Kaw City" >
-									</md-input-container>
-                                </div>
-								<div layout="column" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Manufacturer</label>
-										<input type="text" value="Oklahoma" >
-									</md-input-container>
-									
-                                </div>
-                        </form>
+								<md-input-container class="md-block" flex-gt-sm>
+									<label>Category Name</label>
+									<input type="text" name="name" ng-model="vm.category.category.name" required>
+                                    <div ng-messages="editCategoryForm.name.$error" role="alert">
+                                        <div ng-message="required">
+                                            <span >Category Name field is required</span>
+                                        </div>
+                                    </div>
+								</md-input-container>
+								<md-input-container class="md-block" flex-gt-sm>
+									<label>Unit</label>
+									<input type="text" name="unit" ng-model="vm.category.category.unit" required>
+                                    <div ng-messages="editCategoryForm.unit.$error" role="alert">
+                                        <div ng-message="required">
+                                            <span >Unit field is required</span>
+                                        </div>
+                                    </div>
+								</md-input-container>
+                                <md-input-container class="md-block" flex-gt-sm>
+									<label>Tax</label>
+									<input type="text" name="tax" ng-model="vm.category.category.tax" required>
+                                    <div ng-messages="editCategoryForm.tax.$error" role="alert">
+                                        <div ng-message="required">
+                                            <span >Tax field is required</span>
+                                        </div>
+                                    </div>								
+                                    </md-input-container>
+                            </div>
+							<div layout="column" layout-gt-xs="row" flex>
+                                <md-input-container class="md-block" flex-gt-sm>
+									<label>Description</label>
+									<input type="text" name="description" ng-model="vm.category.category.description" required>
+                                    <div ng-messages="editCategoryForm.description.$error" role="alert">
+                                        <div ng-message="required">
+                                            <span >Description field is required</span>
+                                        </div>
+                                    </div>									
+                                    </md-input-container>
+                            </div>
+							<div layout="column" layout-gt-xs="row" flex>
+                                <md-input-container class="md-block" flex-gt-sm>
+									<label>Manufacturer</label>
+									<input type="text" name="manufacturer" ng-model="vm.category.category.manufacturer" required>
+                                    <div ng-messages="editCategoryForm.manufacturer.$error" role="alert">
+                                        <div ng-message="required">
+                                            <span >Manufacturer field is required</span>
+                                        </div>
+                                    </div>									
+                                    </md-input-container>
+                            </div>
 						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Save</md-button>
-							<md-button class="md-raised md-accent">Clear</md-button>
+                            <md-button type="submit" class="md-raised md-accent submit-button" aria-label="Save"
+                                       ng-disabled="editCategoryForm.$invalid || editCategoryForm.$pristine"
+                                       translate="Save" translate-attr-aria-label="Save">
+                                Save
+                            </md-button>
+                            <md-button ng-click="vm.viewItemCategoryPage(vm.category.category.id)" class="md-raised md-accent">View</md-button>
 						</div>
+						                        </form>
+
                     </div>
                 </md-tab-body>
             </md-tab>
-
-            <md-tab>
-                <md-tab-label>
-                    <span>Other Info</span>
-                </md-tab-label>
-
-                <md-tab-body>
-                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
-                        <form>
-                            <div layout="column" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Date Created</label>
-										<input type="text" value="$525" >
-									</md-input-container>
-									
-									<md-input-container class="md-block" flex-gt-sm>
-										<label>Created By</label>
-										<input type="text" value="$5648" >
-									</md-input-container>
-
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Date Modified</label>
-										<input type="text" value="Lorem Ipsum" >
-									</md-input-container>
-                                </div>
-								<div layout="row" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex="33">
-										<label>Modified By</label>
-										<input type="text" value="Lola J Bolden" >
-									</md-input-container>
-									
-                                </div>
-								
-                        </form>
-						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Save</md-button>
-							<md-button class="md-raised md-accent">Clear</md-button>
-						</div>
-                    </div>
-                </md-tab-body>
-            </md-tab>
-			
         </md-tabs>
 
     </div>

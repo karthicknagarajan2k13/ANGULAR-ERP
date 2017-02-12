@@ -7,10 +7,15 @@
         .controller('EditCustomerController', EditCustomerController);
 
     /** @ngInject */
-    function EditCustomerController(crmApi, $scope, $document, $state, Customer, Customer_form)
+    function EditCustomerController(crmApi, $scope, $document, $state, Customer)
     {
         var vm = this;
-        vm.customer = Customer_form.edit_form({id:$state.params.obj.customer.id});
+
+        var dataPromise = crmApi.editCustomer({id:$state.params.obj.customer.id});
+        dataPromise.then(function(result) { 
+            vm.customer = result;
+            vm.customer.customer_attributes.customer_since = new Date(vm.customer.customer_attributes.customer_since);
+        });
 
         vm.updateCustomer = function(){
            var dataPromise = crmApi.updateCustomer(vm.customer.id,vm.customer);

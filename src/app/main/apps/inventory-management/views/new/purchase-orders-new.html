@@ -1,0 +1,177 @@
+<div id="e-commerce-product" class="page-layout simple tabbed" layout="column">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="space-between">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">Inventory Management </a> / <a href="">Purchase Order </a> </span> / New
+            </div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <md-tabs md-dynamic-height>
+
+            <md-tab>
+                <md-tab-label>
+                    <span>General Info</span>
+                </md-tab-label>
+
+                <md-tab-body>
+                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+                        <form ng-submit="vm.savePurchaseOrder()" name="newSupplierForm" novalidate>
+                            <div layout="column" layout-gt-xs="row" flex>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Subject</label>
+										<input name="subject" ng-model="vm.purchase_order.subject" type="text" required>
+	                                    <div ng-messages="newSupplierForm.subject.$error" role="alert">
+	                                        <div ng-message="required">
+	                                            <span >Subject field is required</span>
+	                                        </div>
+	                                    </div>
+									</md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Supplier</label>
+                                        <md-select ng-model="vm.purchase_order.supplier_user_id" name="supplier_user_id" required>
+                                            <md-option ng-repeat="supplier in get_suppliers" value="{{supplier.supplier_id}}">
+                                                {{supplier.name}}
+                                            </md-option>
+                                        </md-select>
+	                                    <div ng-messages="newSupplierForm.supplier_user_id.$error" role="alert">
+	                                        <div ng-message="required">
+	                                            <span >Supplier field is required</span>
+	                                        </div>
+	                                    </div>
+									</md-input-container>
+
+                                </div>
+								<div layout="column" layout-gt-xs="row" flex>
+
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Subtotal</label>
+										<input ng-model="vm.purchase_order.sub_total" name="sub_total" type="text" required>
+	                                    <div ng-messages="newSupplierForm.sub_total.$error" role="alert">
+	                                        <div ng-message="required">
+	                                            <span >Subtotal field is required</span>
+	                                        </div>
+	                                    </div>
+									</md-input-container>
+
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Tax</label>
+										<input ng-model="vm.purchase_order.tax" name="tax" type="text" required>
+	                                    <div ng-messages="newSupplierForm.tax.$error" role="alert">
+	                                        <div ng-message="required">
+	                                            <span >Tax field is required</span>
+	                                        </div>
+	                                    </div>
+									</md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+
+										<label>Grand Total</label>
+										<input ng-model="vm.purchase_order.grand_total" name="grand_total" type="text" value="Oklahoma" required>
+	                                    <div ng-messages="newSupplierForm.grand_total.$error" role="alert">
+	                                        <div ng-message="required">
+	                                            <span >Grand Total field is required</span>
+	                                        </div>
+	                                    </div>
+									</md-input-container>
+
+
+
+
+                                </div>
+								<div layout="row" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Description</label>
+										<input ng-model="vm.purchase_order.description" name="description"  type="text" required>
+	                                    <div ng-messages="newSupplierForm.description.$error" role="alert">
+	                                        <div ng-message="required">
+	                                            <span >Description field is required</span>
+	                                        </div>
+	                                    </div>
+
+
+									</md-input-container>
+                                </div>
+                        
+						
+						<div class="actions" layout="row" layout-align="start center">
+                            <md-button type="submit" class="md-raised md-accent submit-button" aria-label="Save"
+                                       ng-disabled="newSupplierForm.$invalid || newSupplierForm.$pristine"
+                                       translate="Save" translate-attr-aria-label="Save">
+                                Save
+                            </md-button>
+							<md-button ng-click="vm.purchaseOrderDataClear()" class="md-raised md-accent">Clear</md-button>
+						</div>
+						</form>
+                    </div>
+                </md-tab-body>
+            </md-tab>
+
+            <md-tab>
+                <md-tab-label>
+                    <span>Order Items</span>
+                </md-tab-label>
+
+                <md-tab-body>
+                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+                        <form>
+                            <div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Item Code</label>
+										<input type="text" value="$525" >
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Item Name</label>
+										<input type="text" value="$5648" >
+									</md-input-container>
+
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Quantity</label>
+										<input type="text" value="Lorem Ipsum" >
+									</md-input-container>
+                                </div>
+								<div layout="row" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex="33">
+										<label>Unit Price</label>
+										<input type="text" value="Lola J Bolden" >
+									</md-input-container>
+									<md-input-container class="md-block" flex="33">
+										<label>Total</label>
+										<input type="text" value="Lola J Bolden" >
+									</md-input-container>
+									<md-input-container class="md-block" flex="33">
+										<label>Discount</label>
+										<input type="text" value="Lola J Bolden" >
+									</md-input-container>
+									
+                                </div>
+								<div layout="row" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex="33">
+										<label>Item Total</label>
+										<input type="text" value="Lola J Bolden" >
+									</md-input-container>
+									
+                                </div>
+								
+                        </form>
+						<div class="actions" layout="row" layout-align="start center">
+							<md-button ng-click="vm.savePurchaseOrder()" class="md-raised md-accent">Save</md-button>
+							<md-button ng-click="vm.purchaseOrderDataClear()" class="md-raised md-accent">Clear</md-button>
+						</div>
+                    </div>
+                </md-tab-body>
+            </md-tab>
+        </md-tabs>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>

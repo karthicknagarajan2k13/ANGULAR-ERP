@@ -4,7 +4,7 @@
     <div class="header md-accent-bg" layout="row" layout-align="space-between">
         <div layout="column" layout-align="space-between">
             <div class="breadcrumb" layout="row" layout-align="start center">
-                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">CRM </a> / <a href="">Contacts </a> </span> / New
+                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">CRM </a> / <a href="">Contact </a> </span> / New
             </div>
         </div>
     </div>
@@ -24,14 +24,14 @@
                     <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
                         <form ng-submit="vm.saveContact()" name="newContactForm" novalidate>
                             <div layout="column" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Contact ID</label>
-										<input type="text" ng-model="vm.contact.id">
-									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Salutation</label>
-										<input type="text" name="salutation" ng-model="vm.contact.contact_attributes.salutation" required>
+                                        <md-select name="salutation" ng-model="vm.contact.contact_attributes.salutation" required>
+                                            <md-option ng-repeat="salutation in ['Mr.', 'Ms.', 'Mrs.', 'Prof.', 'Dr.']" value="{{salutation}}">
+                                                {{salutation}}
+                                            </md-option>
+                                        </md-select>
                                         <div ng-messages="newContactForm.salutation.$error" role="alert">
                                             <div ng-message="required">
                                                 <span >Salutation field is required</span>
@@ -48,12 +48,14 @@
                                             </div>
                                         </div>
 									</md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Middle Name</label>
+                                        <input type="text" ng-model="vm.contact.middle_name">
+                                    </md-input-container>
+
                                 </div>
 								<div layout="column" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Middle Name</label>
-										<input type="text" ng-model="vm.contact.middle_name">
-									</md-input-container>
+
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Last name</label>
@@ -74,17 +76,18 @@
                                             </div>
                                         </div>
 									</md-input-container>
-                                </div>
-								<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>Phone Work</label>
-										<input type="text" name="phone_work" ng-model="vm.contact.contact_attributes.phone_work" required>
+                                        <label>Phone Work</label>
+                                        <input type="text" name="phone_work" ng-model="vm.contact.contact_attributes.phone_work" required>
                                         <div ng-messages="newContactForm.phone_work.$error" role="alert">
                                             <div ng-message="required">
                                                 <span >Phone Work field is required</span>
                                             </div>
                                         </div>
-									</md-input-container>
+                                    </md-input-container>
+                                </div>
+								<div layout="column" layout-gt-xs="row" flex>
+
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Email</label>
@@ -112,17 +115,18 @@
                                             </div>
                                         </div>
 									</md-input-container>
-                                </div>
-								<div layout="row" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex="33">
-										<label>Designation</label>
-										<input type="text" name="designation" ng-model="vm.contact.contact_attributes.designation" required>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Designation</label>
+                                        <input type="text" name="designation" ng-model="vm.contact.contact_attributes.designation" required>
                                         <div ng-messages="newContactForm.designation.$error" role="alert">
                                             <div ng-message="required">
                                                 <span >Designation field is required</span>
                                             </div>
                                         </div>
-									</md-input-container>
+                                    </md-input-container>
+                                </div>
+								<div layout="row" layout-gt-xs="row" flex>
+
 									
 									<md-input-container class="md-block" flex="33">
 										<label>Department</label>
@@ -133,19 +137,17 @@
                                             </div>
                                         </div>
                                     </md-input-container>
-
-                                </div>
-								<div layout="column" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Description</label>
-										<input type="text" name="decription" ng-model="vm.contact.contact_attributes.decription" required>
+                                    <md-input-container class="md-block"  flex="33">
+                                        <label>Description</label>
+                                        <input type="text" name="decription" ng-model="vm.contact.contact_attributes.decription" required>
                                         <div ng-messages="newContactForm.decription.$error" role="alert">
                                             <div ng-message="required">
                                                 <span >Description field is required</span>
                                             </div>
                                         </div>
-									</md-input-container>
+                                    </md-input-container>
                                 </div>
+
                         
 						<div class="actions" layout="row" layout-align="start center">
                             <md-button type="submit" class="md-raised md-accent submit-button" aria-label="Save"
@@ -185,31 +187,31 @@
 									</md-input-container>
                                 </div>
 								<div layout="row" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex="33">
+                                    <md-input-container class="md-block" flex-gt-sm>
 										<label>Primary Address Country</label>
 										<input type="text" ng-model="vm.contact.contact_attributes.primary_country">
 									</md-input-container>
 									
-									<md-input-container class="md-block" fflex="33">
+									<md-input-container class="md-block" flex-gt-sm>
 										<label>Primary Address Postal Code</label>
 										<input type="text" ng-model="vm.contact.contact_attributes.primary_postal_code">
 									</md-input-container>
-									<md-input-container class="md-block" fflex="33">
+									<md-input-container class="md-block" flex-gt-sm>
 										<label>Alt Address Street</label>
 										<input type="text" ng-model="vm.contact.contact_attributes.alternative_street">
 									</md-input-container>
                                 </div>
 								<div layout="row" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex="33">
+                                    <md-input-container class="md-block" flex-gt-sm>
 										<label>Alt Address City</label>
 										<input type="text" ng-model="vm.contact.contact_attributes.alternative_city">
 									</md-input-container>
 									
-									<md-input-container class="md-block" fflex="33">
+									<md-input-container class="md-block" flex-gt-sm>
 										<label>Alt Address State</label>
 										<input type="text" ng-model="vm.contact.contact_attributes.alternative_state">
 									</md-input-container>
-									<md-input-container class="md-block" fflex="33">
+									<md-input-container class="md-block" flex-gt-sm>
 										<label>Alt Address Country</label>
 										<input type="text" ng-model="vm.contact.contact_attributes.alternative_country">
 									</md-input-container>

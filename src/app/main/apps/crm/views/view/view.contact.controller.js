@@ -53,7 +53,32 @@
             var response = Contact.delete({id:id})
             $state.go('app.crm.contacts');
         }
-
+        vm.editNotePage = function(note){
+             $state.go('app.crm.note-detail-edit', {obj:{note: note}});
+        }
+        vm.viewNotePage = function(id){
+            $state.go('app.crm.note-detail-view', {obj:{id: id}}); 
+        }
+        vm.newNotePage = function(){
+            $state.go('app.crm.note-detail-new'); 
+        }
+        vm.deleteNote = function(id){
+            Note.delete({id:id});
+            $window.location.reload();
+        }
+        vm.deleteAllNote = function () {
+            var delete_ids = [];
+            angular.forEach(vm.notes_data, function (checked) {
+                if (checked.checked) {
+                    delete_ids.push(checked.id);
+                }
+            });
+            if (delete_ids.length >= 1){
+                delete_ids = JSON.stringify(delete_ids)
+                NoteDeleteAll.delete_all({ids: delete_ids})
+                $window.location.reload();
+            }
+        };
 
     }
 })();

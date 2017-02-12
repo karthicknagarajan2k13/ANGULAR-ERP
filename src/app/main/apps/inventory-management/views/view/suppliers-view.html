@@ -26,40 +26,40 @@
                             <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Supplier ID</label>
-										<input type="text" value="CUS0001"disabled>
+										<input type="text" value="{{supplier_data.code}}"disabled>
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Supplier Name</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<input type="text" value="{{supplier_data.name}}" disabled>
 									</md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Phone</label>
-										<input type="text" value="580-269-9087" disabled>
+										<input type="text" value="{{supplier_data.phone}}" disabled>
 									</md-input-container>
                                 </div>
 								<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Email</label>
-                                        <input type="text" value="580-269-9087" disabled>
+                                        <input type="text" value="{{supplier_data.email}}" disabled>
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Supplier Since</label>
-										<input type="text" value="2946 Luke Lane" disabled>
+										<input type="text" value="{{supplier_data.supplier_since}}" disabled>
 									</md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Supplier Currency</label>
-										<input type="text" value="Kaw City" disabled>
+										<input type="text" value="{{supplier_data.supplier_currency}}" disabled>
 									</md-input-container>
                                 </div>
 								
                         </form>
 						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Save</md-button>
-							<md-button class="md-raised md-accent">Clear</md-button>
+							<md-button ng-click="vm.editSupplierPage(supplier_data.id)" class="md-raised md-accent">Edit</md-button>
+							<md-button ng-click="vm.deleteSupplier(supplier_data.id)" class="md-raised md-accent">Delete</md-button>
 						</div>
                     </div>
                 </md-tab-body>
@@ -76,35 +76,35 @@
                             <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Address Street</label>
-										<input type="text" value="$525" disabled>
+										<input type="text" value="{{supplier_data.street}}" disabled>
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Address City</label>
-										<input type="text" value="$5648" disabled>
+										<input type="text" value="{{supplier_data.city}}" disabled>
 									</md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Address State</label>
-										<input type="text" value="Lorem Ipsum" disabled>
+										<input type="text" value="{{supplier_data.state}}" disabled>
 									</md-input-container>
                                 </div>
 								<div layout="row" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex="33">
 										<label>Address Country</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<input type="text" value="{{supplier_data.country}}" disabled>
 									</md-input-container>
 									<md-input-container class="md-block" flex="33">
 										<label>Address Postal Code</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<input type="text" value="{{supplier_data.postal_code}}" disabled>
 									</md-input-container>
 									
                                 </div>
 								
                         </form>
 						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Save</md-button>
-							<md-button class="md-raised md-accent">Clear</md-button>
+							<md-button ng-click="vm.editSupplierPage(supplier_data.id)" class="md-raised md-accent">Edit</md-button>
+							<md-button ng-click="vm.deleteSupplier(supplier_data.id)" class="md-raised md-accent">Delete</md-button>
 						</div>
                     </div>
                 </md-tab-body>
@@ -121,23 +121,23 @@
                             <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Date Created</label>
-										<input type="text" value="22/12/2016" disabled>
+										<input type="text" value="{{supplier_data.created_at}}" disabled>
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Created By</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<input type="text" value="{{supplier_data.created_by}}" disabled>
 									</md-input-container>
 
                                    <md-input-container class="md-block" flex-gt-sm>
 										<label>Date Modified</label>
-										<input type="text" value="12/01/2017" disabled>
+										<input type="text" value="{{supplier_data.updated_at}}" disabled>
 									</md-input-container>
                                 </div>
 								<div layout="row" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex="33">
 										<label>Modified By</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<input type="text" value="{{supplier_data.updated_by}}" disabled>
 									</md-input-container>
 									
                                 </div>
@@ -145,8 +145,8 @@
                         </form>
 						
 						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Save</md-button>
-							<md-button class="md-raised md-accent">Clear</md-button>
+							<md-button ng-click="vm.editSupplierPage(supplier_data.id)" class="md-raised md-accent">Edit</md-button>
+							<md-button ng-click="vm.deleteSupplier(supplier_data.id)" class="md-raised md-accent">Delete</md-button>
 						</div>
                     </div>
                 </md-tab-body>
@@ -378,37 +378,39 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr ng-repeat="order in ::vm.orders">
-									<td><md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+								<tr ng-repeat="purchase_order in supplier_data.purchase_orders">
+									<td><md-checkbox ng-model="purchase_order.checked" aria-label="Checkbox 1">
 										</md-checkbox>
 									</td>
-									<td>{{order.name}}</td>
+									<td>{{purchase_order.code}}</td>
 									
-									<td>{{order.country}}</td>
-									<td>{{order.date}}</td>
-									<td>{{order.date}}</td>
-									<td>{{order.createdby}}</td>
+									<td>{{purchase_order.subject}}</td>
+									<td>{{purchase_order.grand_total}}</td>
+									<td>{{purchase_order.created_at}}</td>
+									<td>{{purchase_order.created_by}}</td>
 									<!-- <td>{{order.test}}</td> -->
 									<td>
-										<a class="edit-button md-icon-button"
-										   aria-label="Product details" href="">
-										   <md-icon md-font-icon="icon-pencil" class="s16"></md-icon>
-										</a>
-										<a class="edit-button md-icon-button"
-										   aria-label="Product details" href="">
-										   <md-icon md-font-icon="icon-eye" class="s16"></md-icon>
-										</a>
-										<a href="">
-										   <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
-										</a>
+		                                <a class="edit-button md-icon-button"
+		                                   ng-click="vm.editPurchaseOrderPage(purchase_order.id)"
+		                                   aria-label="Product details" href="">
+		                                   <md-icon md-font-icon="icon-pencil" class="s16"></md-icon>
+		                                </a>
+		                                <a class="edit-button md-icon-button"
+		                                   ng-click="vm.viewPurchaseOrderPage(purchase_order.id)"
+		                                   aria-label="Product details" href="">
+		                                   <md-icon md-font-icon="icon-eye" class="s16"></md-icon>
+		                                </a>
+		                                <a ng-click="vm.deletePurchaseOrder(purchase_order.id)" href="">
+		                                   <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
+		                                </a>
 										
 									</td>
 								</tr>
 							</tbody>
 						</table>
 						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Delete</md-button>
-							<md-button class="md-raised md-accent">Add</md-button>
+			                <md-button ng-click="vm.deleteAllPurchaseOrder()" class="md-raised md-accent">Delete</md-button>
+			                <md-button ng-click="vm.newPurchaseOrderPage()" class="md-raised md-accent">Add</md-button>
 						</div>
 					</div>
                 </md-tab-body>

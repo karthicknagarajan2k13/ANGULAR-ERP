@@ -1,0 +1,187 @@
+<div id="forms" class="page-layout simple fullwidth doc-page" layout="column" style="min-height:auto;">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="space-between">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <span style="color:#00bcff; font-weight:normal;" class="parent"> <a href="">HR</a> </span>  / Payroll
+            </div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content" layout="column">
+        <div layout="row">
+
+            <!-- FORM WIZARD -->
+            <ms-form-wizard flex>
+                <md-tabs md-dynamic-height>
+                    <md-tab>
+                        <md-tab-label>
+                            <span class="ms-form-wizard-step-label">
+                                <span class="ms-form-wizard-step-text">Search</span>
+                            </span>
+                        </md-tab-label>
+
+                        <md-tab-body>
+                            <form name="wizardStep1" class="md-inline-form" ms-form-wizard-form novalidate>
+                                <div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Payroll ID</label>
+										<input ng-model="user.firstName">
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Subject</label>
+										<input ng-model="user.firstName">
+									</md-input-container>
+
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Employee</label>
+										<input ng-model="user.firstName">
+									</md-input-container>
+                                </div>
+								<div layout="column" layout-gt-xs="row" flex>
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Created By</label>
+										<input ng-model="user.firstName">
+									</md-input-container>
+
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Date Created </label>
+										<input ng-model="user.firstName">
+									</md-input-container>
+                                </div>
+								
+								<div class="actions" layout="row" layout-align="start center">
+									<md-button class="md-raised md-accent">Search</md-button>
+									<md-button class="md-raised md-accent">Clear</md-button>
+								</div>
+                            </form>
+                        </md-tab-body>
+                    </md-tab>
+                </md-tabs>
+
+               
+
+            </ms-form-wizard>
+            <!-- / FORM WIZARD -->
+
+        </div>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>
+
+
+<div id="e-commerce-orders" class="page-layout carded fullwidth" layout="row">
+
+    <!-- CENTER -->
+    <div class="center" layout="column" flex>
+
+        <!-- CONTENT CARD -->
+        <div class="content-card" layout="column" flex>
+			
+			<div style="padding:25px; font-size:18px;"> Payroll </div>
+
+            <!-- CONTENT TOOLBAR -->
+
+            <!-- / CONTENT TOOLBAR -->
+
+            <!-- CONTENT -->
+            <div class="content fullpage-datatable" layout="column" flex>
+
+                <table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance"
+                       dt-options="vm.dtOptions">
+                    <thead>
+                        <tr>
+                            <th class="secondary-text">
+                                <div class="">
+                                    <span class="column-title">#</span>
+                                </div>
+                            </th>
+                            <th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">Payroll ID</span>
+                                </div>
+                            </th>
+                            <th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">Subject</span>
+                                </div>
+                            </th>
+                            
+                            <th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">Employee</span>
+                                </div>
+                            </th>
+                            <th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">Total</span>
+                                </div>
+                            </th>
+							<th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">Date Created</span>
+                                </div>
+                            </th>
+							<th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">Created By</span>
+                                </div>
+                            </th>
+                            <th class="secondary-text">
+                                <div class="">
+                                    <span class="column-title">Action</span>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="order in ::vm.orders">
+                            <td><md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+								</md-checkbox>
+							</td>
+                            <td>{{order.name}}</td>
+                            <td>{{order.phone}}</td>
+							<td>{{order.test}}</td>
+							<td>{{order.country}}</td>
+							<td>{{order.country}}</td>
+                            <td>{{order.date}}</td>
+                            <td>
+								<a class="edit-button md-icon-button"
+                                   ng-click="vm.payrolleditpage(product.id)"
+                                   aria-label="Product details" href="">
+								   <md-icon md-font-icon="icon-pencil" class="s16"></md-icon>
+								</a>
+								<a class="edit-button md-icon-button"
+                                   ng-click="vm.payrollviewpage(product.id)"
+                                   aria-label="Product details" href="">
+								   <md-icon md-font-icon="icon-eye" class="s16"></md-icon>
+								</a>
+								<a href="">
+								   <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
+								</a>
+								
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <!-- / CONTENT -->
+			<div class="actions" layout="row" layout-align="start center">
+				<md-button class="md-raised md-accent">Delete</md-button>
+				<md-button class="md-raised md-accent">Add</md-button>
+			</div>
+
+        </div>
+        <!-- / CONTENT CARD -->
+
+    </div>
+    <!-- / CENTER -->
+
+</div>

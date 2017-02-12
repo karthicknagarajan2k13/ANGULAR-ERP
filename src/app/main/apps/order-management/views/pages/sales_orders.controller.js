@@ -4,20 +4,22 @@
 
     angular
         .module('app.order-management')
-        .controller('SalesOrdersController', SalesOrdersController);
+        .controller('SalesOrderController', SalesOrderController);
 
     /** @ngInject */
-    function SalesOrdersController($window, omApi, $scope, $state, Statuses, Orders)
+    function SalesOrderController($window, omApi, $scope, $state, Statuses, Orders)
     {
 
         var vm = this;
         vm.dtInstance = {};
 
         //Data
+        console.log("$scope.sales_orders_data")
         vm.search_data = {}
         var dataPromise = omApi.getSalesOrders({});
         dataPromise.then(function(result) { 
             $scope.sales_orders_data = result; 
+            console.log("$scope.sales_orders_data",$scope.sales_orders_data)
         }); 
 
         vm.dtOptions = {

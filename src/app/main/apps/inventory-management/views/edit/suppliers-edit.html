@@ -4,7 +4,7 @@
     <div class="header md-accent-bg" layout="row" layout-align="space-between">
         <div layout="column" layout-align="space-between">
             <div class="breadcrumb" layout="row" layout-align="start center">
-                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">Inventory Management </a> / <a href="">Suppliers </a> </span> / Edit
+                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">Inventory Management </a> / <a href="">Supplier </a> </span> / Edit
             </div>
         </div>
     </div>
@@ -22,45 +22,71 @@
 
                 <md-tab-body>
                     <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
-                        <form>
+                        <form ng-submit="vm.updateSupplier()" name="editSupplierForm" novalidate>
                             <div layout="column" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Supplier ID</label>
-										<input type="text" value="CUS0001">
-									</md-input-container>
-									
+								
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Supplier Name</label>
-										<input type="text" value="Lola J Bolden" >
+										<input ng-model="supplier.first_name" name="first_name"  type="text" required>
+	                                    <div ng-messages="editSupplierForm.first_name.$error" role="alert">
+	                                        <div ng-message="required">
+	                                            <span >Supplier Name field is required</span>
+	                                        </div>
+	                                    </div>
 									</md-input-container>
-
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Email</label>
+										<input type="text" name="email" ng-model="supplier.email" ng-pattern="/^.+@.+\..+$/" required>
+                                        <div ng-messages="editSupplierForm.email.$error" role="alert">
+                                            <div ng-message="required">
+                                                <span >Email field is required</span>
+                                            </div>
+                                            <div ng-message="pattern">
+                            					<span translate="LOGIN.ERRORS.EMAIL_MUST_VALID">Email must be a valid e-mail address</span>
+                        					</div>
+                                        </div>
+									</md-input-container>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Phone</label>
-										<input type="text" value="580-269-9087" >
+										<input ng-model="supplier.supplier_attributes.phone" name="phone" type="text" required  >
+	                                    <div ng-messages="editSupplierForm.phone.$error" role="alert">
+	                                        <div ng-message="required">
+	                                            <span >Phone field is required</span>
+	                                        </div>
+	                                    </div>
 									</md-input-container>
                                 </div>
 								<div layout="column" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Email</label>
-                                        <md-datepicker ng-model="myDate" md-placeholder="22/12/2016"></md-datepicker>
-									</md-input-container>
+
 									
 									<md-input-container class="md-block" flex-gt-sm>
-										<label>Supplier Since</label>
-										<input type="text" value="2946 Luke Lane" >
+                                        <md-datepicker name="supplier_since" ng-model="supplier.supplier_attributes.supplier_since" md-placeholder="Supplier Since" required></md-datepicker>
+	                                    <div ng-messages="newSupplierForm.supplier_since.$error" role="alert">
+	                                        <div ng-message="required">
+	                                            <span >Supplier Since is required</span>
+	                                        </div>
+	                                    </div>
 									</md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Supplier Currency</label>
-										<input type="text" value="Kaw City" >
+										<input name="supplier_currency" ng-model="supplier.supplier_attributes.supplier_currency" type="text" required >
+	                                    <div ng-messages="editSupplierForm.supplier_currency.$error" role="alert">
+	                                        <div ng-message="required">
+	                                            <span >Supplier Currency is required</span>
+	                                        </div>
+	                                    </div>
 									</md-input-container>
                                 </div>
-								
-                        </form>
 						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Save</md-button>
-							<md-button class="md-raised md-accent">Clear</md-button>
-						</div>
+                            <md-button type="submit" class="md-raised md-accent submit-button" aria-label="Save"
+                                       ng-disabled="editSupplierForm.$invalid || editSupplierForm.$pristine"
+                                       translate="Save" translate-attr-aria-label="Save">
+                                Save
+                            </md-button>
+                            <md-button ng-click="vm.viewSupplierPage(supplier.supplier_attributes.id)" class="md-raised md-accent">View</md-button>						
+                        </div>
+					</form>
                     </div>
                 </md-tab-body>
             </md-tab>
@@ -76,82 +102,39 @@
                             <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Address Street</label>
-										<input type="text" value="$525" >
+										<input type="text" ng-model="supplier.supplier_attributes.street" >
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Address City</label>
-										<input type="text" value="$5648" >
+										<input type="text" ng-model="supplier.supplier_attributes.city" >
 									</md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Address State</label>
-										<input type="text" value="Lorem Ipsum" >
+										<input type="text" ng-model="supplier.supplier_attributes.state">
 									</md-input-container>
                                 </div>
 								<div layout="row" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex="33">
 										<label>Address Country</label>
-										<input type="text" value="Lola J Bolden" >
+										<input type="text" ng-model="supplier.supplier_attributes.country" >
 									</md-input-container>
 									<md-input-container class="md-block" flex="33">
 										<label>Address Postal Code</label>
-										<input type="text" value="Lola J Bolden" >
+										<input type="text" ng-model="supplier.supplier_attributes.postal_code" >
 									</md-input-container>
 									
                                 </div>
 								
                         </form>
 						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Save</md-button>
-							<md-button class="md-raised md-accent">Clear</md-button>
-						</div>
+							<md-button ng-click="vm.updateSupplier()" class="md-raised md-accent">Save</md-button>
+                            <md-button ng-click="vm.viewSupplierPage(supplier.supplier_attributes.id)" class="md-raised md-accent">View</md-button>		
+                        </div>
                     </div>
                 </md-tab-body>
-            </md-tab>
-
-            <md-tab>
-                <md-tab-label>
-                    <span>Other Info</span>
-                </md-tab-label>
-
-                <md-tab-body>
-                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
-                        <form>
-                            <div layout="column" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Date Created</label>
-										<input type="text" value="22/12/2016" >
-									</md-input-container>
-									
-									<md-input-container class="md-block" flex-gt-sm>
-										<label>Created By</label>
-										<input type="text" value="Lola J Bolden" >
-									</md-input-container>
-
-                                   <md-input-container class="md-block" flex-gt-sm>
-										<label>Date Modified</label>
-										<input type="text" value="12/01/2017" >
-									</md-input-container>
-                                </div>
-								<div layout="row" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex="33">
-										<label>Modified By</label>
-										<input type="text" value="Lola J Bolden" >
-									</md-input-container>
-									
-                                </div>
-								
-                        </form>
-						
-						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Save</md-button>
-							<md-button class="md-raised md-accent">Clear</md-button>
-						</div>
-                    </div>
-                </md-tab-body>
-            </md-tab>
-			
+            </md-tab>			
         </md-tabs>
 
     </div>

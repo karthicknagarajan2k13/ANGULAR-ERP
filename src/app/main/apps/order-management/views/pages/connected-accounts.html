@@ -1,0 +1,82 @@
+<div id="forms" class="page-layout simple fullwidth doc-page" layout="column" style="min-height:auto;">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="space-between">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <span style="color:#00bcff; font-weight:normal;" class="parent"> <a href="">Order Management</a> </span>  / Accounts
+            </div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content" layout="column">
+        <div layout="row">
+
+            <!-- FORM WIZARD -->
+            <ms-form-wizard flex>
+                <md-tabs md-dynamic-height>
+                    <md-tab>
+                        <md-tab-label>
+                            <span class="ms-form-wizard-step-label">
+                                <span class="ms-form-wizard-step-text">Connected Accounts</span>
+                            </span>
+                        </md-tab-label>
+
+                        <md-tab-body>
+                            <div ms-form-wizard-form >
+								<div ng-repeat="account in accounts.accounts" ng-show="account.title=='Etsy'" layout="row" layout-xs="column">
+								  <div flex layout="row" layout-align="start center">
+									<h2>Etsy </h2> &nbsp; &nbsp; <h4> / <a href="">Manage Sale Events</a> / <a href="">Options</a></h4>
+								  </div>
+								  <div flex layout="row" layout-align="end center">
+									<md-button class="md-raised md-accent">Connect</md-button>
+								  </div>
+								</div>
+								
+								<div ng-repeat="account in accounts.accounts" ng-show="account.title=='eBay'" layout="row" layout-xs="column">
+								  <div flex layout="row" layout-align="start center">
+									<h2>eBay </h2> &nbsp; &nbsp; <h4> / <a href="">Manage Sale Events</a> / <a href="">Options</a></h4>
+								  </div>
+								  <div flex layout="row" layout-align="end center">
+									<md-button class="md-raised md-accent">Connect</md-button>
+								  </div>
+								</div>
+								
+								<div ng-repeat="account in accounts.accounts" ng-show="account.title=='Amazon'" layout="row" layout-xs="column">
+								  <div flex layout="row" layout-align="start center">
+									<h2>Amazon </h2> &nbsp; &nbsp; <h4> / <a href="">Manage Sale Events</a> / <a href="">Options</a></h4>
+								  </div>
+								  <div flex layout="row" layout-align="end center">
+									<md-button ng-hide="account.is_connected" ng-click="vm.amazonAccountConnect(account.id)" class="md-raised md-accent">Connect</md-button>
+								  	<md-button ng-show="account.is_connected" ng-click="vm.accountDisConnect(account.id)" class="md-raised md-accent">Disconnect</md-button>
+								  </div>
+								</div>
+								
+								<div ng-repeat="account in accounts.accounts" ng-show="account.title=='Shopify'" layout="row" layout-xs="column">
+								  <div flex layout="row" layout-align="start center">
+									<h2>Shopify </h2> &nbsp; &nbsp; <h4> / <a href="">Manage Sale Events</a> / <a href="">Options</a></h4>
+								  </div>
+								  <div flex layout="row" layout-align="end center">
+									<md-button class="md-raised md-accent">Connect</md-button>
+								  </div>
+								</div>
+								
+                            </div>
+                        </md-tab-body>
+                    </md-tab>
+                </md-tabs>
+
+               
+
+            </ms-form-wizard>
+            <!-- / FORM WIZARD -->
+
+        </div>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>
+

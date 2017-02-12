@@ -235,7 +235,7 @@
 							</thead>
 							<tbody>
 								<tr ng-repeat="note in vm.customer_data.notes">
-									<td><md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+									<td><md-checkbox ng-model="note.checked" aria-label="Checkbox 1">
 										</md-checkbox>
 									</td>
 									<td>{{note.code}}</td>
@@ -245,16 +245,16 @@
 									<td>{{note.created_by}}</td>
 									<td>
 										<a class="edit-button md-icon-button"
-										   ng-click="vm.editpage(contact.id)"
-										   aria-label="Product details" href="">
+		                                   ng-click="vm.editNotePage(note)"
+		                                   aria-label="Product details" href="">
 										   <md-icon md-font-icon="icon-pencil" class="s16"></md-icon>
 										</a>
 										<a class="edit-button md-icon-button"
-										   ng-click="vm.viewpage(contact.id)"
-										   aria-label="Product details" href="">
+		                                   ng-click="vm.viewNotePage(note.id)"
+		                                   aria-label="Product details" href="">
 										   <md-icon md-font-icon="icon-eye" class="s16"></md-icon>
 										</a>
-										<a href="">
+										<a ng-click="vm.deleteNote(note.id)" href="">
 										   <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
 										</a>
 										
@@ -263,8 +263,8 @@
 							</tbody>
 						</table>
 						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Delete</md-button>
-							<md-button class="md-raised md-accent">ADD</md-button>
+							<md-button ng-click="vm.deleteAllNote()" class="md-raised md-accent">Delete</md-button>
+							<md-button ng-click="vm.newNotePage()" class="md-raised md-accent">Add</md-button>
 						</div>
 					</div>
                 </md-tab-body>
