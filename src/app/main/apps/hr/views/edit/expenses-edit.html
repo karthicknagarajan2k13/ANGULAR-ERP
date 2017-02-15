@@ -22,97 +22,69 @@
 
                 <md-tab-body>
                     <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
-                        <form>
+                        <form ng-submit="vm.updateExpense()" name="submitForm" novalidate>
                             <div layout="column" layout-gt-xs="row" flex>
+                                
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>EXP - ID</label>
-										<input type="text" value="CUS0001">
-									</md-input-container>
-									
-									<md-input-container class="md-block" flex-gt-sm>
-										<label>Subject</label>
-										<input type="text" value="Lola J Bolden" >
-									</md-input-container>
+                                        <label>Subject</label>
+                                        <input name="subject" ng-model="vm.expense.expense.subject" type="text" required >
+                                        <div ng-messages="submitForm.subject.$error" role="alert">
+                                            <div ng-message="required">
+                                                <span >Subject field is required</span>
+                                            </div>
+                                        </div>                                      </md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>Employee</label>
-										<input type="text" value="580-269-9087" >
-									</md-input-container>
-                                </div>
-								<div layout="column" layout-gt-xs="row" flex>
+                                        <label>Employee</label>
+                                        <md-select name="employee_id" ng-model="vm.expense.expense.employee_id" required>
+                                            <md-option ng-repeat="employee in get_employees" value="{{employee.employee_id}}">
+                                                {{employee.name}}
+                                            </md-option>
+                                        </md-select>    
+                                        <div ng-messages="submitForm.employee_id.$error" role="alert">
+                                            <div ng-message="required">
+                                                <span >Employee field is required</span>
+                                            </div>
+                                        </div>                                      </md-input-container>
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>Amount</label>
-                                        <input type="text" value="Lola J Bolden" >
-									</md-input-container>
-									
-									<md-input-container class="md-block" flex-gt-sm>
-										<label>Status</label>
-										<input type="text" value="2946 Luke Lane" >
-									</md-input-container>
+                                        <label>Amount</label>
+                                        <input name="amount" ng-model="vm.expense.expense.amount" type="text" required >
+                                        <div ng-messages="submitForm.amount.$error" role="alert">
+                                            <div ng-message="required">
+                                                <span >Amount field is required</span>
+                                            </div>
+                                        </div>                                      </md-input-container>
+                                </div>
+                                <div layout="column" layout-gt-xs="row" flex>
 
+                                    
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>Date Created</label>
-										<input type="text" value="Kaw City" >
-									</md-input-container>
+                                        <label>Status</label>
+                                        <input name="status" ng-model="vm.expense.expense.status" type="text" required >
+                                        <div ng-messages="submitForm.status.$error" role="alert">
+                                            <div ng-message="required">
+                                                <span >Status field is required</span>
+                                            </div>
+                                        </div>                                      </md-input-container>
+
+
                                 </div>
-								
-								<div layout="column" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Created By</label>
-                                        <input type="text" value="Lola J Bolden" >
-									</md-input-container>
-                                </div>
+                                
+                        <div class="actions" layout="row" layout-align="start center">
+                            <md-button type="submit" class="md-raised md-accent submit-button" aria-label="Save"
+                                       ng-disabled="submitForm.$invalid || submitForm.$pristine"
+                                       translate="Save" translate-attr-aria-label="Save">
+                                Save
+                            </md-button>
+                            <md-button ng-click="vm.viewExpensePage(vm.expense.expense.id)" class="md-raised md-accent">View</md-button>
+                        </div>
+
                         </form>
-						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Save</md-button>
-							<md-button class="md-raised md-accent">Clear</md-button>
-						</div>
+
                     </div>
                 </md-tab-body>
             </md-tab>
-
-            <md-tab>
-                <md-tab-label>
-                    <span>Other Info</span>
-                </md-tab-label>
-
-                <md-tab-body>
-                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
-                        <form>
-                            <div layout="column" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Date Created</label>
-										<input type="text" value="22/12/2016" >
-									</md-input-container>
-									
-									<md-input-container class="md-block" flex-gt-sm>
-										<label>Created By</label>
-										<input type="text" value="Lola J Bolden" >
-									</md-input-container>
-
-                                   <md-input-container class="md-block" flex-gt-sm>
-										<label>Date Modified</label>
-										<input type="text" value="12/01/2017" >
-									</md-input-container>
-                                </div>
-								<div layout="row" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex="33">
-										<label>Modified By</label>
-										<input type="text" value="Lola J Bolden" >
-									</md-input-container>
-									
-                                </div>
-								
-                        </form>
-						
-						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Save</md-button>
-							<md-button class="md-raised md-accent">Clear</md-button>
-						</div>
-                    </div>
-                </md-tab-body>
-            </md-tab>
-			
+            
         </md-tabs>
 
     </div>

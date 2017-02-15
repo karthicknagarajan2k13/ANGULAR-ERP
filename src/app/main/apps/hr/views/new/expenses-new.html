@@ -4,7 +4,7 @@
     <div class="header md-accent-bg" layout="row" layout-align="space-between">
         <div layout="column" layout-align="space-between">
             <div class="breadcrumb" layout="row" layout-align="start center">
-                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">HR </a> / <a href="">Timeclock </a> </span> / Edit
+                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">HR </a> / <a href="">Expenses </a> </span> / New
             </div>
         </div>
     </div>
@@ -22,21 +22,21 @@
 
                 <md-tab-body>
                     <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
-                        <form ng-submit="vm.updateTimeclock()" name="submitForm" novalidate>
+                        <form ng-submit="vm.saveExpense()" name="submitForm" novalidate>
                             <div layout="column" layout-gt-xs="row" flex>
- 
-                                    <md-input-container class="md-block" flex-gt-sm>
-                                        <label>Subject</label>
-                                        <input name="subject" ng-model="vm.timeclock.timeclock.subject" type="text" required >
+								
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Subject</label>
+                                        <input name="subject" ng-model="vm.expense.subject" type="text" required >
                                         <div ng-messages="submitForm.subject.$error" role="alert">
                                             <div ng-message="required">
                                                 <span >Subject field is required</span>
                                             </div>
-                                        </div>                                      </md-input-container>
+                                        </div>  									</md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
-                                        <label>Employee</label>
-                                        <md-select name="employee_id" ng-model="vm.timeclock.timeclock.employee_id" required>
+										<label>Employee</label>
+                                        <md-select name="employee_id" ng-model="vm.expense.employee_id" required>
                                             <md-option ng-repeat="employee in get_employees" value="{{employee.employee_id}}">
                                                 {{employee.name}}
                                             </md-option>
@@ -45,47 +45,46 @@
                                             <div ng-message="required">
                                                 <span >Employee field is required</span>
                                             </div>
-                                        </div>                                      </md-input-container>
+                                        </div>  									</md-input-container>
                                     <md-input-container class="md-block" flex-gt-sm>
-                                        <label>In-Time</label>
-                                        <input name="in_time" ng-model="vm.timeclock.timeclock.in_time" type="text" required >
-                                        <div ng-messages="submitForm.in_time.$error" role="alert">
+                                        <label>Amount</label>
+                                        <input name="amount" ng-model="vm.expense.amount" type="text" required >
+                                        <div ng-messages="submitForm.amount.$error" role="alert">
                                             <div ng-message="required">
-                                                <span >In-Time field is required</span>
+                                                <span >Amount field is required</span>
                                             </div>
                                         </div>                                      </md-input-container>
-
                                 </div>
-                                <div layout="column" layout-gt-xs="row" flex>
+								<div layout="column" layout-gt-xs="row" flex>
 
-                                    
-                                    <md-input-container class="md-block" flex-gt-sm>
-                                        <label>Out-Time</label>
-                                        <input name="out_time" ng-model="vm.timeclock.timeclock.out_time" type="text" required >
-                                        <div ng-messages="submitForm.out_time.$error" role="alert">
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Status</label>
+                                        <input name="status" ng-model="vm.expense.status" type="text" required >
+                                        <div ng-messages="submitForm.status.$error" role="alert">
                                             <div ng-message="required">
-                                                <span >Out-Time field is required</span>
+                                                <span >Status field is required</span>
                                             </div>
-                                        </div>                                      </md-input-container>
+                                        </div>  									</md-input-container>
 
 
                                 </div>
-                                
-
-                        
-                        <div class="actions" layout="row" layout-align="start center">
+								
+						<div class="actions" layout="row" layout-align="start center">
                             <md-button type="submit" class="md-raised md-accent submit-button" aria-label="Save"
                                        ng-disabled="submitForm.$invalid || submitForm.$pristine"
                                        translate="Save" translate-attr-aria-label="Save">
                                 Save
                             </md-button>
-                            <md-button ng-click="vm.viewTimeclockPage(vm.timeclock.timeclock.id)" class="md-raised md-accent">View</md-button>
-                        </div>
+                            <md-button ng-click="vm.expenseDataClear()" class="md-raised md-accent">Clear</md-button>
+						</div>
+
                         </form>
+
                     </div>
                 </md-tab-body>
             </md-tab>
-            
+			
         </md-tabs>
 
     </div>

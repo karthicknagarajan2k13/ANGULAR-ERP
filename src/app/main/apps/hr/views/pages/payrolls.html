@@ -29,34 +29,40 @@
                                 <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Payroll ID</label>
-										<input ng-model="user.firstName">
+										<input ng-model="vm.search_data.code">
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Subject</label>
-										<input ng-model="user.firstName">
+										<input ng-model="vm.search_data.subject">
 									</md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Employee</label>
-										<input ng-model="user.firstName">
-									</md-input-container>
+                                    <md-select ng-model="vm.search_data.employee_id">
+                                        <md-option ng-repeat="employee in get_employees" value="{{employee.employee_id}}">
+                                            {{employee.name}}
+                                        </md-option>
+                                    </md-select>									</md-input-container>
                                 </div>
 								<div layout="column" layout-gt-xs="row" flex>
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Created By</label>
-										<input ng-model="user.firstName">
-									</md-input-container>
+                                    <md-select ng-model="vm.search_data.created_by_id">
+                                        <md-option ng-repeat="user in get_users" value="{{user.id}}">
+                                            {{user.name}}
+                                        </md-option>
+                                    </md-select>    									</md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Date Created </label>
-										<input ng-model="user.firstName">
+                                        <md-datepicker ng-model="vm.search_data.created_at" md-placeholder="Date Created"></md-datepicker>
 									</md-input-container>
                                 </div>
 								
 								<div class="actions" layout="row" layout-align="start center">
-									<md-button class="md-raised md-accent">Search</md-button>
-									<md-button class="md-raised md-accent">Clear</md-button>
+                                    <md-button ng-click="vm.searchPayrollData()" class="md-raised md-accent">Search</md-button>
+                                    <md-button ng-click="vm.searchPayrollDataClear()" class="md-raised md-accent">Clear</md-button>
 								</div>
                             </form>
                         </md-tab-body>
@@ -141,30 +147,30 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="order in ::vm.orders">
-                            <td><md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+                        <tr ng-repeat="payroll in payrolls_data">
+                            <td><md-checkbox ng-model="payroll.checked" aria-label="Checkbox 1">
 								</md-checkbox>
 							</td>
-                            <td>{{order.name}}</td>
-                            <td>{{order.phone}}</td>
-							<td>{{order.test}}</td>
-							<td>{{order.country}}</td>
-							<td>{{order.country}}</td>
-                            <td>{{order.date}}</td>
+                            <td>{{payroll.code}}</td>
+                            <td>{{payroll.subject}}</td>
+							<td>{{payroll.employee}}</td>
+							<td>{{payroll.total}}</td>
+							<td>{{payroll.created_at}}</td>
+                            <td>{{payroll.created_by}}</td>
                             <td>
-								<a class="edit-button md-icon-button"
-                                   ng-click="vm.payrolleditpage(product.id)"
+                                <a class="edit-button md-icon-button"
+                                   ng-click="vm.editPayrollPage(payroll)"
                                    aria-label="Product details" href="">
-								   <md-icon md-font-icon="icon-pencil" class="s16"></md-icon>
-								</a>
-								<a class="edit-button md-icon-button"
-                                   ng-click="vm.payrollviewpage(product.id)"
+                                   <md-icon md-font-icon="icon-pencil" class="s16"></md-icon>
+                                </a>
+                                <a class="edit-button md-icon-button"
+                                   ng-click="vm.viewPayrollPage(payroll.id)"
                                    aria-label="Product details" href="">
-								   <md-icon md-font-icon="icon-eye" class="s16"></md-icon>
-								</a>
-								<a href="">
-								   <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
-								</a>
+                                   <md-icon md-font-icon="icon-eye" class="s16"></md-icon>
+                                </a>
+                                <a ng-click="vm.deletePayroll(payroll.id)" href="">
+                                   <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
+                                </a>
 								
                             </td>
                         </tr>
@@ -174,8 +180,8 @@
             </div>
             <!-- / CONTENT -->
 			<div class="actions" layout="row" layout-align="start center">
-				<md-button class="md-raised md-accent">Delete</md-button>
-				<md-button class="md-raised md-accent">Add</md-button>
+                <md-button ng-click="vm.deleteAllPayroll()" class="md-raised md-accent">Delete</md-button>
+                <md-button ng-click="vm.newPayrollPage()" class="md-raised md-accent">Add</md-button>
 			</div>
 
         </div>

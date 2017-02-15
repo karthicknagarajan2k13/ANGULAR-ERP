@@ -30,7 +30,7 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/hr/views/pages/employees.html',
-                        controller : 'hrController as vm'
+                        controller : 'EmployeesController as vm'
                     }
                 },
                 resolve  : {
@@ -51,7 +51,7 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/hr/views/pages/payrolls.html',
-                        controller : 'hrController as vm'
+                        controller : 'PayrollsController as vm'
                     }
                 },
                 resolve  : {
@@ -72,7 +72,7 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/hr/views/pages/expenses.html',
-                        controller : 'hrController as vm'
+                        controller : 'ExpensesController as vm'
                     }
                 },
                 resolve  : {
@@ -93,7 +93,7 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/hr/views/pages/timeclock.html',
-                        controller : 'hrController as vm'
+                        controller : 'TimeclocksController as vm'
                     }
                 },
                 resolve  : {
@@ -114,7 +114,7 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/hr/views/pages/payroll-report.html',
-                        controller : 'hrController as vm'
+                        controller : 'ReportPayrollsController as vm'
                     }
                 },
                 resolve  : {
@@ -135,7 +135,7 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/hr/views/pages/expenses-report.html',
-                        controller : 'hrController as vm'
+                        controller : 'ReportExpensesController as vm'
                     }
                 },
                 resolve  : {
@@ -177,7 +177,26 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/hr/views/edit/employees-edit.html',
-                        controller : 'hreditController as vm'
+                        controller : 'editEmployeesController as vm'
+                    }
+                },
+                params: {
+                 obj: null
+                },
+                resolve  : {
+                    Product: function (msApi)
+                    {
+                        return msApi.resolve('crm.orders@get');
+                    }
+                },
+                bodyClass: 'hr'
+            })
+            .state('app.hr.employees-new', {
+                url      : '/employees-new',
+                views    : {
+                    'content@app': {
+                        templateUrl: 'app/main/apps/hr/views/new/employees-new.html',
+                        controller : 'newEmployeesController as vm'
                     }
                 },
                 resolve  : {
@@ -188,13 +207,32 @@
                 },
                 bodyClass: 'hr'
             })
-			
+
 			.state('app.hr.timeclock-edit', {
                 url      : '/timeclock-edit',
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/hr/views/edit/timeclock-edit.html',
-                        controller : 'hreditController as vm'
+                        controller : 'editTimeclocksController as vm'
+                    }
+                },
+                params: {
+                 obj: null
+                },
+                resolve  : {
+                    Product: function (msApi)
+                    {
+                        return msApi.resolve('crm.orders@get');
+                    }
+                },
+                bodyClass: 'hr'
+            })
+            .state('app.hr.timeclock-new', {
+                url      : '/timeclock-new',
+                views    : {
+                    'content@app': {
+                        templateUrl: 'app/main/apps/hr/views/new/timeclock-new.html',
+                        controller : 'newTimeclocksController as vm'
                     }
                 },
                 resolve  : {
@@ -205,13 +243,32 @@
                 },
                 bodyClass: 'hr'
             })
-			
+
 			.state('app.hr.expenses-edit', {
                 url      : '/expenses-edit',
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/hr/views/edit/expenses-edit.html',
-                        controller : 'hreditController as vm'
+                        controller : 'editExpensesController as vm'
+                    }
+                },
+                params: {
+                 obj: null
+                },
+                resolve  : {
+                    Product: function (msApi)
+                    {
+                        return msApi.resolve('crm.orders@get');
+                    }
+                },
+                bodyClass: 'hr'
+            })
+            .state('app.hr.expenses-new', {
+                url      : '/expenses-new',
+                views    : {
+                    'content@app': {
+                        templateUrl: 'app/main/apps/hr/views/new/expenses-new.html',
+                        controller : 'newExpensesController as vm'
                     }
                 },
                 resolve  : {
@@ -222,12 +279,32 @@
                 },
                 bodyClass: 'hr'
             })
+
 			.state('app.hr.payroll-edit', {
                 url      : '/payroll-edit',
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/hr/views/edit/payroll-edit.html',
-                        controller : 'hreditController as vm'
+                        controller : 'editPayrollsController as vm'
+                    }
+                },
+                params: {
+                 obj: null
+                },
+                resolve  : {
+                    Product: function (msApi)
+                    {
+                        return msApi.resolve('crm.orders@get');
+                    }
+                },
+                bodyClass: 'hr'
+            })
+            .state('app.hr.payroll-new', {
+                url      : '/payroll-new',
+                views    : {
+                    'content@app': {
+                        templateUrl: 'app/main/apps/hr/views/new/payroll-new.html',
+                        controller : 'newPayrollsController as vm'
                     }
                 },
                 resolve  : {
@@ -238,7 +315,7 @@
                 },
                 bodyClass: 'hr'
             })
-			
+
 			.state('app.hr.employees-view', {
                 url      : '/employees-view',
                 views    : {
@@ -246,6 +323,9 @@
                         templateUrl: 'app/main/apps/hr/views/view/employees-view.html',
                         controller : 'hrviewController as vm'
                     }
+                },
+                params: {
+                 obj: null
                 },
                 resolve  : {
                     Product: function (msApi)
@@ -261,8 +341,11 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/hr/views/view/timeclock-view.html',
-                        controller : 'hrviewController as vm'
+                        controller : 'viewTimeclocksController as vm'
                     }
+                },
+                params: {
+                 obj: null
                 },
                 resolve  : {
                     Product: function (msApi)
@@ -278,8 +361,11 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/hr/views/view/expenses-view.html',
-                        controller : 'hrviewController as vm'
+                        controller : 'viewExpensesController as vm'
                     }
+                },
+                params: {
+                 obj: null
                 },
                 resolve  : {
                     Product: function (msApi)
@@ -295,8 +381,11 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/hr/views/view/payroll-view.html',
-                        controller : 'hrviewController as vm'
+                        controller : 'viewPayrollsController as vm'
                     }
+                },
+                params: {
+                 obj: null
                 },
                 resolve  : {
                     Product: function (msApi)

@@ -26,46 +26,35 @@
                             <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>ID</label>
-										<input type="text" value="CUS0001" disabled>
+										<input type="text" value="{{timeclock_data.code}}" disabled>
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Subject</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<input type="text" value="{{timeclock_data.subject}}" disabled>
 									</md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Employee</label>
-										<input type="text" value="580-269-9087" disabled>
+										<input type="text" value="{{timeclock_data.employee}}" disabled>
 									</md-input-container>
                                 </div>
 								<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>In-Time</label>
-                                        <input type="text" value="Lola J Bolden" disabled>
+                                        <input type="text" value="{{timeclock_data.str_in_time}}" disabled>
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Out-Time</label>
-										<input type="text" value="2946 Luke Lane" disabled>
+										<input type="text" value="{{timeclock_data.str_out_time}}" disabled>
 									</md-input-container>
 
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Date Created</label>
-										<input type="text" value="Kaw City" disabled>
-									</md-input-container>
-                                </div>
-								
-								<div layout="column" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Created By</label>
-                                        <input type="text" value="Lola J Bolden" disabled>
-									</md-input-container>
                                 </div>
                         </form>
 						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Edit</md-button>
-							<md-button class="md-raised md-accent">Delete</md-button>
+                            <md-button ng-click="vm.editTimeclockPage(timeclock_data)" class="md-raised md-accent">Edit</md-button>
+                            <md-button ng-click="vm.deleteTimeclock(timeclock_data.id)" class="md-raised md-accent">Delete</md-button>
 						</div>
                     </div>
                 </md-tab-body>
@@ -82,23 +71,23 @@
                             <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Date Created</label>
-										<input type="text" value="22/12/2016" disabled>
+										<input type="text" value="{{timeclock_data.created_at}}" disabled>
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Created By</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<input type="text" value="{{timeclock_data.created_by}}" disabled>
 									</md-input-container>
 
                                    <md-input-container class="md-block" flex-gt-sm>
 										<label>Date Modified</label>
-										<input type="text" value="12/01/2017" disabled>
+										<input type="text" value="{{timeclock_data.updated_at}}" disabled>
 									</md-input-container>
                                 </div>
 								<div layout="row" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex="33">
 										<label>Modified By</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<input type="text" value="{{timeclock_data.updated_by}}" disabled>
 									</md-input-container>
 									
                                 </div>
@@ -106,8 +95,8 @@
                         </form>
 						
 						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Edit</md-button>
-							<md-button class="md-raised md-accent">Delete</md-button>
+                            <md-button ng-click="vm.editTimeclockPage(timeclock_data)" class="md-raised md-accent">Edit</md-button>
+                            <md-button ng-click="vm.deleteTimeclock(timeclock_data.id)" class="md-raised md-accent">Delete</md-button>
 						</div>
                     </div>
                 </md-tab-body>

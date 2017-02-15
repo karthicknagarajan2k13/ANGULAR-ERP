@@ -29,24 +29,27 @@
                                 <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Employee</label>
-										<input ng-model="user.firstName">
-									</md-input-container>
+                                    <md-select ng-model="vm.search_data.employee_id">
+                                        <md-option ng-repeat="employee in get_employees" value="{{employee.employee_id}}">
+                                            {{employee.name}}
+                                        </md-option>
+                                    </md-select>    									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Range - From</label>
-										<md-datepicker ng-model="myDate" md-placeholder="Date Created"></md-datepicker>
+										<md-datepicker ng-model="vm.search_data.from_date" md-placeholder="Date Created"></md-datepicker>
 									</md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Range - To</label>
-										<md-datepicker ng-model="myDate" md-placeholder="Date Created"></md-datepicker>
+										<md-datepicker ng-model="vm.search_data.to_date" md-placeholder="Date Created"></md-datepicker>
 									</md-input-container>
                                 </div>
 								
 								
 								<div class="actions" layout="row" layout-align="start center">
-									<md-button class="md-raised md-accent">Update Filter</md-button>
-									<md-button class="md-raised md-accent">Clear Filter</md-button>
+									<md-button ng-click="vm.searchPayrollData()" class="md-raised md-accent">Update Filter</md-button>
+									<md-button ng-click="vm.searchPayrollDataClear()" class="md-raised md-accent">Clear Filter</md-button>
 									<md-button class="md-raised md-accent">Export to CSV</md-button>
 									<md-button class="md-raised md-accent">Export to PDF</md-button>
 								</div>
@@ -144,18 +147,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="order in ::vm.orders">
+                        <tr ng-repeat="payroll in payrolls_data">
                             
-                            <td>{{order.name}}</td>
-                            <td>{{order.phone}}</td>
-							<td>{{order.name}}</td>
-                            <td>{{order.phone}}</td>
-							<td>{{order.country}}</td>
-							<td>{{order.country}}</td>
-							<td>{{order.phone}}</td>
-							<td>{{order.country}}</td>
-							<td>{{order.country}}</td>
-                            <td>{{order.date}}</td>
+                            <td>{{payroll.code}}</td>
+                            <td>{{payroll.subject}}</td>
+							<td>{{payroll.employee}}</td>
+                            <td>{{payroll.base_pay}}</td>
+							<td>{{payroll.allowances}}</td>
+							<td>{{payroll.deductions}}</td>
+							<td>{{payroll.expenses}}</td>
+							<td>{{payroll.tax}}</td>
+							<td>{{payroll.total}}</td>
+                            <td>{{payroll.created_at}}</td>
                             
                         </tr>
                     </tbody>
