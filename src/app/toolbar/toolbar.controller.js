@@ -7,7 +7,7 @@
         .controller('ToolbarController', ToolbarController);
 
     /** @ngInject */
-    function ToolbarController($rootScope, $q, $state, $timeout, $mdSidenav, $translate, $mdToast, msNavigationService)
+    function ToolbarController($window, Auth, $rootScope, $q, $state, $timeout, $mdSidenav, $translate, $mdToast, msNavigationService)
     {
         var vm = this;
 
@@ -91,7 +91,6 @@
             vm.selectedLanguage = vm.languages[$translate.preferredLanguage()];
         }
 
-
         /**
          * Toggle sidenav
          *
@@ -114,10 +113,21 @@
         /**
          * Logout Function
          */
+
         function logout()
         {
-            console.log("===logout===")
-            // Do logout here..
+
+            var config = {
+                headers: {
+                    'X-HTTP-Method-Override': 'DELETE'
+                }
+            };
+            Auth.logout(config).then(function(oldUser) {
+                $window.localStorage.removeItem('current_user');
+                $state.go('app.pages_auth_login');
+            }, function(error) {
+                console.log("error",error)
+            });
         }
 
         /**

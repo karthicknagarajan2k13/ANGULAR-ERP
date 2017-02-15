@@ -52,8 +52,8 @@
 								<div class="actions" layout="row" layout-align="start center">
 									<md-button ng-click="vm.searchPayrollData()" class="md-raised md-accent">Update Filter</md-button>
 									<md-button ng-click="vm.searchPayrollDataClear()" class="md-raised md-accent">Clear Filter</md-button>
-									<md-button class="md-raised md-accent">Export to CSV</md-button>
-									<md-button class="md-raised md-accent">Export to PDF</md-button>
+									<md-button ng-csv="table_data" filename="test.csv" class="md-raised md-accent">Export to CSV</md-button>
+									<md-button ng-click="vm.pdfPayrollData()" class="md-raised md-accent">Export to PDF</md-button>
 								</div>							
 						</div>
 					

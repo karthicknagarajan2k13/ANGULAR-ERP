@@ -17,13 +17,39 @@
         var dataPromise = hrApi.getReportExpenses({});
         dataPromise.then(function(result) { 
             $scope.expenses_data = result;
-            console.log("$scope.expenses_data",$scope.expenses_data)
+            $scope.table_data = [[ 'EXP-ID', 'Subject', 'Employee', 'Amount', 'Status', 'Date Created', 'Created By']]
+            angular.forEach($scope.expenses_data, function(value, key) {
+                $scope.table_data.push([
+                    value.code,
+                    value.subject,
+                    value.employee,
+                    value.amount,
+                    value.status,
+                    value.created_at,
+                    value.created_by,
+                ]);
+            });
         });
         var dataPromise = hrApi.get_employees({});
         dataPromise.then(function(result) { 
             $scope.get_employees = result;
             console.log($scope.get_employees)
         });  
+
+        vm.pdfExpenseData = function(){
+            var docDefinition = {
+              content: [
+                {
+                  table: {
+                    headerRows: 1,
+                    widths: [ 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto' ],
+                    body: $scope.table_data
+                  }
+                }
+              ]
+            };            
+            pdfMake.createPdf(docDefinition).open();
+        }
 
         vm.orders = Orders.data;
         vm.statuses = Statuses.data;

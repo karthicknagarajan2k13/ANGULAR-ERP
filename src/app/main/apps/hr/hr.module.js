@@ -10,7 +10,9 @@
                 'nvd3',
                 'textAngular',
                 'uiGmapgoogle-maps',
-                'xeditable'
+                'xeditable',
+                'ngSanitize',
+                'ngCsv'
             ]
         )
         .config(config);

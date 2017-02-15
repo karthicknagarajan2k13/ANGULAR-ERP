@@ -57,6 +57,7 @@
         function init()
         {
             // Load the shortcuts
+            console.log("ppppp")
             vm.loadShortcuts().then(
                 // Success
                 function (response)
