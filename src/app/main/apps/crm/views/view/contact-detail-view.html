@@ -4,7 +4,7 @@
     <div class="header md-accent-bg" layout="row" layout-align="space-between">
         <div layout="column" layout-align="space-between">
             <div class="breadcrumb" layout="row" layout-align="start center">
-                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">CRM </a> / <a href="">Contact </a> </span> / View
+                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">CRM </a>&nbsp; / &nbsp;<a href="">Contact </a> </span>&nbsp; / &nbsp; View
             </div>
         </div>
     </div>
@@ -200,11 +200,6 @@
                                 </div>
 								
                         </form>
-						
-						<div class="actions" layout="row" layout-align="start center">
-							<md-button ng-click="vm.editContactPage(vm.contact_data)" class="md-raised md-accent">Edit</md-button>
-							<md-button ng-click="vm.deleteContact(vm.contact_data.id)" class="md-raised md-accent">Delete</md-button>
-						</div>
                     </div>
                 </md-tab-body>
             </md-tab>
@@ -251,12 +246,12 @@
 										<div class="table-header">
 											<span class="column-title">Created By</span>
 										</div>
-									</th>
+									</th><!-- 
 									<th class="secondary-text">
 										<div class="">
 											<span class="column-title">Action</span>
 										</div>
-									</th>
+									</th> -->
 								</tr>
 							</thead>
 							<tbody>
@@ -268,7 +263,7 @@
 									<td>{{note.subject}}</td>
 									<td>{{note.customer}}</td>
 									<td>{{note.created_at}}</td>
-									<td>{{note.created_by}}</td>
+									<td>{{note.created_by}}</td><!-- 
 									<td>
 										<a class="edit-button md-icon-button"
 		                                   ng-click="vm.editNotePage(note)"
@@ -284,7 +279,7 @@
 										   <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
 										</a>
 										
-									</td>
+									</td> -->
 								</tr>
 							</tbody>
 						</table>

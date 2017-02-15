@@ -4,7 +4,7 @@
     <div class="header md-accent-bg" layout="row" layout-align="space-between">
         <div layout="column" layout-align="space-between">
             <div class="breadcrumb" layout="row" layout-align="start center">
-                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">Inventory Management </a> / <a href="">Suppliers </a> </span> / View
+                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">Inventory Management </a>&nbsp; / &nbsp;<a href="">Suppliers </a> </span>&nbsp; / &nbsp; View
             </div>
         </div>
     </div>
@@ -144,10 +144,10 @@
 								
                         </form>
 						
-						<div class="actions" layout="row" layout-align="start center">
+						<!-- <div class="actions" layout="row" layout-align="start center">
 							<md-button ng-click="vm.editSupplierPage(supplier_data.id)" class="md-raised md-accent">Edit</md-button>
 							<md-button ng-click="vm.deleteSupplier(supplier_data.id)" class="md-raised md-accent">Delete</md-button>
-						</div>
+						</div> -->
                     </div>
                 </md-tab-body>
             </md-tab>
@@ -364,17 +364,6 @@
 											<span class="column-title">Created By</span>
 										</div>
 									</th>
-									
-									<th class="secondary-text">
-										<div class="">
-											<span class="column-title">Action</span>
-										</div>
-									</th>
-								   <!--  <th class="secondary-text">
-										<div class="table-header">
-											<span class="column-title">Actions</span>
-										</div>
-									</th> -->
 								</tr>
 							</thead>
 							<tbody>
@@ -388,23 +377,6 @@
 									<td>{{purchase_order.grand_total}}</td>
 									<td>{{purchase_order.created_at}}</td>
 									<td>{{purchase_order.created_by}}</td>
-									<!-- <td>{{order.test}}</td> -->
-									<td>
-		                                <a class="edit-button md-icon-button"
-		                                   ng-click="vm.editPurchaseOrderPage(purchase_order.id)"
-		                                   aria-label="Product details" href="">
-		                                   <md-icon md-font-icon="icon-pencil" class="s16"></md-icon>
-		                                </a>
-		                                <a class="edit-button md-icon-button"
-		                                   ng-click="vm.viewPurchaseOrderPage(purchase_order.id)"
-		                                   aria-label="Product details" href="">
-		                                   <md-icon md-font-icon="icon-eye" class="s16"></md-icon>
-		                                </a>
-		                                <a ng-click="vm.deletePurchaseOrder(purchase_order.id)" href="">
-		                                   <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
-		                                </a>
-										
-									</td>
 								</tr>
 							</tbody>
 						</table>

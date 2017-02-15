@@ -690,9 +690,6 @@ $card-header-height-sm: $header-height-xs - $card-toolbar-height;
                     margin-right: 16px;
 
                     .header {
-                        height: $card-header-height-sm;
-                        min-height: $card-header-height-sm;
-                        max-height: $card-header-height-sm;
                         padding: 16px;
 						background-color: #f5f5f5;
                     }
@@ -736,9 +733,6 @@ $card-header-height-sm: $header-height-xs - $card-toolbar-height;
             &.inner-sidenav {
 
                 > .header {
-                    height: $header-height-xs;
-                    min-height: $header-height-xs;
-                    max-height: $header-height-xs;
                     padding: 16px;
 					background-color: #f5f5f5;
                 }

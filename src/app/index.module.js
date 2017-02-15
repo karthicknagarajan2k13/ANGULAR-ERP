@@ -30,6 +30,7 @@
 			'app.inventory-management',
 			'app.hr',
 			'app.warehouse-management',
+			'app.manufacturing',
 			
 			//pages
 			'app.pages'

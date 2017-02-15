@@ -5,7 +5,7 @@
 		<md-button id="navigation-toggle" class="md-icon-button" ng-click="vm.toggleSidenav('navigation')"
                    hide-gt-sm aria-label="Toggle navigation" translate
                    translate-attr-aria-label="TOOLBAR.TOGGLE_NAVIGATION">
-            <md-icon md-font-icon="icon-menu" class="icon"></md-icon>
+            <md-icon class="s18" md-font-icon="icon-backburger"></md-icon>
         </md-button>
 
         <md-button class="md-icon-button navigation-fold-toggle"
@@ -25,11 +25,11 @@
 
     <div layout="row" layout-align="start center">
 
-        <ms-search-bar on-search="vm.search(query)" on-result-click="vm.searchResultClick(item)" debounce="300"></ms-search-bar>
-
+        <!-- <ms-search-bar on-search="vm.search(query)" on-result-click="vm.searchResultClick(item)" debounce="300"></ms-search-bar> -->
         <div class="toolbar-separator"></div>
-		
-		<ms-shortcuts></ms-shortcuts>
+		<a href=""><md-icon md-font-icon="icon-account-circle" class="top-icon"></md-icon></a>
+		<div class="toolbar-separator"></div>
+		<a href=""><md-icon md-font-icon="icon-power-settings" class="top-icon"></md-icon></a>
 		
     </div>
 </div>

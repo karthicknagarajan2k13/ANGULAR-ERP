@@ -4,7 +4,7 @@
     <div class="header md-accent-bg" layout="row" layout-align="space-between">
         <div layout="column" layout-align="space-between">
             <div class="breadcrumb" layout="row" layout-align="start center">
-                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">HR </a> / <a href="">Employees </a> </span> / View
+                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">HR </a>&nbsp; / &nbsp;<a href="">Employees </a> </span>&nbsp; / &nbsp; View
             </div>
         </div>
     </div>
@@ -306,11 +306,6 @@
                                 </div>
 								
                         </form>
-						
-						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Save</md-button>
-							<md-button class="md-raised md-accent">Clear</md-button>
-						</div>
                     </div>
                 </md-tab-body>
             </md-tab>
@@ -363,16 +358,6 @@
 											<span class="column-title">Created By</span>
 										</div>
 									</th>
-									<th class="secondary-text">
-										<div class="">
-											<span class="column-title">Action</span>
-										</div>
-									</th>
-								   <!--  <th class="secondary-text">
-										<div class="table-header">
-											<span class="column-title">Actions</span>
-										</div>
-									</th> -->
 								</tr>
 							</thead>
 							<tbody>
@@ -386,22 +371,6 @@
 									<td>{{order.type}}</td>
 									<td>{{order.date}}</td>
 									<td>{{order.createdby}}</td>
-									<td>
-										<a class="edit-button md-icon-button"
-										   ng-click="vm.editpage(product.id)"
-										   aria-label="Product details" href="">
-										   <md-icon md-font-icon="icon-pencil" class="s16"></md-icon>
-										</a>
-										<a class="edit-button md-icon-button"
-										   ng-click="vm.viewpage(product.id)"
-										   aria-label="Product details" href="">
-										   <md-icon md-font-icon="icon-eye" class="s16"></md-icon>
-										</a>
-										<a href="">
-										   <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
-										</a>
-										
-									</td>
 								</tr>
 							</tbody>
 						</table>

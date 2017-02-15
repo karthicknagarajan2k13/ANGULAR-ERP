@@ -5,12 +5,14 @@
     z-index: 55 !important;
 
     #navigation-toggle {
-        width: $toolbarHeight;
-        min-width: $toolbarHeight;
+        width: $toolbarWidth;
+        min-width: $toolbarWidth;
         height: $toolbarHeight;
         margin: 0;
         border-right: 1px solid rgba(0, 0, 0, 0.12);
         border-radius: 0;
+		background: #00bcff;
+		margin-top: -10px !important;
     }
 
     #user-menu {

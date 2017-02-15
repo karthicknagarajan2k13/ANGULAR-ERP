@@ -4,29 +4,31 @@
     <div class="header md-accent-bg" layout="row" layout-align="space-between">
         <div layout="column" layout-align="space-between">
             <div class="breadcrumb" layout="row" layout-align="start center">
-                <span style="color:#00bcff; font-weight:normal;" class="parent"> <a href="">Inventory Management</a> </span>  / Supplier
-            </div>
+                <span style="color:#00bcff; font-weight:normal;" class="parent"> <a href="">Inventory Management</a> </span>&nbsp; / &nbsp; Supplier
+            </div> 
         </div>
     </div>
     <!-- / HEADER -->
+</div>
 
-    <!-- CONTENT -->
-    <div class="content" layout="column">
-        <div layout="row">
 
-            <!-- FORM WIZARD -->
-            <ms-form-wizard flex>
-                <md-tabs md-dynamic-height>
-                    <md-tab>
-                        <md-tab-label>
-                            <span class="ms-form-wizard-step-label">
-                                <span class="ms-form-wizard-step-text">Search</span>
-                            </span>
-                        </md-tab-label>
-
-                        <md-tab-body>
-                            <form name="wizardStep1" class="md-inline-form" ms-form-wizard-form novalidate>
-                                <div layout="column" layout-gt-xs="row" flex>
+<div style="height:auto; min-height:auto; margin-top:20px; margin-bottom: -20px;" class="page-layout carded fullwidth" layout="row">
+    <!-- CENTER -->
+    <div class="center" layout="row" flex>
+        <!-- CONTENT CARD -->
+        <div class="content-card" layout="column" flex>
+			<div style="padding:20px 20px 0px 20px; font-size:18px;">
+				<div layout="column" layout-gt-xs="row">
+				
+					
+					<md-input-container flex>
+						<md-icon md-font-icon="icon-magnify"></md-icon>
+						<label>Search</label>
+						<input ng-model="user.firstName">
+						<md-icon ng-model="collapsed" ng-click="collapsed=!collapsed" md-font-icon="icon-chevron-down"></md-icon>
+					
+						<div style="padding-top:49px;" ng-show="collapsed">
+							<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Supplier ID</label>
 										<input ng-model="vm.search_data.code">
@@ -56,23 +58,21 @@
 								<div class="actions" layout="row" layout-align="start center">
                                     <md-button ng-click="vm.searchSupplierData()" class="md-raised md-accent">Search</md-button>
                                     <md-button ng-click="vm.searchSupplierDataClear()" class="md-raised md-accent">Clear</md-button>
-								</div>
-                            </form>
-                        </md-tab-body>
-                    </md-tab>
-                </md-tabs>
-
-               
-
-            </ms-form-wizard>
-            <!-- / FORM WIZARD -->
-
+								</div>							
+						</div>
+					
+					</md-input-container>
+					
+					
+                </div>
+				
+			</div>
         </div>
-
+        <!-- / CONTENT CARD -->
     </div>
-    <!-- / CONTENT -->
-
+    <!-- / CENTER -->
 </div>
+
 
 
 <div id="e-commerce-orders" class="page-layout carded fullwidth" layout="row">
@@ -131,12 +131,12 @@
                                 <div class="table-header">
                                     <span class="column-title">Supplier Currency</span>
                                 </div>
-                            </th>
+                            </th><!-- 
                             <th class="secondary-text">
                                 <div class="">
                                     <span class="column-title">Action</span>
                                 </div>
-                            </th>
+                            </th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -149,7 +149,7 @@
 							<td>{{supplier.phone}}</td>
 							<td>{{supplier.email}}</td>
 							<td>{{supplier.supplier_since}}</td>
-                            <td>{{supplier.supplier_currency}}</td>
+                            <td>{{supplier.supplier_currency}}</td><!-- 
                             <td>
                                 <a class="edit-button md-icon-button"
                                    ng-click="vm.editSupplierPage(supplier.id)"
@@ -165,7 +165,7 @@
                                    <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
                                 </a>
 								
-                            </td>
+                            </td> -->
                         </tr>
                     </tbody>
                 </table>

@@ -1,4 +1,14 @@
+
+md-input-container.md-default-theme .md-input, md-input-container .md-input { color: #000 !important;}
+
 .ms-theme-options {
+
+	.ms-theme-options-button.md-primary-bg {
+					border-radius: 100%;
+					margin-right: 33px;
+					background: #039be5;
+					top: 90%;
+				}
 
     .ms-theme-options-button {
         position: absolute;

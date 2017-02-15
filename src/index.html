@@ -32,15 +32,14 @@
 
     <body md-theme="{{vm.themes.active.name}}" md-theme-watch ng-controller="IndexController as vm"
           class="{{state.current.bodyClass || ''}}">
-		  
-		  <div style="box-shadow: none; background: none; width:100%; height:auto;" class="logo">
-               <img class="huge" src="assets/images/logos/main-logo.png">
-          </div>
 
         <!-- SPLASH SCREEN -->
         <ms-splash-screen id="splash-screen">
             <div class="center">
                 <!-- Material Design Spinner -->
+				<div style="box-shadow: none; background: none; width:100%; height:auto;" class="logo">
+				   <img class="huge" src="assets/images/logos/main-logo.png">
+			    </div>
                 <div class="spinner-wrapper">
                     <div class="spinner">
                         <div class="inner">
