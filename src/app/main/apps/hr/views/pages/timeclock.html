@@ -31,35 +31,40 @@
 							<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>ID</label>
-										<input ng-model="user.firstName">
+										<input ng-model="vm.search_data.code">
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Subject</label>
-										<input ng-model="user.firstName">
+										<input ng-model="vm.search_data.subject">
 									</md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Employee</label>
-										<input ng-model="user.firstName">
-									</md-input-container>
+                                    <md-select ng-model="vm.search_data.employee_id">
+                                        <md-option ng-repeat="employee in get_employees" value="{{employee.employee_id}}">
+                                            {{employee.name}}
+                                        </md-option>
+                                    </md-select>    									</md-input-container>
                                 </div>
-								<div layout="row" layout-gt-xs="row" flex>
-									<md-input-container class="md-block" flex="33">
-										<label>Date</label>
-										<md-datepicker ng-model="myDate" md-placeholder="Date Created"></md-datepicker>
-									</md-input-container>
+                                <div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Created By</label>
+                                    <md-select ng-model="vm.search_data.created_by_id">
+                                        <md-option ng-repeat="user in get_users" value="{{user.id}}">
+                                            {{user.name}}
+                                        </md-option>
+                                    </md-select>                                     </md-input-container>
 
-                                    <md-input-container class="md-block" flex="33">
-										<label>Created By </label>
-										<input ng-model="user.firstName">
-									</md-input-container>
-									
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Date Created </label>
+                                        <md-datepicker ng-model="vm.search_data.created_at" md-placeholder="Date Created"></md-datepicker>
+                                    </md-input-container>
                                 </div>
 								
 								<div class="actions" layout="row" layout-align="start center">
-									<md-button class="md-raised md-accent">Search</md-button>
-									<md-button class="md-raised md-accent">Clear</md-button>
+                                    <md-button ng-click="vm.searchTimeclockData()" class="md-raised md-accent">Search</md-button>
+                                    <md-button ng-click="vm.searchTimeclockDataClear()" class="md-raised md-accent">Clear</md-button>
 								</div>							
 						</div>
 					
@@ -138,30 +143,29 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="order in ::vm.orders">
-                            <td><md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+                        <tr ng-repeat="timeclock in timeclocks_data">
+                            <td><md-checkbox ng-model="timeclock.checked" aria-label="Checkbox 1">
 								</md-checkbox>
 							</td>
-                            <td>{{order.name}}</td>
-                            <td>{{order.phone}}</td>
-							
-							<td>{{order.country}}</td>
-							<td>{{order.country}}</td>
-                            <td>{{order.date}}</td><!-- 
+                            <td>{{timeclock.code}}</td>
+                            <td>{{timeclock.subject}}</td>
+                            <td>{{timeclock.employee}}</td>
+                            <td>{{timeclock.created_at}}</td>
+                            <td>{{timeclock.created_by}}</td>
                             <td>
-								<a class="edit-button md-icon-button"
-                                   ng-click="vm.timeceditpage(product.id)"
+                                <a class="edit-button md-icon-button"
+                                   ng-click="vm.editTimeclockPage(timeclock)"
                                    aria-label="Product details" href="">
-								   <md-icon md-font-icon="icon-pencil" class="s16"></md-icon>
-								</a>
-								<a class="edit-button md-icon-button"
-                                   ng-click="vm.timecviewpage(product.id)"
+                                   <md-icon md-font-icon="icon-pencil" class="s16"></md-icon>
+                                </a>
+                                <a class="edit-button md-icon-button"
+                                   ng-click="vm.viewTimeclockPage(timeclock.id)"
                                    aria-label="Product details" href="">
-								   <md-icon md-font-icon="icon-eye" class="s16"></md-icon>
-								</a>
-								<a href="">
-								   <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
-								</a>
+                                   <md-icon md-font-icon="icon-eye" class="s16"></md-icon>
+                                </a>
+                                <a ng-click="vm.deleteTimeclock(timeclock.id)" href="">
+                                   <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
+                                </a>
 								
                             </td> -->
                         </tr>
@@ -171,8 +175,8 @@
             </div>
             <!-- / CONTENT -->
 			<div class="actions" layout="row" layout-align="start center">
-				<md-button class="md-raised md-accent">Delete</md-button>
-				<md-button class="md-raised md-accent">Add</md-button>
+                <md-button ng-click="vm.deleteAllTimeclock()" class="md-raised md-accent">Delete</md-button>
+                <md-button ng-click="vm.newTimeclockPage()" class="md-raised md-accent">Add</md-button>
 			</div>
 
         </div>

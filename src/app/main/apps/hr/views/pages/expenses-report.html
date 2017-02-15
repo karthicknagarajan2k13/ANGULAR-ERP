@@ -32,24 +32,27 @@
 							<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Employee</label>
-										<input ng-model="user.firstName">
-									</md-input-container>
+                                    <md-select ng-model="vm.search_data.employee_id">
+                                        <md-option ng-repeat="employee in get_employees" value="{{employee.employee_id}}">
+                                            {{employee.name}}
+                                        </md-option>
+                                    </md-select> 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Range - From</label>
-										<md-datepicker ng-model="myDate" md-placeholder="Date Created"></md-datepicker>
+										<md-datepicker ng-model="vm.search_data.from_date" md-placeholder="Date Created"></md-datepicker>
 									</md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Range - To</label>
-										<md-datepicker ng-model="myDate" md-placeholder="Date Created"></md-datepicker>
+										<md-datepicker ng-model="vm.search_data.to_date" md-placeholder="Date Created"></md-datepicker>
 									</md-input-container>
                                 </div>
 								
 								
 								<div class="actions" layout="row" layout-align="start center">
-									<md-button class="md-raised md-accent">Update Filter</md-button>
-									<md-button class="md-raised md-accent">Clear Filter</md-button>
+									<md-button ng-click="vm.searchExpenseData()" class="md-raised md-accent">Update Filter</md-button>
+									<md-button ng-click="vm.searchExpenseDataClear()" class="md-raised md-accent">Clear Filter</md-button>
 									<md-button class="md-raised md-accent">Export to CSV</md-button>
 									<md-button class="md-raised md-accent">Export to PDF</md-button>
 								</div>								
@@ -130,16 +133,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="order in ::vm.orders">
+                        <tr ng-repeat="expense in expenses_data">
                             
-                            <td>{{order.name}}</td>
-                            <td>{{order.phone}}</td>
-							<td>{{order.name}}</td>
+                            <td>{{expense.code}}</td>
+                            <td>{{expense.subject}}</td>
+							<td>{{expense.employee}}</td>
                             
-							<td>{{order.phone}}</td>
-							<td>{{order.country}}</td>
-							<td>{{order.country}}</td>
-                            <td>{{order.date}}</td>
+							<td>{{expense.amount}}</td>
+							<td>{{expense.status}}</td>
+							<td>{{expense.created_at}}</td>
+                            <td>{{expense.created_by}}</td>
                             
                         </tr>
                     </tbody>

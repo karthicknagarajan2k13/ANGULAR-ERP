@@ -4,7 +4,7 @@
     <div class="header md-accent-bg" layout="row" layout-align="space-between">
         <div layout="column" layout-align="space-between">
             <div class="breadcrumb" layout="row" layout-align="start center">
-                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">HR </a>&nbsp; / &nbsp;<a href="">Payroll </a> </span>&nbsp; / &nbsp; Edit
+                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">HR </a> / <a href="">Payroll </a> </span> / New
             </div>
         </div>
     </div>
@@ -22,11 +22,11 @@
 
                 <md-tab-body>
                     <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
-                        <form ng-submit="vm.updatePayroll()" name="newItemForm" novalidate>
+                        <form ng-submit="vm.savePayroll()" name="newItemForm" novalidate>
                             <div layout="column" layout-gt-xs="row" flex>
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Subject</label>
-										<input name="subject" ng-model="vm.payroll.payroll.subject" type="text" required >
+										<input name="subject" ng-model="vm.payroll.subject" type="text" required >
 	                                    <div ng-messages="newItemForm.subject.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Subject field is required</span>
@@ -35,7 +35,7 @@
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Employee</label>
-	                                    <md-select name="employee_id" ng-model="vm.payroll.payroll.employee_id" required>
+	                                    <md-select name="employee_id" ng-model="vm.payroll.employee_id" required>
 	                                        <md-option ng-repeat="employee in get_employees" value="{{employee.employee_id}}">
 	                                            {{employee.name}}
 	                                        </md-option>
@@ -47,7 +47,7 @@
 	                                    </div>									</md-input-container>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Base Pay</label>
-										<input name="base_pay" ng-model="vm.payroll.payroll.base_pay" type="text" required >
+										<input name="base_pay" ng-model="vm.payroll.base_pay" type="text" required >
 	                                    <div ng-messages="newItemForm.base_pay.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Base Pay field is required</span>
@@ -59,7 +59,7 @@
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Allowances</label>
-										<input name="allowances" ng-model="vm.payroll.payroll.allowances" type="text" required >
+										<input name="allowances" ng-model="vm.payroll.allowances" type="text" required >
 	                                    <div ng-messages="newItemForm.allowances.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Allowances field is required</span>
@@ -68,7 +68,7 @@
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Deductions</label>
-										<input name="deductions" ng-model="vm.payroll.payroll.deductions" type="text" required >
+										<input name="deductions" ng-model="vm.payroll.deductions" type="text" required >
 	                                    <div ng-messages="newItemForm.deductions.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Deductions field is required</span>
@@ -76,7 +76,7 @@
 	                                    </div>									</md-input-container>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Expenses</label>
-										<input name="expenses" ng-model="vm.payroll.payroll.expenses" type="text" required >
+										<input name="expenses" ng-model="vm.payroll.expenses" type="text" required >
 	                                    <div ng-messages="newItemForm.expenses.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Expenses field is required</span>
@@ -88,7 +88,7 @@
 
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Tax</label>
-										<input name="tax" ng-model="vm.payroll.payroll.tax" type="text" required >
+										<input name="tax" ng-model="vm.payroll.tax" type="text" required >
 	                                    <div ng-messages="newItemForm.tax.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Tax field is required</span>
@@ -96,7 +96,7 @@
 	                                    </div>									</md-input-container>
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Total</label>
-										<input name="total" ng-model="vm.payroll.payroll.total" type="text" required >
+										<input name="total" ng-model="vm.payroll.total" type="text" required >
 	                                    <div ng-messages="newItemForm.total.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Total field is required</span>
@@ -110,7 +110,7 @@
                                        translate="Save" translate-attr-aria-label="Save">
                                 Save
                             </md-button>
-                            <md-button ng-click="vm.viewPayrollPage(vm.payroll.payroll.id)" class="md-raised md-accent">View</md-button>
+							<md-button ng-click="vm.payrollDataClear()" class="md-raised md-accent">Clear</md-button>
 						</div>
 						</form>
                     </div>

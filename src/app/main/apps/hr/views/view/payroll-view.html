@@ -26,55 +26,55 @@
                             <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Payroll ID</label>
-										<input type="text" value="CUS0001" disabled>
+										<input type="text" value="{{payroll_data.code}}" disabled>
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Subject</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<input type="text" value="{{payroll_data.subject}}" disabled>
 									</md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Employee</label>
-										<input type="text" value="580-269-9087" disabled>
+										<input type="text" value="{{payroll_data.employee}}" disabled>
 									</md-input-container>
                                 </div>
 								<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Base Pay</label>
-                                        <input type="text" value="Lola J Bolden" disabled>
+                                        <input type="text" value="{{payroll_data.base_pay}}" disabled>
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Allowances</label>
-										<input type="text" value="2946 Luke Lane" disabled>
+										<input type="text" value="{{payroll_data.allowances}}" disabled>
 									</md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Deductions</label>
-										<input type="text" value="Kaw City" disabled>
+										<input type="text" value="{{payroll_data.deductions}}" disabled>
 									</md-input-container>
                                 </div>
 								
 								<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Expenses</label>
-                                        <input type="text" value="Lola J Bolden" disabled>
+                                        <input type="text" value="{{payroll_data.expenses}}" disabled>
 									</md-input-container>
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Tax</label>
-                                        <input type="text" value="Lola J Bolden" disabled>
+                                        <input type="text" value="{{payroll_data.tax}}" disabled>
 									</md-input-container>
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Total</label>
-                                        <input type="text" value="Lola J Bolden" disabled>
+                                        <input type="text" value="{{payroll_data.total}}" disabled>
 									</md-input-container>
                                 </div>
 								
                         </form>
 						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Edit</md-button>
-							<md-button class="md-raised md-accent">Delete</md-button>
+							<md-button ng-click="vm.editPayrollPage(payroll_data)" class="md-raised md-accent">Edit</md-button>
+							<md-button ng-click="vm.deletePayroll(payroll_data.id)" class="md-raised md-accent">Delete</md-button>
 						</div>
                     </div>
                 </md-tab-body>
@@ -91,29 +91,33 @@
                             <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Date Created</label>
-										<input type="text" value="22/12/2016" disabled>
+										<input type="text" value="{{payroll_data.created_at}}" disabled>
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Created By</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<input type="text" value="{{payroll_data.created_by}}" disabled>
 									</md-input-container>
 
                                    <md-input-container class="md-block" flex-gt-sm>
 										<label>Date Modified</label>
-										<input type="text" value="12/01/2017" disabled>
+										<input type="text" value="{{payroll_data.updated_at}}" disabled>
 									</md-input-container>
                                 </div>
 								<div layout="row" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex="33">
 										<label>Modified By</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<input type="text" value="{{payroll_data.updated_by}}" disabled>
 									</md-input-container>
 									
                                 </div>
 								
                         </form>
 						
+						<div class="actions" layout="row" layout-align="start center">
+							<md-button ng-click="vm.editPayrollPage(payroll_data)" class="md-raised md-accent">Edit</md-button>
+							<md-button ng-click="vm.deletePayroll(payroll_data.id)" class="md-raised md-accent">Delete</md-button>
+						</div>
                     </div>
                 </md-tab-body>
             </md-tab>
