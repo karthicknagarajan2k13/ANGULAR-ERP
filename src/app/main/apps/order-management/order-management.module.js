@@ -217,12 +217,12 @@
                 bodyClass: 'order-management'
             })
 			
-			.state('app.order-management.invoices-edit', {
-                url      : '/invoices-edit',
+			.state('app.order-management.invoices-new', {
+                url      : '/invoices-new',
                 views    : {
                     'content@app': {
-                        templateUrl: 'app/main/apps/order-management/views/edit/invoices-edit.html',
-                        controller : 'SalesOrderseditController as vm'
+                        templateUrl: 'app/main/apps/order-management/views/new/invoices-new.html',
+                        controller : 'NewSalesOrdersInvoicesController as vm'
                     }
                 },
                 resolve  : {
@@ -233,7 +233,25 @@
                 },
                 bodyClass: 'order-management'
             })
-			
+            .state('app.order-management.invoices-edit', {
+                url      : '/invoices-edit',
+                views    : {
+                    'content@app': {
+                        templateUrl: 'app/main/apps/order-management/views/edit/invoices-edit.html',
+                        controller : 'SalesOrdersInvoiceEditController as vm'
+                    }
+                },
+                params: {
+                 obj: null
+                },
+                resolve  : {
+                    Product: function (msApi)
+                    {
+                        return msApi.resolve('crm.orders@get');
+                    }
+                },
+                bodyClass: 'order-management'
+            })			
 			
 			.state('app.order-management.sales-order-view', {
                 url      : '/sales-order-view',

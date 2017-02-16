@@ -1,0 +1,61 @@
+<div id="e-commerce-product" class="page-layout simple tabbed" layout="column">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="space-between">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">Order Management </a>&nbsp; / &nbsp;<a href="">Sales Order </a> </span>&nbsp; / &nbsp; Edit
+            </div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <md-tabs md-dynamic-height>
+
+            <md-tab>
+                <md-tab-label>
+                    <span>General Info</span>
+                </md-tab-label>
+
+                <md-tab-body>
+                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+                        <form>
+                            <div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>ID</label>
+                                        <input type="text" value="{{sales_order.code}}" disabled>
+                                    </md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Customer</label>
+                                        <md-select ng-model="sales_order.customer_user_id">
+                                            <md-option ng-repeat="customer in get_customers" value="{{customer.customer_id}}">
+                                                {{customer.name}}
+                                            </md-option>
+                                        </md-select>
+									</md-input-container>
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Contact</label>
+                                        <md-select ng-model="sales_order.contact_user_id">
+                                            <md-option ng-repeat="contact in get_contacts" value="{{contact.contact_id}}">
+                                                {{contact.name}}
+                                            </md-option>
+                                        </md-select>
+									</md-input-container>
+                                </div>
+                        </form>
+						<div class="actions" layout="row" layout-align="start center">
+							<md-button ng-click="vm.updateSalesOrder()" class="md-raised md-accent">Save</md-button>
+							<md-button class="md-raised md-accent">Clear</md-button>
+						</div>
+                    </div>
+                </md-tab-body>
+            </md-tab>		
+        </md-tabs>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>

@@ -12,7 +12,7 @@
         var api = {};
 
         // Base Url
-        api.baseUrl = 'https://ror-erp.herokuapp.com/';
+        api.baseUrl = 'http://localhost:8000/';
 
         api.getSalesOrders = function(data) {
            return $http({method:"GET", url: api.baseUrl+"sales_orders.json",params: data}).then(function(result){
@@ -39,6 +39,12 @@
                return result.data;
            });
         };
+        api.editSalesOrderInvoice = function(data) {
+           return $http({method:"GET", url: api.baseUrl+"sales_order_invoices/edit_form.json",params: data}).then(function(result){
+               return result.data;
+           });
+        };
+        
         api.updateSalesOrder = function(id,data) {
            return $http({data: data, method:"PUT", url: api.baseUrl+"sales_orders/"+id+".json"}).then(function(result){
                return result.data;
@@ -84,6 +90,17 @@
                return result.data;
            });
         };
+        api.createSalesOrderInvoice = function(data) {
+           return $http({data: data, method:"POST", url: api.baseUrl+"sales_order_invoices.json"}).then(function(result){
+               return result.data;
+           });
+        };
+        api.get_SalesOrders = function(data) {
+           return $http({method:"GET", url: api.baseUrl+"sales_orders/get_sales_orders.json"}).then(function(result){
+               return result.data;
+           });
+        };
+
 
         return api;
     }
