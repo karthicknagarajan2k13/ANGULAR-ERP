@@ -187,13 +187,7 @@
 									</md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>Photo</label>
-										<input ng-model="employee.employee_attributes.photo" name="photo" type="text" required>
-	                                    <div ng-messages="submitForm.photo.$error" role="alert">
-	                                        <div ng-message="required">
-	                                            <span >Photo field is required</span>
-	                                        </div>
-	                                    </div>
+										<input type = "file" file-model = "myFile"/>
 									</md-input-container>
                                 </div>
 								
@@ -425,3 +419,12 @@
     <!-- / CONTENT -->
 
 </div>
+
+
+<!-- ADD BUTTON -->
+	<div class="add-btn-fixed">
+		<md-button class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
+			<md-icon md-font-icon="icon-plus"></md-icon>
+		</md-button>
+	</div>
+<!-- / ADD BUTTON -->

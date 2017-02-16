@@ -134,12 +134,6 @@
                                     <span class="column-title">Created By </span>
                                 </div>
                             </th>
-							
-                            <!-- <th class="secondary-text">
-                                <div class="">
-                                    <span class="column-title">Action</span>
-                                </div>
-                            </th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -152,22 +146,6 @@
                             <td>{{timeclock.employee}}</td>
                             <td>{{timeclock.created_at}}</td>
                             <td>{{timeclock.created_by}}</td>
-                            <td>
-                                <a class="edit-button md-icon-button"
-                                   ng-click="vm.editTimeclockPage(timeclock)"
-                                   aria-label="Product details" href="">
-                                   <md-icon md-font-icon="icon-pencil" class="s16"></md-icon>
-                                </a>
-                                <a class="edit-button md-icon-button"
-                                   ng-click="vm.viewTimeclockPage(timeclock.id)"
-                                   aria-label="Product details" href="">
-                                   <md-icon md-font-icon="icon-eye" class="s16"></md-icon>
-                                </a>
-                                <a ng-click="vm.deleteTimeclock(timeclock.id)" href="">
-                                   <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
-                                </a>
-								
-                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -180,9 +158,18 @@
 			</div>
 
         </div>
-        <!-- / CONTENT CARD -->
+        <!-- // CONTENT CARD -->
 
     </div>
     <!-- / CENTER -->
 
 </div>
+
+
+<!-- ADD BUTTON -->
+	<div class="add-btn-fixed">
+		<md-button class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
+			<md-icon md-font-icon="icon-plus"></md-icon>
+		</md-button>
+	</div>
+<!-- / ADD BUTTON -->

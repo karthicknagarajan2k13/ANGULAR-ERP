@@ -1,3 +1,5 @@
+
+
 (function ()
 {
     'use strict';
@@ -6,9 +8,14 @@
         .module('app.hr')
         .controller('newTimeclocksController', newTimeclocksController);
 
-    /** @ngInject */
+   
+
+
+
+   /** @ngInject */
     function newTimeclocksController(hrApi, $scope, $document, $state, Product)
     {
+		
 
         var vm = this;
         vm.timeclock = {}

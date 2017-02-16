@@ -11,146 +11,78 @@
     <!-- / HEADER -->
 </div>
 
-<div style="height:auto; min-height:auto; margin-top:20px; margin-bottom: -20px;" class="page-layout carded fullwidth" layout="row">
-    <!-- CENTER -->
-    <div class="center" layout="row" flex>
-        <!-- CONTENT CARD -->
-        <div class="content-card" layout="column" flex>
-			<div style="padding:20px 20px 0px 20px; font-size:18px;">
-				<div layout="column" layout-gt-xs="row">
-				
-					
-					<md-input-container flex>
-						<md-icon md-font-icon="icon-magnify"></md-icon>
-						<label>Search</label>
-						<input ng-model="user.firstName">
-						<md-icon ng-model="collapsed" ng-click="collapsed=!collapsed" md-font-icon="icon-chevron-down"></md-icon>
-					
-						<div style="padding-top:49px;" ng-show="collapsed">
-							<div layout="column" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Employee</label>
-										<input ng-model="user.firstName">
-									</md-input-container>
-									
-									<md-input-container class="md-block" flex-gt-sm>
-										<label>Range - From</label>
-										<md-datepicker ng-model="myDate" md-placeholder="Date Created"></md-datepicker>
-									</md-input-container>
 
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Range - To</label>
-										<md-datepicker ng-model="myDate" md-placeholder="Date Created"></md-datepicker>
-									</md-input-container>
-                                </div>
-								
-								
-								<div class="actions" layout="row" layout-align="start center">
-									<md-button class="md-raised md-accent">Update Filter</md-button>
-									<md-button class="md-raised md-accent">Clear Filter</md-button>
-									<md-button class="md-raised md-accent">Export to CSV</md-button>
-									<md-button class="md-raised md-accent">Export to PDF</md-button>
-								</div>							
-						</div>
-					
-					</md-input-container>
-					
-					
-                </div>
-				
-			</div>
-        </div>
-        <!-- / CONTENT CARD -->
-    </div>
-    <!-- / CENTER -->
-</div>
-
-
-
-<div id="e-commerce-orders" class="page-layout carded fullwidth" layout="row">
+<div id="dashboard-ecommerce" class="page-layout blank" layout="row">
 
     <!-- CENTER -->
-    <div class="center" layout="column" flex>
+    <div class="center" flex ms-scroll>
 
-        <!-- CONTENT CARD -->
-        <div class="content-card" layout="column" flex>
-			
-			<div style="padding:25px; font-size:18px;"> Sales Report </div>
+        <!-- CONTENT -->
+        <div class="content">
 
-            <!-- CONTENT TOOLBAR -->
+          
+            <!-- WIDGET GROUP -->
+            <div class="widget-group" layout="row" flex="100" layout-wrap>
 
-            <!-- / CONTENT TOOLBAR -->
+                <!-- WIDGET 5 -->
+                <ms-widget layout="row" flex="100">
 
-            <!-- CONTENT -->
-            <div class="content fullpage-datatable" layout="column" flex>
+                    <!-- Front -->
+                    <ms-widget-front class="white-bg">
+                        <div class="ph-16 pv-8 border-bottom" layout="row" layout-align="space-between center"
+                             layout-wrap>
+                            <div class="pv-8 h3">{{vm.widget5.title}}</div>
 
-                <table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance"
-                       dt-options="vm.dtOptions">
-                    <thead>
-                        <tr>
-                            <th class="secondary-text">
-                                <div class="table-header">
-                                    <span class="column-title">EXP - ID</span>
-                                </div>
-                            </th>
-                            <th class="secondary-text">
-                                <div class="table-header">
-                                    <span class="column-title">Subject</span>
-                                </div>
-                            </th>
-                            <th class="secondary-text">
-                                <div class="table-header">
-                                    <span class="column-title">Employee</span>
-                                </div>
-                            </th>
-                            
-                            <th class="secondary-text">
-                                <div class="table-header">
-                                    <span class="column-title">Amount</span>
-                                </div>
-                            </th>
-                            <th class="secondary-text">
-                                <div class="table-header">
-                                    <span class="column-title">Status</span>
-                                </div>
-                            </th>
-                            <th class="secondary-text">
-                                <div class="table-header">
-                                    <span class="column-title">Date Created </span>
-                                </div>
-                            </th>
-							<th class="secondary-text">
-                                <div class="table-header">
-                                    <span class="column-title">Created By </span>
-                                </div>
-                            </th>
+                            <div class="pv-8" layout="row" layout-align="start center" layout-align-sm="end"
+                                 flex-sm="100">
+                                <md-button class="ph-16"
+                                           ng-repeat="(key, range) in vm.widget5.ranges"
+                                           ng-click="vm.widget5.changeRange(key)"
+                                           ng-disabled="vm.widget5.currentRange == key">
+                                    {{range}}
+                                </md-button>
+                            </div>
+                        </div>
+
+                        <div class="p-16">
 							
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="order in ::vm.orders">
-                            
-                            <td>{{order.name}}</td>
-                            <td>{{order.phone}}</td>
-							<td>{{order.name}}</td>
-                            
-							<td>{{order.phone}}</td>
-							<td>{{order.country}}</td>
-							<td>{{order.country}}</td>
-                            <td>{{order.date}}</td>
-                            
-                        </tr>
-                    </tbody>
-                </table>
+							<div layout="column" layout-gt-xs="row" flex>
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Filters</label>
+                                        <md-select ng-model="vm.search_data.customer_id">
+                                            <md-option ng-repeat="customer in vm.get_customers" value="{{customer.customer_id}}">
+                                                {{customer.name}}
+                                            </md-option>
+                                        </md-select>
+									</md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<md-datepicker ng-model="vm.search_data.created_at" md-placeholder="Start Date"></md-datepicker>
+									</md-input-container>
+									<md-input-container class="md-block" flex-gt-sm>
+										<md-datepicker ng-model="vm.search_data.created_at" md-placeholder="End Date"></md-datepicker>
+									</md-input-container>
+                                </div>
+							
+                            <nvd3 class="h-420 remove-x-lines"
+                                  config="vm.widget5.mainChart.config"
+                                  options="vm.widget5.mainChart.options"
+                                  data="vm.widget5.mainChart.data">
+							</nvd3>
+                        </div>
+                    </ms-widget-front>
+                    <!-- / Front -->
+
+                </ms-widget>
+                <!-- / WIDGET 5 -->
 
             </div>
-            <!-- / CONTENT -->
-			
+            <!-- / WIDGET GROUP -->
 
         </div>
-        <!-- / CONTENT CARD -->
+        <!-- / CONTENT -->
 
     </div>
     <!-- / CENTER -->
 
 </div>
+

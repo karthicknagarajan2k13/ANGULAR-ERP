@@ -10,6 +10,7 @@
     function customerssController(CustomerDeleteAll, $http, $window, Staff_User, $state, Statuses, Orders, Customers, Customer)
     {
 		
+		
         var vm = this;
         // Data
         vm.customers_data = Customers.query();

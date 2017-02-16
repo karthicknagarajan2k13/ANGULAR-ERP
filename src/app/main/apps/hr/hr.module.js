@@ -3,7 +3,8 @@
     'use strict';
 
     angular
-        .module('app.hr',[
+        .module('app.hr',
+			[
                 // 3rd Party Dependencies
                 'datatables',
                 'flow',
@@ -158,17 +159,13 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/hr/views/pages/sales-report.html',
-                        controller : 'hrController as vm'
+                        controller : 'SalesReportcontroller as vm'
                     }
                 },
                 resolve  : {
-                    Orders  : function (msApi)
+                    Dashboard: function (msApi)
                     {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    },
-                    Statuses: function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
+                        return msApi.resolve('e-commerce.dashboard@get');
                     }
                 },
                 bodyClass: 'hr'
@@ -399,6 +396,7 @@
             })
 
         // Api
+		msApiProvider.register('e-commerce.dashboard', ['app/data/hr/dashboard.json']);
 		msApiProvider.register('order-management.sales-orders', ['app/data/order-management/sales-orders.json']);
 		msApiProvider.register('crm.orders', ['app/data/crm/orders.json']);
         msApiProvider.register('crm.statuses', ['app/data/crm/statuses.json']);

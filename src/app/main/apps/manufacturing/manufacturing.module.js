@@ -143,7 +143,7 @@
 		
         msNavigationServiceProvider.saveItem('apps.manufacturing', {
             title : 'Manufacturing Management',
-            icon  : 'icon-truck',
+            icon  : 'icon-factory',
             weight: 2
         });
 		

@@ -6,6 +6,16 @@ md-icon.top-icon {
     padding-right: 10px;
 }
 
+.add-btn-fixed {
+    position: fixed;
+    right: 0;
+    top: 85%;
+    margin-right: 33px;
+    z-index: 99;
+}
+
+
+
 #e-commerce-orders {
 
     .center {

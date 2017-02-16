@@ -31,6 +31,7 @@
 			'app.hr',
 			'app.warehouse-management',
 			'app.manufacturing',
+			'app.knowledge-base',
 			
 			//pages
 			'app.pages'
