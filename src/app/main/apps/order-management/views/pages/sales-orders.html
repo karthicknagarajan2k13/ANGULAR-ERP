@@ -22,9 +22,9 @@
 				
 					
 					<md-input-container flex>
-						<md-icon md-font-icon="icon-magnify"></md-icon>
+						<md-icon ng-click="vm.searchSalesOrdersData()" md-font-icon="icon-magnify"></md-icon>
 						<label>Search</label>
-						<input ng-model="user.firstName">
+						<input ng-model="vm.search_data.search">
 						<md-icon ng-model="collapsed" ng-click="collapsed=!collapsed" md-font-icon="icon-chevron-down"></md-icon>
 					
 						<div style="padding-top:49px;" ng-show="collapsed">
@@ -169,7 +169,7 @@
                             <td><md-checkbox ng-model="order.checked" aria-label="Checkbox 1">
 								</md-checkbox>
 							</td>
-                            <td>{{order.code}}</td>
+                            <td><a ng-click="vm.salesOrderView(order.id)" href="">{{order.code}}</a></td>
                             <td>{{order.uid}}</td>
                             <td>{{order.name}}</td>
 							<td>{{order.create_timestamp}}</td>

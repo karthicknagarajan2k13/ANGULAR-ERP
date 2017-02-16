@@ -21,9 +21,9 @@
 				<div layout="column" layout-gt-xs="row">
 				
 					<md-input-container flex>
-						<md-icon md-font-icon="icon-magnify"></md-icon>
+						<md-icon ng-click="vm.searchExpenseData()" md-font-icon="icon-magnify"></md-icon>
 						<label>Search</label>
-						<input ng-model="user.firstName">
+						<input ng-model="vm.search_data.search">
 						<md-icon ng-model="collapsed" ng-click="collapsed=!collapsed" md-font-icon="icon-chevron-down"></md-icon>
 					
 						<div style="padding-top:49px;" ng-show="collapsed">
@@ -159,7 +159,7 @@
                             <td><md-checkbox ng-model="expense.checked" aria-label="Checkbox 1">
 								</md-checkbox>
 							</td>
-                            <td>{{expense.code}}</td>
+                            <td><a ng-click="vm.viewExpensePage(expense.id)" href="">{{expense.code}}</a></td>
                             <td>{{expense.subject}}</td>
 							<td>{{expense.employee}}</td>
 							<td>{{expense.amount}}</td>
@@ -190,7 +190,6 @@
             <!-- / CONTENT -->
 			<div class="actions" layout="row" layout-align="start center">
                 <md-button ng-click="vm.deleteAllExpense()" class="md-raised md-accent">Delete</md-button>
-                <md-button ng-click="vm.newExpensePage()" class="md-raised md-accent">Add</md-button>
 			</div>
 
         </div>
@@ -204,7 +203,7 @@
 
 <!-- ADD BUTTON -->
 	<div class="add-btn-fixed">
-		<md-button class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
+		<md-button ng-click="vm.newExpensePage()" class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
 			<md-icon md-font-icon="icon-plus"></md-icon>
 		</md-button>
 	</div>

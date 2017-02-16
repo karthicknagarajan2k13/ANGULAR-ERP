@@ -22,9 +22,9 @@
 				
 					
 					<md-input-container flex>
-						<md-icon md-font-icon="icon-magnify"></md-icon>
+						<md-icon ng-click="vm.searchPayrollData()" md-font-icon="icon-magnify"></md-icon>
 						<label>Search</label>
-						<input ng-model="user.firstName">
+						<input ng-model="vm.search_data.search">
 						<md-icon ng-model="collapsed" ng-click="collapsed=!collapsed" md-font-icon="icon-chevron-down"></md-icon>
 					
 						<div style="padding-top:49px;" ng-show="collapsed">

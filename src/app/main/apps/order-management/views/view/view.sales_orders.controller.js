@@ -36,7 +36,9 @@
             omApi.deleteAllSalesOrder({ids: delete_ids})
             $state.go('app.order-management.sales-orders')
         };
-
+        vm.editSalesOrder = function(id){
+             $state.go('app.order-management.sales-order-edit', {obj:{id: id}});
+        }
         /**
          * File upload success callback
          * Triggers when single upload completed

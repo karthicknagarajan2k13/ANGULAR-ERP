@@ -12,7 +12,7 @@
         var api = {};
 
         // Base Url
-        api.baseUrl = 'http://localhost:8000/';
+        api.baseUrl = 'https://ror-erp.herokuapp.com/';
 
         api.createCustomer = function(data) {
            return $http({data: data, method:"POST", url: api.baseUrl+"customers.json"}).then(function(result){

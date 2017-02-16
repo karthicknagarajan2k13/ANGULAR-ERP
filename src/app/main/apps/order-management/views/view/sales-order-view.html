@@ -4,7 +4,7 @@
     <div class="header md-accent-bg" layout="row" layout-align="space-between">
         <div layout="column" layout-align="space-between">
             <div class="breadcrumb" layout="row" layout-align="start center">
-                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">Order Management </a>&nbsp; / &nbsp;<a href="">Invoice </a> </span>&nbsp; / &nbsp; View
+                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">Order Management </a>&nbsp; / &nbsp;<a href="">Sales Order </a> </span>&nbsp; / &nbsp; View
             </div>
         </div>
     </div>
@@ -115,6 +115,7 @@
                                 </div>
                         </form>
 						<div class="actions" layout="row" layout-align="start center" >
+							<md-button ng-click="vm.editSalesOrder(sales_order_data.id)" class="md-raised md-accent">Edit</md-button>
 							<md-button ng-click="vm.deleteSalesOrder(sales_order_data.id)" class="md-raised md-accent">Delete</md-button>
 						</div>
                     </div>
@@ -336,17 +337,17 @@
 
                                    <md-input-container class="md-block" flex-gt-sm>
 										<label>Acquisition Cost</label>
-										<input type="text" value="" disabled>
+										<input type="text" value="{{sales_order_data.acquisition_cost}}" disabled>
 									</md-input-container>
                                 </div>
 								<div layout="row" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex="33">
 										<label>Profit Share Deductions</label>
-										<input type="text" value="" disabled>
+										<input type="text" value="{{sales_order_data.profit_share_deductions}}" disabled>
 									</md-input-container>
 									<md-input-container class="md-block" flex="33">
 										<label>Net</label>
-										<input type="text" value="" disabled>
+										<input type="text" value="{{sales_order_data.net}}" disabled>
 									</md-input-container>
 									
                                 </div>

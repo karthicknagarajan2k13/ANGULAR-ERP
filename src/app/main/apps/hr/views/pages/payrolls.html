@@ -23,9 +23,9 @@
 				
 					
 					<md-input-container flex>
-						<md-icon md-font-icon="icon-magnify"></md-icon>
+						<md-icon ng-click="vm.searchPayrollData()" md-font-icon="icon-magnify"></md-icon>
 						<label>Search</label>
-						<input ng-model="user.firstName">
+						<input ng-model="vm.search_data.search">
 						<md-icon ng-model="collapsed" ng-click="collapsed=!collapsed" md-font-icon="icon-chevron-down"></md-icon>
 					
 						<div style="padding-top:49px;" ng-show="collapsed">
@@ -152,28 +152,13 @@
                             <td><md-checkbox ng-model="payroll.checked" aria-label="Checkbox 1">
 								</md-checkbox>
 							</td>
-                            <td>{{payroll.code}}</td>
+                            <td><a ng-click="vm.viewPayrollPage(payroll.id)" href="">{{payroll.code}}</a></td>
                             <td>{{payroll.subject}}</td>
 							<td>{{payroll.employee}}</td>
 							<td>{{payroll.total}}</td>
 							<td>{{payroll.created_at}}</td>
                             <td>{{payroll.created_by}}</td>
-                            <td>
-                                <a class="edit-button md-icon-button"
-                                   ng-click="vm.editPayrollPage(payroll)"
-                                   aria-label="Product details" href="">
-                                   <md-icon md-font-icon="icon-pencil" class="s16"></md-icon>
-                                </a>
-                                <a class="edit-button md-icon-button"
-                                   ng-click="vm.viewPayrollPage(payroll.id)"
-                                   aria-label="Product details" href="">
-                                   <md-icon md-font-icon="icon-eye" class="s16"></md-icon>
-                                </a>
-                                <a ng-click="vm.deletePayroll(payroll.id)" href="">
-                                   <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
-                                </a>
-								
-                            </td> 
+
                         </tr>
                     </tbody>
                 </table>
@@ -182,7 +167,6 @@
             <!-- / CONTENT -->
 			<div class="actions" layout="row" layout-align="start center">
                 <md-button ng-click="vm.deleteAllPayroll()" class="md-raised md-accent">Delete</md-button>
-                <md-button ng-click="vm.newPayrollPage()" class="md-raised md-accent">Add</md-button>
 			</div>
 
         </div>
@@ -195,7 +179,7 @@
 
 <!-- ADD BUTTON -->
 	<div class="add-btn-fixed">
-		<md-button class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
+		<md-button ng-click="vm.newPayrollPage()" class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
 			<md-icon md-font-icon="icon-plus"></md-icon>
 		</md-button>
 	</div>

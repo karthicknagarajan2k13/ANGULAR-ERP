@@ -70,7 +70,11 @@
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Supplier Currency</label>
-										<input name="supplier_currency" ng-model="supplier.supplier_attributes.supplier_currency" type="text" required >
+										<md-select name="supplier_currency" ng-model="supplier.supplier_attributes.supplier_currency" type="text" required >
+											<md-option ng-repeat="type in ['USD', 'CAD', 'AUD']" value="{{type}}">
+												{{type}}
+											</md-option>
+										</md-select>
 	                                    <div ng-messages="editSupplierForm.supplier_currency.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Supplier Currency is required</span>

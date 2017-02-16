@@ -24,9 +24,9 @@
 				
 					
 					<md-input-container flex>
-						<md-icon md-font-icon="icon-magnify"></md-icon>
+						<md-icon ng-click="vm.searchNoteData()" md-font-icon="icon-magnify"></md-icon>
 						<label>Search</label>
-						<input ng-model="user.firstName">
+						<input ng-model="vm.search_data.search">
 						<md-icon ng-model="collapsed" ng-click="collapsed=!collapsed" md-font-icon="icon-chevron-down"></md-icon>
 					
 						<div style="padding-top:49px;" ng-show="collapsed">
@@ -134,7 +134,7 @@
                             <td><md-checkbox ng-model="note.checked" aria-label="Checkbox 1">
 								</md-checkbox>
 							</td>
-                            <td>{{note.code}}</td>
+                            <td><a ng-click="vm.viewNotePage(note.id)" href="">{{note.code}}</a></td>
                             <td>{{note.subject}}</td>
                             <td>{{note.customer}}</td>
                             <td>{{note.contact}}</td>
@@ -146,7 +146,6 @@
             <!-- / CONTENT -->
 			<div class="actions" layout="row" layout-align="start center">
 				<md-button ng-click="vm.deleteAllNote()" class="md-raised md-accent">Delete</md-button>
-				<md-button ng-click="vm.newNotePage()" class="md-raised md-accent">Add</md-button>
 			</div>
 
         </div>
@@ -160,7 +159,7 @@
 
 <!-- ADD BUTTON -->
 	<div class="add-btn-fixed">
-		<md-button class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
+		<md-button ng-click="vm.newNotePage()" class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
 			<md-icon md-font-icon="icon-plus"></md-icon>
 		</md-button>
 	</div>

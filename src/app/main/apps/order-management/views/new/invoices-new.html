@@ -117,7 +117,7 @@
 	                                        </div>
 	                                    </div>										</md-input-container>
 
-                                    <md-input-container class="md-block" flex="33">
+                                    <md-input-container class="md-block" flex-gt-sm>
 										<label>Refunded At</label>
                                         <md-datepicker ng-model="vm.invoice.refunded_at" name="refunded_at"  md-placeholder="22/12/2016" required>
                                         </md-datepicker>
@@ -132,7 +132,7 @@
 								<div layout="row" layout-gt-xs="row" flex>
 
 									
-									<md-input-container class="md-block" flex="33">
+									<md-input-container class="md-block" flex-gt-sm>
 										<label>Subtotal </label>
 										<input ng-model="vm.invoice.subtotal" name="subtotal" type="text" required>
 	                                    <div ng-messages="submitForm.subtotal.$error" role="alert">
@@ -140,7 +140,7 @@
 	                                            <span >Subtotal field is required</span>
 	                                        </div>
 	                                    </div>	                                    </md-input-container>
-									<md-input-container class="md-block" flex="33">
+									<md-input-container class="md-block" flex-gt-sm>
 										<label>Tax </label>
 										<input ng-model="vm.invoice.tax" name="tax" type="text" required>
 	                                    <div ng-messages="submitForm.tax.$error" role="alert">

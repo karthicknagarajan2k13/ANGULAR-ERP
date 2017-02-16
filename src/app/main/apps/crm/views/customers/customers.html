@@ -23,7 +23,7 @@
 				
 					
 					<md-input-container flex>
-						<md-icon md-font-icon="icon-magnify"></md-icon>
+						<md-icon ng-click="vm.searchCustomerData()" md-font-icon="icon-magnify"></md-icon>
 						<label>Search</label>
 						<input ng-model="vm.search_data.search">
 						<md-icon ng-model="collapsed" ng-click="collapsed=!collapsed" md-font-icon="icon-chevron-down"></md-icon>
@@ -160,7 +160,7 @@
                             <td><md-checkbox ng-model="customer.checked" aria-label="Checkbox 1">
 								</md-checkbox>
 							</td>
-                            <td>{{customer.name}}</td>
+                            <td><a ng-click="vm.viewCustomerPage(customer.id)" href="">{{customer.name}}</a></td>
                             <td>{{customer.phone}}</td>
                             <td>{{customer.c_type}}</td>
                             <td>{{customer.country}}</td>
@@ -174,7 +174,6 @@
             <!-- / CONTENT -->
 			<div class="actions" layout="row" layout-align="start center">
 				<md-button ng-click="vm.deleteAllCustomer()" class="md-raised md-accent">Delete</md-button>
-				<md-button ng-click="vm.newCustomerPage()" class="md-raised md-accent">Add</md-button>
 			</div>
 			
 			
@@ -189,7 +188,7 @@
 
 <!-- ADD BUTTON -->
 	<div class="add-btn-fixed">
-		<md-button class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
+		<md-button  ng-click="vm.newCustomerPage()" class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
 			<md-icon md-font-icon="icon-plus"></md-icon>
 		</md-button>
 	</div>
