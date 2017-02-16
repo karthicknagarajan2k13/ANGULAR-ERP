@@ -12,7 +12,7 @@
         var api = {};
 
         // Base Url
-        api.baseUrl = 'http://localhost:8000/';
+        api.baseUrl = 'https://ror-erp.herokuapp.com/';
 
         api.createCategory = function(data) {
            return $http({data: data, method:"POST", url: api.baseUrl+"categories.json"}).then(function(result){
