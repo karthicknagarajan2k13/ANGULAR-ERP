@@ -12,7 +12,7 @@
         var api = {};
 
         // Base Url
-        api.baseUrl = 'https://ror-erp.herokuapp.com/';
+        api.baseUrl = 'http://localhost:8000/';
 
         api.getSalesOrders = function(data) {
            return $http({method:"GET", url: api.baseUrl+"sales_orders.json",params: data}).then(function(result){
