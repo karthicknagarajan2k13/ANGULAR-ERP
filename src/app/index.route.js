@@ -11,11 +11,11 @@
     {
         $locationProvider.html5Mode(true);
         
-        AuthProvider.loginPath('https://ror-erp.herokuapp.com/users.json');
-        AuthProvider.registerPath('https://ror-erp.herokuapp.com/auth_users.json');
-        AuthProvider.sendResetPasswordInstructionsPath('https://ror-erp.herokuapp.com/auth_users/password.json');
-        AuthProvider.resetPasswordPath('https://ror-erp.herokuapp.com/auth_users/password.json');
-        AuthProvider.logoutPath('https://ror-erp.herokuapp.com/users/logout');
+        AuthProvider.loginPath('http://localhost:8000/users.json');
+        AuthProvider.registerPath('http://localhost:8000/auth_users.json');
+        AuthProvider.sendResetPasswordInstructionsPath('http://localhost:8000/auth_users/password.json');
+        AuthProvider.resetPasswordPath('http://localhost:8000/auth_users/password.json');
+        AuthProvider.logoutPath('http://localhost:8000/users/logout');
 
         AuthProvider.resetPasswordMethod('PUT');
         AuthProvider.sendResetPasswordInstructionsMethod('POST');

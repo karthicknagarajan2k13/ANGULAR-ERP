@@ -171,6 +171,7 @@
 							<td>{{invoice.customer}}</td>
                             <td>{{invoice.status}}</td>
                             <td>{{invoice.created_at}}</td>
+                            <td><a ng-click="vm.editInvoice(invoice.id)" href="">edit</a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -179,6 +180,8 @@
             <!-- / CONTENT -->
 			<div class="actions" layout="row" layout-align="start center">
 				<md-button ng-click="vm.deleteAllSalesOrderInvoice()" class="md-raised md-accent">Delete</md-button>
+                <md-button ng-click="vm.newSalesOrderInvoice()" class="md-raised md-accent">Add</md-button>
+
 			</div>
 
         </div>

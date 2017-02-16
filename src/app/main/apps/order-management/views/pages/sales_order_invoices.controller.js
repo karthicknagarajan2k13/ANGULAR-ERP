@@ -81,6 +81,13 @@
         vm.salesOrderView = function(id){
             $state.go('app.order-management.invoices-view', {obj:{id: id}}); 
         }
+        vm.newSalesOrderInvoice = function(id){
+            $state.go('app.order-management.invoices-new'); 
+        }
+        vm.editInvoice = function(id){
+            $state.go('app.order-management.invoices-edit', {obj:{id: id}}); 
+        }
+
 
     }
 })();

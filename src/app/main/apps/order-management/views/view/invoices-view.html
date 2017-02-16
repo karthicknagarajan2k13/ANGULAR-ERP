@@ -36,7 +36,7 @@
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Order ID</label>
-										<input type="text" value="{{sales_order_invoice_data.uid}}" disabled>
+										<input type="text" value="{{sales_order_invoice_data.order_code}}" disabled>
 									</md-input-container>
                                 </div>
 								<div layout="column" layout-gt-xs="row" flex>
@@ -336,17 +336,17 @@
 
                                    <md-input-container class="md-block" flex-gt-sm>
 										<label>Acquisition Cost</label>
-										<input type="text" value="" disabled>
+										<input type="text" value="{{sales_order_invoice_data.acquisition_cost}}" disabled>
 									</md-input-container>
                                 </div>
 								<div layout="row" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex="33">
 										<label>Profit Share Deductions</label>
-										<input type="text" value="" disabled>
+										<input type="text" value="{{sales_order_invoice_data.profit_share_deductions}}" disabled>
 									</md-input-container>
 									<md-input-container class="md-block" flex="33">
 										<label>Net</label>
-										<input type="text" value="" disabled>
+										<input type="text" value="{{sales_order_invoice_data.net}}" disabled>
 									</md-input-container>
 									
                                 </div>
@@ -371,19 +371,28 @@
                             <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Date Created</label>
-										<input type="text" value="{{sales_order_invoice_data.create_timestamp}}" disabled>
+										<input type="text" value="{{sales_order_invoice_data.created_at}}" disabled>
 									</md-input-container>
-                                    <md-input-container class="md-block" flex="33">
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Created By</label>
+										<input type="text" value="{{sales_order_invoice_data.created_by}}" disabled>
+									</md-input-container>
+
+                                   <md-input-container class="md-block" flex-gt-sm>
 										<label>Date Modified</label>
-										<input type="text" value="{{sales_order_invoice_data.update_timestamp}}" disabled>
+										<input type="text" value="{{sales_order_invoice_data.updated_at}}" disabled>
 									</md-input-container>
-                                    <md-input-container class="md-block" flex="33">
-									</md-input-container>				
                                 </div>
+								<div layout="row" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex="33">
+										<label>Modified By</label>
+										<input type="text" value="{{sales_order_invoice_data.updated_by}}" disabled>
+									</md-input-container>
+									
+                                </div>
+								
                         </form>
-						<!-- <div class="actions" layout="row" layout-align="start center">
-							<md-button ng-click="vm.deleteSalesOrderInvoice(sales_order_invoice_data.id)" class="md-raised md-accent">Delete</md-button>
-						</div> -->
                     </div>
                 </md-tab-body>
             </md-tab>
