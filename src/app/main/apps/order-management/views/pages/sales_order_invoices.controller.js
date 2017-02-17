@@ -17,7 +17,7 @@
         vm.search_data = {}
         var dataPromise = omApi.getSalesOrderInvoices({});
         dataPromise.then(function(result) { 
-            $scope.sales_order_invoices_data = result; 
+            $scope.sales_order_invoices_data = result;  
         }); 
 
         vm.dtOptions = {

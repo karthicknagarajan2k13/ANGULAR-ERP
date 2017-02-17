@@ -12,9 +12,18 @@
 
         var vm = this;
 
+        var dataPromise = omApi.get_SalesOrders();
+        dataPromise.then(function(result) { 
+            $scope.get_sales_orders = result;
+            console.log("get_sales_orders",$scope.get_sales_orders)
+        });
         var dataPromise = omApi.editSalesOrderInvoice({id:$state.params.obj.id});
         dataPromise.then(function(result) { 
             $scope.invoice = result;
+            $scope.invoice.create_timestamp = new Date($scope.invoice.create_timestamp);
+            $scope.invoice.cancelled_at = new Date($scope.invoice.cancelled_at);
+            $scope.invoice.paid_at = new Date($scope.invoice.paid_at);
+            $scope.invoice.refunded_at = new Date($scope.invoice.refunded_at);
             console.log("invoice",$scope.invoice)
         });
 
@@ -27,10 +36,14 @@
                     console.log("response",$scope.data.message)
                 }else{
                     if( typeof($scope.data.invoice_id) !== "undefined"){
-                        $state.go('app.order-management.sales-order-view', {obj:{id: $scope.data.invoice_id}}); 
+                        $state.go('app.order-management.invoices-view', {obj:{id: $scope.data.invoice_id}}); 
                     }
                 }
             }); 
+        }
+
+        vm.viewInvoiceSalseOrder =function(id){
+            $state.go('app.order-management.invoices-view', {obj:{id: id}}); 
         }
 
 		vm.ssName = "s"

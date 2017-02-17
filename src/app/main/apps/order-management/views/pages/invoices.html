@@ -36,7 +36,7 @@
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Order ID</label>
-										<input ng-model="vm.search_data.uid">
+										<input ng-model="vm.search_data.salse_order_id">
 									</md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
@@ -165,13 +165,12 @@
 								</md-checkbox>
 							</td>
                             <td><a ng-click="vm.salesOrderView(invoice.id)" href="">{{invoice.code}}</a></td>
-                            <td>{{invoice.uid}}</td>
+                            <td>{{invoice.order_code}}</td>
 							<td>{{invoice.create_timestamp}}</td>
 							<td>{{invoice.grand_total}}</td>
 							<td>{{invoice.customer}}</td>
                             <td>{{invoice.status}}</td>
                             <td>{{invoice.created_at}}</td>
-                            <td><a ng-click="vm.editInvoice(invoice.id)" href="">edit</a></td>
                         </tr>
                     </tbody>
                 </table>

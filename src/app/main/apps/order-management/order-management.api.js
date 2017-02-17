@@ -50,6 +50,12 @@
                return result.data;
            });
         };
+        api.updateSalesOrderInvoice = function(id,data) {
+           return $http({data: data, method:"PUT", url: api.baseUrl+"sales_order_invoices/"+id+".json"}).then(function(result){
+               return result.data;
+           });
+        };
+        
         api.getCustomers = function(data) {
            return $http({method:"GET", url: api.baseUrl+"customers/get_customers.json"}).then(function(result){
                return result.data;
@@ -92,6 +98,11 @@
         };
         api.createSalesOrderInvoice = function(data) {
            return $http({data: data, method:"POST", url: api.baseUrl+"sales_order_invoices.json"}).then(function(result){
+               return result.data;
+           });
+        };
+        api.createInvoice = function(data) {
+           return $http({data: data, method:"POST", url: api.baseUrl+"sales_order_invoices/create_invoice.json"}).then(function(result){
                return result.data;
            });
         };

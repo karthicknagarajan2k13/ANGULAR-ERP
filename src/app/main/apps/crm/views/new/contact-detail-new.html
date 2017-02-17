@@ -126,8 +126,6 @@
                                     </md-input-container>
                                 </div>
 								<div layout="row" layout-gt-xs="row" flex>
-
-									
 									<md-input-container class="md-block" flex="33">
 										<label>Department</label>
 										<input type="text" name="department" ng-model="vm.contact.contact_attributes.department" required>
@@ -137,6 +135,8 @@
                                             </div>
                                         </div>
                                     </md-input-container>
+                                </div>
+                                <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block"  flex="33">
                                         <label>Description</label>
                                         <input type="text" name="decription" ng-model="vm.contact.contact_attributes.decription" required>
@@ -147,7 +147,6 @@
                                         </div>
                                     </md-input-container>
                                 </div>
-
                         
 						<div class="actions" layout="row" layout-align="start center">
                             <md-button type="submit" class="md-raised md-accent submit-button" aria-label="Save"
@@ -187,21 +186,21 @@
 									</md-input-container>
                                 </div>
 								<div layout="row" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex-gt-sm>
+                                    <md-input-container class="md-block" flex="33">
 										<label>Primary Address Country</label>
 										<input type="text" ng-model="vm.contact.contact_attributes.primary_country">
 									</md-input-container>
 									
-									<md-input-container class="md-block" flex-gt-sm>
+									<md-input-container class="md-block" flex="33">
 										<label>Primary Address Postal Code</label>
 										<input type="text" ng-model="vm.contact.contact_attributes.primary_postal_code">
 									</md-input-container>
-									<md-input-container class="md-block" flex-gt-sm>
-										<label>Alt Address Street</label>
-										<input type="text" ng-model="vm.contact.contact_attributes.alternative_street">
-									</md-input-container>
                                 </div>
 								<div layout="row" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Alt Address Street</label>
+                                        <input type="text" ng-model="vm.contact.contact_attributes.alternative_street">
+                                    </md-input-container>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Alt Address City</label>
 										<input type="text" ng-model="vm.contact.contact_attributes.alternative_city">
@@ -211,12 +210,12 @@
 										<label>Alt Address State</label>
 										<input type="text" ng-model="vm.contact.contact_attributes.alternative_state">
 									</md-input-container>
-									<md-input-container class="md-block" flex-gt-sm>
-										<label>Alt Address Country</label>
-										<input type="text" ng-model="vm.contact.contact_attributes.alternative_country">
-									</md-input-container>
                                 </div>
 								<div layout="row" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex="33">
+                                        <label>Alt Address Country</label>
+                                        <input type="text" ng-model="vm.contact.contact_attributes.alternative_country">
+                                    </md-input-container>
                                     <md-input-container class="md-block" flex="33">
 										<label>Alt Address Postal Code</label>
 										<input type="text" ng-model="vm.contact.contact_attributes.alternative_postal_code">

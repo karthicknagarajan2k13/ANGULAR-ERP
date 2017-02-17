@@ -117,6 +117,7 @@
 						<div class="actions" layout="row" layout-align="start center" >
 							<md-button ng-click="vm.editSalesOrder(sales_order_data.id)" class="md-raised md-accent">Edit</md-button>
 							<md-button ng-click="vm.deleteSalesOrder(sales_order_data.id)" class="md-raised md-accent">Delete</md-button>
+							<md-button ng-click="vm.createInvoice(sales_order_data.id)" class="md-raised md-accent">Create Invoice</md-button>
 						</div>
                     </div>
                 </md-tab-body>
@@ -156,7 +157,9 @@
 								
                         </form>
 						<div class="actions" layout="row" layout-align="start center">
+							<md-button ng-click="vm.editSalesOrder(sales_order_data.id)" class="md-raised md-accent">Edit</md-button>
 							<md-button ng-click="vm.deleteSalesOrder(sales_order_data.id)" class="md-raised md-accent">Delete</md-button>
+							<md-button ng-click="vm.createInvoice(sales_order_data.id)" class="md-raised md-accent">Create Invoice</md-button>
 						</div>
                     </div>
                 </md-tab-body>
@@ -232,7 +235,9 @@
                         </form>
 						
 						<div class="actions" layout="row" layout-align="start center">
+							<md-button ng-click="vm.editSalesOrder(sales_order_data.id)" class="md-raised md-accent">Edit</md-button>
 							<md-button ng-click="vm.deleteSalesOrder(sales_order_data.id)" class="md-raised md-accent">Delete</md-button>
+							<md-button ng-click="vm.createInvoice(sales_order_data.id)" class="md-raised md-accent">Create Invoice</md-button>
 						</div>
                     </div>
                 </md-tab-body>
@@ -310,9 +315,7 @@
 								</tr>
 							</tfoot>
 						</table>
-						<div class="actions" layout="row" layout-align="start center">
 						</div>
-					</div>
                 </md-tab-body>
             </md-tab>
 			
@@ -355,7 +358,9 @@
                         </form>
 						
 						<div class="actions" layout="row" layout-align="start center">
+							<md-button ng-click="vm.editSalesOrder(sales_order_data.id)" class="md-raised md-accent">Edit</md-button>
 							<md-button ng-click="vm.deleteSalesOrder(sales_order_data.id)" class="md-raised md-accent">Delete</md-button>
+							<md-button ng-click="vm.createInvoice(sales_order_data.id)" class="md-raised md-accent">Create Invoice</md-button>
 						</div>
                     </div>
                 </md-tab-body>
@@ -384,12 +389,111 @@
 								
                         </form>
 						
-						<!-- <div class="actions" layout="row" layout-align="start center">
+						<div class="actions" layout="row" layout-align="start center">
+							<md-button ng-click="vm.editSalesOrder(sales_order_data.id)" class="md-raised md-accent">Edit</md-button>
 							<md-button ng-click="vm.deleteSalesOrder(sales_order_data.id)" class="md-raised md-accent">Delete</md-button>
-						</div> -->
+							<md-button ng-click="vm.createInvoice(sales_order_data.id)" class="md-raised md-accent">Create Invoice</md-button>
+						</div>
                     </div>
                 </md-tab-body>
             </md-tab>
+
+			<md-tab>
+                <md-tab-label>
+                    <span>Invoices</span>
+                </md-tab-label>
+
+                <md-tab-body>
+                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+					
+						<table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance"
+							   dt-options="vm.dtOptions">
+							<thead>
+								<tr>
+									<th class="secondary-text">
+										<div class="">
+											<span class="column-title">#</span>
+										</div>
+									</th>
+									<th class="secondary-text">
+										<div class="table-header">
+											<span class="column-title">Invoice ID</span>
+										</div>
+									</th>
+									<th class="secondary-text">
+										<div class="table-header">
+											<span class="column-title">Subject</span>
+										</div>
+									</th>
+									<th class="secondary-text">
+										<div class="table-header">
+											<span class="column-title">Subtotal</span>
+										</div>
+									</th>
+									<th class="secondary-text">
+										<div class="table-header">
+											<span class="column-title">Tax</span>
+										</div>
+									</th>
+									<th class="secondary-text">
+										<div class="table-header">
+											<span class="column-title">Grand Total</span>
+										</div>
+									</th>
+									<th class="secondary-text">
+										<div class="table-header">
+											<span class="column-title">Date Created</span>
+										</div>
+									</th>
+									<th class="secondary-text">
+										<div class="table-header">
+											<span class="column-title">Created By</span>
+										</div>
+									</th>
+									<th class="secondary-text">
+										<div class="">
+											<span class="column-title">Action</span>
+										</div>
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="invoice in sales_order_data.invoices">
+									<td><md-checkbox ng-model="invoice.checked" aria-label="Checkbox 1">
+										</md-checkbox>
+									</td>
+									<td>{{invoice.code}}</td>
+									<td>{{invoice.name}}</td>
+									<td>{{invoice.subtotal}}</td>
+									<td>{{invoice.tax}}</td>
+									<td>{{invoice.grand_total}}</td>
+									<td>{{invoice.created_at}}</td>
+									<td>{{invoice.created_by}}</td>
+									<td>
+										<a ng-click="vm.editSalesOrderInvoice(invoice.id)" class="edit-button md-icon-button"
+										   aria-label="Product details" href="">
+										   <md-icon md-font-icon="icon-pencil" class="s16"></md-icon>
+										</a>
+										<a ng-click="vm.salesOrderView(invoice.id)" class="edit-button md-icon-button"
+										   aria-label="Product details" href="">
+										   <md-icon md-font-icon="icon-eye" class="s16"></md-icon>
+										</a>
+										<a ng-click="vm.deleteSalesOrderInvoice(invoice.id)" href="">
+										   <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
+										</a>
+										
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="actions" layout="row" layout-align="start center">
+							<md-button ng-click="vm.deleteAllSalesOrderInvoice()" class="md-raised md-accent">Delete</md-button>
+						</div>
+					</div>
+                </md-tab-body>
+            </md-tab>
+
+
         </md-tabs>
 
     </div>

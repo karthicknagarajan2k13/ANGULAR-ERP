@@ -39,6 +39,48 @@
         vm.editSalesOrder = function(id){
              $state.go('app.order-management.sales-order-edit', {obj:{id: id}});
         }
+        vm.createInvoice = function (id) {
+            var dataPromise = omApi.createInvoice({id:id});
+            dataPromise.then(function(result) { 
+                $scope.data = result; 
+                if( typeof($scope.data.message) !== "undefined"){
+                    console.log("response",$scope.data.message)
+                }else{
+                    if( typeof($scope.data.invoice_id) !== "undefined"){
+                        $state.go('app.order-management.invoices-edit', {obj:{id: $scope.data.invoice_id}}); 
+                    }
+                }
+            }); 
+        };
+
+
+
+
+        vm.deleteSalesOrderInvoice = function (id) {
+            var delete_ids = JSON.stringify([id])
+            omApi.deleteAllSalesOrderInvoice({ids: delete_ids})
+            $state.go('app.order-management.invoices')
+        };
+        vm.editSalesOrderInvoice = function(id){
+             $state.go('app.order-management.invoices-edit', {obj:{id: id}});
+        }
+        vm.deleteAllSalesOrderInvoice = function () {
+            var delete_ids = [];
+            angular.forEach($scope.sales_order_data.invoices, function (checked) {
+                if (checked.checked) {
+                    delete_ids.push(checked.id);
+                }
+            });
+            if (delete_ids.length >= 1){
+                delete_ids = JSON.stringify(delete_ids)
+                omApi.deleteAllSalesOrderInvoice({ids: delete_ids})
+                $window.location.reload();
+            }
+        };
+        vm.salesOrderView = function(id){
+            $state.go('app.order-management.invoices-view', {obj:{id: id}}); 
+        }
+
         /**
          * File upload success callback
          * Triggers when single upload completed

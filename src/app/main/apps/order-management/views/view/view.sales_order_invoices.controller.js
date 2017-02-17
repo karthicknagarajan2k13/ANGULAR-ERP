@@ -32,9 +32,11 @@
             omApi.deleteAllSalesOrderInvoice({ids: delete_ids})
             $state.go('app.order-management.invoices')
         };
+        vm.editSalesOrderInvoice = function(id){
+             $state.go('app.order-management.invoices-edit', {obj:{id: id}});
+        }
 
-
-		vm.ssName = "s"
+    	vm.ssName = "s"
 	    vm.orders = Product.data;
 
        
