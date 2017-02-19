@@ -46,7 +46,7 @@
 								
 								<div ng-repeat="account in accounts.accounts" ng-show="account.title=='Amazon'" layout="row" layout-xs="column">
 								  <div flex layout="row" layout-align="start center">
-									<h2>Amazon </h2>
+									<h2>Amazon {{account.id}}</h2>
 								  </div>
 								  <div flex layout="row" layout-align="end center">
 									<md-button ng-hide="account.is_connected" ng-click="vm.amazonAccountConnect(account.id)" class="md-raised md-accent">Connect</md-button>
@@ -56,10 +56,11 @@
 								
 								<div ng-repeat="account in accounts.accounts" ng-show="account.title=='Shopify'" layout="row" layout-xs="column">
 								  <div flex layout="row" layout-align="start center">
-									<h2>Shopify </h2>
+									<h2>Shopify {{account.id}}</h2>
 								  </div>
 								  <div flex layout="row" layout-align="end center">
-									<md-button class="md-raised md-accent">Connect</md-button>
+									<md-button ng-hide="account.is_connected" ng-click="vm.shopifyAccountConnect(account.id)" class="md-raised md-accent">Connect</md-button>
+								  	<md-button ng-show="account.is_connected" ng-click="vm.accountDisConnect(account.id)" class="md-raised md-accent">Disconnect</md-button>
 								  </div>
 								</div>
 								

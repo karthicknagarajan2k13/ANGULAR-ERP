@@ -114,8 +114,11 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/order-management/views/pages/shopify.html',
-                        controller : 'SalesOrdersController as vm'
+                        controller : 'ShopifyConnectedAccountsController as vm'
                     }
+                },
+                params: {
+                 obj: null
                 },
                 resolve  : {
                     Orders  : function (msApi)

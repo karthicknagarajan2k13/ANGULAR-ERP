@@ -4,35 +4,24 @@
 
     angular
         .module('app.order-management')
-        .controller('ConnectedAccountsController', ConnectedAccountsController);
+        .controller('ShopifyConnectedAccountsController', ShopifyConnectedAccountsController);
 
     /** @ngInject */
-    function ConnectedAccountsController($window, omApi, $scope, $state, Statuses, Orders)
+    function ShopifyConnectedAccountsController($window, omApi, $scope, $state, Statuses, Orders)
     {
 
         var vm = this;
+        vm.data = {}
+        vm.data.id = $state.params.obj.id
 
-        var dataPromise = omApi.getAccounts();
-        dataPromise.then(function(result) { 
-            $scope.accounts = result; 
-            console.log("$scope.accounts",$scope.accounts)
-        });
-
-        vm.amazonAccountConnect =function(id){
-            $state.go('app.order-management.amazon',{obj:{id: id}}); 
+        vm.cancel =function(){
+            $state.go('app.order-management.acc'); 
         }
-        vm.shopifyAccountConnect =function(id){
-            $state.go('app.order-management.shopify',{obj:{id: id}}); 
-        }
-       
-        vm.accountDisConnect =function(id){
-            var dataPromise = omApi.desconnectAccounts({id:id});
+        vm.connect =function(){
+            var dataPromise = omApi.connectAccount(vm.data);
             dataPromise.then(function(result) {
-                var dataPromise = omApi.getAccounts();
-                dataPromise.then(function(result) { 
-                    $scope.accounts = result; 
-                    console.log("$scope.accounts",$scope.accounts)
-                });
+                console.log("url",result.url)
+                $window.location = result.url;              
             }); 
         }
 

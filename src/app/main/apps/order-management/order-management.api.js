@@ -96,6 +96,12 @@
                return result.data;
            });
         };
+        api.connectAccount = function(data) {
+           return $http({method:"POST", url: api.baseUrl+"/integration/4/connect",data: data}).then(function(result){
+               return result.data;
+           });
+        };
+
         api.createSalesOrderInvoice = function(data) {
            return $http({data: data, method:"POST", url: api.baseUrl+"sales_order_invoices.json"}).then(function(result){
                return result.data;
