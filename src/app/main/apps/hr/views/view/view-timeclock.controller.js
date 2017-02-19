@@ -27,7 +27,9 @@
             hrApi.deleteAllTimeclock({ids: delete_ids})
             $state.go('app.hr.timeclock'); 
         }
-
+        vm.newTimeclockPage = function(){
+            $state.go('app.hr.timeclock-new'); 
+        }
 		vm.ssName = "s"
 	    vm.orders = Product.data;
 

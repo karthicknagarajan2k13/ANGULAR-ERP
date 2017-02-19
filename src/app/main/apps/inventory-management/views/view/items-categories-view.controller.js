@@ -41,15 +41,20 @@
         }
         vm.deleteAllItem = function () {
             var delete_ids = [];
-            angular.forEach($scope.items_data, function (checked) {
+            angular.forEach($scope.category_data.items, function (checked) {
                 if (checked.checked) {
                     delete_ids.push(checked.id);
                 }
             });
             if (delete_ids.length >= 1){
                 delete_ids = JSON.stringify(delete_ids)
-                imApi.deleteAllItem({ids: delete_ids})
-                $window.location.reload();
+                var dataPromise = imApi.deleteAllItem({ids: delete_ids})
+                dataPromise.then(function(result) { 
+                    var dataPromise = imApi.viewCategory($state.params.obj.id);
+                    dataPromise.then(function(result) { 
+                        $scope.category_data = result; 
+                    }); 
+                });
             }
         };
         vm.deleteItem = function (id) {
@@ -57,6 +62,9 @@
             imApi.deleteAllItem({ids: delete_ids})
             $window.location.reload();
         };
+        vm.newItemCategoryPage = function(){
+            $state.go('app.inventory-management.item-categories-new'); 
+        }
         /**
          * File upload success callback
          * Triggers when single upload completed

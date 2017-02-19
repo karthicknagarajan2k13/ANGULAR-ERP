@@ -39,6 +39,9 @@
         vm.viewExpensePage =function(id){
             $state.go('app.hr.expenses-view', {obj:{id: id}}); 
         }
+        vm.newExpensePage = function(){
+            $state.go('app.hr.expenses-new'); 
+        }
         /**
          * File upload success callback
          * Triggers when single upload completed

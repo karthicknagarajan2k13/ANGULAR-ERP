@@ -40,7 +40,9 @@
         vm.itemDataClear = function(){
             vm.item = {}
         }
-
+        vm.newItemPage = function(){
+            $state.go('app.inventory-management.items-new'); 
+        }
 
         /**
          * File upload success callback

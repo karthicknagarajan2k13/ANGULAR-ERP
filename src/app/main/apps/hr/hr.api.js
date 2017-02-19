@@ -15,7 +15,10 @@
         api.baseUrl = 'https://ror-erp.herokuapp.com/';
 
         api.createEmployee = function(data) {
-           return $http({data: data, method:"POST", url: api.baseUrl+"employees.json"}).then(function(result){
+           var fd = new FormData();
+           fd.append('file', data.employee.employee_attributes.photo);
+           fd.append('employee', angular.toJson(data));
+           return $http({headers: {'Content-Type': undefined}, transformRequest: angular.identity,data: fd, method:"POST", url: api.baseUrl+"employees.json"}).then(function(result){
                return result.data;
            });
         };
@@ -40,7 +43,10 @@
            });
         };
         api.updateEmployee = function(id,data) {
-           return $http({data: data, method:"PUT", url: api.baseUrl+"employees/"+id+".json"}).then(function(result){
+           var fd = new FormData();
+           fd.append('file', data.employee_attributes.photo);
+           fd.append('employee', angular.toJson(data));
+           return $http({transformRequest: angular.identity, headers: {'Content-Type': undefined},data: fd, method:"PUT", url: api.baseUrl+"employees/"+id+".json"}).then(function(result){
                return result.data;
            });
         };
@@ -157,7 +163,16 @@
                return result.data;
            });
         };
-        
+
+        api.uploadEmployeePhoto = function(employee,file) {
+           var fd = new FormData();
+           fd.append('file', file);
+           fd.append('employee', angular.toJson(employee));
+           return $http({headers: {'Content-Type': undefined}, transformRequest: angular.identity,data: fd, method:"POST", url: api.baseUrl+"employees/upload_photo.json"}).then(function(result){
+               return result.data;
+           });
+        };
+
         // api.get_categories = function() {
         //    return $http({method:"GET", url: api.baseUrl+"categories/get_categories.json"}).then(function(result){
         //        return result.data;

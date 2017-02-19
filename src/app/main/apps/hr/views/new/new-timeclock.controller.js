@@ -44,7 +44,9 @@
         vm.timeclockDataClear = function(){
             vm.timeclock = {}
         }
-
+        vm.newTimeclockPage = function(){
+            $state.go('app.hr.timeclock-new'); 
+        }
 
         /**
          * File upload success callback

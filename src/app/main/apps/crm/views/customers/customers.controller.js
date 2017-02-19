@@ -7,13 +7,17 @@
         .controller('customerssController', customerssController);
 
     /** @ngInject */
-    function customerssController(CustomerDeleteAll, $http, $window, Staff_User, $state, Statuses, Orders, Customers, Customer)
+    function customerssController(crmApi, $http, $window, Staff_User, $state, Statuses, Orders, Customer)
     {
 		
 		
         var vm = this;
         // Data
-        vm.customers_data = Customers.query();
+        var dataPromise = crmApi.getCustomers({});
+        dataPromise.then(function(result) { 
+            vm.customers_data = result;
+        });
+
         vm.search_data = {};
         vm.search_data.c_type1 = []
         vm.orders = Orders.data;
@@ -67,8 +71,10 @@
         }
         vm.searchCustomerData = function(){
             vm.search_data.c_type =  JSON.stringify(vm.search_data.c_type1)
-            console.log("vm.search_data",vm.search_data)
-            vm.customers_data = Customers.query(vm.search_data);
+            var dataPromise = crmApi.getCustomers(vm.search_data);
+            dataPromise.then(function(result) { 
+                vm.customers_data = result;
+            });
             vm.search_data.c_type = ''
         }	
         vm.searchCustomerDataClear = function(){
@@ -87,8 +93,13 @@
             });
             if (delete_ids.length >= 1){
                 delete_ids = JSON.stringify(delete_ids)
-                CustomerDeleteAll.delete_all({ids: delete_ids})
-                $window.location.reload();
+                var dataPromise = crmApi.deleteAllCustomer({ids: delete_ids})
+                dataPromise.then(function(result) { 
+                    var dataPromise = crmApi.getCustomers({});
+                    dataPromise.then(function(result) { 
+                        vm.customers_data = result;
+                    }); 
+                });
             }
         };
 

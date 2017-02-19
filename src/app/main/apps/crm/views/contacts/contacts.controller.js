@@ -7,13 +7,17 @@
         .controller('contactsController', contactsController);
 
     /** @ngInject */
-    function contactsController(User, $rootScope, $window, ContactDeleteAll, $state, Statuses, Orders, Contacts, Contact)
+    function contactsController(crmApi, User, $rootScope, $window, $state, Statuses, Orders, Contact)
     {
 		
         var vm = this;
 
         // Data
-        vm.contacts_data = Contacts.query();
+        var dataPromise = crmApi.getContacts({});
+        dataPromise.then(function(result) { 
+            vm.contacts_data = result;
+        });
+
         vm.search_data = {};
         vm.orders = Orders.data;
         vm.statuses = Statuses.data;
@@ -66,7 +70,10 @@
             $state.go('app.crm.contact-detail-new'); 
         }
         vm.searchContactData = function(){
-            vm.contacts_data = Contacts.query(vm.search_data);
+            var dataPromise = crmApi.getContacts(vm.search_data);
+            dataPromise.then(function(result) { 
+                vm.contacts_data = result;
+            });
         }   
         vm.searchContactDataClear = function(){
             vm.search_data = {}
@@ -75,7 +82,7 @@
             Contact.delete({id:id});
             $window.location.reload();
         }
-        vm.deleteAllCustomer = function () {
+        vm.deleteAllContact = function () {
             var delete_ids = [];
             angular.forEach(vm.contacts_data, function (checked) {
                 if (checked.checked) {
@@ -84,8 +91,13 @@
             });
             if (delete_ids.length >= 1){
                 delete_ids = JSON.stringify(delete_ids)
-                ContactDeleteAll.delete_all({ids: delete_ids})
-                $window.location.reload();
+                var dataPromise = crmApi.deleteAllContact({ids: delete_ids})
+                dataPromise.then(function(result) { 
+                    var dataPromise = crmApi.getContacts({});
+                    dataPromise.then(function(result) { 
+                        vm.contacts_data = result;
+                    }); 
+                });
             }
         };	
     }

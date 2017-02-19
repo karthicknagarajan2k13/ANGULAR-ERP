@@ -7,7 +7,7 @@
         .controller('NewNoteController', NewNoteController);
 
     /** @ngInject */
-    function NewNoteController(crmApi, $scope, $window, $document, $state, Notes, User, Contact_User)
+    function NewNoteController(crmApi, $scope, $window, $document, $state, User, Contact_User)
     {
         var vm = this;
         vm.note = {}
@@ -30,6 +30,9 @@
         }
         vm.noteDataClear = function(){
             vm.note = {}
+        }
+        vm.newNotePage = function(){
+            $state.go('app.crm.note-detail-new'); 
         }
     }
 

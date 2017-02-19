@@ -53,7 +53,9 @@
             var response = Note.delete({id:id})
             $state.go('app.crm.notes');
         }
-
+        vm.newNotePage = function(){
+            $state.go('app.crm.note-detail-new'); 
+        }
 
     }
 })();

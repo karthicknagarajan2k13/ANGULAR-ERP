@@ -33,7 +33,9 @@
         vm.viewCustomerPage = function(id){
             $state.go('app.crm.customer-detail-view', {obj:{id: id}}); 
         }
-
+        vm.newCustomerPage = function(){
+            $state.go('app.crm.customer-detail-new'); 
+        }
     }
 
 })();

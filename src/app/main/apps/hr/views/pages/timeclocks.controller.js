@@ -81,8 +81,13 @@
             });
             if (delete_ids.length >= 1){
                 delete_ids = JSON.stringify(delete_ids)
-                hrApi.deleteAllTimeclock({ids: delete_ids})
-                $window.location.reload();
+                var dataPromise = hrApi.deleteAllTimeclock({ids: delete_ids})
+                dataPromise.then(function(result) { 
+                    var dataPromise = hrApi.getTimeclocks({});
+                    dataPromise.then(function(result) { 
+                        $scope.timeclocks_data = result;
+                    }); 
+                });
             }
         };
         vm.deleteTimeclock = function (id) {

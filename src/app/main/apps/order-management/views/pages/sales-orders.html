@@ -22,9 +22,9 @@
 				
 					
 					<md-input-container flex>
-						<md-icon ng-click="vm.searchSalesOrdersData()" md-font-icon="icon-magnify"></md-icon>
+						<md-icon md-font-icon="icon-magnify"></md-icon>
 						<label>Search</label>
-						<input ng-model="vm.search_data.search">
+                        <input ng-keyup="$event.keyCode == 13 && vm.searchSalesOrdersData()" ng-model="vm.search_data.search_text">
 						<md-icon ng-model="collapsed" ng-click="collapsed=!collapsed" md-font-icon="icon-chevron-down"></md-icon>
 					
 						<div style="padding-top:49px;" ng-show="collapsed">
@@ -195,12 +195,3 @@
     <!-- / CENTER -->
 
 </div>
-
-
-<!-- ADD BUTTON -->
-	<div class="add-btn-fixed">
-		<md-button class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
-			<md-icon md-font-icon="icon-plus"></md-icon>
-		</md-button>
-	</div>
-<!-- / ADD BUTTON -->

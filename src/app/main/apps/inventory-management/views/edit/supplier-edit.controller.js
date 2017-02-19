@@ -37,6 +37,9 @@
         vm.viewSupplierPage =function(id){
             $state.go('app.inventory-management.suppliers-view', {obj:{id: id}}); 
         }
+        vm.newSupplierPage = function(){
+            $state.go('app.inventory-management.suppliers-new'); 
+        }
         /**
          * File upload success callback
          * Triggers when single upload completed

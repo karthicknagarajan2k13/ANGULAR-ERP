@@ -41,6 +41,9 @@
         vm.viewPurchaseOrderPage =function(id){
             $state.go('app.inventory-management.purchase-orders-view', {obj:{id: id}}); 
         }
+        vm.newPurchaseOrderPage = function(){
+            $state.go('app.inventory-management.purchase-orders-new'); 
+        }
         /**
          * File upload success callback
          * Triggers when single upload completed

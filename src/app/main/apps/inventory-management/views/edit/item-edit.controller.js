@@ -43,6 +43,9 @@
         vm.viewItemPage =function(id){
             $state.go('app.inventory-management.items-view', {obj:{id: id}}); 
         }
+        vm.newItemPage = function(){
+            $state.go('app.inventory-management.items-new'); 
+        }
         /**
          * File upload success callback
          * Triggers when single upload completed

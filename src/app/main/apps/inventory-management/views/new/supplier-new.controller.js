@@ -32,7 +32,9 @@
         vm.supplierDataClear = function(){
             vm.supplier = {}
         }
-
+        vm.newSupplierPage = function(){
+            $state.go('app.inventory-management.suppliers-new'); 
+        }
 
         /**
          * File upload success callback

@@ -7,7 +7,7 @@
         .controller('NewContactController', NewContactController);
 
     /** @ngInject */
-    function NewContactController(crmApi, $scope, $window, $document, $state, Contacts, User)
+    function NewContactController(crmApi, $scope, $window, $document, $state, User)
     {
         var vm = this;
         vm.contact = {}
@@ -30,6 +30,10 @@
         }
         vm.contactDataClear = function(){
             vm.contact = {}
+        }
+        vm.newContactPage = function(){
+            console.log("===state")
+            $state.go('app.crm.contact-detail-new'); 
         }
     }
 

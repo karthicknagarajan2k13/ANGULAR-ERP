@@ -18,6 +18,9 @@
         var dataPromise = hrApi.editEmployee({id:$state.params.obj.id});
         dataPromise.then(function(result) { 
             $scope.employee = result;
+            $scope.employee.employee_attributes.date_of_birth = new Date($scope.employee.employee_attributes.date_of_birth);
+
+
         });
 
         $scope.updateEmployee = function(){
@@ -35,6 +38,9 @@
         }
         $scope.viewEmployeePage =function(id){
             $state.go('app.hr.employees-view', {obj:{id: id}}); 
+        }
+        vm.newEmployeePage = function(){
+            $state.go('app.hr.employees-new'); 
         }
         /**
          * File upload success callback

@@ -187,7 +187,12 @@
 									</md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
-										<input type = "file" file-model = "myFile"/>
+										<input name="photo" type = "file" file-model="vm.employee.employee_attributes.photo" accept="image/*" required />
+	                                    <div ng-messages="submitForm.photo.$error" role="alert">
+	                                        <div ng-message="required">
+	                                            <span >Phone Home field is required</span>
+	                                        </div>
+	                                    </div>
 									</md-input-container>
                                 </div>
 								
@@ -423,7 +428,7 @@
 
 <!-- ADD BUTTON -->
 	<div class="add-btn-fixed">
-		<md-button class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
+		<md-button ng-click="vm.newEmployeePage()" class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
 			<md-icon md-font-icon="icon-plus"></md-icon>
 		</md-button>
 	</div>

@@ -4,33 +4,9 @@
 
     angular.module('app.crm')
 
-    .factory('Customers', ['$resource',function($resource){
-      return $resource('https://ror-erp.herokuapp.com/customers.json', {},{
-        query: { method: 'GET', isArray: true}
-      })
-    }])
-
-    .factory('CustomerDeleteAll', ['$resource',function($resource){
-      return $resource('https://ror-erp.herokuapp.com/customers/delete_all.json', {},{
-        delete_all: { method: 'GET', isArray: true},
-      })
-    }])
-
-    .factory('ContactDeleteAll', ['$resource',function($resource){
-      return $resource('https://ror-erp.herokuapp.com/contacts/delete_all.json', {},{
-        delete_all: { method: 'GET', isArray: true},
-      })
-    }])
-
-    .factory('NoteDeleteAll', ['$resource',function($resource){
-      return $resource('https://ror-erp.herokuapp.com/notes/delete_all.json', {},{
-        delete_all: { method: 'GET', isArray: true},
-      })
-    }])
 
     .factory('Customer', ['$resource', function($resource){
       return $resource('https://ror-erp.herokuapp.com/customers/:id.json', {}, {
-        show: { method: 'GET' },
         delete: { method: 'DELETE', params: {id: '@id'} }
       });
     }])
@@ -53,15 +29,8 @@
       })
     }])
 
-    .factory('Contacts', ['$resource',function($resource){
-      return $resource('https://ror-erp.herokuapp.com/contacts.json', {},{
-        query: { method: 'GET', isArray: true}
-      })
-    }])
-
     .factory('Contact', ['$resource', function($resource){
       return $resource('https://ror-erp.herokuapp.com/contacts/:id.json', {}, {
-        show: { method: 'GET' },
         delete: { method: 'DELETE', params: {id: '@id'} }
       });
     }])
@@ -70,12 +39,6 @@
       return $resource('https://ror-erp.herokuapp.com/contacts/edit_form.json', {}, {
         edit_form: { method: 'GET', params: {id: '@contact_id'} },
       });
-    }])
-
-    .factory('Notes', ['$resource',function($resource){
-      return $resource('https://ror-erp.herokuapp.com/notes.json', {},{
-        query: { method: 'GET', isArray: true},
-      })
     }])
 
     .factory('Note', ['$resource', function($resource){

@@ -81,8 +81,13 @@
             });
             if (delete_ids.length >= 1){
                 delete_ids = JSON.stringify(delete_ids)
-                hrApi.deleteAllExpense({ids: delete_ids})
-                $window.location.reload();
+                var dataPromise = hrApi.deleteAllExpense({ids: delete_ids})
+                dataPromise.then(function(result) { 
+                    var dataPromise = hrApi.getExpenses({});
+                    dataPromise.then(function(result) { 
+                        $scope.expenses_data = result;
+                    }); 
+                });
             }
         };
         vm.deleteExpense = function (id) {

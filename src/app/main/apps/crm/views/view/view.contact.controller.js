@@ -7,14 +7,15 @@
         .controller('ViewContactController', ViewContactController);
 
     /** @ngInject */
-    function ViewContactController($document, $state, Product, Contact)
+    function ViewContactController(crmApi, $document, $state, Product)
     {
         var vm = this;
 		
 		vm.ssName = "s"
-	    vm.contact_data = Contact.get({id:$state.params.obj.id});
-        console.log(vm.contact_data)
-
+        var dataPromise = crmApi.viewContact($state.params.obj.id);
+        dataPromise.then(function(result) { 
+            vm.contact_data = result;
+        }); 
        
         /**
          * File upload success callback
@@ -68,17 +69,25 @@
         }
         vm.deleteAllNote = function () {
             var delete_ids = [];
-            angular.forEach(vm.notes_data, function (checked) {
+            angular.forEach(vm.contact_data.notes, function (checked) {
                 if (checked.checked) {
                     delete_ids.push(checked.id);
                 }
             });
             if (delete_ids.length >= 1){
                 delete_ids = JSON.stringify(delete_ids)
-                NoteDeleteAll.delete_all({ids: delete_ids})
-                $window.location.reload();
+                var dataPromise = crmApi.deleteAllNote({ids: delete_ids})
+                dataPromise.then(function(result) { 
+                    var dataPromise = crmApi.viewContact($state.params.obj.id);
+                    dataPromise.then(function(result) { 
+                        vm.contact_data = result;
+                    }); 
+                });
             }
         };
-
+        vm.newContactPage = function(){
+            console.log("===state")
+            $state.go('app.crm.contact-detail-new'); 
+        }
     }
 })();

@@ -28,7 +28,9 @@
         }
 		vm.ssName = "s"
 	    vm.orders = Product.data;
-
+        vm.newPurchaseOrderPage = function(){
+            $state.go('app.inventory-management.purchase-orders-new'); 
+        }
        
         /**
          * File upload success callback

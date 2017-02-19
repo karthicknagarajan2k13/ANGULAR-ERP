@@ -185,181 +185,7 @@
                     </div>
                 </md-tab-body>
             </md-tab>
-			
-			
-			<md-tab>
-                <md-tab-label>
-                    <span>Sales Orders</span>
-                </md-tab-label>
 
-                <md-tab-body>
-                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
-					
-						<table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance"
-							   dt-options="vm.dtOptions">
-							<thead>
-								<tr>
-									<th class="secondary-text">
-										<div class="">
-											<span class="column-title">#</span>
-										</div>
-									</th>
-									<th class="secondary-text">
-										<div class="table-header">
-											<span class="column-title">Order Id</span>
-										</div>
-									</th>
-									<th class="secondary-text">
-										<div class="table-header">
-											<span class="column-title">Order Name</span>
-										</div>
-									</th>
-									<th class="secondary-text">
-										<div class="table-header">
-											<span class="column-title">Customer</span>
-										</div>
-									</th>
-									<th class="secondary-text">
-										<div class="table-header">
-											<span class="column-title">Contact</span>
-										</div>
-									</th>
-									<th class="secondary-text">
-										<div class="table-header">
-											<span class="column-title">Date Created</span>
-										</div>
-									</th>
-									<th class="secondary-text">
-										<div class="table-header">
-											<span class="column-title">Created By</span>
-										</div>
-									</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr ng-repeat="order in ::vm.orders">
-									<td><md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
-										</md-checkbox>
-									</td>
-									<td>{{order.name}}</td>
-									<td>{{order.phone}}</td>
-									<td>{{order.type}}</td>
-									<td>{{order.country}}</td>
-									<td>{{order.date}}</td>
-									<td>{{order.date}}</td>
-								</tr>
-							</tbody>
-						</table>
-						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Delete</md-button>
-							<md-button class="md-raised md-accent">Add</md-button>
-						</div>
-					</div>
-                </md-tab-body>
-            </md-tab>
-			
-			<md-tab>
-                <md-tab-label>
-                    <span>Suppliers</span>
-                </md-tab-label>
-
-                <md-tab-body>
-                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
-					
-						<table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance"
-							   dt-options="vm.dtOptions">
-							<thead>
-								<tr>
-									<th class="secondary-text">
-										<div class="">
-											<span class="column-title">#</span>
-										</div>
-									</th>
-									<th class="secondary-text">
-										<div class="table-header">
-											<span class="column-title">Supplier ID</span>
-										</div>
-									</th>
-									<th class="secondary-text">
-										<div class="table-header">
-											<span class="column-title">Supplier Name</span>
-										</div>
-									</th>
-									<th class="secondary-text">
-										<div class="table-header">
-											<span class="column-title">Phone</span>
-										</div>
-									</th>
-									<th class="secondary-text">
-										<div class="table-header">
-											<span class="column-title">Email</span>
-										</div>
-									</th>
-									<th class="secondary-text">
-										<div class="table-header">
-											<span class="column-title">Country</span>
-										</div>
-									</th>
-									<th class="secondary-text">
-										<div class="table-header">
-											<span class="column-title">Date Created</span>
-										</div>
-									</th>
-									<th class="secondary-text">
-										<div class="table-header">
-											<span class="column-title">Created By</span>
-										</div>
-									</th>
-									<th class="secondary-text">
-										<div class="">
-											<span class="column-title">Action</span>
-										</div>
-									</th>
-								   <!--  <th class="secondary-text">
-										<div class="table-header">
-											<span class="column-title">Actions</span>
-										</div>
-									</th> -->
-								</tr>
-							</thead>
-							<tbody>
-								<tr ng-repeat="order in ::vm.orders">
-									<td><md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
-										</md-checkbox>
-									</td>
-									<td>{{order.name}}</td>
-									<td>{{order.phone}}</td>
-									<td>{{order.type}}</td>
-									<td>{{order.country}}</td>
-									<td>{{order.date}}</td>
-									<td>{{order.date}}</td>
-									<td>{{order.createdby}}</td>
-									<!-- <td>{{order.test}}</td> -->
-									<td>
-										<a class="edit-button md-icon-button"
-										   aria-label="Product details" href="">
-										   <md-icon md-font-icon="icon-pencil" class="s16"></md-icon>
-										</a>
-										<a class="edit-button md-icon-button"
-										   aria-label="Product details" href="">
-										   <md-icon md-font-icon="icon-eye" class="s16"></md-icon>
-										</a>
-										<a href="">
-										   <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
-										</a>
-										
-									</td>
-								</tr>
-							</tbody>
-						</table>
-						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Delete</md-button>
-							<md-button class="md-raised md-accent">Add</md-button>
-						</div>
-					</div>
-                </md-tab-body>
-            </md-tab>
-			
 			<md-tab>
                 <md-tab-label>
                     <span>Purchase Orders</span>
@@ -415,37 +241,23 @@
 									</th> -->
 								</tr>
 							</thead>
-							<tbody>
-								<tr ng-repeat="order in ::vm.orders">
-									<td><md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+		                    <tbody>
+		                        <tr ng-repeat="order in item_data.purchase_orders">
+		                            <td><md-checkbox ng-model="order.checked" aria-label="Checkbox 1">
 										</md-checkbox>
 									</td>
-									<td>{{order.name}}</td>
-									<td>{{order.phone}}</td>
-									<td>{{order.type}}</td>
-									<td>{{order.date}}</td>
-									<td>{{order.createdby}}</td>
-									<!-- <td>{{order.test}}</td> -->
-									<td>
-										<a class="edit-button md-icon-button"
-										   aria-label="Product details" href="">
-										   <md-icon md-font-icon="icon-pencil" class="s16"></md-icon>
-										</a>
-										<a class="edit-button md-icon-button"
-										   aria-label="Product details" href="">
-										   <md-icon md-font-icon="icon-eye" class="s16"></md-icon>
-										</a>
-										<a href="">
-										   <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
-										</a>
-										
-									</td>
-								</tr>
-							</tbody>
+		                            <td><a ng-click="vm.viewPurchaseOrderPage(order.id)" href="">{{order.code}}</a></td>
+		                            <td>{{order.subject}}</td>
+									<td>{{order.supplier}}</td>
+									
+		                            <td>{{order.created_at}}</td>
+		                            <td>{{order.created_by}}</td>
+		                        </tr>
+		                    </tbody>
 						</table>
 						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Delete</md-button>
-							<md-button class="md-raised md-accent">Add</md-button>
+							<md-button ng-click="vm.deleteAllPurchaseOrder()" class="md-raised md-accent">Delete</md-button>
+							<md-button ng-click="vm.newPurchaseOrderPage()" class="md-raised md-accent">Add</md-button>
 						</div>
 					</div>
                 </md-tab-body>
@@ -516,7 +328,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr ng-repeat="order in ::vm.orders">
+								<tr ng-repeat="order in ::vm.orders1">
 									<td><md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
 										</md-checkbox>
 									</td>
@@ -563,7 +375,7 @@
 
 <!-- ADD BUTTON -->
 	<div class="add-btn-fixed">
-		<md-button class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
+		<md-button  ng-click="vm.newItemPage()" class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
 			<md-icon md-font-icon="icon-plus"></md-icon>
 		</md-button>
 	</div>

@@ -27,7 +27,9 @@
             hrApi.deleteAllPayroll({ids: delete_ids})
             $state.go('app.hr.payrolls'); 
         }
-
+        vm.newPayrollPage = function(){
+            $state.go('app.hr.payroll-new'); 
+        }
 		vm.ssName = "s"
 	    vm.orders = Product.data;
 

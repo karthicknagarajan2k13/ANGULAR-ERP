@@ -37,7 +37,9 @@
         vm.payrollDataClear = function(){
             vm.payroll = {}
         }
-
+        vm.newPayrollPage = function(){
+            $state.go('app.hr.payroll-new'); 
+        }
 
         /**
          * File upload success callback

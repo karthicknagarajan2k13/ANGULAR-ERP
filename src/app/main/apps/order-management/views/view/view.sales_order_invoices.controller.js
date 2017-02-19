@@ -35,7 +35,10 @@
         vm.editSalesOrderInvoice = function(id){
              $state.go('app.order-management.invoices-edit', {obj:{id: id}});
         }
-
+        vm.newSalesOrderInvoice = function(id){
+            $state.go('app.order-management.invoices-new'); 
+        }
+        
     	vm.ssName = "s"
 	    vm.orders = Product.data;
 

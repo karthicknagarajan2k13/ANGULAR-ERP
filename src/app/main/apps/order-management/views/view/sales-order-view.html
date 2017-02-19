@@ -275,11 +275,11 @@
 											<span class="column-title">Price</span>
 										</div>
 									</th>
-									<th class="secondary-text">
+<!-- 									<th class="secondary-text">
 										<div class="">
 											<span class="column-title">Action</span>
 										</div>
-									</th>
+									</th> -->
 								</tr>
 							</thead>
 							<tbody>
@@ -288,11 +288,11 @@
 									<td>{{item.item_price}}</td>
 									<td>{{item.quantity}}</td>
 									<td>{{item.item_price * item.quantity}}</td>
-									<td>
+<!-- 									<td>
 										<a href="">
 										   <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
 										</a>
-									</td>
+									</td> -->
 								</tr>
 							</tbody>
 							<tfoot>
@@ -309,9 +309,9 @@
 									<td class="secondary-text7">
 									{{ sales_order_data.total_price }}
 									</td>
-									<td class="secondary-text7">
+<!-- 									<td class="secondary-text7">
 										
-									</td>
+									</td> -->
 								</tr>
 							</tfoot>
 						</table>
@@ -450,11 +450,11 @@
 											<span class="column-title">Created By</span>
 										</div>
 									</th>
-									<th class="secondary-text">
+<!-- 									<th class="secondary-text">
 										<div class="">
 											<span class="column-title">Action</span>
 										</div>
-									</th>
+									</th> -->
 								</tr>
 							</thead>
 							<tbody>
@@ -462,14 +462,14 @@
 									<td><md-checkbox ng-model="invoice.checked" aria-label="Checkbox 1">
 										</md-checkbox>
 									</td>
-									<td>{{invoice.code}}</td>
+									<td><a ng-click="vm.salesOrderView(invoice.id)" href="">{{invoice.code}}</a></td>
 									<td>{{invoice.name}}</td>
 									<td>{{invoice.subtotal}}</td>
 									<td>{{invoice.tax}}</td>
 									<td>{{invoice.grand_total}}</td>
 									<td>{{invoice.created_at}}</td>
 									<td>{{invoice.created_by}}</td>
-									<td>
+<!-- 									<td>
 										<a ng-click="vm.editSalesOrderInvoice(invoice.id)" class="edit-button md-icon-button"
 										   aria-label="Product details" href="">
 										   <md-icon md-font-icon="icon-pencil" class="s16"></md-icon>
@@ -482,7 +482,7 @@
 										   <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
 										</a>
 										
-									</td>
+									</td> -->
 								</tr>
 							</tbody>
 						</table>
@@ -501,10 +501,3 @@
 
 </div>
 
-<!-- ADD BUTTON -->
-	<div class="add-btn-fixed">
-		<md-button class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
-			<md-icon md-font-icon="icon-plus"></md-icon>
-		</md-button>
-	</div>
-<!-- / ADD BUTTON -->

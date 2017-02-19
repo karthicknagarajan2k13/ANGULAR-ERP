@@ -26,7 +26,29 @@
             imApi.deleteAllItem({ids: delete_ids})
             $state.go('app.inventory-management.items'); 
         }
-
+        vm.newPurchaseOrderPage = function(){
+            $state.go('app.inventory-management.purchase-orders-new'); 
+        }
+        vm.viewPurchaseOrderPage = function(id){
+            $state.go('app.inventory-management.purchase-orders-view', {obj:{id: id}}); 
+        }
+        vm.deleteAllPurchaseOrder = function () {
+            var delete_ids = [];
+            angular.forEach($scope.purchase_orders_data, function (checked) {
+                if (checked.checked) {
+                    delete_ids.push(checked.id);
+                }
+            });
+            if (delete_ids.length >= 1){
+                delete_ids = JSON.stringify(delete_ids)
+                imApi.deleteAllPurchaseOrder({ids: delete_ids})
+                $window.location.reload();
+            }
+        }
+        vm.newItemPage = function(){
+            $state.go('app.inventory-management.items-new'); 
+        }
+        
 		vm.ssName = "s"
 	    vm.orders = Product.data;
 

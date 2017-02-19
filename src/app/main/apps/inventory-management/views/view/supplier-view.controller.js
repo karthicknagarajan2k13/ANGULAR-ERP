@@ -38,15 +38,20 @@
         }
         vm.deleteAllPurchaseOrder = function () {
             var delete_ids = [];
-            angular.forEach($scope.purchase_orders_data, function (checked) {
+            angular.forEach($scope.supplier_data.purchase_orders, function (checked) {
                 if (checked.checked) {
                     delete_ids.push(checked.id);
                 }
             });
             if (delete_ids.length >= 1){
                 delete_ids = JSON.stringify(delete_ids)
-                imApi.deleteAllPurchaseOrder({ids: delete_ids})
-                $window.location.reload();
+                var dataPromise =  imApi.deleteAllPurchaseOrder({ids: delete_ids})
+                dataPromise.then(function(result) { 
+                    var dataPromise = imApi.viewSupplier($state.params.obj.id);
+                    dataPromise.then(function(result) { 
+                        $scope.supplier_data = result;
+                    });
+                });
             }
         };
         vm.deletePurchaseOrder = function (id) {
@@ -54,7 +59,9 @@
             imApi.deleteAllPurchaseOrder({ids: delete_ids})
             $window.location.reload();
         };
-        
+        vm.newSupplierPage = function(){
+            $state.go('app.inventory-management.suppliers-new'); 
+        }
 		vm.ssName = "s"
 	    vm.orders = Product.data;
 

@@ -40,6 +40,9 @@
             console.log("id",id)
             $state.go('app.hr.timeclock-view', {obj:{id: id}}); 
         }
+        vm.newTimeclockPage = function(){
+            $state.go('app.hr.timeclock-new'); 
+        }
         /**
          * File upload success callback
          * Triggers when single upload completed

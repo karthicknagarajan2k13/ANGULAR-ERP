@@ -171,7 +171,7 @@
 									<td><md-checkbox ng-model="item.checked" aria-label="Checkbox 1">
 										</md-checkbox>
 									</td>
-									<td>{{item.code}}</td>
+                            		<td><a ng-click="vm.viewItemPage(item.id)" href="">{{item.code}}</a></td>
 									<td>{{item.name}}</td>
 									<td>{{item.unit}}</td>
 									<td>{{item.selling_price}}</td>
@@ -198,7 +198,7 @@
 
 <!-- ADD BUTTON -->
 	<div class="add-btn-fixed">
-		<md-button class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
+		<md-button ng-click="vm.newItemCategoryPage()" class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
 			<md-icon md-font-icon="icon-plus"></md-icon>
 		</md-button>
 	</div>

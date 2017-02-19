@@ -21,9 +21,9 @@
 				<div layout="column" layout-gt-xs="row">
 				
 					<md-input-container flex>
-						<md-icon ng-click="vm.searchExpenseData()" md-font-icon="icon-magnify"></md-icon>
+						<md-icon md-font-icon="icon-magnify"></md-icon>
 						<label>Search</label>
-						<input ng-model="vm.search_data.search">
+                        <input ng-keyup="$event.keyCode == 13 && vm.searchExpenseData()" ng-model="vm.search_data.search_text">
 						<md-icon ng-model="collapsed" ng-click="collapsed=!collapsed" md-font-icon="icon-chevron-down"></md-icon>
 					
 						<div style="padding-top:49px;" ng-show="collapsed">
@@ -166,22 +166,6 @@
 							<td>{{expense.status}}</td>
 							<td>{{expense.created_at}}</td>
                             <td>{{expense.created_by}}</td>
-                            <td>
-                                <a class="edit-button md-icon-button"
-                                   ng-click="vm.editExpensePage(expense)"
-                                   aria-label="Product details" href="">
-                                   <md-icon md-font-icon="icon-pencil" class="s16"></md-icon>
-                                </a>
-                                <a class="edit-button md-icon-button"
-                                   ng-click="vm.viewExpensePage(expense.id)"
-                                   aria-label="Product details" href="">
-                                   <md-icon md-font-icon="icon-eye" class="s16"></md-icon>
-                                </a>
-                                <a ng-click="vm.deleteExpense(expense.id)" href="">
-                                   <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
-                                </a>
-								
-                            </td>
                         </tr>
                     </tbody>
                 </table>

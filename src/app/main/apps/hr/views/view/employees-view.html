@@ -26,7 +26,10 @@
 								<div layout="row" layout-gt-xs="row" flex>
 									<md-input-container layout-align="center center" class="md-block" flex-gt-sm>
 										<div class="user-info" layout="column" layout-align="center center" layout-gt-sm="row" layout-align-gt-sm="center center">
-											<img class="profile-image avatar huge" src="assets/images/avatars/profile.jpg">
+											
+											<img ng-show="employee_data.has_photo == true" class="profile-image avatar huge" src="{{employee_data.photo}}">
+											<img ng-show="employee_data.has_photo == false" class="profile-image avatar huge" src="assets/images/avatars/profile.jpg">
+
 											<div class="name">{{employee_data.salutation}} {{employee_data.first_name}} {{employee_data.middle_name}} <br /> {{employee_data.designation}}</div>
 										</div>
 									</md-input-container>
@@ -375,23 +378,24 @@
 									</th>
 								</tr>
 							</thead>
-							<tbody>
-								<tr ng-repeat="order in ::vm.orders">
-									<td><md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+		                    <tbody>
+		                        <tr ng-repeat="payroll in employee_data.payrolls">
+		                            <td><md-checkbox ng-model="payroll.checked" aria-label="Checkbox 1">
 										</md-checkbox>
 									</td>
-									<td>{{order.name}}</td>
-									<td>{{order.phone}}</td>
-									<td>{{order.type}}</td>
-									<td>{{order.type}}</td>
-									<td>{{order.date}}</td>
-									<td>{{order.createdby}}</td>
-								</tr>
-							</tbody>
+		                            <td><a ng-click="vm.viewPayrollPage(payroll.id)" href="">{{payroll.code}}</a></td>
+		                            <td>{{payroll.subject}}</td>
+									<td>{{payroll.employee}}</td>
+									<td>{{payroll.total}}</td>
+									<td>{{payroll.created_at}}</td>
+		                            <td>{{payroll.created_by}}</td>
+
+		                        </tr>
+		                    </tbody>
 						</table>
 						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Delete</md-button>
-							<md-button class="md-raised md-accent">ADD</md-button>
+                			<md-button ng-click="vm.deleteAllPayroll()" class="md-raised md-accent">Delete</md-button>
+                			<md-button ng-click="vm.newPayrollPage()" class="md-raised md-accent">Add</md-button>
 						</div>
 					</div>
                 </md-tab-body>
@@ -449,47 +453,26 @@
 											<span class="column-title">Created By</span>
 										</div>
 									</th>
-									<th class="secondary-text">
-										<div class="">
-											<span class="column-title">Action</span>
-										</div>
-									</th>
 								</tr>
 							</thead>
-							<tbody>
-								<tr ng-repeat="order in ::vm.orders">
-									<td><md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+		                    <tbody>
+		                        <tr ng-repeat="expense in employee_data.expenses">
+		                            <td><md-checkbox ng-model="expense.checked" aria-label="Checkbox 1">
 										</md-checkbox>
 									</td>
-									<td>{{order.name}}</td>
-									<td>{{order.phone}}</td>
-									<td>{{order.type}}</td>
-									<td>{{order.type}}</td>
-									<td>{{order.type}}</td>
-									<td>{{order.date}}</td>
-									<td>{{order.createdby}}</td>
-									<td>
-										<a class="edit-button md-icon-button"
-										   ng-click="vm.editpage(product.id)"
-										   aria-label="Product details" href="">
-										   <md-icon md-font-icon="icon-pencil" class="s16"></md-icon>
-										</a>
-										<a class="edit-button md-icon-button"
-										   ng-click="vm.viewpage(product.id)"
-										   aria-label="Product details" href="">
-										   <md-icon md-font-icon="icon-eye" class="s16"></md-icon>
-										</a>
-										<a href="">
-										   <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
-										</a>
-										
-									</td>
-								</tr>
-							</tbody>
+		                            <td><a ng-click="vm.viewExpensePage(expense.id)" href="">{{expense.code}}</a></td>
+		                            <td>{{expense.subject}}</td>
+									<td>{{expense.employee}}</td>
+									<td>{{expense.amount}}</td>
+									<td>{{expense.status}}</td>
+									<td>{{expense.created_at}}</td>
+		                            <td>{{expense.created_by}}</td>
+		                        </tr>
+		                    </tbody>
 						</table>
 						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Delete</md-button>
-							<md-button class="md-raised md-accent">ADD</md-button>
+							<md-button ng-click="vm.deleteAllExpense()" class="md-raised md-accent">Delete</md-button>
+							<md-button ng-click="vm.newExpensePage()" class="md-raised md-accent">Add</md-button>
 						</div>
 					</div>
                 </md-tab-body>
@@ -538,45 +521,24 @@
 											<span class="column-title">Created By</span>
 										</div>
 									</th>
-									<th class="secondary-text">
-										<div class="">
-											<span class="column-title">Action</span>
-										</div>
-									</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr ng-repeat="order in ::vm.orders">
-									<td><md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+		                        <tr ng-repeat="timeclock in employee_data.timeclocks">
+		                            <td><md-checkbox ng-model="timeclock.checked" aria-label="Checkbox 1">
 										</md-checkbox>
 									</td>
-									<td>{{order.name}}</td>
-									<td>{{order.phone}}</td>
-									<td>{{order.type}}</td>
-									<td>{{order.type}}</td>
-									<td>{{order.createdby}}</td>
-									<td>
-										<a class="edit-button md-icon-button"
-										   ng-click="vm.editpage(product.id)"
-										   aria-label="Product details" href="">
-										   <md-icon md-font-icon="icon-pencil" class="s16"></md-icon>
-										</a>
-										<a class="edit-button md-icon-button"
-										   ng-click="vm.viewpage(product.id)"
-										   aria-label="Product details" href="">
-										   <md-icon md-font-icon="icon-eye" class="s16"></md-icon>
-										</a>
-										<a href="">
-										   <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
-										</a>
-										
-									</td>
-								</tr>
+		                            <td><a ng-click="vm.viewTimeclockPage(timeclock.id)" href="">{{timeclock.code}}</a></td>
+		                            <td>{{timeclock.subject}}</td>
+		                            <td>{{timeclock.employee}}</td>
+		                            <td>{{timeclock.created_at}}</td>
+		                            <td>{{timeclock.created_by}}</td>
+		                        </tr>
 							</tbody>
 						</table>
 						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Delete</md-button>
-							<md-button class="md-raised md-accent">ADD</md-button>
+							<md-button ng-click="vm.deleteAllTimeclock()" class="md-raised md-accent">Delete</md-button>
+							<md-button ng-click="vm.newTimeclockPage()" class="md-raised md-accent">Add</md-button>
 						</div>
 					</div>
                 </md-tab-body>
@@ -592,7 +554,7 @@
 
 <!-- ADD BUTTON -->
 	<div class="add-btn-fixed">
-		<md-button class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
+		<md-button ng-click="vm.newEmployeePage()" class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
 			<md-icon md-font-icon="icon-plus"></md-icon>
 		</md-button>
 	</div>

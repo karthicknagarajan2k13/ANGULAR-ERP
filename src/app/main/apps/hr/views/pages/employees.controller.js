@@ -17,7 +17,6 @@
         var dataPromise = hrApi.getEmployees({});
         dataPromise.then(function(result) { 
             $scope.employees_data = result;
-            console.log("$scope.employees_data",$scope.employees_data)
         }); 
         var dataPromise = hrApi.getUsers({});
         dataPromise.then(function(result) { 
@@ -42,8 +41,13 @@
             });
             if (delete_ids.length >= 1){
                 delete_ids = JSON.stringify(delete_ids)
-                hrApi.deleteAllEmployee({ids: delete_ids})
-                $window.location.reload();
+                var dataPromise = hrApi.deleteAllEmployee({ids: delete_ids})
+                dataPromise.then(function(result) { 
+                    var dataPromise = hrApi.getEmployees({});
+                    dataPromise.then(function(result) { 
+                        $scope.employees_data = result;
+                    }); 
+                });
             }
         };
         vm.deleteEmployee = function (id) {
@@ -55,7 +59,8 @@
             console.log("vm.search_data",vm.search_data)
             var dataPromise = hrApi.getEmployees(vm.search_data);
             dataPromise.then(function(result) { 
-                $scope.employees_data = result; 
+                $scope.employees_data = result;
+                console.log("$scope.employees_data",$scope.employees_data)
             }); 
         }
         vm.searchEmployeeDataClear = function(id){

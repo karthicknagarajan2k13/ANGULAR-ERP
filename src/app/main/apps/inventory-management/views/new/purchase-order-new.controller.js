@@ -35,7 +35,9 @@
         vm.purchaseOrderDataClear = function(){
             vm.purchase_order = {}
         }
-
+        vm.newPurchaseOrderPage = function(){
+            $state.go('app.inventory-management.purchase-orders-new'); 
+        }
 
         /**
          * File upload success callback

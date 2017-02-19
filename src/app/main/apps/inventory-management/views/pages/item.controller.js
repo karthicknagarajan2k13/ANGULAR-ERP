@@ -82,8 +82,13 @@
             });
             if (delete_ids.length >= 1){
                 delete_ids = JSON.stringify(delete_ids)
-                imApi.deleteAllItem({ids: delete_ids})
-                $window.location.reload();
+                var dataPromise = imApi.deleteAllItem({ids: delete_ids})
+                dataPromise.then(function(result) { 
+                    var dataPromise = imApi.getItems({});
+                    dataPromise.then(function(result) { 
+                        $scope.items_data = result;
+                    }); 
+                });
             }
         };
         vm.deleteItem = function (id) {

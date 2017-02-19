@@ -39,6 +39,9 @@
         vm.viewPayrollPage =function(id){
             $state.go('app.hr.payroll-view', {obj:{id: id}}); 
         }
+        vm.newPayrollPage = function(){
+            $state.go('app.hr.payroll-new'); 
+        }
         /**
          * File upload success callback
          * Triggers when single upload completed

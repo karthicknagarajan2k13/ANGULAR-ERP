@@ -24,9 +24,9 @@
 				
 					
 					<md-input-container flex>
-						<md-icon ng-click="vm.searchContactData()" md-font-icon="icon-magnify"></md-icon>
+						<md-icon md-font-icon="icon-magnify"></md-icon>
 						<label>Search</label>
-						<input ng-model="vm.search_data.search">
+                        <input ng-keyup="$event.keyCode == 13 && vm.searchContactData()" ng-model="vm.search_data.search_text">
 						<md-icon ng-model="collapsed" ng-click="collapsed=!collapsed" md-font-icon="icon-chevron-down"></md-icon>
 					
 						<div style="padding-top:49px;" ng-show="collapsed">
@@ -186,7 +186,7 @@
             </div>
             <!-- / CONTENT -->
 			<div class="actions" layout="row" layout-align="start center">
-				<md-button ng-click="vm.deleteAllCustomer()" class="md-raised md-accent">Delete</md-button>
+				<md-button ng-click="vm.deleteAllContact()" class="md-raised md-accent">Delete</md-button>
 			</div>
         </div>
         <!-- / CONTENT CARD -->

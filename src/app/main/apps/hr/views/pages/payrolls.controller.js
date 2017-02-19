@@ -80,8 +80,13 @@
             });
             if (delete_ids.length >= 1){
                 delete_ids = JSON.stringify(delete_ids)
-                hrApi.deleteAllPayroll({ids: delete_ids})
-                $window.location.reload();
+                var dataPromise = hrApi.deleteAllPayroll({ids: delete_ids})
+                dataPromise.then(function(result) { 
+                    var dataPromise = hrApi.getPayrolls({});
+                    dataPromise.then(function(result) { 
+                        $scope.payrolls_data = result;
+                    }); 
+                });
             }
         };
         vm.deletePayroll = function (id) {

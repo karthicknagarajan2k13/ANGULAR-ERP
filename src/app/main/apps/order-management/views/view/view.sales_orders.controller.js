@@ -73,8 +73,23 @@
             });
             if (delete_ids.length >= 1){
                 delete_ids = JSON.stringify(delete_ids)
-                omApi.deleteAllSalesOrderInvoice({ids: delete_ids})
-                $window.location.reload();
+                var dataPromise = omApi.deleteAllSalesOrderInvoice({ids: delete_ids})
+                dataPromise.then(function(result) {
+                    var dataPromise = omApi.viewSalesOrder($state.params.obj.id);
+                    dataPromise.then(function(result) { 
+                        $scope.sales_order_data = result; 
+
+                        var total_quantity = 0;
+                        var total_price = 0;
+                        angular.forEach($scope.sales_order_data.items, function(value, key) {
+                          total_quantity += value.quantity ;
+                          total_price += (value.quantity * value.item_price);
+                        });
+                        $scope.sales_order_data.total_quantity = total_quantity;
+                        $scope.sales_order_data.total_price = total_price;
+
+                    }); 
+                })
             }
         };
         vm.salesOrderView = function(id){

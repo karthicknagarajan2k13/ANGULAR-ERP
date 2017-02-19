@@ -37,7 +37,9 @@
         vm.expenseDataClear = function(){
             vm.expense = {}
         }
-
+        vm.newExpensePage = function(){
+            $state.go('app.hr.expenses-new'); 
+        }
 
         /**
          * File upload success callback

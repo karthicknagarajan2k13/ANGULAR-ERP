@@ -49,6 +49,47 @@
                return result.data;
            });
         };
+        api.getCustomers = function(data) {
+           return $http({method:"GET", url: api.baseUrl+"customers.json",params: data}).then(function(result){
+               return result.data;
+           });
+        };
+        api.getContacts = function(data) {
+           return $http({method:"GET", url: api.baseUrl+"contacts.json",params: data}).then(function(result){
+               return result.data;
+           });
+        };
+        api.getNotes = function(data) {
+           return $http({method:"GET", url: api.baseUrl+"notes.json",params: data}).then(function(result){
+               return result.data;
+           });
+        };
+
+        api.deleteAllCustomer = function(data) {
+           return $http({method:"GET", url: api.baseUrl+"customers/delete_all.json",params: data}).then(function(result){
+               return result.data;
+           });
+        };
+        api.deleteAllContact = function(data) {
+           return $http({method:"GET", url: api.baseUrl+"contacts/delete_all.json",params: data}).then(function(result){
+               return result.data;
+           });
+        };
+        api.deleteAllNote = function(data) {
+           return $http({method:"GET", url: api.baseUrl+"notes/delete_all.json",params: data}).then(function(result){
+               return result.data;
+           });
+        };
+        api.viewCustomer = function(id) {
+           return $http({method:"GET", url: api.baseUrl+"customers/"+id+".json"}).then(function(result){
+               return result.data;
+           });
+        };
+        api.viewContact = function(id) {
+           return $http({method:"GET", url: api.baseUrl+"contacts/"+id+".json"}).then(function(result){
+               return result.data;
+           });
+        };
 
         return api;
     }

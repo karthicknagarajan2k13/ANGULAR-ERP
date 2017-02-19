@@ -222,11 +222,6 @@
 											<span class="column-title">Created By</span>
 										</div>
 									</th>
-									<th class="secondary-text">
-										<div class="">
-											<span class="column-title">Action</span>
-										</div>
-									</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -234,27 +229,11 @@
 									<td><md-checkbox ng-model="note.checked" aria-label="Checkbox 1">
 										</md-checkbox>
 									</td>
-									<td>{{note.code}}</td>
+									<td><a ng-click="vm.viewNotePage(note.id)" href="">{{note.code}}</a></td>
 									<td>{{note.subject}}</td>
 									<td>{{note.contact}}</td>
 									<td>{{note.created_at}}</td>
 									<td>{{note.created_by}}</td>
-									<td>
-										<a class="edit-button md-icon-button"
-		                                   ng-click="vm.editNotePage(note)"
-		                                   aria-label="Product details" href="">
-										   <md-icon md-font-icon="icon-pencil" class="s16"></md-icon>
-										</a>
-										<a class="edit-button md-icon-button"
-		                                   ng-click="vm.viewNotePage(note.id)"
-		                                   aria-label="Product details" href="">
-										   <md-icon md-font-icon="icon-eye" class="s16"></md-icon>
-										</a>
-										<a ng-click="vm.deleteNote(note.id)" href="">
-										   <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
-										</a>
-										
-									</td>
 								</tr>
 							</tbody>
 						</table>
@@ -297,12 +276,7 @@
 		                                <div class="table-header">
 		                                    <span class="column-title">Mobile #</span>
 		                                </div>
-		                            </th><!-- 
-		                            <th class="secondary-text">
-		                                <div class="">
-		                                    <span class="column-title">Action</span>
-		                                </div>
-		                            </th> -->
+		                            </th>
 		                        </tr>
 		                    </thead>
 							<tbody>
@@ -310,25 +284,9 @@
 									<td><md-checkbox ng-model="contact.checked" aria-label="Checkbox 1">
 										</md-checkbox>
 									</td>
-									<td>{{contact.code}}</td>
+									<td><a ng-click="vm.viewContactPage(contact.id)" href="">{{contact.code}}</a></td>
 									<td>{{contact.name}}</td>
-									<td>{{contact.phone_mobile}}</td><!-- 
-									<td>
-										<a class="edit-button md-icon-button"
-										   ng-click="vm.editContactPage(contact)"
-										   aria-label="Product details" href="">
-										   <md-icon md-font-icon="icon-pencil" class="s16"></md-icon>
-										</a>
-										<a class="edit-button md-icon-button"
-										   ng-click="vm.viewContactPage(contact.id)"
-										   aria-label="Product details" href="">
-										   <md-icon md-font-icon="icon-eye" class="s16"></md-icon>
-										</a>
-										<a ng-click="vm.deleteContact(contact.id)" href="">
-										   <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
-										</a>
-										
-									</td> -->
+									<td>{{contact.phone_mobile}}</td>
 								</tr>
 							</tbody>
 						</table>
@@ -351,7 +309,7 @@
 
 <!-- ADD BUTTON -->
 	<div class="add-btn-fixed">
-		<md-button class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
+		<md-button ng-click="vm.newCustomerPage()" class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
 			<md-icon md-font-icon="icon-plus"></md-icon>
 		</md-button>
 	</div>

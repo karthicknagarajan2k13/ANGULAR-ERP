@@ -29,6 +29,9 @@
         vm.customerDataClear = function(){
             vm.customer = {}
         }
+        vm.newCustomerPage = function(){
+            $state.go('app.crm.customer-detail-new'); 
+        }
     }
 
 })();

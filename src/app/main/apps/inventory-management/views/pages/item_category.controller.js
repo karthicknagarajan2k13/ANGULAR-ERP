@@ -77,8 +77,13 @@
             });
             if (delete_ids.length >= 1){
                 delete_ids = JSON.stringify(delete_ids)
-                imApi.deleteAllCategory({ids: delete_ids})
-                $window.location.reload();
+                var dataPromise = imApi.deleteAllCategory({ids: delete_ids})
+                dataPromise.then(function(result) { 
+                    var dataPromise = imApi.getCategories({});
+                    dataPromise.then(function(result) { 
+                        $scope.categories_data = result;
+                    }); 
+                });
             }
         };
         vm.deleteItemCategory = function (id) {

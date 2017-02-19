@@ -26,7 +26,10 @@
             hrApi.deleteAllExpense({ids: delete_ids})
             $state.go('app.hr.expenses'); 
         }
-
+        vm.newExpensePage = function(){
+            $state.go('app.hr.expenses-new'); 
+        }
+        
 		vm.ssName = "s"
 	    vm.orders = Product.data;
 

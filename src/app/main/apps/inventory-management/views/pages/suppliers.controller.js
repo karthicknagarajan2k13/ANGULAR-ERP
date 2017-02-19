@@ -73,8 +73,13 @@
             });
             if (delete_ids.length >= 1){
                 delete_ids = JSON.stringify(delete_ids)
-                imApi.deleteAllSupplier({ids: delete_ids})
-                $window.location.reload();
+                var dataPromise = imApi.deleteAllSupplier({ids: delete_ids})
+                dataPromise.then(function(result) { 
+                    var dataPromise = imApi.getSuppliers({});
+                    dataPromise.then(function(result) { 
+                        $scope.suppliers_data = result;
+                    }); 
+                });
             }
         };
         vm.deleteSupplier = function (id) {

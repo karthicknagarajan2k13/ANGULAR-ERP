@@ -18,6 +18,7 @@
         vm.employee = {}
         
         vm.saveEmployee = function(){
+            console.log("vm.employee",vm.employee)
             var dataPromise = hrApi.createEmployee({employee:vm.employee});
             dataPromise.then(function(result) { 
                 $scope.data = result; 
@@ -30,10 +31,20 @@
                 }
             }); 
         }
+        vm.newEmployeePage = function(){
+            $state.go('app.hr.employees-new'); 
+        }
+        vm.uploadEmployeePhoto = function(){
+            var dataPromise = hrApi.uploadEmployeePhoto(vm.employee,vm.employee.employee_attributes.photo);
+            dataPromise.then(function(result) { 
+                $scope.data = result;
+                console.log("uplad image",$scope.data)
+            }); 
+        }
+
         vm.employeeDataClear = function(){
             vm.employee = {}
         }
-
         /**
          * File upload success callback
          * Triggers when single upload completed

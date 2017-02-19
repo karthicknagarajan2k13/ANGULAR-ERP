@@ -32,7 +32,9 @@
         vm.categoryDataClear = function(){
             vm.category = {}
         }
-
+        vm.newItemCategoryPage = function(){
+            $state.go('app.inventory-management.item-categories-new'); 
+        }
 
         /**
          * File upload success callback

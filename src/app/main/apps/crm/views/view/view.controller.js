@@ -7,15 +7,18 @@
         .controller('CustomerController', CustomerController);
 
     /** @ngInject */
-    function CustomerController(Contact, $window,ContactDeleteAll, $document, $state, Product, Customer)
+    function CustomerController(crmApi, Contact, $window, $document, $state, Product, Customer)
     {
         var vm = this;
 		
 		vm.ssName = "s"
-	    vm.customer_data = Customer.get({id:$state.params.obj.id});
-        console.log(vm.customer_data)
 
-       
+        var dataPromise = crmApi.viewCustomer($state.params.obj.id);
+        dataPromise.then(function(result) { 
+            vm.customer_data = result;
+        }); 
+
+      
         /**
          * File upload success callback
          * Triggers when single upload completed
@@ -66,10 +69,16 @@
             });
             if (delete_ids.length >= 1){
                 delete_ids = JSON.stringify(delete_ids)
-                ContactDeleteAll.delete_all({ids: delete_ids})
-                $window.location.reload();
+                var dataPromise = crmApi.deleteAllContact({ids: delete_ids})
+                dataPromise.then(function(result) { 
+                    var dataPromise = crmApi.viewCustomer($state.params.obj.id);
+                    dataPromise.then(function(result) { 
+                        vm.customer_data = result
+                    }); 
+                });
             }
         };  
+
         vm.viewContactPage = function(id){
             $state.go('app.crm.contact-detail-view', {obj:{id: id}}); 
         }
@@ -95,16 +104,26 @@
         }
         vm.deleteAllNote = function () {
             var delete_ids = [];
-            angular.forEach(vm.notes_data, function (checked) {
+            angular.forEach(vm.customer_data.notes, function (checked) {
                 if (checked.checked) {
                     delete_ids.push(checked.id);
                 }
             });
             if (delete_ids.length >= 1){
                 delete_ids = JSON.stringify(delete_ids)
-                NoteDeleteAll.delete_all({ids: delete_ids})
-                $window.location.reload();
+                var dataPromise = crmApi.deleteAllNote({ids: delete_ids})
+                dataPromise.then(function(result) { 
+                    var dataPromise = crmApi.viewCustomer($state.params.obj.id);
+                    dataPromise.then(function(result) { 
+                        vm.customer_data = result
+                    }); 
+                });
             }
-        };
+        }; 
+        vm.newCustomerPage = function(){
+            $state.go('app.crm.customer-detail-new'); 
+        }
+
+
     }
 })();

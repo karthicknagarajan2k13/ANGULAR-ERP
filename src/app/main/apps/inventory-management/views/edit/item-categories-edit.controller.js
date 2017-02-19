@@ -33,7 +33,9 @@
         vm.viewItemCategoryPage =function(id){
             $state.go('app.inventory-management.items-categories-view', {obj:{id: id}}); 
         }
-       
+        vm.newItemCategoryPage = function(){
+            $state.go('app.inventory-management.item-categories-new'); 
+        }
         /**
          * File upload success callback
          * Triggers when single upload completed

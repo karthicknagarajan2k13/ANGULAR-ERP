@@ -7,13 +7,17 @@
         .controller('notesController', notesController);
 
     /** @ngInject */
-    function notesController(NoteDeleteAll, $window, $state, Statuses, Orders, Notes, Note, User, Contact_User)
+    function notesController(crmApi, $window, $state, Statuses, Orders, Note, User, Contact_User)
     {
 		
         var vm = this;
 
         // Data
-        vm.notes_data = Notes.query();
+        var dataPromise = crmApi.getNotes({});
+        dataPromise.then(function(result) { 
+            vm.notes_data = result;
+        });
+
         vm.search_data = {};
         vm.orders = Orders.data;
         vm.statuses = Statuses.data;
@@ -65,7 +69,10 @@
             $state.go('app.crm.note-detail-new'); 
         }
         vm.searchNoteData = function(){
-            vm.notes_data = Notes.query(vm.search_data);
+            var dataPromise = crmApi.getNotes(vm.search_data);
+            dataPromise.then(function(result) { 
+                vm.notes_data = result;
+            });
         }   
         vm.searchNoteDataClear = function(){
             vm.search_data = {}
@@ -83,8 +90,13 @@
             });
             if (delete_ids.length >= 1){
                 delete_ids = JSON.stringify(delete_ids)
-                NoteDeleteAll.delete_all({ids: delete_ids})
-                $window.location.reload();
+                var dataPromise = crmApi.deleteAllNote({ids: delete_ids})
+                dataPromise.then(function(result) { 
+                    var dataPromise = crmApi.getNotes({});
+                    dataPromise.then(function(result) { 
+                        vm.notes_data = result;
+                    }); 
+                });
             }
         };
 		

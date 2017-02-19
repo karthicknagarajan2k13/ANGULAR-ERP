@@ -69,8 +69,13 @@
             });
             if (delete_ids.length >= 1){
                 delete_ids = JSON.stringify(delete_ids)
-                omApi.deleteAllSalesOrderInvoice({ids: delete_ids})
-                $window.location.reload();
+                var dataPromise = omApi.deleteAllSalesOrderInvoice({ids: delete_ids})
+                dataPromise.then(function(result) { 
+                    var dataPromise = omApi.getSalesOrderInvoices({});
+                    dataPromise.then(function(result) { 
+                        $scope.sales_order_invoices_data = result;
+                    }); 
+                });
             }
         };
         vm.deleteSalesOrderInvoice = function (id) {

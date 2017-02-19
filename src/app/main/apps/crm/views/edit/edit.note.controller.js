@@ -32,6 +32,9 @@
         vm.viewNotePage = function(id){
             $state.go('app.crm.note-detail-view', {obj:{id: id}}); 
         }
+        vm.newNotePage = function(){
+            $state.go('app.crm.note-detail-new'); 
+        }
     }
 
 })();

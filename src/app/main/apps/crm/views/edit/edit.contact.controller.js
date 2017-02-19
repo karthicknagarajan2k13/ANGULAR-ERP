@@ -31,6 +31,10 @@
         vm.viewContactPage = function(id){
             $state.go('app.crm.contact-detail-view', {obj:{id: id}}); 
         }
+        vm.newContactPage = function(){
+            console.log("===state")
+            $state.go('app.crm.contact-detail-new'); 
+        }
     }
 
 })();
