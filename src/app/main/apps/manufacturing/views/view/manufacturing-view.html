@@ -1,0 +1,311 @@
+<div id="e-commerce-product" class="page-layout simple tabbed" layout="column">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="space-between">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">Manufacturing Management </a>&nbsp; / &nbsp;<a href="">Manufacturing </a> </span>&nbsp; / &nbsp; View
+            </div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <md-tabs md-dynamic-height>
+
+            <md-tab>
+                <md-tab-label>
+                    <span>General Info</span>
+                </md-tab-label>
+
+                <md-tab-body>
+                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+                       <div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>ID</label>
+										<input type="text" value="CUS0001" disabled>
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Subject</label>
+										<input type="text" value="Lola J Bolden" disabled>
+									</md-input-container>
+
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Description</label>
+										<input type="text" value="Lorem Ipsum is simply dummy text" disabled>
+									</md-input-container>
+                                </div>
+								<div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container flex>
+										<label>Status</label>
+										<md-select ng-model="vm.search_data.c_type1" multiple>
+											<md-option ng-repeat="type in ['Draft', 'InProgress', 'Failed', 'Failed & Restarted', 'Completed']" value="{{type}}">
+												{{type}}
+											</md-option>
+										</md-select>
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Start Date</label>
+										<md-datepicker ng-model="myDate" md-placeholder="22/12/2016"></md-datepicker>
+									</md-input-container>
+
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Expected Completion Date</label>
+										<md-datepicker ng-model="myDate" md-placeholder="22/12/2016"></md-datepicker>
+									</md-input-container>
+                                </div>
+								
+								<div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container flex>
+										<label>Type</label>
+										<md-select ng-model="vm.search_data.c_type1" multiple>
+											<md-option ng-repeat="type in ['Made - to - Order', 'Made - to - Stock']" value="{{type}}">
+												{{type}}
+											</md-option>
+										</md-select>
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Quantity</label>
+										<input type="text" value="2946" disabled>
+									</md-input-container>
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Stock Item</label>
+										<input type="text" value="2946 Luke Lane" disabled>
+									</md-input-container>
+
+                                </div>
+								<div layout="row" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex="33">
+										<label>Sales Order </label>
+                                        <input type="text" value="2946 Luke Lane" disabled>
+									</md-input-container>
+                                </div>
+								
+								
+								<div class="actions" layout="row" layout-align="start center">
+									<md-button ng-click="vm.searchCustomerData()" class="md-raised md-accent">Edit</md-button>
+									<md-button ng-click="vm.searchCustomerDataClear()" class="md-raised md-accent">delete</md-button>
+								</div>
+                    </div>
+                </md-tab-body>
+            </md-tab>
+
+			<md-tab>
+                <md-tab-label>
+                    <span>QA Check List</span>
+                </md-tab-label>
+
+                <md-tab-body>
+                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+                        <form>
+                            <div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Name</label>
+										<input type="text" value="Mugilan M" disabled>
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Passed?</label>
+										<input type="text" value="Lola J Bolden" disabled>
+									</md-input-container>
+                                </div>
+                        </form>
+						
+						<div class="actions" layout="row" layout-align="start center">
+							<md-button class="md-raised md-accent">Edit</md-button>
+							<md-button class="md-raised md-accent">Delete</md-button>
+						</div>
+                    </div>
+                </md-tab-body>
+            </md-tab>
+
+            <md-tab>
+                <md-tab-label>
+                    <span>Other Info</span>
+                </md-tab-label>
+
+                <md-tab-body>
+                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+                        <form>
+                            <div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Date Created</label>
+										<input type="text" value="22/12/2016" disabled>
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Created By</label>
+										<input type="text" value="Lola J Bolden" disabled>
+									</md-input-container>
+
+                                   <md-input-container class="md-block" flex-gt-sm>
+										<label>Date Modified</label>
+										<input type="text" value="12/01/2017" disabled>
+									</md-input-container>
+                                </div>
+								<div layout="row" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex="33">
+										<label>Modified By</label>
+										<input type="text" value="Lola J Bolden" disabled>
+									</md-input-container>
+									
+                                </div>
+								
+                        </form>
+						
+						<!-- <div class="actions" layout="row" layout-align="start center">
+							<md-button class="md-raised md-accent">Save</md-button>
+							<md-button class="md-raised md-accent">Clear</md-button>
+						</div> -->
+                    </div>
+                </md-tab-body>
+            </md-tab>
+			
+			<md-tab>
+                <md-tab-label>
+                    <span>Fail History</span>
+                </md-tab-label>
+
+                <md-tab-body>
+                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+					
+						<table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance"
+							   dt-options="vm.dtOptions">
+							<thead>
+								<tr>
+									<th class="secondary-text">
+										<div class="">
+											<span class="column-title">#</span>
+										</div>
+									</th>
+									<th class="secondary-text">
+										<div class="table-header">
+											<span class="column-title">ID</span>
+										</div>
+									</th>
+									<th class="secondary-text">
+										<div class="table-header">
+											<span class="column-title">Subject</span>
+										</div>
+									</th>
+									<th class="secondary-text">
+										<div class="table-header">
+											<span class="column-title">Status</span>
+										</div>
+									</th>
+									<th class="secondary-text">
+										<div class="table-header">
+											<span class="column-title">Quantity</span>
+										</div>
+									</th>
+									<th class="secondary-text">
+										<div class="table-header">
+											<span class="column-title">Date Modified</span>
+										</div>
+									</th>
+									<th class="secondary-text">
+										<div class="table-header">
+											<span class="column-title">Modified By</span>
+										</div>
+									</th>
+									
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="order in ::vm.orders">
+									<td><md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+										</md-checkbox>
+									</td>
+									<td>{{order.name}}</td>
+									<td>{{order.name}}</td>
+									<td>{{order.country}}</td>
+									<td>{{order.date}}</td>
+									<td>{{order.date}}</td>
+									<td>{{order.createdby}}</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="actions" layout="row" layout-align="start center">
+							<md-button class="md-raised md-accent">Delete</md-button>
+							<md-button class="md-raised md-accent">Add</md-button>
+						</div>
+					</div>
+                </md-tab-body>
+            </md-tab>
+			
+			<md-tab>
+                <md-tab-label>
+                    <span>Materials</span>
+                </md-tab-label>
+
+                <md-tab-body>
+                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+					
+						<table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance"
+							   dt-options="vm.dtOptions">
+							<thead>
+								<tr>
+									<th class="secondary-text">
+										<div class="">
+											<span class="column-title">#</span>
+										</div>
+									</th>
+									<th class="secondary-text">
+										<div class="table-header">
+											<span class="column-title">ID</span>
+										</div>
+									</th>
+									<th class="secondary-text">
+										<div class="table-header">
+											<span class="column-title">Nmae</span>
+										</div>
+									</th>
+									<th class="secondary-text">
+										<div class="table-header">
+											<span class="column-title">Unit</span>
+										</div>
+									</th>
+									<th class="secondary-text">
+										<div class="table-header">
+											<span class="column-title">Quantity</span>
+										</div>
+									</th>
+									<th class="secondary-text">
+										<div class="table-header">
+											<span class="column-title">Price</span>
+										</div>
+									</th>
+									
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="order in ::vm.orders">
+									<td><md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+										</md-checkbox>
+									</td>
+									<td>{{order.name}}</td>
+									<td>{{order.name}}</td>
+									<td>{{order.country}}</td>
+									<td>{{order.date}}</td>
+									<td>{{order.createdby}}</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="actions" layout="row" layout-align="start center">
+							<md-button class="md-raised md-accent">Delete</md-button>
+							<md-button class="md-raised md-accent">Add</md-button>
+						</div>
+					</div>
+                </md-tab-body>
+            </md-tab>
+        </md-tabs>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>

@@ -66,13 +66,13 @@
                 },
                 bodyClass: 'knowledge-base'
             })
-			/*
-			.state('app.warehouse-management.stock-locations-edit', {
-                url      : '/stock-locations-edit',
+			
+			.state('app.knowledge-base.kb-categories-edit', {
+                url      : '/kb-categories-edit',
                 views    : {
                     'content@app': {
-                        templateUrl: 'app/main/apps/warehouse-management/views/edit/stock-locations-edit.html',
-                        controller : 'warehouseeditController as vm'
+                        templateUrl: 'app/main/apps/knowledge-base/views/edit/kb-categories-edit.html',
+                        controller : 'kbeditController as vm'
                     }
                 },
                 resolve  : {
@@ -81,15 +81,15 @@
                         return msApi.resolve('crm.orders@get');
                     }
                 },
-                bodyClass: 'warehouse-management'
+                bodyClass: 'kb'
             })
 			
-			.state('app.warehouse-management.warehouse-edit', {
-                url      : '/warehouse-edit',
+			.state('app.knowledge-base.knowledge-base-edit', {
+                url      : '/knowledge-base-edit',
                 views    : {
                     'content@app': {
-                        templateUrl: 'app/main/apps/warehouse-management/views/edit/warehouse-edit.html',
-                        controller : 'warehouseeditController as vm'
+                        templateUrl: 'app/main/apps/knowledge-base/views/edit/knowledge-base-edit.html',
+                        controller : 'kbeditController as vm'
                     }
                 },
                 resolve  : {
@@ -98,15 +98,15 @@
                         return msApi.resolve('crm.orders@get');
                     }
                 },
-                bodyClass: 'warehouse-management'
+                bodyClass: 'kb'
             })
 			
-			.state('app.warehouse-management.stock-locations-view', {
-                url      : '/stock-locations-view',
+			.state('app.knowledge-base.kb-categories-view', {
+                url      : '/kb-categories-view',
                 views    : {
                     'content@app': {
-                        templateUrl: 'app/main/apps/warehouse-management/views/view/stock-locations-view.html',
-                        controller : 'warehouseviewController as vm'
+                        templateUrl: 'app/main/apps/knowledge-base/views/view/kb-categories-view.html',
+                        controller : 'kbviewController as vm'
                     }
                 },
                 resolve  : {
@@ -115,15 +115,15 @@
                         return msApi.resolve('crm.orders@get');
                     }
                 },
-                bodyClass: 'warehouse'
+                bodyClass: 'kb'
             })
 			
-			.state('app.warehouse-management.warehouse-view', {
-                url      : '/warehouse-view',
+			.state('app.knowledge-base.knowledge-base-view', {
+                url      : '/knowledge-base-view',
                 views    : {
                     'content@app': {
-                        templateUrl: 'app/main/apps/warehouse-management/views/view/warehouse-view.html',
-                        controller : 'warehouseviewController as vm'
+                        templateUrl: 'app/main/apps/knowledge-base/views/view/knowledge-base-view.html',
+                        controller : 'kbviewController as vm'
                     }
                 },
                 resolve  : {
@@ -132,9 +132,9 @@
                         return msApi.resolve('crm.orders@get');
                     }
                 },
-                bodyClass: 'warehouse'
+                bodyClass: 'kb'
             })
-			 */
+			 
         // Api
 		msApiProvider.register('order-management.sales-orders', ['app/data/order-management/sales-orders.json']);
 		msApiProvider.register('crm.orders', ['app/data/crm/orders.json']);

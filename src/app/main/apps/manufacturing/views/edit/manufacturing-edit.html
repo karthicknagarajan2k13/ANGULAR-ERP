@@ -4,7 +4,7 @@
     <div class="header md-accent-bg" layout="row" layout-align="space-between">
         <div layout="column" layout-align="space-between">
             <div class="breadcrumb" layout="row" layout-align="start center">
-                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">Warehouse Management </a>&nbsp; / &nbsp;<a href="">Stock Locations </a> </span>&nbsp; / &nbsp; Edit
+                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">Manufacturing Management </a>&nbsp; / &nbsp;<a href="">Manufacturing </a> </span>&nbsp; / &nbsp; Edit
             </div>
         </div>
     </div>
@@ -25,7 +25,7 @@
                         <form>
                             <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>Location ID</label>
+										<label>ID</label>
 										<input type="text" value="CUS0001">
 									</md-input-container>
 									
@@ -36,37 +36,55 @@
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Description</label>
-										<input type="text" value="580-269-9087" >
+										<input type="text" value="Lorem Ipsum is simply dummy text" >
 									</md-input-container>
                                 </div>
 								<div layout="column" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Row No</label>
-                                        <md-datepicker ng-model="myDate" md-placeholder="22/12/2016"></md-datepicker>
+                                    <md-input-container flex>
+										<label>Status</label>
+										<md-select ng-model="vm.search_data.c_type1" multiple>
+											<md-option ng-repeat="type in ['Draft', 'InProgress', 'Failed', 'Failed & Restarted', 'Completed']" value="{{type}}">
+												{{type}}
+											</md-option>
+										</md-select>
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
-										<label>Rack From</label>
-										<input type="text" value="2946 Luke Lane" >
+										<label>Start Date</label>
+										<md-datepicker ng-model="myDate" md-placeholder="22/12/2016"></md-datepicker>
 									</md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>Rack To</label>
-										<input type="text" value="Kaw City" >
+										<label>Expected Completion Date</label>
+										<md-datepicker ng-model="myDate" md-placeholder="22/12/2016"></md-datepicker>
 									</md-input-container>
                                 </div>
 								
 								<div layout="column" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Status </label>
-                                        <md-datepicker ng-model="myDate" md-placeholder="22/12/2016"></md-datepicker>
+                                    <md-input-container flex>
+										<label>Type</label>
+										<md-select ng-model="vm.search_data.c_type1" multiple>
+											<md-option ng-repeat="type in ['Made - to - Order', 'Made - to - Stock']" value="{{type}}">
+												{{type}}
+											</md-option>
+										</md-select>
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
-										<label>Warehouse</label>
+										<label>Quantity</label>
+										<input type="text" value="2946" >
+									</md-input-container>
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Stock Item</label>
 										<input type="text" value="2946 Luke Lane" >
 									</md-input-container>
 
+                                </div>
+								<div layout="row" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex="33">
+										<label>Sales Order </label>
+                                        <input type="text" value="2946 Luke Lane" >
+									</md-input-container>
                                 </div>
 								
                         </form>
@@ -80,6 +98,35 @@
 
 
             <md-tab>
+                <md-tab-label>
+                    <span>QA Check List</span>
+                </md-tab-label>
+
+                <md-tab-body>
+                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+                        <form>
+                            <div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Name</label>
+										<input type="text" value="Mugilan M" >
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Passed?</label>
+										<input type="text" value="Lola J Bolden" >
+									</md-input-container>
+                                </div>
+                        </form>
+						
+						<div class="actions" layout="row" layout-align="start center">
+							<md-button class="md-raised md-accent">Save</md-button>
+							<md-button class="md-raised md-accent">Clear</md-button>
+						</div>
+                    </div>
+                </md-tab-body>
+            </md-tab>
+			
+			<md-tab>
                 <md-tab-label>
                     <span>Other Info</span>
                 </md-tab-label>

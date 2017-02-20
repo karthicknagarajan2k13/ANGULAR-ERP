@@ -4,7 +4,7 @@
     <div class="header md-accent-bg" layout="row" layout-align="space-between">
         <div layout="column" layout-align="space-between">
             <div class="breadcrumb" layout="row" layout-align="start center">
-                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">Warehouse Management </a>&nbsp; / &nbsp;<a href="">Warehouse </a> </span>&nbsp; / &nbsp; View
+                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">Knowledge Base </a>&nbsp; / &nbsp;<a href="">KB Categories </a> </span>&nbsp; / &nbsp; View
             </div>
         </div>
     </div>
@@ -25,12 +25,12 @@
                         <form>
                             <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>Warehouse ID</label>
-										<input type="text" value="CUS0001" disabled> 
+										<label>ID</label>
+										<input type="text" value="CUS0001" disabled>
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
-										<label>Subject</label>
+										<label>Name</label>
 										<input type="text" value="Lola J Bolden" disabled>
 									</md-input-container>
 
@@ -39,40 +39,10 @@
 										<input type="text" value="580-269-9087" disabled>
 									</md-input-container>
                                 </div>
-								<div layout="column" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Address Street</label>
-                                        <input type="text" value="Lola J Bolden" disabled>
-									</md-input-container>
-									
-									<md-input-container class="md-block" flex-gt-sm>
-										<label>Address City</label>
-										<input type="text" value="2946 Luke Lane" disabled>
-									</md-input-container>
-
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Address Province</label>
-										<input type="text" value="Kaw City" disabled>
-									</md-input-container>
-                                </div>
-								
-								<div layout="row" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex="33">
-										<label>Address Country </label>
-                                        <input type="text" value="Lola J Bolden" disabled>
-									</md-input-container>
-									
-									<md-input-container class="md-block" flex="33">
-										<label>Address Postalcode</label>
-										<input type="text" value="2946 Luke Lane" disabled>
-									</md-input-container>
-
-                                </div>
-								
                         </form>
 						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Save</md-button>
-							<md-button class="md-raised md-accent">Clear</md-button>
+							<md-button class="md-raised md-accent">Edit</md-button>
+							<md-button class="md-raised md-accent">Delete</md-button>
 						</div>
                     </div>
                 </md-tab-body>
@@ -123,7 +93,7 @@
 			
 			<md-tab>
                 <md-tab-label>
-                    <span>Locations</span>
+                    <span>Knowledge Base</span>
                 </md-tab-label>
 
                 <md-tab-body>
@@ -140,37 +110,27 @@
 									</th>
 									<th class="secondary-text">
 										<div class="table-header">
-											<span class="column-title">Location ID</span>
+											<span class="column-title">Title</span>
 										</div>
 									</th>
 									<th class="secondary-text">
 										<div class="table-header">
-											<span class="column-title">Subject</span>
+											<span class="column-title">Category</span>
 										</div>
 									</th>
 									<th class="secondary-text">
 										<div class="table-header">
-											<span class="column-title">Description</span>
-										</div>
-									</th>
-									<th class="secondary-text">
-										<div class="table-header">
-											<span class="column-title">Row No</span>
-										</div>
-									</th>
-									<th class="secondary-text">
-										<div class="table-header">
-											<span class="column-title">Status </span>
-										</div>
-									</th>
-									<th class="secondary-text">
-										<div class="table-header">
-											<span class="column-title">Date Created</span>
+											<span class="column-title">Status</span>
 										</div>
 									</th>
 									<th class="secondary-text">
 										<div class="table-header">
 											<span class="column-title">Created By</span>
+										</div>
+									</th>
+									<th class="secondary-text">
+										<div class="table-header">
+											<span class="column-title">Date Created</span>
 										</div>
 									</th>
 									
@@ -182,13 +142,12 @@
 										</md-checkbox>
 									</td>
 									<td>{{order.name}}</td>
-									<td>{{order.name}}</td>
-									<td>{{order.name}}</td>
+									
 									<td>{{order.country}}</td>
 									<td>{{order.date}}</td>
 									<td>{{order.date}}</td>
 									<td>{{order.createdby}}</td>
-									
+								</tr>
 							</tbody>
 						</table>
 						<div class="actions" layout="row" layout-align="start center">

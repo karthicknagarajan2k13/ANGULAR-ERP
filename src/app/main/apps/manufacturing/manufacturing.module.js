@@ -66,13 +66,30 @@
                 },
                 bodyClass: 'manufacturing'
             })
-			/*
-			.state('app.warehouse-management.stock-locations-edit', {
-                url      : '/stock-locations-edit',
+			
+			.state('app.manufacturing.manufacturing-edit', {
+                url      : '/manufacturing-edit',
                 views    : {
                     'content@app': {
-                        templateUrl: 'app/main/apps/warehouse-management/views/edit/stock-locations-edit.html',
-                        controller : 'warehouseeditController as vm'
+                        templateUrl: 'app/main/apps/manufacturing/views/edit/manufacturing-edit.html',
+                        controller : 'manufacturingeditController as vm'
+                    }
+                },
+                resolve  : {
+                    Product: function (msApi)
+                    {
+                        return msApi.resolve('crm.orders@get');
+                    }
+                },
+                bodyClass: 'warehouse-management'
+            })
+		
+			.state('app.manufacturing.materials-edit', {
+                url      : '/materials-edit',
+                views    : {
+                    'content@app': {
+                        templateUrl: 'app/main/apps/manufacturing/views/edit/materials-edit.html',
+                        controller : 'manufacturingeditController as vm'
                     }
                 },
                 resolve  : {
@@ -84,29 +101,12 @@
                 bodyClass: 'warehouse-management'
             })
 			
-			.state('app.warehouse-management.warehouse-edit', {
-                url      : '/warehouse-edit',
+			.state('app.manufacturing.manufacturing-view', {
+                url      : '/manufacturing-view',
                 views    : {
                     'content@app': {
-                        templateUrl: 'app/main/apps/warehouse-management/views/edit/warehouse-edit.html',
-                        controller : 'warehouseeditController as vm'
-                    }
-                },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
-                },
-                bodyClass: 'warehouse-management'
-            })
-			
-			.state('app.warehouse-management.stock-locations-view', {
-                url      : '/stock-locations-view',
-                views    : {
-                    'content@app': {
-                        templateUrl: 'app/main/apps/warehouse-management/views/view/stock-locations-view.html',
-                        controller : 'warehouseviewController as vm'
+                        templateUrl: 'app/main/apps/manufacturing/views/view/manufacturing-view.html',
+                        controller : 'manufacturingviewController as vm'
                     }
                 },
                 resolve  : {
@@ -118,12 +118,12 @@
                 bodyClass: 'warehouse'
             })
 			
-			.state('app.warehouse-management.warehouse-view', {
-                url      : '/warehouse-view',
+			/* .state('app.manufacturing.materials-view', {
+                url      : '/materials-view',
                 views    : {
                     'content@app': {
-                        templateUrl: 'app/main/apps/warehouse-management/views/view/warehouse-view.html',
-                        controller : 'warehouseviewController as vm'
+                        templateUrl: 'app/main/apps/manufacturing/views/view/materials-view.html',
+                        controller : 'manufacturingviewController as vm'
                     }
                 },
                 resolve  : {
@@ -133,8 +133,8 @@
                     }
                 },
                 bodyClass: 'warehouse'
-            })
-			 */
+            }) */
+			 
         // Api
 		msApiProvider.register('order-management.sales-orders', ['app/data/order-management/sales-orders.json']);
 		msApiProvider.register('crm.orders', ['app/data/crm/orders.json']);

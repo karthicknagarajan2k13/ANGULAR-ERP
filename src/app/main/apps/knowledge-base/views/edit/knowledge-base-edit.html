@@ -4,7 +4,7 @@
     <div class="header md-accent-bg" layout="row" layout-align="space-between">
         <div layout="column" layout-align="space-between">
             <div class="breadcrumb" layout="row" layout-align="start center">
-                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">Warehouse Management </a>&nbsp; / &nbsp;<a href="">Stock Location </a> </span>&nbsp; / &nbsp; View
+                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">Knowledge Base </a>&nbsp; / &nbsp;<a href="">Knowledge Base </a> </span>&nbsp; / &nbsp; Edit
             </div>
         </div>
     </div>
@@ -25,46 +25,50 @@
                         <form>
                             <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>Location ID</label>
-										<input type="text" value="CUS0001" disabled>
+										<label>ID</label>
+										<input type="text" value="CUS0001">
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
-										<label>Subject</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<label>Title</label>
+										<input type="text" value="Lola J Bolden" >
 									</md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>Description</label>
-										<input type="text" value="580-269-9087" disabled>
+										<label>Status </label>
+										<input type="text" value="580-269-9087" >
 									</md-input-container>
                                 </div>
 								<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>Row No</label>
-                                        <input type="text" value="2946 Luke Lane" disabled>
+										<label>Revision</label>
+                                        <input type="text" value="Lola J Bolden" >
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
-										<label>Rack From</label>
-										<input type="text" value="2946 Luke Lane" disabled>
+										<label>Category</label>
+										<input type="text" value="2946 Luke Lane" >
 									</md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>Rack To</label>
-										<input type="text" value="Kaw City" disabled>
+										<label>Body</label>
+										<input type="text" value="Kaw City" >
 									</md-input-container>
                                 </div>
 								
-								<div layout="column" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Status </label>
-                                        <input type="text" value="2946 Luke Lane" disabled>
+								<div layout="row" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex="33">
+										<label>Resolution</label>
+                                        <input type="text" value="Lola J Bolden" >
 									</md-input-container>
 									
-									<md-input-container class="md-block" flex-gt-sm>
-										<label>Warehouse</label>
-										<input type="text" value="2946 Luke Lane" disabled>
+									<md-input-container class="md-block" flex="33">
+										<label>Author</label>
+										<input type="text" value="2946 Luke Lane" >
+									</md-input-container>
+									<md-input-container class="md-block" flex="33">
+										<label>Approver</label>
+										<input type="text" value="2946 Luke Lane" >
 									</md-input-container>
 
                                 </div>
@@ -90,23 +94,23 @@
                             <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Date Created</label>
-										<input type="text" value="22/12/2016" disabled>
+										<input type="text" value="22/12/2016" >
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Created By</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<input type="text" value="Lola J Bolden" >
 									</md-input-container>
 
                                    <md-input-container class="md-block" flex-gt-sm>
 										<label>Date Modified</label>
-										<input type="text" value="12/01/2017" disabled>
+										<input type="text" value="12/01/2017" >
 									</md-input-container>
                                 </div>
 								<div layout="row" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex="33">
 										<label>Modified By</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<input type="text" value="Lola J Bolden" >
 									</md-input-container>
 									
                                 </div>
@@ -121,72 +125,6 @@
                 </md-tab-body>
             </md-tab>
 			
-			<md-tab>
-                <md-tab-label>
-                    <span>Items</span>
-                </md-tab-label>
-
-                <md-tab-body>
-                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
-					
-						<table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance"
-							   dt-options="vm.dtOptions">
-							<thead>
-								<tr>
-									<th class="secondary-text">
-										<div class="">
-											<span class="column-title">#</span>
-										</div>
-									</th>
-									<th class="secondary-text">
-										<div class="table-header">
-											<span class="column-title">Item ID</span>
-										</div>
-									</th>
-									<th class="secondary-text">
-										<div class="table-header">
-											<span class="column-title">Item Name</span>
-										</div>
-									</th>
-									<th class="secondary-text">
-										<div class="table-header">
-											<span class="column-title">Item Instock</span>
-										</div>
-									</th>
-									<th class="secondary-text">
-										<div class="table-header">
-											<span class="column-title">Date Created</span>
-										</div>
-									</th>
-									<th class="secondary-text">
-										<div class="table-header">
-											<span class="column-title">Created By</span>
-										</div>
-									</th>
-									
-								</tr>
-							</thead>
-							<tbody>
-								<tr ng-repeat="order in ::vm.orders">
-									<td><md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
-										</md-checkbox>
-									</td>
-									<td>{{order.name}}</td>
-									
-									<td>{{order.country}}</td>
-									<td>{{order.date}}</td>
-									<td>{{order.date}}</td>
-									<td>{{order.createdby}}</td>
-								</tr>
-							</tbody>
-						</table>
-						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Delete</md-button>
-							<md-button class="md-raised md-accent">Add</md-button>
-						</div>
-					</div>
-                </md-tab-body>
-            </md-tab>
         </md-tabs>
 
     </div>

@@ -46,9 +46,13 @@
 									</md-input-container>
                                 </div>
 								<div layout="column" layout-gt-xs="row" flex>
-									<md-input-container class="md-block" flex-gt-sm>
+									<md-input-container flex>
 										<label>Status</label>
-										<input ng-model="user.firstName">
+										<md-select ng-model="vm.search_data.c_type1" multiple>
+											<md-option ng-repeat="type in ['Active', 'Inactive']" value="{{type}}">
+												{{type}}
+											</md-option>
+										</md-select>
 									</md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
@@ -60,13 +64,12 @@
 										<input ng-model="user.firstName">
 									</md-input-container>
                                 </div>
-								<div layout="column" layout-gt-xs="row" flex>
-									<md-input-container class="md-block" flex-gt-sm>
-										<label>Date Created</label>
-										<input ng-model="user.firstName">
-									</md-input-container>
+								<div layout="row" layout-gt-xs="row" flex>
+									<md-input-container class="md-block" flex="33">
+                                        <md-datepicker ng-model="vm.search_data.created_at" md-placeholder="Date Created"></md-datepicker>
+                                    </md-input-container>
 
-                                    <md-input-container class="md-block" flex-gt-sm>
+                                    <md-input-container class="md-block" flex="33">
 										<label>Created By </label>
 										<input ng-model="user.firstName">
 									</md-input-container>

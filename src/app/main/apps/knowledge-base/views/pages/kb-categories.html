@@ -31,26 +31,21 @@
 						<div style="padding-top:49px;" ng-show="collapsed">
 							<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>Warehouse ID</label>
+										<label>ID</label>
 										<input ng-model="user.firstName">
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
-										<label>Subject</label>
+										<label>Name</label>
 										<input ng-model="user.firstName">
 									</md-input-container>
-
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>City</label>
-										<input ng-model="user.firstName">
-									</md-input-container>
+									<md-input-container class="md-block" flex-gt-sm>
+                                        <md-datepicker ng-model="vm.search_data.created_at" md-placeholder="Date Created"></md-datepicker>
+                                    </md-input-container>
                                 </div>
-								<div layout="column" layout-gt-xs="row" flex>
-									<md-input-container class="md-block" flex-gt-sm>
-										<label>Date Created </label>
-										<input ng-model="user.firstName">
-									</md-input-container>
-									<md-input-container class="md-block" flex-gt-sm>
+								<div layout="row" layout-gt-xs="row" flex>
+									
+									<md-input-container class="md-block" flex="33">
 										<label>Created By</label>
 										<input ng-model="user.firstName">
 									</md-input-container>
@@ -104,33 +99,12 @@
                             </th>
                             <th class="secondary-text">
                                 <div class="table-header">
-                                    <span class="column-title">Warehouse ID</span>
+                                    <span class="column-title">ID</span>
                                 </div>
                             </th>
                             <th class="secondary-text">
                                 <div class="table-header">
-                                    <span class="column-title">Subject</span>
-                                </div>
-                            </th>
-                            
-                            <th class="secondary-text">
-                                <div class="table-header">
-                                    <span class="column-title">City</span>
-                                </div>
-                            </th>
-                            <th class="secondary-text">
-                                <div class="table-header">
-                                    <span class="column-title">Province</span>
-                                </div>
-                            </th>
-                            <th class="secondary-text">
-                                <div class="table-header">
-                                    <span class="column-title">Country </span>
-                                </div>
-                            </th>
-							<th class="secondary-text">
-                                <div class="table-header">
-                                    <span class="column-title">Postalcode</span>
+                                    <span class="column-title">Name</span>
                                 </div>
                             </th>
 							<th class="secondary-text">
@@ -150,14 +124,10 @@
                             <td><md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
 								</md-checkbox>
 							</td>
+                            <td>{{order.id}}</td>
                             <td>{{order.name}}</td>
-                            <td>{{order.phone}}</td>
 							<td>{{order.test}}</td>
-							<td>{{order.test}}</td>
-							<td>{{order.test}}</td>
-							<td>{{order.country}}</td>
-							<td>{{order.country}}</td>
-                            <td>{{order.date}}</td>
+							<td>{{order.name}}</td>
                         </tr>
                     </tbody>
                 </table>

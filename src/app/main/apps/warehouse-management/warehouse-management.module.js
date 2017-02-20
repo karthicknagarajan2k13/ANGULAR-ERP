@@ -78,7 +78,7 @@
                 resolve  : {
                     Product: function (msApi)
                     {
-                        return msApi.resolve('crm.orders@get');
+                        return msApi.resolve('e-commerce.product@get');
                     }
                 },
                 bodyClass: 'warehouse-management'
@@ -136,6 +136,7 @@
             })
 			
         // Api
+		msApiProvider.register('e-commerce.product', ['app/data/e-commerce/product.json']);
 		msApiProvider.register('order-management.sales-orders', ['app/data/order-management/sales-orders.json']);
 		msApiProvider.register('crm.orders', ['app/data/crm/orders.json']);
         msApiProvider.register('crm.statuses', ['app/data/crm/statuses.json']);

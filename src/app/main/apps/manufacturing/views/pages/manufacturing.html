@@ -31,7 +31,7 @@
 						<div style="padding-top:49px;" ng-show="collapsed">
 							<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>Location ID</label>
+										<label>ID</label>
 										<input ng-model="user.firstName">
 									</md-input-container>
 									
@@ -40,38 +40,34 @@
 										<input ng-model="user.firstName">
 									</md-input-container>
 
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Row No</label>
-										<input ng-model="user.firstName">
-									</md-input-container>
-                                </div>
-								<div layout="column" layout-gt-xs="row" flex>
-									<md-input-container class="md-block" flex-gt-sm>
+                                    <md-input-container flex>
 										<label>Status</label>
-										<input ng-model="user.firstName">
-									</md-input-container>
-
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Item </label>
-										<input ng-model="user.firstName">
-									</md-input-container>
-									<md-input-container class="md-block" flex-gt-sm>
-										<label>Warehouse </label>
-										<input ng-model="user.firstName">
+										<md-select ng-model="vm.search_data.c_type1" multiple>
+											<md-option ng-repeat="type in ['Draft', 'InProgress', 'Failed', 'Failed & Restarted', 'Completed']" value="{{type}}">
+												{{type}}
+											</md-option>
+										</md-select>
 									</md-input-container>
                                 </div>
 								<div layout="column" layout-gt-xs="row" flex>
-									<md-input-container class="md-block" flex-gt-sm>
-										<label>Date Created</label>
-										<input ng-model="user.firstName">
+									<md-input-container flex>
+										<label>Type</label>
+										<md-select ng-model="vm.search_data.c_type1" multiple>
+											<md-option ng-repeat="type in ['Made - to - Order', 'Made - to - Stock']" value="{{type}}">
+												{{type}}
+											</md-option>
+										</md-select>
 									</md-input-container>
+									<md-input-container class="md-block" flex-gt-sm>
+                                        <md-datepicker ng-model="vm.search_data.created_at" md-placeholder="Date Created"></md-datepicker>
+                                    </md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Created By </label>
 										<input ng-model="user.firstName">
 									</md-input-container>
-									
                                 </div>
+								
 								<div class="actions" layout="row" layout-align="start center">
 									<md-button class="md-raised md-accent">Search</md-button>
 									<md-button class="md-raised md-accent">Clear</md-button>
@@ -120,14 +116,14 @@
                             </th>
                             <th class="secondary-text">
                                 <div class="table-header">
-                                    <span class="column-title">Location ID</span>
+                                    <span class="column-title">ID</span>
                                 </div>
                             </th>
                             
                             
                             <th class="secondary-text">
                                 <div class="table-header">
-                                    <span class="column-title">Designation</span>
+                                    <span class="column-title">Subject</span>
                                 </div>
                             </th>
                             <th class="secondary-text">
@@ -137,19 +133,10 @@
                             </th>
                             <th class="secondary-text">
                                 <div class="table-header">
-                                    <span class="column-title">Row No </span>
+                                    <span class="column-title">Status </span>
                                 </div>
                             </th>
-							<th class="secondary-text">
-                                <div class="table-header">
-                                    <span class="column-title">Status</span>
-                                </div>
-                            </th>
-							<th class="secondary-text">
-                                <div class="table-header">
-                                    <span class="column-title">Warehouse</span>
-                                </div>
-                            </th>
+							
 							<th class="secondary-text">
                                 <div class="table-header">
                                     <span class="column-title">Date Created</span>
@@ -167,14 +154,12 @@
                             <td><md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
 								</md-checkbox>
 							</td>
-                            <td>{{order.name}}</td>
+                            <td>{{order.id}}</td>
+							<td>{{order.createdby}}</td>
+							<td>{{order.name}}</td>
+							<td>{{order.name}}</td>
 							<td>{{order.test}}</td>
-							<td>{{order.test}}</td>
-							<td>{{order.country}}</td>
-							<td>{{order.test}}</td>
-							<td>{{order.country}}</td>
-							<td>{{order.country}}</td>
-                            <td>{{order.date}}</td>
+                            <td>{{order.createdby}}</td>
                         </tr>
                     </tbody>
                 </table>

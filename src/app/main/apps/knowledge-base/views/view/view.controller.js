@@ -3,11 +3,11 @@
     'use strict';
 
     angular
-        .module('app.warehouse-management')
-        .controller('warehouseviewController', warehouseviewController);
+        .module('app.knowledge-base')
+        .controller('kbviewController', kbviewController);
 
     /** @ngInject */
-    function warehouseviewController($document, $state, Product)
+    function kbviewController($document, $state, Product)
     {
 
         var vm = this;
