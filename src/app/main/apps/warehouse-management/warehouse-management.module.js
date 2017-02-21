@@ -30,7 +30,7 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/warehouse-management/views/pages/stock-locations.html',
-                        controller : 'warehouseController as vm'
+                        controller : 'WarehouseLocationController as vm'
                     }
                 },
                 resolve  : {
@@ -51,7 +51,7 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/warehouse-management/views/pages/warehouse.html',
-                        controller : 'warehouseController as vm'
+                        controller : 'WareHouseController as vm'
                     }
                 },
                 resolve  : {
@@ -72,7 +72,27 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/warehouse-management/views/edit/stock-locations-edit.html',
-                        controller : 'warehouseeditController as vm'
+                        controller : 'editWarehouseLocationController as vm'
+                    }
+                },
+                params: {
+                 obj: null
+                },
+                resolve  : {
+                    Product: function (msApi)
+                    {
+                        return msApi.resolve('e-commerce.product@get');
+                    }
+                },
+                bodyClass: 'warehouse-management'
+            })
+
+            .state('app.warehouse-management.stock-locations-new', {
+                url      : '/stock-locations-new',
+                views    : {
+                    'content@app': {
+                        templateUrl: 'app/main/apps/warehouse-management/views/new/stock-locations-new.html',
+                        controller : 'newWarehouseLocationController as vm'
                     }
                 },
                 resolve  : {
@@ -83,13 +103,33 @@
                 },
                 bodyClass: 'warehouse-management'
             })
-			
+
 			.state('app.warehouse-management.warehouse-edit', {
                 url      : '/warehouse-edit',
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/warehouse-management/views/edit/warehouse-edit.html',
-                        controller : 'warehouseeditController as vm'
+                        controller : 'editWarehouseController as vm'
+                    }
+                },
+                params: {
+                 obj: null
+                },
+                resolve  : {
+                    Product: function (msApi)
+                    {
+                        return msApi.resolve('crm.orders@get');
+                    }
+                },
+                bodyClass: 'warehouse-management'
+            })
+
+            .state('app.warehouse-management.warehouse-new', {
+                url      : '/warehouse-new',
+                views    : {
+                    'content@app': {
+                        templateUrl: 'app/main/apps/warehouse-management/views/new/warehouse-new.html',
+                        controller : 'newWarehouseController as vm'
                     }
                 },
                 resolve  : {
@@ -100,14 +140,17 @@
                 },
                 bodyClass: 'warehouse-management'
             })
-			
+
 			.state('app.warehouse-management.stock-locations-view', {
                 url      : '/stock-locations-view',
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/warehouse-management/views/view/stock-locations-view.html',
-                        controller : 'warehouseviewController as vm'
+                        controller : 'viewWarehouseLocationController as vm'
                     }
+                },
+                params: {
+                 obj: null
                 },
                 resolve  : {
                     Product: function (msApi)
@@ -123,8 +166,11 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/warehouse-management/views/view/warehouse-view.html',
-                        controller : 'warehouseviewController as vm'
+                        controller : 'viewWarehouseController as vm'
                     }
+                },
+                params: {
+                 obj: null
                 },
                 resolve  : {
                     Product: function (msApi)

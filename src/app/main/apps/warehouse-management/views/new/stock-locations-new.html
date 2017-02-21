@@ -4,7 +4,7 @@
     <div class="header md-accent-bg" layout="row" layout-align="space-between">
         <div layout="column" layout-align="space-between">
             <div class="breadcrumb" layout="row" layout-align="start center">
-                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">Warehouse Management </a>&nbsp; / &nbsp;<a href="">Stock Locations </a> </span>&nbsp; / &nbsp; Edit
+                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">Warehouse Management </a>&nbsp; / &nbsp;<a href="">Stock Locations </a> </span>&nbsp; / &nbsp; New
             </div>
         </div>
     </div>
@@ -22,11 +22,11 @@
 
                 <md-tab-body>
                     <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
-                        <form ng-submit="vm.updateWarehouseLocation()" name="submitForm" novalidate>
+                        <form ng-submit="vm.saveWarehouseLocation()" name="submitForm" novalidate>
                             <div layout="column" layout-gt-xs="row" flex>
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Subject</label>
-										<input type="text" name="subject" ng-model="vm.warehouse_location.warehouse_location.subject" required>
+										<input type="text" name="subject" ng-model="vm.warehouse_location.subject" required>
 	                                    <div ng-messages="submitForm.subject.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Subject field is required</span>
@@ -34,21 +34,21 @@
 	                                    </div>									</md-input-container>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Row No</label>
-										<input type="text" name="row_no" ng-model="vm.warehouse_location.warehouse_location.row_no">
+										<input type="text" name="row_no" ng-model="vm.warehouse_location.row_no">
 									</md-input-container>
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Rack From</label>
-										<input type="text" name="rack_from" ng-model="vm.warehouse_location.warehouse_location.rack_from">
+										<input type="text" name="rack_from" ng-model="vm.warehouse_location.rack_from">
 									</md-input-container>
                                 </div>
 								<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Rack To</label>
-										<input type="text" name="rack_to" ng-model="vm.warehouse_location.warehouse_location.rack_to">
+										<input type="text" name="rack_to" ng-model="vm.warehouse_location.rack_to">
 									</md-input-container>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Status</label>
-										<md-select name="status" ng-model="vm.warehouse_location.warehouse_location.status">
+										<md-select name="status" ng-model="vm.warehouse_location.status">
 											<md-option ng-repeat="type in ['Active', 'Inactive']" value="{{type}}">
 												{{type}}
 											</md-option>
@@ -56,7 +56,7 @@
 									</md-input-container>
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Warehouse</label>
-                                        <md-select ng-model="vm.warehouse_location.warehouse_location.warehouse_id" name="warehouse">
+                                        <md-select ng-model="vm.warehouse_location.warehouse_id" name="warehouse">
                                             <md-option ng-repeat="warehouse in get_warehouses" value="{{warehouse.warehouse_id}}">
                                                 {{warehouse.name}}
                                             </md-option>
@@ -67,18 +67,18 @@
 								<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Asset</label>
-										<input type="text" ng-model="vm.warehouse_location.warehouse_location.asset">
+										<input type="text" ng-model="vm.warehouse_location.asset">
 									</md-input-container>
                                     <md-input-container class="md-block" flex="33">
 										<label>SKU</label>
-										<input type="text" ng-model="vm.warehouse_location.warehouse_location.sku">
+										<input type="text" ng-model="vm.warehouse_location.sku">
 									</md-input-container>
                                 </div>
 								
 								<div layout="row" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Description</label>
-										<input type="text" name="description" ng-model="vm.warehouse_location.warehouse_location.description">
+										<input type="text" name="description" ng-model="vm.warehouse_location.description">
 									</md-input-container>
                                 </div>						
 							<div class="actions" layout="row" layout-align="start center">
@@ -87,7 +87,7 @@
 		                                       translate="Save" translate-attr-aria-label="Save">
 		                                Save
 		                            </md-button>
-                            		<md-button ng-click="vm.viewWarehouseLocationPage(vm.warehouse_location.warehouse_location.id)" class="md-raised md-accent">View</md-button>
+									<md-button ng-click="vm.warehouseLocationDataClear()" class="md-raised md-accent">Clear</md-button>
 							</div>
 						</form>
                     </div>
@@ -99,6 +99,7 @@
     <!-- / CONTENT -->
 
 </div>
+
 
 <!-- ADD BUTTON -->
 	<div class="add-btn-fixed">

@@ -26,53 +26,49 @@
                             <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Warehouse ID</label>
-										<input type="text" value="CUS0001" disabled> 
+										<input type="text" value="{{warehouse_data.code}}" disabled> 
 									</md-input-container>
-									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Subject</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<input type="text" value="{{warehouse_data.subject}}" disabled>
 									</md-input-container>
-
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>Description</label>
-										<input type="text" value="580-269-9087" disabled>
+										<label>Address Street</label>
+                                        <input type="text" value="{{warehouse_data.street}}" disabled>
 									</md-input-container>
                                 </div>
 								<div layout="column" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Address Street</label>
-                                        <input type="text" value="Lola J Bolden" disabled>
-									</md-input-container>
-									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Address City</label>
-										<input type="text" value="2946 Luke Lane" disabled>
+										<input type="text" value="{{warehouse_data.city}}" disabled>
 									</md-input-container>
-
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Address Province</label>
-										<input type="text" value="Kaw City" disabled>
+										<input type="text" value="{{warehouse_data.province}}" disabled>
+									</md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Address Country </label>
+                                        <input type="text" value="{{warehouse_data.country}}" disabled>
 									</md-input-container>
                                 </div>
 								
 								<div layout="row" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex="33">
-										<label>Address Country </label>
-                                        <input type="text" value="Lola J Bolden" disabled>
-									</md-input-container>
-									
 									<md-input-container class="md-block" flex="33">
 										<label>Address Postalcode</label>
-										<input type="text" value="2946 Luke Lane" disabled>
+										<input type="text" value="{{warehouse_data.postalcode}}" disabled>
 									</md-input-container>
-
-                                </div>
+								</div>
+								<div layout="row" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Description</label>
+										<input type="text" value="{{warehouse_data.description}}" disabled>
+									</md-input-container>
+								</div>
 								
                         </form>
 						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Save</md-button>
-							<md-button class="md-raised md-accent">Clear</md-button>
+							<md-button ng-click="vm.editWarehousePage(warehouse_data)" class="md-raised md-accent">Edit</md-button>
+							<md-button ng-click="vm.deleteWarehouse(warehouse_data.id)" class="md-raised md-accent">Delete</md-button>
 						</div>
                     </div>
                 </md-tab-body>
@@ -90,33 +86,33 @@
                             <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Date Created</label>
-										<input type="text" value="22/12/2016" disabled>
+										<input type="text" value="{{warehouse_data.created_at}}" disabled>
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Created By</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<input type="text" value="{{warehouse_data.created_by}}" disabled>
 									</md-input-container>
 
                                    <md-input-container class="md-block" flex-gt-sm>
 										<label>Date Modified</label>
-										<input type="text" value="12/01/2017" disabled>
+										<input type="text" value="{{warehouse_data.updated_at}}" disabled>
 									</md-input-container>
                                 </div>
 								<div layout="row" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex="33">
 										<label>Modified By</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<input type="text" value="{{warehouse_data.updated_by}}" disabled>
 									</md-input-container>
 									
                                 </div>
 								
                         </form>
 						
-						<!-- <div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Save</md-button>
-							<md-button class="md-raised md-accent">Clear</md-button>
-						</div> -->
+						<div class="actions" layout="row" layout-align="start center">
+							<md-button ng-click="vm.editWarehousePage(warehouse_data)" class="md-raised md-accent">Edit</md-button>
+							<md-button ng-click="vm.deleteWarehouse(warehouse_data.id)" class="md-raised md-accent">Delete</md-button>
+						</div>
                     </div>
                 </md-tab-body>
             </md-tab>
@@ -177,23 +173,22 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr ng-repeat="order in ::vm.orders">
-									<td><md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
-										</md-checkbox>
-									</td>
-									<td>{{order.name}}</td>
-									<td>{{order.name}}</td>
-									<td>{{order.name}}</td>
-									<td>{{order.country}}</td>
-									<td>{{order.date}}</td>
-									<td>{{order.date}}</td>
-									<td>{{order.createdby}}</td>
-									
+								<tr ng-repeat="warehouse_location in warehouse_data.warehouse_locations">
+	                            <td><md-checkbox ng-model="warehouse_location.checked" aria-label="Checkbox 1">
+									</md-checkbox>
+								</td>
+	                            <td>{{warehouse_location.code}}</td>
+								<td><a ng-click="vm.viewWarehouseLocationPage(warehouse_location.id)" href="">{{warehouse_location.subject}}</a></td>
+								<td>{{warehouse_location.description}}</td>
+								<td>{{warehouse_location.row_no}}</td>
+								<td>{{warehouse_location.status}}</td>
+								<td>{{warehouse_location.created_at}}</td>
+	                            <td>{{warehouse_location.created_by}}</td>	
 							</tbody>
 						</table>
 						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Delete</md-button>
-							<md-button class="md-raised md-accent">Add</md-button>
+                			<md-button ng-click="vm.deleteAllWarehouseLocation()" class="md-raised md-accent">Delete</md-button>
+							<md-button ng-click="vm.newWarehouseLocationPage()" class="md-raised md-accent">Add</md-button>
 						</div>
 					</div>
                 </md-tab-body>
@@ -204,3 +199,11 @@
     <!-- / CONTENT -->
 
 </div>
+
+<!-- ADD BUTTON -->
+	<div class="add-btn-fixed">
+		<md-button ng-click="vm.newWarehousePage()" class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
+			<md-icon md-font-icon="icon-plus"></md-icon>
+		</md-button>
+	</div>
+<!-- / ADD BUTTON -->

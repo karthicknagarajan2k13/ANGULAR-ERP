@@ -25,24 +25,24 @@
 					<md-input-container flex>
 						<md-icon md-font-icon="icon-magnify"></md-icon>
 						<label>Search</label>
-						<input ng-model="user.firstName">
+                        <input ng-keyup="$event.keyCode == 13 && vm.searchWarehouseData()" ng-model="vm.search_data.search_text">
 						<md-icon ng-model="collapsed" ng-click="collapsed=!collapsed" md-font-icon="icon-chevron-down"></md-icon>
 					
 						<div style="padding-top:49px;" ng-show="collapsed">
 							<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Warehouse ID</label>
-										<input ng-model="user.firstName">
+										<input ng-model="vm.search_data.code">
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Subject</label>
-										<input ng-model="user.firstName">
+										<input ng-model="vm.search_data.subject">
 									</md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>City</label>
-										<input ng-model="user.firstName">
+										<input ng-model="vm.search_data.city">
 									</md-input-container>
                                 </div>
 								<div layout="row" layout-gt-xs="row" flex>
@@ -52,14 +52,18 @@
 
                                     <md-input-container class="md-block" flex="33">
 										<label>Created By </label>
-										<input ng-model="user.firstName">
-									</md-input-container>
+                                        <md-select ng-model="vm.search_data.created_by_id">
+                                            <md-option ng-repeat="user in get_users" value="{{user.id}}">
+                                                {{user.name}}
+                                            </md-option>
+                                        </md-select>				
+                                    </md-input-container>
 									
                                 </div>
 								
 								<div class="actions" layout="row" layout-align="start center">
-									<md-button class="md-raised md-accent">Search</md-button>
-									<md-button class="md-raised md-accent">Clear</md-button>
+                                    <md-button ng-click="vm.searchWarehouseData()" class="md-raised md-accent">Search</md-button>
+                                    <md-button ng-click="vm.searchWarehouseDataClear()" class="md-raised md-accent">Clear</md-button>
 								</div>								
 						</div>
 					
@@ -147,18 +151,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="order in ::vm.orders">
-                            <td><md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+                        <tr ng-repeat="warehouse in warehouses_data">
+                            <td><md-checkbox ng-model="warehouse.checked" aria-label="Checkbox 1">
 								</md-checkbox>
 							</td>
-                            <td>{{order.name}}</td>
-                            <td>{{order.phone}}</td>
-							<td>{{order.test}}</td>
-							<td>{{order.test}}</td>
-							<td>{{order.test}}</td>
-							<td>{{order.country}}</td>
-							<td>{{order.country}}</td>
-                            <td>{{order.date}}</td>
+                            <td>{{warehouse.code}}</td>
+                            <td><a ng-click="vm.viewWarehousePage(warehouse.id)" href="">{{warehouse.subject}}</a></td>
+							<td>{{warehouse.city}}</td>
+							<td>{{warehouse.province}}</td>
+							<td>{{warehouse.country}}</td>
+							<td>{{warehouse.postalcode}}</td>
+							<td>{{warehouse.created_at}}</td>
+                            <td>{{warehouse.created_by}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -166,8 +170,7 @@
             </div>
             <!-- / CONTENT -->
 			<div class="actions" layout="row" layout-align="start center">
-				<md-button class="md-raised md-accent">Delete</md-button>
-				<md-button class="md-raised md-accent">Add</md-button>
+				<md-button ng-click="vm.deleteAllWarehouse()" class="md-raised md-accent">Delete</md-button>
 			</div>
 
         </div>
@@ -177,3 +180,11 @@
     <!-- / CENTER -->
 
 </div>
+
+<!-- ADD BUTTON -->
+    <div class="add-btn-fixed">
+        <md-button ng-click="vm.newWarehousePage()" class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
+            <md-icon md-font-icon="icon-plus"></md-icon>
+        </md-button>
+    </div>
+<!-- / ADD BUTTON -->
