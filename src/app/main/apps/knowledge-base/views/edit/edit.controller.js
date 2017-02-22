@@ -7,8 +7,15 @@
         .controller('kbeditController', kbeditController);
 
     /** @ngInject */
-    function kbeditController($document, $state, Product)
+    function kbeditController($scope, $document, $state, Product)
     {
+		
+		$scope.isOpen = false;
+		  $scope.demo = {
+			isOpen: false,
+			count: 0,
+			selectedDirection: 'left'
+		  };
 
         var vm = this;
 		

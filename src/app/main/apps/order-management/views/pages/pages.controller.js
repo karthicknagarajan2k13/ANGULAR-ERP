@@ -7,10 +7,18 @@
         .controller('SalesOrdersController', SalesOrdersController);
 
     /** @ngInject */
-    function SalesOrdersController($state, Statuses, Orders)
+    function SalesOrdersController($scope, $state, Statuses, Orders)
     {
 
-        var vm = this;
+        $scope.isOpen = false;
+		$scope.demo = {
+			isOpen: false,
+			count: 0,
+			selectedDirection: 'left'
+		};
+		
+		
+		var vm = this;
 
         // Data
         vm.orders = Orders.data;

@@ -10,7 +10,16 @@
     function newWarehouseLocationController(whApi, $scope, $document, $state)
     {
 
-        var vm = this;
+        
+		$scope.isOpen = false;
+		$scope.demo = {
+			isOpen: false,
+			count: 0,
+			selectedDirection: 'left'
+		};
+		
+		
+		var vm = this;
         vm.warehouse_location = {}
 		vm.ssName = "s"
         var dataPromise = whApi.get_warehouses({});

@@ -10,7 +10,14 @@
     function viewPurchaseOrderController(imApi, $scope, $document, $state, Product)
     {
 
-        var vm = this;
+        $scope.isOpen = false;
+		$scope.demo = {
+			isOpen: false,
+			count: 0,
+			selectedDirection: 'left'
+		};
+		
+		var vm = this;
 
         //Api Call
         var dataPromise = imApi.viewPurchaseOrder($state.params.obj.id);

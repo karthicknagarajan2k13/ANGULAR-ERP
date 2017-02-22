@@ -34,9 +34,13 @@
 										<input type="text" value="Lola J Bolden" >
 									</md-input-container>
 
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Status </label>
-										<input type="text" value="580-269-9087" >
+                                    <md-input-container flex>
+										<label>Status</label>
+										<md-select ng-model="vm.search_data.c_type1" multiple>
+											<md-option ng-repeat="type in ['Draft', 'Expired', 'In-Review', 'Approved']" value="{{type}}">
+												{{type}}
+											</md-option>
+										</md-select>
 									</md-input-container>
                                 </div>
 								<div layout="column" layout-gt-xs="row" flex>
@@ -49,29 +53,24 @@
 										<label>Category</label>
 										<input type="text" value="2946 Luke Lane" >
 									</md-input-container>
-
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Body</label>
-										<input type="text" value="Kaw City" >
-									</md-input-container>
-                                </div>
-								
-								<div layout="row" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex="33">
-										<label>Resolution</label>
-                                        <input type="text" value="Lola J Bolden" >
-									</md-input-container>
-									
-									<md-input-container class="md-block" flex="33">
+									<md-input-container class="md-block" flex-gt-sm>
 										<label>Author</label>
 										<input type="text" value="2946 Luke Lane" >
 									</md-input-container>
+                                </div>
+								<div layout="row" layout-gt-xs="row" flex>
 									<md-input-container class="md-block" flex="33">
 										<label>Approver</label>
 										<input type="text" value="2946 Luke Lane" >
 									</md-input-container>
-
                                 </div>
+								
+								<h3 class="secondary-text">Body</h3>
+								<text-angular ta-toolbar="vm.taToolbar" ng-model="vm.product.description" class="pb-32"></text-angular>
+
+								<h3 class="secondary-text">Resolution</h3>
+								<text-angular ta-toolbar="vm.taToolbar" ng-model="vm.product.description" class="pb-32"></text-angular>
+
 								
                         </form>
 						<div class="actions" layout="row" layout-align="start center">
@@ -131,3 +130,43 @@
     <!-- / CONTENT -->
 
 </div>
+
+<!-- ADD BUTTON -->
+	<!-- <div class="add-btn-fixed">
+		<md-button  ng-click="vm.newCustomerPage()" class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
+			<md-icon md-font-icon="icon-plus"></md-icon>
+		</md-button>
+	</div> -->
+	
+	<div class="add-btn-fixed">
+	<md-fab-toolbar md-open="demo.isOpen" count="demo.count"
+                  md-direction="{{demo.selectedDirection}}">
+    <md-fab-trigger class="align-with-text">
+      <md-button aria-label="menu" class="md-fab md-primary">
+        <md-icon md-font-icon="icon-menu"></md-icon>
+      </md-button>
+    </md-fab-trigger>
+
+    <md-toolbar>
+      <md-fab-actions class="md-toolbar-tools">
+        <md-button aria-label="comment" class="md-icon-button">
+          <md-icon md-font-icon="icon-menu"></md-icon>
+        </md-button>
+		<md-button aria-label="photo" class="md-icon-button">
+          <md-icon md-font-icon="icon-delete"></md-icon>
+        </md-button>
+        <md-button aria-label="label" class="md-icon-button">
+          <md-icon md-font-icon="icon-pencil"></md-icon>
+        </md-button>
+		<md-button aria-label="photo" class="md-icon-button">
+          <md-icon md-font-icon="icon-comment-plus-outline"></md-icon>
+        </md-button>
+      </md-fab-actions>
+    </md-toolbar>
+  </md-fab-toolbar>
+  </div>
+  
+<!-- / ADD BUTTON -->
+
+
+

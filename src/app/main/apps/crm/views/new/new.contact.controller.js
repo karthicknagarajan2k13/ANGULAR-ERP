@@ -9,7 +9,15 @@
     /** @ngInject */
     function NewContactController(crmApi, $scope, $window, $document, $state, User)
     {
-        var vm = this;
+        
+		$scope.isOpen = false;
+		$scope.demo = {
+			isOpen: false,
+			count: 0,
+			selectedDirection: 'left'
+		};
+		
+		var vm = this;
         vm.contact = {}
         vm.contact.contact_attributes = {}
         var session = $window.JSON.parse($window.localStorage.getItem('current_user'))

@@ -75,6 +75,7 @@
                         controller : 'kbeditController as vm'
                     }
                 },
+                
                 resolve  : {
                     Product: function (msApi)
                     {
@@ -89,13 +90,13 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/knowledge-base/views/edit/knowledge-base-edit.html',
-                        controller : 'kbeditController as vm'
+                        controller : 'kbhtmleditController as vm'
                     }
                 },
-                resolve  : {
+				resolve  : {
                     Product: function (msApi)
                     {
-                        return msApi.resolve('crm.orders@get');
+                        return msApi.resolve('e-commerce.product@get');
                     }
                 },
                 bodyClass: 'kb'
@@ -136,6 +137,7 @@
             })
 			 
         // Api
+		msApiProvider.register('e-commerce.product', ['app/data/e-commerce/product.json']);
 		msApiProvider.register('order-management.sales-orders', ['app/data/order-management/sales-orders.json']);
 		msApiProvider.register('crm.orders', ['app/data/crm/orders.json']);
         msApiProvider.register('crm.statuses', ['app/data/crm/statuses.json']);

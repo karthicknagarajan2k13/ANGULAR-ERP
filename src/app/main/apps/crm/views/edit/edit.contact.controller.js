@@ -9,7 +9,15 @@
     /** @ngInject */
     function EditContactController(crmApi, $scope, $window, $document, $state, Contact_form, User)
     {
-        var vm = this;
+        
+		$scope.isOpen = false;
+		$scope.demo = {
+			isOpen: false,
+			count: 0,
+			selectedDirection: 'left'
+		};
+		
+		var vm = this;
         vm.contact = Contact_form.edit_form({id:$state.params.obj.contact.id});
         var session = $window.JSON.parse($window.localStorage.getItem('current_user'))
         vm.get_customers = User.get_customers({token:session.email});

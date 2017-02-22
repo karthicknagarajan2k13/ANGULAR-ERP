@@ -7,8 +7,14 @@
         .controller('notesController', notesController);
 
     /** @ngInject */
-    function notesController(crmApi, $window, $state, Statuses, Orders, Note, User, Contact_User)
+    function notesController($scope, crmApi, $window, $state, Statuses, Orders, Note, User, Contact_User)
     {
+		$scope.isOpen = false;
+		$scope.demo = {
+			isOpen: false,
+			count: 0,
+			selectedDirection: 'left'
+		};
 		
         var vm = this;
 

@@ -9,11 +9,19 @@ md-icon.top-icon {
 .add-btn-fixed {
     position: fixed;
     right: 0;
-    top: 85%;
+    top: 90%;
     margin-right: 33px;
     z-index: 99;
+	width:94%;
 }
 
+.md-button.md-default-theme.md-primary.md-raised:not([disabled]):hover, .md-button.md-primary.md-raised:not([disabled]):hover, .md-button.md-default-theme.md-primary.md-fab:not([disabled]):hover, .md-button.md-primary.md-fab:not([disabled]):hover {
+    background-color: rgb(3, 155, 229);
+}
+.md-button.md-default-theme.md-primary.md-raised, .md-button.md-primary.md-raised, .md-button.md-default-theme.md-primary.md-fab, .md-button.md-primary.md-fab {
+    color: rgba(255,255,255,0.87);
+    background-color: rgb(3, 155, 229);
+}
 
 
 #e-commerce-orders {

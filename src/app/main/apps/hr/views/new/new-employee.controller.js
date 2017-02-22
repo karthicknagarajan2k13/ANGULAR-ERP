@@ -10,7 +10,16 @@
     function newEmployeesController(hrApi, $scope, $document, $state, Product)
     {
 
-        var vm = this;
+        
+		$scope.isOpen = false;
+		$scope.demo = {
+			isOpen: false,
+			count: 0,
+			selectedDirection: 'left'
+		};
+		
+		
+		var vm = this;
 		
 		vm.ssName = "s"
 	    vm.orders = Product.data;

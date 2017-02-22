@@ -10,7 +10,15 @@
     function SalesOrdersInvoiceEditController($scope, omApi, $document, $state, Product)
     {
 
-        var vm = this;
+        
+		$scope.isOpen = false;
+		$scope.demo = {
+			isOpen: false,
+			count: 0,
+			selectedDirection: 'left'
+		};
+		
+		var vm = this;
 
         var dataPromise = omApi.get_SalesOrders();
         dataPromise.then(function(result) { 

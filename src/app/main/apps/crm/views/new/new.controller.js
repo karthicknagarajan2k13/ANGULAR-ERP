@@ -7,9 +7,18 @@
         .controller('ProductController', ProductController);
 
     /** @ngInject */
-    function ProductController($document, $state, Product)
+    function ProductController($scope, $document, $state, Product)
     {
-        var vm = this;
+        
+		
+		$scope.isOpen = false;
+		$scope.demo = {
+			isOpen: false,
+			count: 0,
+			selectedDirection: 'left'
+		};
+		
+		var vm = this;
 
         // Data
         vm.taToolbar = [

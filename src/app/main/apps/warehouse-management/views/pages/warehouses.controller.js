@@ -10,7 +10,16 @@
     function WareHouseController($window, whApi, $scope, $state, Statuses)
     {
 
-        var vm = this;
+        
+		$scope.isOpen = false;
+		$scope.demo = {
+			isOpen: false,
+			count: 0,
+			selectedDirection: 'left'
+		};
+		
+		
+		var vm = this;
 
         // Data
         vm.search_data = {}

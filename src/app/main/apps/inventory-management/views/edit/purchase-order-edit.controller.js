@@ -10,7 +10,16 @@
     function editPurchaseOrderController(imApi, $scope, $document, $state, Product)
     {
 
-        var vm = this;
+        
+		$scope.isOpen = false;
+		$scope.demo = {
+			isOpen: false,
+			count: 0,
+			selectedDirection: 'left'
+		};
+		
+		
+		var vm = this;
         console.log("$state.params",$state.params)
         var dataPromise = imApi.editPurchaseOrder({id:$state.params.obj.id});
         dataPromise.then(function(result) { 

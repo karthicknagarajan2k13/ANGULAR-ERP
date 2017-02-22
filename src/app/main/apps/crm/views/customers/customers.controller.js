@@ -7,9 +7,15 @@
         .controller('customerssController', customerssController);
 
     /** @ngInject */
-    function customerssController(crmApi, $http, $window, Staff_User, $state, Statuses, Orders, Customer)
+    function customerssController($scope, crmApi, $http, $window, Staff_User, $state, Statuses, Orders, Customer)
     {
 		
+		$scope.isOpen = false;
+		$scope.demo = {
+			isOpen: false,
+			count: 0,
+			selectedDirection: 'left'
+		};
 		
         var vm = this;
         // Data

@@ -7,10 +7,20 @@
         .controller('viewItemController', viewItemController);
 
     /** @ngInject */
-    function viewItemController(imApi, $scope, $document, $state, Product)
+    function viewItemController(imApi, $scope, $mdDialog, $document, $state, Product)
     {
 
-        var vm = this;
+        
+		
+		$scope.isOpen = false;
+		$scope.demo = {
+			isOpen: false,
+			count: 0,
+			selectedDirection: 'left'
+		};
+		
+		
+		var vm = this;
 
         //Api Call
         var dataPromise = imApi.viewItem($state.params.obj.id);

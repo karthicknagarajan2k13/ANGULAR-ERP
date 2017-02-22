@@ -10,7 +10,16 @@
     function viewPayrollsController(hrApi, $scope, $document, $state, Product)
     {
 
-        var vm = this;
+        
+		$scope.isOpen = false;
+		$scope.demo = {
+			isOpen: false,
+			count: 0,
+			selectedDirection: 'left'
+		};
+		
+		
+		var vm = this;
 
         //Api Call
         var dataPromise = hrApi.viewPayroll($state.params.obj.id);

@@ -7,9 +7,15 @@
         .controller('kbController', kbController);
 
     /** @ngInject */
-    function kbController($state, Statuses, Orders)
+    function kbController($scope, $mdDialog, $state, Statuses, Orders)
     {
-
+	
+	$scope.isOpen = false;
+		  $scope.demo = {
+			isOpen: false,
+			count: 0,
+			selectedDirection: 'left'
+		  };
         var vm = this;
 
         // Data

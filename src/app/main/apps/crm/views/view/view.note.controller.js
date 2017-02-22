@@ -7,9 +7,18 @@
         .controller('ViewNoteController', ViewNoteController);
 
     /** @ngInject */
-    function ViewNoteController($document, $state, Product, Note)
+    function ViewNoteController($scope, $document, $state, Product, Note)
     {
-        var vm = this;
+        
+		
+		$scope.isOpen = false;
+		$scope.demo = {
+			isOpen: false,
+			count: 0,
+			selectedDirection: 'left'
+		};
+		
+		var vm = this;
 		
 		vm.ssName = "s"
 	    vm.note_data = Note.get({id:$state.params.obj.id});

@@ -7,8 +7,15 @@
         .controller('manufacturingviewController', manufacturingviewController);
 
     /** @ngInject */
-    function manufacturingviewController($document, $state, Product)
+    function manufacturingviewController($scope, $document, $state, Product)
     {
+		
+		$scope.isOpen = false;
+		  $scope.demo = {
+			isOpen: false,
+			count: 0,
+			selectedDirection: 'left'
+		  };
 
         var vm = this;
 		

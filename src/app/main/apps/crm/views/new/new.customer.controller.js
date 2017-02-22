@@ -9,7 +9,16 @@
     /** @ngInject */
     function NewCustomerController($scope, $timeout, crmApi, $document, $state, Customers)
     {
-        var vm = this;
+        
+		
+		$scope.isOpen = false;
+		$scope.demo = {
+			isOpen: false,
+			count: 0,
+			selectedDirection: 'left'
+		};
+		
+		var vm = this;
         vm.customer = {}
         vm.customer.customer_attributes = {}
 

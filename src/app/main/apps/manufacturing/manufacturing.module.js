@@ -118,7 +118,7 @@
                 bodyClass: 'warehouse'
             })
 			
-			/* .state('app.manufacturing.materials-view', {
+			.state('app.manufacturing.materials-view', {
                 url      : '/materials-view',
                 views    : {
                     'content@app': {
@@ -133,11 +133,11 @@
                     }
                 },
                 bodyClass: 'warehouse'
-            }) */
+            })
 			 
         // Api
 		msApiProvider.register('order-management.sales-orders', ['app/data/order-management/sales-orders.json']);
-		msApiProvider.register('crm.orders', ['app/data/crm/orders.json']);
+		msApiProvider.register('crm.orders', ['app/data/crm/qa.json']);
         msApiProvider.register('crm.statuses', ['app/data/crm/statuses.json']);
         // Navigation
 		

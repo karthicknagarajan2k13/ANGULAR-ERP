@@ -10,7 +10,15 @@
     function SalesOrdersEditController($scope, omApi, $document, $state, Product)
     {
 
-        var vm = this;
+        
+		$scope.isOpen = false;
+		$scope.demo = {
+			isOpen: false,
+			count: 0,
+			selectedDirection: 'left'
+		};
+		
+		var vm = this;
 
         var dataPromise = omApi.editSalesOrder({id:$state.params.obj.id});
         dataPromise.then(function(result) { 

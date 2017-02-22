@@ -7,10 +7,19 @@
         .controller('hrController', hrController);
 
     /** @ngInject */
-    function hrController($state, Statuses, Orders)
+    function hrController($scope, $state, Statuses, Orders)
     {
 
-        var vm = this;
+        
+		$scope.isOpen = false;
+		$scope.demo = {
+			isOpen: false,
+			count: 0,
+			selectedDirection: 'left'
+		};
+		
+		
+		var vm = this;
 
         // Data
         vm.orders = Orders.data;

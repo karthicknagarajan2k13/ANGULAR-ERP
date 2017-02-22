@@ -9,8 +9,15 @@
     /** @ngInject */
     function EditCustomerController(crmApi, $scope, $document, $state, Customer)
     {
-        var vm = this;
-
+        
+		$scope.isOpen = false;
+		$scope.demo = {
+			isOpen: false,
+			count: 0,
+			selectedDirection: 'left'
+		};
+		
+		var vm = this;
         var dataPromise = crmApi.editCustomer({id:$state.params.obj.customer.id});
         dataPromise.then(function(result) { 
             vm.customer = result;

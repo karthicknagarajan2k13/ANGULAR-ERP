@@ -7,9 +7,18 @@
         .controller('CustomerController', CustomerController);
 
     /** @ngInject */
-    function CustomerController(crmApi, Contact, $window, $document, $state, Product, Customer)
+    function CustomerController($scope, crmApi, Contact, $window, $document, $state, Product, Customer)
     {
-        var vm = this;
+        
+		
+		$scope.isOpen = false;
+		$scope.demo = {
+			isOpen: false,
+			count: 0,
+			selectedDirection: 'left'
+		};
+		
+		var vm = this;
 		
 		vm.ssName = "s"
 

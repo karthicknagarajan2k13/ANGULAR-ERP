@@ -1,0 +1,176 @@
+<div id="e-commerce-product" class="page-layout simple tabbed" layout="column">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="space-between">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">Manufacturing Management </a>&nbsp; / &nbsp;<a href="">Materials </a> </span>&nbsp; / &nbsp; View
+            </div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <md-tabs md-dynamic-height>
+
+            <md-tab>
+                <md-tab-label>
+                    <span>General Info</span>
+                </md-tab-label>
+
+                <md-tab-body>
+                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+                        <form>
+                            <div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>ID</label>
+										<input type="text" value="CUS0001" disabled>
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Name</label>
+										<input type="text" value="Lola J Bolden" disabled>
+									</md-input-container>
+
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Description</label>
+										<input type="text" value="580-269-9087" disabled>
+									</md-input-container>
+                                </div>
+								<div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>MFG. Product</label>
+                                        <input type="text" value="Lola J Bolden" disabled>
+									</md-input-container>
+									
+									<md-input-container flex>
+										<label>Unit</label>
+										<md-select ng-model="vm.search_data.c_type1" multiple>
+											<md-option ng-repeat="type in ['Number', 'Kg']" value="{{type}}">
+												{{type}}
+											</md-option>
+										</md-select>
+									</md-input-container>
+
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Quantity</label>
+										<input type="text" value="Kaw City" disabled>
+									</md-input-container>
+                                </div>
+								
+								<div layout="row" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex="33">
+										<label>Price </label>
+                                        <input type="text" value="Lola J Bolden" disabled>
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+                                        <md-datepicker ng-model="vm.search_data.created_at" md-placeholder="Date Created"></md-datepicker>
+                                    </md-input-container>
+									<md-input-container class="md-block" flex="33">
+										<label>Created By</label>
+										<input type="text" value="2946 Luke Lane" disabled>
+									</md-input-container>
+
+                                </div>
+								
+                        </form>
+						<div class="actions" layout="row" layout-align="start center">
+							<md-button class="md-raised md-accent">Save</md-button>
+							<md-button class="md-raised md-accent">Clear</md-button>
+						</div>
+                    </div>
+                </md-tab-body>
+            </md-tab>
+
+
+            <md-tab>
+                <md-tab-label>
+                    <span>Other Info</span>
+                </md-tab-label>
+
+                <md-tab-body>
+                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+                        <form>
+                            <div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Date Created</label>
+										<input type="text" value="22/12/2016" disabled>
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Created By</label>
+										<input type="text" value="Lola J Bolden" disabled>
+									</md-input-container>
+
+                                   <md-input-container class="md-block" flex-gt-sm>
+										<label>Date Modified</label>
+										<input type="text" value="12/01/2017" disabled>
+									</md-input-container>
+                                </div>
+								<div layout="row" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex="33">
+										<label>Modified By</label>
+										<input type="text" value="Lola J Bolden" disabled>
+									</md-input-container>
+									
+                                </div>
+								
+                        </form>
+						
+						<!-- <div class="actions" layout="row" layout-align="start center">
+							<md-button class="md-raised md-accent">Save</md-button>
+							<md-button class="md-raised md-accent">Clear</md-button>
+						</div> -->
+                    </div>
+                </md-tab-body>
+            </md-tab>
+			
+        </md-tabs>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>
+
+<!-- ADD BUTTON -->
+	<!-- <div class="add-btn-fixed">
+		<md-button  ng-click="vm.newCustomerPage()" class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
+			<md-icon md-font-icon="icon-plus"></md-icon>
+		</md-button>
+	</div> -->
+	
+	<div class="add-btn-fixed">
+	<md-fab-toolbar md-open="demo.isOpen" count="demo.count"
+                  md-direction="{{demo.selectedDirection}}">
+    <md-fab-trigger class="align-with-text">
+      <md-button aria-label="menu" class="md-fab md-primary">
+        <md-icon md-font-icon="icon-menu"></md-icon>
+      </md-button>
+    </md-fab-trigger>
+
+    <md-toolbar>
+      <md-fab-actions class="md-toolbar-tools">
+        <md-button aria-label="comment" class="md-icon-button">
+          <md-icon md-font-icon="icon-menu"></md-icon>
+        </md-button>
+		<md-button aria-label="photo" class="md-icon-button">
+          <md-icon md-font-icon="icon-delete"></md-icon>
+        </md-button>
+        <md-button aria-label="label" class="md-icon-button">
+          <md-icon md-font-icon="icon-pencil"></md-icon>
+        </md-button>
+		<md-button aria-label="photo" class="md-icon-button">
+          <md-icon md-font-icon="icon-comment-plus-outline"></md-icon>
+        </md-button>
+      </md-fab-actions>
+    </md-toolbar>
+  </md-fab-toolbar>
+  </div>
+  
+<!-- / ADD BUTTON -->
+
+
+

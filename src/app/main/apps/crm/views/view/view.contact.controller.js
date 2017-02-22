@@ -7,9 +7,18 @@
         .controller('ViewContactController', ViewContactController);
 
     /** @ngInject */
-    function ViewContactController(crmApi, $document, $state, Product)
+    function ViewContactController($scope, crmApi, $document, $state, Product)
     {
-        var vm = this;
+        
+		
+		$scope.isOpen = false;
+		$scope.demo = {
+			isOpen: false,
+			count: 0,
+			selectedDirection: 'left'
+		};
+		
+		var vm = this;
 		
 		vm.ssName = "s"
         var dataPromise = crmApi.viewContact($state.params.obj.id);

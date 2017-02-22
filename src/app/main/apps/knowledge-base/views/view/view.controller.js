@@ -7,9 +7,15 @@
         .controller('kbviewController', kbviewController);
 
     /** @ngInject */
-    function kbviewController($document, $state, Product)
+    function kbviewController($scope, $document, $state, Product)
     {
 
+	$scope.isOpen = false;
+		  $scope.demo = {
+			isOpen: false,
+			count: 0,
+			selectedDirection: 'left'
+		  };
         var vm = this;
 		
 		vm.ssName = "s"

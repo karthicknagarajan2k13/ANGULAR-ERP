@@ -7,10 +7,18 @@
         .controller('editWarehouseLocationController', editWarehouseLocationController);
 
     /** @ngInject */
-    function editWarehouseLocationController(whApi, $scope, $document, $state)
+    function editWarehouseLocationController(whApi, $scope, $mdDialog, $document, $state)
     {
 
-        var vm = this;
+        
+		$scope.isOpen = false;
+		$scope.demo = {
+			isOpen: false,
+			count: 0,
+			selectedDirection: 'left'
+		};
+		
+		var vm = this;
 		vm.ssName = "s"
 
         vm.warehouse_location = $state.params.obj
@@ -71,6 +79,9 @@
                 }
             });
         }
+		
+		
+		
 		
     }
 })();

@@ -104,25 +104,93 @@
 
                 <md-tab-body>
                     <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
-                        <form>
-                            <div layout="column" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Name</label>
-										<input type="text" value="Mugilan M" >
-									</md-input-container>
-									
-									<md-input-container class="md-block" flex-gt-sm>
-										<label>Passed?</label>
-										<input type="text" value="Lola J Bolden" >
-									</md-input-container>
-                                </div>
-                        </form>
+					
+						<table>
+							<thead>
+								<tr>
+									<th class="qa-check">No.</th>
+									<th class="qa-check1">QA Check</th>
+									<th class="qa-check2">Passed?</th>
+									<th class="qa-check3"></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>0001</td>
+									<td>performance</td>
+									<td class="qa-check-td">
+										<md-checkbox class="qacheckbox" ng-model="data.cb1" aria-label="Checkbox 1"></md-checkbox>
+									</td>
+									<td class="qa-check-td1">
+										<a class="edit-button md-icon-button"
+		                                   ng-click="vm.editNotePage(note)"
+		                                   aria-label="Product details" href="">
+										   <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<td>0002</td>
+									<td>Damage Test</td>
+									<td>
+										<md-checkbox ng-model="data.cb1" aria-label="Checkbox 1"></md-checkbox>
+									</td>
+									<td>
+										<a class="edit-button md-icon-button"
+		                                   ng-click="vm.editNotePage(note)"
+		                                   aria-label="Product details" href="">
+										   <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
+										</a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
 						
+						<!-- <table class="dataTable row-border hover" datatable="ng">
+							<thead>
+								<tr>
+									<th class="secondary-text">
+										<div class="">
+											<span class="column-title">No.</span>
+										</div>
+									</th>
+									<th class="secondary-text">
+										<div class="table-header">
+											<span class="column-title">QA Check</span>
+										</div>
+									</th>
+									<th class="secondary-text">
+										<div class="table-header">
+											<span class="column-title">Passed?</span>
+										</div>
+									</th>
+									<th class="secondary-text">
+										<div class="">
+											<span class="column-title"></span>
+										</div>
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>01</td>
+									<td>Performance Test</td>
+									<td><md-checkbox ng-model="data.cb1" aria-label="Checkbox 1"></md-checkbox>
+									</td>
+									<td>
+										<a class="edit-button md-icon-button"
+		                                   ng-click="vm.editNotePage(note)"
+		                                   aria-label="Product details" href="">
+										   <md-icon md-font-icon="icon-pencil" class="s16"></md-icon>
+										</a>
+									</td>
+								</tr>
+							</tbody>
+						</table> -->
 						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Save</md-button>
-							<md-button class="md-raised md-accent">Clear</md-button>
+							<md-button class="circlebtn md-raised md-accent"><md-icon md-font-icon="icon-plus"></md-icon></md-button>
 						</div>
-                    </div>
+					</div>
                 </md-tab-body>
             </md-tab>
 			
@@ -174,3 +242,43 @@
     <!-- / CONTENT -->
 
 </div>
+
+<!-- ADD BUTTON -->
+	<!-- <div class="add-btn-fixed">
+		<md-button  ng-click="vm.newCustomerPage()" class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
+			<md-icon md-font-icon="icon-plus"></md-icon>
+		</md-button>
+	</div> -->
+	
+	<div class="add-btn-fixed">
+	<md-fab-toolbar md-open="demo.isOpen" count="demo.count"
+                  md-direction="{{demo.selectedDirection}}">
+    <md-fab-trigger class="align-with-text">
+      <md-button aria-label="menu" class="md-fab md-primary">
+        <md-icon md-font-icon="icon-menu"></md-icon>
+      </md-button>
+    </md-fab-trigger>
+
+    <md-toolbar>
+      <md-fab-actions class="md-toolbar-tools">
+        <md-button aria-label="comment" class="md-icon-button">
+          <md-icon md-font-icon="icon-menu"></md-icon>
+        </md-button>
+		<md-button aria-label="photo" class="md-icon-button">
+          <md-icon md-font-icon="icon-delete"></md-icon>
+        </md-button>
+        <md-button aria-label="label" class="md-icon-button">
+          <md-icon md-font-icon="icon-pencil"></md-icon>
+        </md-button>
+		<md-button aria-label="photo" class="md-icon-button">
+          <md-icon md-font-icon="icon-comment-plus-outline"></md-icon>
+        </md-button>
+      </md-fab-actions>
+    </md-toolbar>
+  </md-fab-toolbar>
+  </div>
+  
+<!-- / ADD BUTTON -->
+
+
+

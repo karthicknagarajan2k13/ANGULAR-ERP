@@ -9,7 +9,15 @@
     /** @ngInject */
     function EditNoteController(crmApi, $scope, $window, $document, $state, Note, User, Contact_User)
     {
-        var vm = this;
+        
+		$scope.isOpen = false;
+		$scope.demo = {
+			isOpen: false,
+			count: 0,
+			selectedDirection: 'left'
+		};
+		
+		var vm = this;
         vm.note = $state.params.obj
         var session = $window.JSON.parse($window.localStorage.getItem('current_user'))
         vm.get_customers = User.get_customers({token:session.email});

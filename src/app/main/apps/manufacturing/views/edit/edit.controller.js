@@ -7,9 +7,17 @@
         .controller('manufacturingeditController', manufacturingeditController);
 
     /** @ngInject */
-    function manufacturingeditController($document, $state, Product)
+    function manufacturingeditController($scope, $document, $state, Product)
     {
 
+	
+	$scope.isOpen = false;
+		  $scope.demo = {
+			isOpen: false,
+			count: 0,
+			selectedDirection: 'left'
+		  };
+		  
         var vm = this;
 		
 		vm.ssName = "s"

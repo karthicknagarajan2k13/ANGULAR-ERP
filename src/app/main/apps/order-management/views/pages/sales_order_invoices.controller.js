@@ -10,7 +10,15 @@
     function SalesOrderInvoicesController($window, omApi, $scope, $state, Statuses, Orders)
     {
 
-        var vm = this;
+        
+		$scope.isOpen = false;
+		$scope.demo = {
+			isOpen: false,
+			count: 0,
+			selectedDirection: 'left'
+		};
+		
+		var vm = this;
         vm.dtInstance = {};
 
         //Data

@@ -7,8 +7,15 @@
         .controller('contactsController', contactsController);
 
     /** @ngInject */
-    function contactsController(crmApi, User, $rootScope, $window, $state, Statuses, Orders, Contact)
+    function contactsController($scope, crmApi, User, $rootScope, $window, $state, Statuses, Orders, Contact)
     {
+		
+		$scope.isOpen = false;
+		$scope.demo = {
+			isOpen: false,
+			count: 0,
+			selectedDirection: 'left'
+		};
 		
         var vm = this;
 
