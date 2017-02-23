@@ -25,24 +25,28 @@
 					<md-input-container flex>
 						<md-icon md-font-icon="icon-magnify"></md-icon>
 						<label>Search</label>
-						<input ng-model="user.firstName">
+                        <input ng-keyup="$event.keyCode == 13 && vm.searchMaterialData()" ng-model="vm.search_data.search_text">
 						<md-icon ng-model="collapsed" ng-click="collapsed=!collapsed" md-font-icon="icon-chevron-down"></md-icon>
 					
 						<div style="padding-top:49px;" ng-show="collapsed">
 							<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Subject</label>
-										<input ng-model="user.firstName">
+										<input ng-model="vm.search_data.name">
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>MFG. Product</label>
-										<input ng-model="user.firstName">
-									</md-input-container>
+                                        <md-select ng-model="vm.search_data.manufacturing_id">
+                                            <md-option ng-repeat="manufacturing in get_manufacturings" value="{{manufacturing.manufacturing_id}}">
+                                                {{manufacturing.name}}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Price</label>
-										<input ng-model="user.firstName">
+										<input ng-model="vm.search_data.price">
 									</md-input-container>
                                 </div>
 								<div layout="row" layout-gt-xs="row" flex>
@@ -51,13 +55,16 @@
                                     </md-input-container>
 									<md-input-container class="md-block" flex="33">
 										<label>Created By</label>
-										<input ng-model="user.firstName">
-									</md-input-container>
+                                        <md-select ng-model="vm.search_data.created_by_id">
+                                            <md-option ng-repeat="user in get_users" value="{{user.id}}">
+                                                {{user.name}}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
                                 </div>
-								
 								<div class="actions" layout="row" layout-align="start center">
-									<md-button class="md-raised md-accent">Search</md-button>
-									<md-button class="md-raised md-accent">Clear</md-button>
+                                    <md-button ng-click="vm.searchMaterialData()" class="md-raised md-accent">Search</md-button>
+                                    <md-button ng-click="vm.searchMaterialDataClear()" class="md-raised md-accent">Clear</md-button>
 								</div>								
 						</div>
 					
@@ -135,26 +142,25 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="order in ::vm.orders">
-                            <td><md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+                        <tr ng-repeat="material in materials_data">
+                            <td><md-checkbox ng-model="material.checked" aria-label="Checkbox 1">
 								</md-checkbox>
 							</td>
-                            <td>{{order.name}}</td>
-                            <td>{{order.phone}}</td>
-							<td>{{order.id}}</td>
-							<td>{{order.country}}</td>
-							<td>{{order.test}}</td>
-                            <td>{{order.name}}</td>
+                            <td><a ng-click="vm.viewMaterialPage(material.id)" href="">{{material.name}}</a></td>
+                            <td>{{material.unit}}</td>
+							<td>{{material.quantity}}</td>
+							<td>{{material.price}}</td>
+							<td>{{material.created_at}}</td>
+                            <td>{{material.created_by}}</td>
                         </tr>
                     </tbody>
                 </table>
 
             </div>
             <!-- / CONTENT -->
-			<div class="actions" layout="row" layout-align="start center">
-				<md-button class="md-raised md-accent">Delete</md-button>
-				<md-button class="md-raised md-accent">Add</md-button>
-			</div>
+<!-- 			<div class="actions" layout="row" layout-align="start center">
+                <md-button ng-click="vm.deleteAllMaterial()" class="md-raised md-accent">Delete</md-button>
+			</div> -->
 
         </div>
         <!-- / CONTENT CARD -->
@@ -166,7 +172,7 @@
 
 <!-- ADD BUTTON -->
 	<!-- <div class="add-btn-fixed">
-		<md-button  ng-click="vm.newCustomerPage()" class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
+		<md-button  ng-click="vm.newMaterialPage()" class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
 			<md-icon md-font-icon="icon-plus"></md-icon>
 		</md-button>
 	</div> -->
@@ -185,14 +191,14 @@
         <md-button aria-label="comment" class="md-icon-button">
           <md-icon md-font-icon="icon-menu"></md-icon>
         </md-button>
-		<md-button aria-label="photo" class="md-icon-button">
+		<md-button ng-click="vm.deleteAllMaterial()" aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-delete"></md-icon>
         </md-button>
         <md-button aria-label="label" class="md-icon-button">
           <md-icon md-font-icon="icon-pencil"></md-icon>
         </md-button>
-		<md-button aria-label="photo" class="md-icon-button">
-          <md-icon md-font-icon="icon-comment-plus-outline"></md-icon>
+		<md-button ng-click="vm.newMaterialPage()" aria-label="photo" class="md-icon-button">
+          <md-icon  md-font-icon="icon-comment-plus-outline"></md-icon>
         </md-button>
       </md-fab-actions>
     </md-toolbar>
@@ -200,6 +206,3 @@
   </div>
   
 <!-- / ADD BUTTON -->
-
-
-

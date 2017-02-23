@@ -25,26 +25,26 @@
 					<md-input-container flex>
 						<md-icon md-font-icon="icon-magnify"></md-icon>
 						<label>Search</label>
-						<input ng-model="user.firstName">
+                        <input ng-keyup="$event.keyCode == 13 && vm.searchManufacturingData()" ng-model="vm.search_data.search_text">
 						<md-icon ng-model="collapsed" ng-click="collapsed=!collapsed" md-font-icon="icon-chevron-down"></md-icon>
 					
 						<div style="padding-top:49px;" ng-show="collapsed">
 							<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>ID</label>
-										<input ng-model="user.firstName">
+										<input ng-model="vm.search_data.code">
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Subject</label>
-										<input ng-model="user.firstName">
+										<input ng-model="vm.search_data.subject">
 									</md-input-container>
 
                                     <md-input-container flex>
 										<label>Status</label>
-										<md-select ng-model="vm.search_data.c_type1" multiple>
-											<md-option ng-repeat="type in ['Draft', 'InProgress', 'Failed', 'Failed & Restarted', 'Completed']" value="{{type}}">
-												{{type}}
+										<md-select ng-model="vm.search_data.status" multiple>
+											<md-option ng-repeat="status in ['Draft', 'InProgress', 'Failed', 'Failed & Restarted', 'Completed']" value="{{status}}">
+												{{status}}
 											</md-option>
 										</md-select>
 									</md-input-container>
@@ -52,9 +52,9 @@
 								<div layout="column" layout-gt-xs="row" flex>
 									<md-input-container flex>
 										<label>Type</label>
-										<md-select ng-model="vm.search_data.c_type1" multiple>
-											<md-option ng-repeat="type in ['Made - to - Order', 'Made - to - Stock']" value="{{type}}">
-												{{type}}
+										<md-select ng-model="vm.search_data.m_type" multiple>
+											<md-option ng-repeat="m_type in ['Made - to - Order', 'Made - to - Stock']" value="{{m_type}}">
+												{{m_type}}
 											</md-option>
 										</md-select>
 									</md-input-container>
@@ -64,13 +64,17 @@
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Created By </label>
-										<input ng-model="user.firstName">
-									</md-input-container>
+                                        <md-select ng-model="vm.search_data.created_by_id">
+                                            <md-option ng-repeat="user in get_users" value="{{user.id}}">
+                                                {{user.name}}
+                                            </md-option>
+                                        </md-select>    				
+                                    </md-input-container>
                                 </div>
 								
 								<div class="actions" layout="row" layout-align="start center">
-									<md-button class="md-raised md-accent">Search</md-button>
-									<md-button class="md-raised md-accent">Clear</md-button>
+                                    <md-button ng-click="vm.searchManufacturingData()" class="md-raised md-accent">Search</md-button>
+                                    <md-button ng-click="vm.searchManufacturingDataClear()" class="md-raised md-accent">Clear</md-button>
 								</div>							
 						</div>
 					
@@ -150,26 +154,25 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="order in ::vm.orders">
-                            <td><md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+                        <tr ng-repeat="manufacturing in manufacturings_data">
+                            <td><md-checkbox ng-model="manufacturing.checked" aria-label="Checkbox 1">
 								</md-checkbox>
 							</td>
-                            <td>{{order.id}}</td>
-							<td>{{order.createdby}}</td>
-							<td>{{order.name}}</td>
-							<td>{{order.name}}</td>
-							<td>{{order.test}}</td>
-                            <td>{{order.createdby}}</td>
+                            <td>{{manufacturing.code}}</td>
+							<td><a ng-click="vm.viewManufacturingPage(manufacturing.id)" href="">{{manufacturing.subject}}</a></td>
+							<td>{{manufacturing.description}}</td>
+							<td>{{manufacturing.status}}</td>
+							<td>{{manufacturing.created_at}}</td>
+                            <td>{{manufacturing.created_by}}</td>
                         </tr>
                     </tbody>
                 </table>
 
             </div>
             <!-- / CONTENT -->
-			<div class="actions" layout="row" layout-align="start center">
-				<md-button class="md-raised md-accent">Delete</md-button>
-				<md-button class="md-raised md-accent">Add</md-button>
-			</div>
+<!-- 			<div class="actions" layout="row" layout-align="start center">
+                <md-button ng-click="vm.deleteAllManufacturing()" class="md-raised md-accent">Delete</md-button>
+			</div> -->
 
         </div>
         <!-- / CONTENT CARD -->
@@ -181,7 +184,7 @@
 
 <!-- ADD BUTTON -->
 	<!-- <div class="add-btn-fixed">
-		<md-button  ng-click="vm.newCustomerPage()" class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
+		<md-button  ng-click="vm.newManufacturingPage()" class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
 			<md-icon md-font-icon="icon-plus"></md-icon>
 		</md-button>
 	</div> -->
@@ -200,13 +203,13 @@
         <md-button aria-label="comment" class="md-icon-button">
           <md-icon md-font-icon="icon-menu"></md-icon>
         </md-button>
-		<md-button aria-label="photo" class="md-icon-button">
+		<md-button ng-click="vm.deleteAllManufacturing()" aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-delete"></md-icon>
         </md-button>
         <md-button aria-label="label" class="md-icon-button">
           <md-icon md-font-icon="icon-pencil"></md-icon>
         </md-button>
-		<md-button aria-label="photo" class="md-icon-button">
+		<md-button  ng-click="vm.newManufacturingPage()" aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-comment-plus-outline"></md-icon>
         </md-button>
       </md-fab-actions>
@@ -215,6 +218,3 @@
   </div>
   
 <!-- / ADD BUTTON -->
-
-
-

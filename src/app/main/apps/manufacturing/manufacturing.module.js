@@ -30,7 +30,7 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/manufacturing/views/pages/manufacturing.html',
-                        controller : 'manufacturingController as vm'
+                        controller : 'ManufacturingController as vm'
                     }
                 },
                 resolve  : {
@@ -51,7 +51,7 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/manufacturing/views/pages/materials.html',
-                        controller : 'manufacturingController as vm'
+                        controller : 'MaterialController as vm'
                     }
                 },
                 resolve  : {
@@ -72,7 +72,27 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/manufacturing/views/edit/manufacturing-edit.html',
-                        controller : 'manufacturingeditController as vm'
+                        controller : 'editManufacturingController as vm'
+                    }
+                },
+                params: {
+                 obj: null
+                },
+                resolve  : {
+                    Product: function (msApi)
+                    {
+                        return msApi.resolve('crm.orders@get');
+                    }
+                },
+                bodyClass: 'warehouse-management'
+            })
+
+            .state('app.manufacturing.manufacturing-new', {
+                url      : '/manufacturing-new',
+                views    : {
+                    'content@app': {
+                        templateUrl: 'app/main/apps/manufacturing/views/new/manufacturing-new.html',
+                        controller : 'newManufacturingController as vm'
                     }
                 },
                 resolve  : {
@@ -83,13 +103,33 @@
                 },
                 bodyClass: 'warehouse-management'
             })
-		
+
 			.state('app.manufacturing.materials-edit', {
                 url      : '/materials-edit',
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/manufacturing/views/edit/materials-edit.html',
-                        controller : 'manufacturingeditController as vm'
+                        controller : 'editMaterialController as vm'
+                    }
+                },
+                params: {
+                 obj: null
+                },
+                resolve  : {
+                    Product: function (msApi)
+                    {
+                        return msApi.resolve('crm.orders@get');
+                    }
+                },
+                bodyClass: 'warehouse-management'
+            })
+
+            .state('app.manufacturing.materials-new', {
+                url      : '/materials-new',
+                views    : {
+                    'content@app': {
+                        templateUrl: 'app/main/apps/manufacturing/views/new/materials-new.html',
+                        controller : 'newMaterialController as vm'
                     }
                 },
                 resolve  : {
@@ -100,14 +140,17 @@
                 },
                 bodyClass: 'warehouse-management'
             })
-			
+
 			.state('app.manufacturing.manufacturing-view', {
                 url      : '/manufacturing-view',
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/manufacturing/views/view/manufacturing-view.html',
-                        controller : 'manufacturingviewController as vm'
+                        controller : 'viewManufacturingController as vm'
                     }
+                },
+                params: {
+                 obj: null
                 },
                 resolve  : {
                     Product: function (msApi)
@@ -123,8 +166,11 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/manufacturing/views/view/materials-view.html',
-                        controller : 'manufacturingviewController as vm'
+                        controller : 'viewMaterialController as vm'
                     }
+                },
+                params: {
+                 obj: null
                 },
                 resolve  : {
                     Product: function (msApi)

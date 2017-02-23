@@ -63,24 +63,27 @@
                                         </md-select>
                                     </md-input-container>
                                 </div>
-								
+							
 								<div layout="column" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Asset</label>
-										<input type="text" ng-model="vm.warehouse_location.asset">
-									</md-input-container>
-                                    <md-input-container class="md-block" flex="33">
+                                    <md-input-container class="md-block" flex-gt-sm >
 										<label>SKU</label>
 										<input type="text" ng-model="vm.warehouse_location.sku">
 									</md-input-container>
+                                    <md-input-container class="md-block" flex="33">
+                                        <label>Description</label>
+                                        <input type="text" name="description" ng-model="vm.warehouse_location.description">
+                                    </md-input-container>
                                 </div>
-								
-								<div layout="row" layout-gt-xs="row" flex>
+
+                                <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>Description</label>
-										<input type="text" name="description" ng-model="vm.warehouse_location.description">
-									</md-input-container>
-                                </div>						
+                                        <label>Asset</label>
+                                        <tag-input ng-model="vm.warehouse_location.asset" placeholder='add a Asset' taglist='vm.warehouse_location.asset'></tag-input>
+                                    </md-input-container>
+                                </div>
+
+
+
 							<div class="actions" layout="row" layout-align="start center">
 		                            <md-button type="submit" class="md-raised md-accent submit-button" aria-label="Save"
 		                                       ng-disabled="submitForm.$invalid || submitForm.$pristine"

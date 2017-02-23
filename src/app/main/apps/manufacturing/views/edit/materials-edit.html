@@ -22,112 +22,63 @@
 
                 <md-tab-body>
                     <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
-                        <form>
+                        <form ng-submit="vm.updateMaterial()" name="submitForm" novalidate>
                             <div layout="column" layout-gt-xs="row" flex>
+                                
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>ID</label>
-										<input type="text" value="CUS0001">
-									</md-input-container>
-									
-									<md-input-container class="md-block" flex-gt-sm>
-										<label>Name</label>
-										<input type="text" value="Lola J Bolden" >
-									</md-input-container>
-
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Description</label>
-										<input type="text" value="580-269-9087" >
-									</md-input-container>
-                                </div>
-								<div layout="column" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>MFG. Product</label>
-                                        <input type="text" value="Lola J Bolden" >
-									</md-input-container>
-									
-									<md-input-container flex>
-										<label>Unit</label>
-										<md-select ng-model="vm.search_data.c_type1" multiple>
-											<md-option ng-repeat="type in ['Number', 'Kg']" value="{{type}}">
-												{{type}}
-											</md-option>
-										</md-select>
-									</md-input-container>
-
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Quantity</label>
-										<input type="text" value="Kaw City" >
-									</md-input-container>
-                                </div>
-								
-								<div layout="row" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex="33">
-										<label>Price </label>
-                                        <input type="text" value="Lola J Bolden" >
-									</md-input-container>
-									
-									<md-input-container class="md-block" flex-gt-sm>
-                                        <md-datepicker ng-model="vm.search_data.created_at" md-placeholder="Date Created"></md-datepicker>
+                                        <label>Name</label>
+                                        <input type="text" name="name" ng-model="vm.material.material.name" required>
+                                        <div ng-messages="submitForm.name.$error" role="alert">
+                                            <div ng-message="required">
+                                                <span >Name field is required</span>
+                                            </div>
+                                        </div>
                                     </md-input-container>
-									<md-input-container class="md-block" flex="33">
-										<label>Created By</label>
-										<input type="text" value="2946 Luke Lane" >
-									</md-input-container>
 
-                                </div>
-								
-                        </form>
-						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Save</md-button>
-							<md-button class="md-raised md-accent">Clear</md-button>
-						</div>
-                    </div>
-                </md-tab-body>
-            </md-tab>
-
-
-            <md-tab>
-                <md-tab-label>
-                    <span>Other Info</span>
-                </md-tab-label>
-
-                <md-tab-body>
-                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
-                        <form>
-                            <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>Date Created</label>
-										<input type="text" value="22/12/2016" >
-									</md-input-container>
-									
-									<md-input-container class="md-block" flex-gt-sm>
-										<label>Created By</label>
-										<input type="text" value="Lola J Bolden" >
-									</md-input-container>
+                                        <label>Description</label>
+                                        <input type="text" name="description" ng-model="vm.material.material.description">
+                                    </md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>MFG. Product</label>
+                                        <md-select ng-model="vm.material.material.manufacturing_id">
+                                            <md-option ng-repeat="manufacturing in get_manufacturings" value="{{manufacturing.manufacturing_id}}">
+                                                {{manufacturing.name}}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
 
-                                   <md-input-container class="md-block" flex-gt-sm>
-										<label>Date Modified</label>
-										<input type="text" value="12/01/2017" >
-									</md-input-container>
                                 </div>
-								<div layout="row" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex="33">
-										<label>Modified By</label>
-										<input type="text" value="Lola J Bolden" >
-									</md-input-container>
-									
-                                </div>
-								
-                        </form>
-						
-						<!-- <div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Save</md-button>
-							<md-button class="md-raised md-accent">Clear</md-button>
-						</div> -->
+                                <div layout="column" layout-gt-xs="row" flex>
+                                    
+                                    <md-input-container flex-gt-sm>
+                                        <label>Unit</label>
+                                        <input type="text" name="unit" ng-model="vm.material.material.unit">
+                                    </md-input-container>
+
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Quantity</label>
+                                        <input type="text" name="quantity" ng-model="vm.material.material.quantity">
+                                    </md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Price </label>
+                                        <input type="text" name="price" ng-model="vm.material.material.price">
+                                    </md-input-container>
+                                </div>                              
+                        
+                        <div class="actions" layout="row" layout-align="start center">
+                            <md-button type="submit" class="md-raised md-accent submit-button" aria-label="Save"
+                                       ng-disabled="submitForm.$invalid || submitForm.$pristine"
+                                       translate="Save" translate-attr-aria-label="Save">
+                                Save
+                            </md-button>
+<!--                             <md-button ng-click="vm.viewMaterialPage(vm.material.material.id)" class="md-raised md-accent">View</md-button>
+ -->                        </div>
+                    </form>
                     </div>
                 </md-tab-body>
             </md-tab>
-			
+            
         </md-tabs>
 
     </div>
@@ -136,14 +87,14 @@
 </div>
 
 <!-- ADD BUTTON -->
-	<!-- <div class="add-btn-fixed">
-		<md-button  ng-click="vm.newCustomerPage()" class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
-			<md-icon md-font-icon="icon-plus"></md-icon>
-		</md-button>
-	</div> -->
-	
-	<div class="add-btn-fixed">
-	<md-fab-toolbar md-open="demo.isOpen" count="demo.count"
+    <!-- <div class="add-btn-fixed">
+        <md-button ng-click="vm.newManufacturingPage()" class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
+            <md-icon md-font-icon="icon-plus"></md-icon>
+        </md-button>
+    </div> -->
+    
+    <div class="add-btn-fixed">
+    <md-fab-toolbar md-open="demo.isOpen" count="demo.count"
                   md-direction="{{demo.selectedDirection}}">
     <md-fab-trigger class="align-with-text">
       <md-button aria-label="menu" class="md-fab md-primary">
@@ -156,13 +107,13 @@
         <md-button aria-label="comment" class="md-icon-button">
           <md-icon md-font-icon="icon-menu"></md-icon>
         </md-button>
-		<md-button aria-label="photo" class="md-icon-button">
+        <md-button aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-delete"></md-icon>
         </md-button>
         <md-button aria-label="label" class="md-icon-button">
           <md-icon md-font-icon="icon-pencil"></md-icon>
         </md-button>
-		<md-button aria-label="photo" class="md-icon-button">
+        <md-button ng-click="vm.newMaterialPage()" aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-comment-plus-outline"></md-icon>
         </md-button>
       </md-fab-actions>
@@ -171,6 +122,3 @@
   </div>
   
 <!-- / ADD BUTTON -->
-
-
-

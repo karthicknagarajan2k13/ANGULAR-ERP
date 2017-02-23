@@ -66,10 +66,10 @@
 								</div>
 								
                         </form>
-						<div class="actions" layout="row" layout-align="start center">
+<!-- 						<div class="actions" layout="row" layout-align="start center">
 							<md-button ng-click="vm.editWarehousePage(warehouse_data)" class="md-raised md-accent">Edit</md-button>
 							<md-button ng-click="vm.deleteWarehouse(warehouse_data.id)" class="md-raised md-accent">Delete</md-button>
-						</div>
+						</div> -->
                     </div>
                 </md-tab-body>
             </md-tab>
@@ -109,10 +109,10 @@
 								
                         </form>
 						
-						<div class="actions" layout="row" layout-align="start center">
+<!-- 						<div class="actions" layout="row" layout-align="start center">
 							<md-button ng-click="vm.editWarehousePage(warehouse_data)" class="md-raised md-accent">Edit</md-button>
 							<md-button ng-click="vm.deleteWarehouse(warehouse_data.id)" class="md-raised md-accent">Delete</md-button>
-						</div>
+						</div> -->
                     </div>
                 </md-tab-body>
             </md-tab>
@@ -221,13 +221,13 @@
         <md-button aria-label="comment" class="md-icon-button">
           <md-icon md-font-icon="icon-menu"></md-icon>
         </md-button>
-		<md-button aria-label="photo" class="md-icon-button">
+		<md-button ng-click="vm.deleteWarehouse(warehouse_data.id)" aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-delete"></md-icon>
         </md-button>
-        <md-button aria-label="label" class="md-icon-button">
+        <md-button ng-click="vm.editWarehousePage(warehouse_data)" aria-label="label" class="md-icon-button">
           <md-icon md-font-icon="icon-pencil"></md-icon>
         </md-button>
-		<md-button aria-label="photo" class="md-icon-button">
+		<md-button ng-click="vm.newWarehousePage()" aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-comment-plus-outline"></md-icon>
         </md-button>
       </md-fab-actions>

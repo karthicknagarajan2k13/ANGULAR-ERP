@@ -81,8 +81,8 @@
                                        translate="Save" translate-attr-aria-label="Save">
                                 Save
                             </md-button>
-                            <md-button ng-click="vm.viewItemPage(vm.item.item.id)" class="md-raised md-accent">View</md-button>
-						</div>
+<!--                             <md-button ng-click="vm.viewItemPage(vm.item.item.id)" class="md-raised md-accent">View</md-button>
+ -->						</div>
 					</form>
                     </div>
                 </md-tab-body>
@@ -165,8 +165,8 @@
                         </form>
 						<div class="actions" layout="row" layout-align="start center">
 							<md-button ng-click="vm.updateItem()" class="md-raised md-accent">Save</md-button>
-                            <md-button ng-click="vm.viewItemPage(vm.item.item.id)" class="md-raised md-accent">View</md-button>
-						</div>
+<!--                             <md-button ng-click="vm.viewItemPage(vm.item.item.id)" class="md-raised md-accent">View</md-button>
+ -->						</div>
                     </div>
                 </md-tab-body>
             </md-tab>
@@ -215,8 +215,8 @@
 						
 						<div class="actions" layout="row" layout-align="start center">
 							<md-button ng-click="vm.updateItem()" class="md-raised md-accent">Save</md-button>
-                            <md-button ng-click="vm.viewItemPage(vm.item.item.id)" class="md-raised md-accent">View</md-button>
-						</div>
+<!--                             <md-button ng-click="vm.viewItemPage(vm.item.item.id)" class="md-raised md-accent">View</md-button>
+ -->						</div>
                     </div>
                 </md-tab-body>
             </md-tab>
@@ -255,7 +255,7 @@
         <md-button aria-label="label" class="md-icon-button">
           <md-icon md-font-icon="icon-pencil"></md-icon>
         </md-button>
-		<md-button aria-label="photo" class="md-icon-button">
+		<md-button ng-click="vm.newItemPage()" aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-comment-plus-outline"></md-icon>
         </md-button>
       </md-fab-actions>

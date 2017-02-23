@@ -70,8 +70,8 @@
                                        translate="Save" translate-attr-aria-label="Save">
                                 Save
                             </md-button>
-							<md-button ng-click="vm.viewNotePage(vm.note.note.id)" class="md-raised md-accent">View</md-button>
-						</div>
+<!-- 							<md-button ng-click="vm.viewNotePage(vm.note.note.id)" class="md-raised md-accent">View</md-button>
+ -->						</div>
                         </form>
                     </div>
                 </md-tab-body>
@@ -111,7 +111,7 @@
         <md-button aria-label="label" class="md-icon-button">
           <md-icon md-font-icon="icon-pencil"></md-icon>
         </md-button>
-		<md-button aria-label="photo" class="md-icon-button">
+		<md-button ng-click="vm.newNotePage()" aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-comment-plus-outline"></md-icon>
         </md-button>
       </md-fab-actions>

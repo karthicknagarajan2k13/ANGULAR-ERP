@@ -3,54 +3,40 @@
     'use strict';
 
     angular
-        .module('app.order-management')
-        .controller('viewSalesOrderInvoiceController', viewSalesOrderInvoiceController);
+        .module('app.manufacturing')
+        .controller('viewMaterialController', viewMaterialController);
 
     /** @ngInject */
-    function viewSalesOrderInvoiceController($scope, omApi, $document, $state, Product)
+    function viewMaterialController(mfgApi, $scope, $document, $state)
     {
 
         $scope.isOpen = false;
-		$scope.demo = {
-			isOpen: false,
-			count: 0,
-			selectedDirection: 'left'
-		};
-		
-		
-		var vm = this;
+        $scope.demo = {
+        isOpen: false,
+        count: 0,
+        selectedDirection: 'left'
+        };
+        var vm = this;
+        vm.ssName = "s"
 
         //Api Call
-        var dataPromise = omApi.viewSalesOrderInvoice($state.params.obj.id);
+        var dataPromise = mfgApi.viewMaterial($state.params.obj.id);
         dataPromise.then(function(result) { 
-            $scope.sales_order_invoice_data = result;
-
-            var total_quantity = 0;
-            var total_price = 0;
-            angular.forEach($scope.sales_order_invoice_data.items, function(value, key) {
-              total_quantity += value.quantity ;
-              total_price += (value.quantity * value.item_price);
-            });
-            $scope.sales_order_invoice_data.total_quantity = total_quantity;
-            $scope.sales_order_invoice_data.total_price = total_price;
+            $scope.material_data = result; 
         }); 
-	
-        vm.deleteSalesOrderInvoice = function (id) {
-            var delete_ids = JSON.stringify([id])
-            omApi.deleteAllSalesOrderInvoice({ids: delete_ids})
-            $state.go('app.order-management.invoices')
-        };
-        vm.editSalesOrderInvoice = function(id){
-             $state.go('app.order-management.invoices-edit', {obj:{id: id}});
-        }
-        vm.newSalesOrderInvoice = function(){
-            $state.go('app.order-management.invoices-new'); 
-        }
-        
-    	vm.ssName = "s"
-	    vm.orders = Product.data;
 
-       
+        vm.editMaterialPage = function(material){
+             $state.go('app.manufacturing.materials-edit', {obj:{material: material}});
+        }
+        vm.deleteMaterial = function(id){
+            var delete_ids = JSON.stringify([id])
+            mfgApi.deleteAllMaterial({ids: delete_ids})
+            $state.go('app.manufacturing.materials'); 
+        }
+        vm.newMaterialPage = function(){
+            $state.go('app.manufacturing.materials-new'); 
+        }
+
         /**
          * File upload success callback
          * Triggers when single upload completed

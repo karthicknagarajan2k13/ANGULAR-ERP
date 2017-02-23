@@ -63,16 +63,15 @@
 										<input type="text" value="{{warehouse_location_data.warehouse}}" disabled>
 									</md-input-container>
 									<md-input-container class="md-block" flex-gt-sm>
-										<label>Asset</label>
-										<input type="text" value="{{warehouse_location_data.asset}}" disabled>
-									</md-input-container>
-									<md-input-container class="md-block" flex-gt-sm>
 										<label>SKU</label>
 										<input type="text" value="{{warehouse_location_data.sku}}" disabled>
+									</md-input-container>								
+								</div>
+								<div layout="row" layout-gt-xs="row" flex>
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Asset</label>
+                                        <tag-input ng-model="warehouse_location_data.asset" placeholder='add a Asset' taglist='warehouse_location_data.asset' disabled></tag-input>
 									</md-input-container>
-
-
-									
 								</div>
 								<div layout="row" layout-gt-xs="row" flex>
 
@@ -83,10 +82,10 @@
                                 </div>
 								
                         </form>
-						<div class="actions" layout="row" layout-align="start center">
+<!-- 						<div class="actions" layout="row" layout-align="start center">
 							<md-button ng-click="vm.editWarehouseLocationPage(warehouse_location_data)" class="md-raised md-accent">Edit</md-button>
 							<md-button ng-click="vm.deleteWarehouseLocation(warehouse_location_data.id)" class="md-raised md-accent">Delete</md-button>
-						</div>
+						</div> -->
                     </div>
                 </md-tab-body>
             </md-tab>
@@ -126,10 +125,10 @@
 								
                         </form>
 						
-						<div class="actions" layout="row" layout-align="start center">
+<!-- 						<div class="actions" layout="row" layout-align="start center">
 							<md-button ng-click="vm.editWarehouseLocationPage(warehouse_location_data)" class="md-raised md-accent">Edit</md-button>
 							<md-button ng-click="vm.deleteWarehouseLocation(warehouse_location_data.id)" class="md-raised md-accent">Delete</md-button>
-						</div>
+						</div> -->
                     </div>
                 </md-tab-body>
             </md-tab>
@@ -229,13 +228,13 @@
         <md-button aria-label="comment" class="md-icon-button">
           <md-icon md-font-icon="icon-menu"></md-icon>
         </md-button>
-		<md-button aria-label="photo" class="md-icon-button">
+		<md-button ng-click="vm.deleteWarehouseLocation(warehouse_location_data.id)" aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-delete"></md-icon>
         </md-button>
-        <md-button aria-label="label" class="md-icon-button">
+        <md-button ng-click="vm.editWarehouseLocationPage(warehouse_location_data)" aria-label="label" class="md-icon-button">
           <md-icon md-font-icon="icon-pencil"></md-icon>
         </md-button>
-		<md-button aria-label="photo" class="md-icon-button">
+		<md-button ng-click="vm.newWarehouseLocationPage()" aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-comment-plus-outline"></md-icon>
         </md-button>
       </md-fab-actions>

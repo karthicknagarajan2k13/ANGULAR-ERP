@@ -1,0 +1,87 @@
+<div id="e-commerce-product" class="page-layout simple tabbed" layout="column">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="space-between">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">Manufacturing Management </a>&nbsp; / &nbsp;<a href="">Materials </a> </span>&nbsp; / &nbsp; New
+            </div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <md-tabs md-dynamic-height>
+
+            <md-tab>
+                <md-tab-label>
+                    <span>General Info</span>
+                </md-tab-label>
+
+                <md-tab-body>
+                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+                        <form ng-submit="vm.saveMaterial()" name="submitForm" novalidate>
+                            <div layout="column" layout-gt-xs="row" flex>
+								
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Name</label>
+										<input type="text" name="name" ng-model="vm.material.name" required>
+	                                    <div ng-messages="submitForm.name.$error" role="alert">
+	                                        <div ng-message="required">
+	                                            <span >Name field is required</span>
+	                                        </div>
+	                                    </div>
+	                                </md-input-container>
+
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Description</label>
+										<input type="text" name="description" ng-model="vm.material.description">
+									</md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>MFG. Product</label>
+                                        <md-select ng-model="vm.material.manufacturing_id">
+                                            <md-option ng-repeat="manufacturing in get_manufacturings" value="{{manufacturing.manufacturing_id}}">
+                                                {{manufacturing.name}}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
+
+                                </div>
+								<div layout="column" layout-gt-xs="row" flex>
+									
+									<md-input-container flex-gt-sm>
+										<label>Unit</label>
+										<input type="text" name="unit" ng-model="vm.material.unit">
+									</md-input-container>
+
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Quantity</label>
+										<input type="text" name="quantity" ng-model="vm.material.quantity">
+									</md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Price </label>
+										<input type="text" name="price" ng-model="vm.material.price">
+									</md-input-container>
+                                </div>								
+                        
+						<div class="actions" layout="row" layout-align="start center">
+                            <md-button type="submit" class="md-raised md-accent submit-button" aria-label="Save"
+                                       ng-disabled="submitForm.$invalid || submitForm.$pristine"
+                                       translate="Save" translate-attr-aria-label="Save">
+                                Save
+                            </md-button>
+							<md-button ng-click="vm.materialDataClear()" class="md-raised md-accent">Clear</md-button>
+						</div>
+					</form>
+                    </div>
+                </md-tab-body>
+            </md-tab>
+			
+        </md-tabs>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>

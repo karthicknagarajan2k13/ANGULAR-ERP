@@ -25,72 +25,64 @@
                        <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>ID</label>
-										<input type="text" value="CUS0001" disabled>
+										<input type="text" value="{{manufacturing_data.code}}" disabled>
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Subject</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<input type="text" value="{{manufacturing_data.subject}}" disabled>
 									</md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Description</label>
-										<input type="text" value="Lorem Ipsum is simply dummy text" disabled>
+										<input type="text" value="{{manufacturing_data.description}}" disabled>
 									</md-input-container>
                                 </div>
 								<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container flex>
 										<label>Status</label>
-										<md-select ng-model="vm.search_data.c_type1" multiple>
-											<md-option ng-repeat="type in ['Draft', 'InProgress', 'Failed', 'Failed & Restarted', 'Completed']" value="{{type}}">
-												{{type}}
-											</md-option>
-										</md-select>
+										<input type="text" value="{{manufacturing_data.status}}" disabled>
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Start Date</label>
-										<md-datepicker ng-model="myDate" md-placeholder="22/12/2016"></md-datepicker>
+										<input type="text" value="{{manufacturing_data.start_date}}" disabled>
 									</md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Expected Completion Date</label>
-										<md-datepicker ng-model="myDate" md-placeholder="22/12/2016"></md-datepicker>
+										<input type="text" value="{{manufacturing_data.expected_completion_date}}" disabled>
 									</md-input-container>
                                 </div>
 								
 								<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container flex>
 										<label>Type</label>
-										<md-select ng-model="vm.search_data.c_type1" multiple>
-											<md-option ng-repeat="type in ['Made - to - Order', 'Made - to - Stock']" value="{{type}}">
-												{{type}}
-											</md-option>
-										</md-select>
+										<input type="text" value="{{manufacturing_data.m_type}}" disabled>
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Quantity</label>
-										<input type="text" value="2946" disabled>
+										<input type="text" value="{{manufacturing_data.quantity}}" disabled>
 									</md-input-container>
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Stock Item</label>
-										<input type="text" value="2946 Luke Lane" disabled>
+										<input type="text" value="{{manufacturing_data.item}}" disabled>
 									</md-input-container>
 
                                 </div>
 								<div layout="row" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex="33">
 										<label>Sales Order </label>
-                                        <input type="text" value="2946 Luke Lane" disabled>
+                                        <input type="text" value="{{manufacturing_data.sales_order}}" disabled>
 									</md-input-container>
                                 </div>
 								
 								
-								<div class="actions" layout="row" layout-align="start center">
-									<md-button ng-click="vm.searchCustomerData()" class="md-raised md-accent">Edit</md-button>
-									<md-button ng-click="vm.searchCustomerDataClear()" class="md-raised md-accent">delete</md-button>
-								</div>
+<!-- 								<div class="actions" layout="row" layout-align="start center">
+									<md-button ng-click="vm.editManufacturingPage(manufacturing_data)" class="md-raised md-accent">Edit</md-button>
+									<md-button ng-click="vm.deleteManufacturing(manufacturing_data.id)" class="md-raised md-accent">delete</md-button>
+								</div> -->
                     </div>
                 </md-tab-body>
             </md-tab>
@@ -109,85 +101,20 @@
 									<th class="qa-check">No.</th>
 									<th class="qa-check1">QA Check</th>
 									<th class="qa-check2">Passed?</th>
-									<!-- <th class="qa-check3"></th> -->
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>0001</td>
-									<td>performance</td>
+								<tr ng-repeat="qa_check in manufacturing_data.qa_check_list">
+									<td>000{{$index}}</td>
+									<td>{{qa_check.name}}</td>
 									<td class="qa-check-td">
-										<md-checkbox ng-model="data.cb1" aria-label="Checkbox 1" disabled></md-checkbox>
+										<md-checkbox ng-model="qa_check.passed" aria-label="Checkbox 1" disabled></md-checkbox>
 									</td>
 									<td class="qa-check-td1">
-										<!-- <a class="edit-button md-icon-button"
-		                                   ng-click="vm.editNotePage(note)"
-		                                   aria-label="Product details" href="">
-										   <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
-										</a> -->
 									</td>
-								</tr>
-								<tr>
-									<td>0002</td>
-									<td>Damage Test</td>
-									<td>
-										<md-checkbox ng-model="data.cb1" aria-label="Checkbox 1" disabled></md-checkbox>
-									</td>
-									<!-- <td>
-										<a class="edit-button md-icon-button"
-		                                   ng-click="vm.editNotePage(note)"
-		                                   aria-label="Product details" href="">
-										   <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
-										</a>
-									</td> -->
 								</tr>
 							</tbody>
 						</table>
-						
-						<!-- <table class="dataTable row-border hover" datatable="ng">
-							<thead>
-								<tr>
-									<th class="secondary-text">
-										<div class="">
-											<span class="column-title">No.</span>
-										</div>
-									</th>
-									<th class="secondary-text">
-										<div class="table-header">
-											<span class="column-title">QA Check</span>
-										</div>
-									</th>
-									<th class="secondary-text">
-										<div class="table-header">
-											<span class="column-title">Passed?</span>
-										</div>
-									</th>
-									<th class="secondary-text">
-										<div class="">
-											<span class="column-title"></span>
-										</div>
-									</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>01</td>
-									<td>Performance Test</td>
-									<td><md-checkbox ng-model="data.cb1" aria-label="Checkbox 1"></md-checkbox>
-									</td>
-									<td>
-										<a class="edit-button md-icon-button"
-		                                   ng-click="vm.editNotePage(note)"
-		                                   aria-label="Product details" href="">
-										   <md-icon md-font-icon="icon-pencil" class="s16"></md-icon>
-										</a>
-									</td>
-								</tr>
-							</tbody>
-						</table> -->
-						<!-- <div class="actions" layout="row" layout-align="start center">
-							<md-button class="circlebtn md-raised md-accent"><md-icon md-font-icon="icon-plus"></md-icon></md-button>
-						</div> -->
 					</div>
                 </md-tab-body>
             </md-tab>
@@ -203,33 +130,31 @@
                             <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Date Created</label>
-										<input type="text" value="22/12/2016" disabled>
+										<input type="text" value="{{manufacturing_data.created_at}}" disabled>
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Created By</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<input type="text" value="{{manufacturing_data.created_by}}" disabled>
 									</md-input-container>
 
                                    <md-input-container class="md-block" flex-gt-sm>
 										<label>Date Modified</label>
-										<input type="text" value="12/01/2017" disabled>
+										<input type="text" value="{{manufacturing_data.updated_at}}" disabled>
 									</md-input-container>
                                 </div>
 								<div layout="row" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex="33">
 										<label>Modified By</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<input type="text" value="{{manufacturing_data.updated_by}}" disabled>
 									</md-input-container>
 									
                                 </div>
 								
                         </form>
 						
-						<!-- <div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Save</md-button>
-							<md-button class="md-raised md-accent">Clear</md-button>
-						</div> -->
+<!-- 									<md-button ng-click="vm.editManufacturingPage(manufacturing_data)" class="md-raised md-accent">Edit</md-button>
+									<md-button ng-click="vm.deleteManufacturing(manufacturing_data.id)" class="md-raised md-accent">delete</md-button> -->
                     </div>
                 </md-tab-body>
             </md-tab>
@@ -246,11 +171,6 @@
 							   dt-options="vm.dtOptions">
 							<thead>
 								<tr>
-									<th class="secondary-text">
-										<div class="">
-											<span class="column-title">#</span>
-										</div>
-									</th>
 									<th class="secondary-text">
 										<div class="table-header">
 											<span class="column-title">ID</span>
@@ -285,22 +205,17 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr ng-repeat="order in ::vm.orders">
-									<td><md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
-										</md-checkbox>
-									</td>
-									<td>{{order.name}}</td>
-									<td>{{order.name}}</td>
-									<td>{{order.country}}</td>
-									<td>{{order.date}}</td>
-									<td>{{order.date}}</td>
-									<td>{{order.createdby}}</td>
+								<tr ng-repeat="history in manufacturing_data.manufacturing_histories">
+									<td>{{history.code}}</td>
+									<td>{{history.subject}}</td>
+									<td>{{history.status}}</td>
+									<td>{{history.quantity}}</td>
+									<td>{{history.created_at}}</td>
+									<td>{{history.created_by}}</td>
 								</tr>
 							</tbody>
 						</table>
 						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Delete</md-button>
-							<md-button class="md-raised md-accent">Add</md-button>
 						</div>
 					</div>
                 </md-tab-body>
@@ -330,7 +245,7 @@
 									</th>
 									<th class="secondary-text">
 										<div class="table-header">
-											<span class="column-title">Nmae</span>
+											<span class="column-title">Name</span>
 										</div>
 									</th>
 									<th class="secondary-text">
@@ -352,21 +267,21 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr ng-repeat="order in ::vm.orders">
-									<td><md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+								<tr ng-repeat="material in manufacturing_data.materials">
+		                            <td><md-checkbox ng-model="material.checked" aria-label="Checkbox 1">
 										</md-checkbox>
 									</td>
-									<td>{{order.name}}</td>
-									<td>{{order.name}}</td>
-									<td>{{order.country}}</td>
-									<td>{{order.date}}</td>
-									<td>{{order.createdby}}</td>
+									<td>{{material.code}}</td>
+		                            <td><a ng-click="vm.viewMaterialPage(material.id)" href="">{{material.name}}</a></td>
+		                            <td>{{material.unit}}</td>
+									<td>{{material.quantity}}</td>
+									<td>{{material.price}}</td>
 								</tr>
 							</tbody>
 						</table>
 						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Delete</md-button>
-							<md-button class="md-raised md-accent">Add</md-button>
+                			<md-button ng-click="vm.deleteAllMaterial()" class="md-raised md-accent">Delete</md-button>
+							<md-button ng-click="vm.newMaterialPage()" class="md-raised md-accent">Add</md-button>
 						</div>
 					</div>
                 </md-tab-body>
@@ -380,7 +295,7 @@
 
 <!-- ADD BUTTON -->
 	<!-- <div class="add-btn-fixed">
-		<md-button  ng-click="vm.newCustomerPage()" class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
+		<md-button  ng-click="vm.newManufacturingPage()" class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
 			<md-icon md-font-icon="icon-plus"></md-icon>
 		</md-button>
 	</div> -->
@@ -399,13 +314,13 @@
         <md-button aria-label="comment" class="md-icon-button">
           <md-icon md-font-icon="icon-menu"></md-icon>
         </md-button>
-		<md-button aria-label="photo" class="md-icon-button">
+		<md-button ng-click="vm.deleteManufacturing(manufacturing_data.id)" aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-delete"></md-icon>
         </md-button>
-        <md-button aria-label="label" class="md-icon-button">
+        <md-button ng-click="vm.editManufacturingPage(manufacturing_data)" aria-label="label" class="md-icon-button">
           <md-icon md-font-icon="icon-pencil"></md-icon>
         </md-button>
-		<md-button aria-label="photo" class="md-icon-button">
+		<md-button ng-click="vm.newManufacturingPage()" aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-comment-plus-outline"></md-icon>
         </md-button>
       </md-fab-actions>
@@ -414,6 +329,3 @@
   </div>
   
 <!-- / ADD BUTTON -->
-
-
-

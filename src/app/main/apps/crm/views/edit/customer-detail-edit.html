@@ -156,8 +156,8 @@
                                        ng-disabled="editCustomerForm.$invalid || editCustomerForm.$pristine"
                                        translate="Save" translate-attr-aria-label="Save">
                                 Save
-                            </md-button>							<md-button ng-click="vm.viewCustomerPage(vm.customer.customer_attributes.id)" class="md-raised md-accent">View</md-button>
-						</div>
+<!--                             </md-button>							<md-button ng-click="vm.viewCustomerPage(vm.customer.customer_attributes.id)" class="md-raised md-accent">View</md-button>
+ -->						</div>
 						</form>
                     </div>
 
@@ -214,8 +214,8 @@
                         </form>
 						<div class="actions" layout="row" layout-align="start center">
 							<md-button ng-click="vm.updateCustomer()" class="md-raised md-accent">Save</md-button>
-							<md-button ng-click="vm.viewCustomerPage(vm.customer.customer_attributes.id)" class="md-raised md-accent">View</md-button>
-						</div>
+<!-- 							<md-button ng-click="vm.viewCustomerPage(vm.customer.customer_attributes.id)" class="md-raised md-accent">View</md-button>
+ -->						</div>
                     </div>
                 </md-tab-body>
             </md-tab>
@@ -254,7 +254,7 @@
         <md-button aria-label="label" class="md-icon-button">
           <md-icon md-font-icon="icon-pencil"></md-icon>
         </md-button>
-		<md-button aria-label="photo" class="md-icon-button">
+		<md-button ng-click="vm.newCustomerPage()" aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-comment-plus-outline"></md-icon>
         </md-button>
       </md-fab-actions>

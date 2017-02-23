@@ -10,12 +10,12 @@
     function manufacturingController($scope, $state, Statuses, Orders)
     {
 
-	$scope.isOpen = false;
-		  $scope.demo = {
-			isOpen: false,
-			count: 0,
-			selectedDirection: 'left'
-		  };
+	    $scope.isOpen = false;
+		$scope.demo = {
+	    isOpen: false,
+		count: 0,
+		selectedDirection: 'left'
+		};
         var vm = this;
 
         // Data
@@ -54,18 +54,18 @@
 
 		
 		// Methods
-        vm.stockeditpage = function(id){
-			 $state.go('app.warehouse-management.stock-locations-edit', {id: id}); 
+        vm.materialeditpage = function(id){
+			 $state.go('app.manufacturing.materials-edit', {id: id}); 
 		}
-	    vm.stockviewpage = function(id){
-			 $state.go('app.warehouse-management.stock-locations-view', {id: id}); 
+	    vm.materialviewpage = function(id){
+			 $state.go('app.manufacturing.materials-view', {id: id}); 
 		}
 
-		vm.wereeditpage = function(id){
-			 $state.go('app.warehouse-management.warehouse-edit', {id: id}); 
+		vm.manufacturingeditpage = function(id){
+			 $state.go('app.manufacturing.manufacturing-edit', {id: id}); 
 		}
-	    vm.wereviewpage = function(id){
-			 $state.go('app.warehouse-management.warehouse-view', {id: id}); 
+	    vm.manufacturingviewpage = function(id){
+			 $state.go('app.manufacturing.manufacturing-view', {id: id}); 
 		}
 		
 		
