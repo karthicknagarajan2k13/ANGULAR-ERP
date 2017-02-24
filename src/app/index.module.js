@@ -32,7 +32,9 @@
 			'app.warehouse-management',
 			'app.manufacturing',
 			'app.knowledge-base',
-            'app.calendar',
+			
+			// User Interface
+            'app.popup-modals',
 			
 			//pages
 			'app.pages'

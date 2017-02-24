@@ -65,22 +65,19 @@
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>SKU</label>
 										<input type="text" value="{{warehouse_location_data.sku}}" disabled>
-									</md-input-container>								
+									</md-input-container>
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Description</label>
+										<input type="text" value="{{warehouse_location_data.description}}" disabled>
+									</md-input-container>
 								</div>
-								<div layout="row" layout-gt-xs="row" flex>
+								<div layout="column" layout-gt-xs="row" flex>
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Asset</label>
                                         <tag-input ng-model="warehouse_location_data.asset" placeholder='add a Asset' taglist='warehouse_location_data.asset' disabled></tag-input>
 									</md-input-container>
 								</div>
-								<div layout="row" layout-gt-xs="row" flex>
-
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Description</label>
-										<input type="text" value="{{warehouse_location_data.description}}" disabled>
-									</md-input-container>
-                                </div>
-								
+																
                         </form>
 <!-- 						<div class="actions" layout="row" layout-align="start center">
 							<md-button ng-click="vm.editWarehouseLocationPage(warehouse_location_data)" class="md-raised md-accent">Edit</md-button>

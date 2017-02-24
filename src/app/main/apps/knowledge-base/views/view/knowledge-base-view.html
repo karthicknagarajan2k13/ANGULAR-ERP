@@ -34,9 +34,13 @@
 										<input type="text" value="Lola J Bolden" disabled>
 									</md-input-container>
 
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Status </label>
-										<input type="text" value="580-269-9087" disabled>
+                                    <md-input-container flex>
+										<label>Status</label>
+										<md-select ng-model="vm.search_data.c_type1" multiple>
+											<md-option ng-repeat="type in ['Draft', 'Expired', 'In-Review', 'Approved']" value="{{type}}">
+												{{type}}
+											</md-option>
+										</md-select>
 									</md-input-container>
                                 </div>
 								<div layout="column" layout-gt-xs="row" flex>
@@ -49,29 +53,26 @@
 										<label>Category</label>
 										<input type="text" value="2946 Luke Lane" disabled>
 									</md-input-container>
-
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Body</label>
-										<input type="text" value="Kaw City" disabled>
-									</md-input-container>
-                                </div>
-								
-								<div layout="row" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex="33">
-										<label>Resolution</label>
-                                        <input type="text" value="Lola J Bolden" disabled>
-									</md-input-container>
-									
-									<md-input-container class="md-block" flex="33">
+									<md-input-container class="md-block" flex-gt-sm>
 										<label>Author</label>
 										<input type="text" value="2946 Luke Lane" disabled>
 									</md-input-container>
-									<md-input-container class="md-block" flex="33">
+                                </div>
+								<div layout="row" layout-gt-xs="row" flex>
+									<md-input-container class="md-block" flex-gt-sm>
 										<label>Approver</label>
 										<input type="text" value="2946 Luke Lane" disabled>
 									</md-input-container>
-
                                 </div>
+								
+									<h3 class="secondary-text">Body</h3>
+									<div class="htmleditkb"> Some test</div>
+								
+								
+									<h3 class="secondary-text">Resolution</h3>
+									<div class="htmleditkb"> Some test</div>
+								
+								
 								
                         </form>
 						<div class="actions" layout="row" layout-align="start center">
