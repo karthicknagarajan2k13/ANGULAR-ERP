@@ -25,29 +25,32 @@
 					<md-input-container flex>
 						<md-icon md-font-icon="icon-magnify"></md-icon>
 						<label>Search</label>
-						<input ng-model="user.firstName">
+                        <input ng-keyup="$event.keyCode == 13 && vm.searchKnowledgeBaseData()" ng-model="vm.search_data.search_text">
 						<md-icon ng-model="collapsed" ng-click="collapsed=!collapsed" md-font-icon="icon-chevron-down"></md-icon>
 					
 						<div style="padding-top:49px;" ng-show="collapsed">
 							<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Title</label>
-										<input ng-model="user.firstName">
+                                        <input ng-model="vm.search_data.title">
 									</md-input-container>
 									
 									<md-input-container flex>
 										<label>Status</label>
-										<md-select ng-model="vm.search_data.c_type1" multiple>
-											<md-option ng-repeat="type in ['Draft', 'Expired', 'In-Review', 'Approved']" value="{{type}}">
-												{{type}}
+										<md-select ng-model="vm.search_data.status" multiple>
+											<md-option ng-repeat="status in ['Draft', 'Expired', 'In-Review', 'Approved']" value="{{status}}">
+												{{status}}
 											</md-option>
 										</md-select>
 									</md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Category</label>
-										<input ng-model="user.firstName">
-									</md-input-container>
+                                        <md-select ng-model="vm.search_data.kb_category_id">
+                                            <md-option ng-repeat="kb_categories in get_kb_categories" value="{{kb_categories.kb_category_id}}">
+                                                {{kb_categories.name}}
+                                            </md-option>
+                                        </md-select>									</md-input-container>
                                 </div>
 								<div layout="row" layout-gt-xs="row" flex>
 									<md-input-container class="md-block" flex="33">
@@ -56,8 +59,8 @@
                                 </div>
 								
 								<div class="actions" layout="row" layout-align="start center">
-									<md-button class="md-raised md-accent">Search</md-button>
-									<md-button class="md-raised md-accent">Clear</md-button>
+                                    <md-button ng-click="vm.searchKnowledgeBaseData()" class="md-raised md-accent">Search</md-button>
+                                    <md-button ng-click="vm.searchKnowledgeBaseDataClear()" class="md-raised md-accent">Clear</md-button>
 								</div>							
 						</div>
 					
@@ -132,26 +135,26 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="order in ::vm.orders">
-                            <td><md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+                        <tr ng-repeat="knowledge_base in knowledge_bases_data">
+                            <td><md-checkbox ng-model="knowledge_base.checked" aria-label="Checkbox 1">
 								</md-checkbox>
 							</td>
-                            <td>{{order.name}}</td>
-							<td>{{order.name}}</td>
-							<td>{{order.name}}</td>
-							<td>{{order.test}}</td>
-							<td>{{order.name}}</td>
+                            <td><a ng-click="vm.viewKnowledgeBasePage(knowledge_base.id)" href="">{{knowledge_base.title}}</a></td>
+							<td>{{knowledge_base.kb_category}}</td>
+							<td>{{knowledge_base.status}}</td>
+							<td>{{knowledge_base.created_at}}</td>
+							<td>{{knowledge_base.created_by}}</td>
                         </tr>
                     </tbody>
                 </table>
 
             </div>
             <!-- / CONTENT -->
-			<div class="actions" layout="row" layout-align="start center">
+<!-- 			<div class="actions" layout="row" layout-align="start center">
 				<md-button class="md-raised md-accent">Delete</md-button>
 				<md-button class="md-raised md-accent">Add</md-button>
 			</div>
-
+ -->
         </div>
         <!-- / CONTENT CARD -->
 
@@ -181,13 +184,13 @@
         <md-button aria-label="comment" class="md-icon-button">
           <md-icon md-font-icon="icon-menu"></md-icon>
         </md-button>
-		<md-button aria-label="photo" class="md-icon-button">
+		<md-button ng-click="vm.deleteAllKnowledgeBase()" aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-delete"></md-icon>
         </md-button>
         <md-button aria-label="label" class="md-icon-button">
           <md-icon md-font-icon="icon-pencil"></md-icon>
         </md-button>
-		<md-button aria-label="photo" class="md-icon-button">
+		<md-button ng-click="vm.newKnowledgeBasePage()" aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-comment-plus-outline"></md-icon>
         </md-button>
       </md-fab-actions>

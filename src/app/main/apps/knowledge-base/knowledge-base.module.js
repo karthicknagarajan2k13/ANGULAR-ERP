@@ -30,7 +30,7 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/knowledge-base/views/pages/kb-categories.html',
-                        controller : 'kbController as vm'
+                        controller : 'KbCategoriesController as vm'
                     }
                 },
                 resolve  : {
@@ -51,7 +51,7 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/knowledge-base/views/pages/knowledge-base.html',
-                        controller : 'kbController as vm'
+                        controller : 'KnowledgeBasesController as vm'
                     }
                 },
                 resolve  : {
@@ -72,10 +72,12 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/knowledge-base/views/edit/kb-categories-edit.html',
-                        controller : 'kbeditController as vm'
+                        controller : 'editKbCategoriesController as vm'
                     }
                 },
-                
+                params: {
+                 obj: null
+                },
                 resolve  : {
                     Product: function (msApi)
                     {
@@ -84,14 +86,34 @@
                 },
                 bodyClass: 'kb'
             })
-			
+
+            .state('app.knowledge-base.kb-categories-new', {
+                url      : '/kb-categories-new',
+                views    : {
+                    'content@app': {
+                        templateUrl: 'app/main/apps/knowledge-base/views/new/kb-categories-new.html',
+                        controller : 'newKbCategoriesController as vm'
+                    }
+                },
+                resolve  : {
+                    Product: function (msApi)
+                    {
+                        return msApi.resolve('crm.orders@get');
+                    }
+                },
+                bodyClass: 'kb'
+            })
+
 			.state('app.knowledge-base.knowledge-base-edit', {
                 url      : '/knowledge-base-edit',
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/knowledge-base/views/edit/knowledge-base-edit.html',
-                        controller : 'kbhtmleditController as vm'
+                        controller : 'editKnowledgeBasesController as vm'
                     }
+                },
+                params: {
+                 obj: null
                 },
 				resolve  : {
                     Product: function (msApi)
@@ -101,14 +123,34 @@
                 },
                 bodyClass: 'kb'
             })
-			
+
+            .state('app.knowledge-base.knowledge-base-new', {
+                url      : '/knowledge-base-new',
+                views    : {
+                    'content@app': {
+                        templateUrl: 'app/main/apps/knowledge-base/views/new/knowledge-base-new.html',
+                        controller : 'newKnowledgeBasesController as vm'
+                    }
+                },
+                resolve  : {
+                    Product: function (msApi)
+                    {
+                        return msApi.resolve('e-commerce.product@get');
+                    }
+                },
+                bodyClass: 'kb'
+            })
+
 			.state('app.knowledge-base.kb-categories-view', {
                 url      : '/kb-categories-view',
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/knowledge-base/views/view/kb-categories-view.html',
-                        controller : 'kbviewController as vm'
+                        controller : 'viewKbCategoriesController as vm'
                     }
+                },
+                params: {
+                 obj: null
                 },
                 resolve  : {
                     Product: function (msApi)
@@ -124,8 +166,11 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/knowledge-base/views/view/knowledge-base-view.html',
-                        controller : 'kbviewController as vm'
+                        controller : 'viewKnowledgeBasesController as vm'
                     }
+                },
+                params: {
+                 obj: null
                 },
                 resolve  : {
                     Product: function (msApi)

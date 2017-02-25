@@ -4,7 +4,7 @@
     <div class="header md-accent-bg" layout="row" layout-align="space-between">
         <div layout="column" layout-align="space-between">
             <div class="breadcrumb" layout="row" layout-align="start center">
-                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">Knowledge Base </a>&nbsp; / &nbsp;<a href="">Knowledge Base </a> </span>&nbsp; / &nbsp; Edit
+                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">Knowledge Base </a>&nbsp; / &nbsp;<a href="">Knowledge Base </a> </span>&nbsp; / &nbsp; New
             </div>
         </div>
     </div>
@@ -22,12 +22,12 @@
 
                 <md-tab-body>
                     <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
-                        <form ng-submit="vm.updateKnowledgeBase()" name="submitForm" novalidate>
+                        <form ng-submit="vm.saveKnowledgeBase()" name="submitForm" novalidate>
                             <div layout="column" layout-gt-xs="row" flex>
 								
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Title</label>
-										<input type="text" name="title" ng-model="vm.knowledge_base.knowledge_base.title" required>
+										<input type="text" name="title" ng-model="vm.knowledge_base.title" required>
 	                                    <div ng-messages="submitForm.title.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Title field is required</span>
@@ -36,7 +36,7 @@
 	                                </md-input-container>
                                     <md-input-container flex>
 										<label>Status</label>
-										<md-select ng-model="vm.knowledge_base.knowledge_base.status">
+										<md-select ng-model="vm.knowledge_base.status">
 											<md-option ng-repeat="status in ['Draft', 'Expired', 'In-Review', 'Approved']" value="{{status}}">
 												{{status}}
 											</md-option>
@@ -45,7 +45,7 @@
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Revision</label>
-										<input type="text" name="title" ng-model="vm.knowledge_base.knowledge_base.revision">
+										<input type="text" name="title" ng-model="vm.knowledge_base.revision">
 									</md-input-container>
 
                                 </div>
@@ -54,7 +54,7 @@
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Category</label>
-                                        <md-select ng-model="vm.knowledge_base.knowledge_base.kb_category_id">
+                                        <md-select ng-model="vm.knowledge_base.kb_category_id">
                                             <md-option ng-repeat="category in get_kb_categories" value="{{category.kb_category_id}}">
                                                 {{category.name}}
                                             </md-option>
@@ -62,7 +62,7 @@
                                     </md-input-container>
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Author</label>
-                                        <md-select ng-model="vm.knowledge_base.knowledge_base.author_id">
+                                        <md-select ng-model="vm.knowledge_base.author_id">
                                             <md-option ng-repeat="employee in get_employees" value="{{employee.employee_id}}">
                                                 {{employee.name}}
                                             </md-option>
@@ -70,7 +70,7 @@
                                     </md-input-container>
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Approver</label>
-                                        <md-select ng-model="vm.knowledge_base.knowledge_base.approver_id">
+                                        <md-select ng-model="vm.knowledge_base.approver_id">
                                             <md-option ng-repeat="employee in get_employees" value="{{employee.employee_id}}">
                                                 {{employee.name}}
                                             </md-option>
@@ -80,17 +80,17 @@
                                 </div>
 								
 								<h3 class="secondary-text">Body</h3>
-								<text-angular ta-toolbar="vm.taToolbar" ng-model="vm.knowledge_base.knowledge_base.body" class="pb-32"></text-angular>
+								<text-angular ta-toolbar="vm.taToolbar" ng-model="vm.knowledge_base.body" class="pb-32"></text-angular>
 
 								<h3 class="secondary-text">Resolution</h3>
-								<text-angular ta-toolbar="vm.taToolbar" ng-model="vm.knowledge_base.knowledge_base.resolution" class="pb-32"></text-angular>
+								<text-angular ta-toolbar="vm.taToolbar" ng-model="vm.knowledge_base.resolution" class="pb-32"></text-angular>
 							<div class="actions" layout="row" layout-align="start center">
 	                            <md-button type="submit" class="md-raised md-accent submit-button" aria-label="Save"
 	                                       ng-disabled="submitForm.$invalid || submitForm.$pristine"
 	                                       translate="Save" translate-attr-aria-label="Save">
 	                                Save
 	                            </md-button>
-								<md-button ng-click="vm.knowledge_base.knowledge_baseDataClear()" class="md-raised md-accent">Clear</md-button>
+								<md-button ng-click="vm.knowledge_baseDataClear()" class="md-raised md-accent">Clear</md-button>
 							</div>
 						</form>
                     </div>
@@ -130,7 +130,7 @@
         <md-button aria-label="label" class="md-icon-button">
           <md-icon md-font-icon="icon-pencil"></md-icon>
         </md-button>
-		<md-button ng-click="vm.newKnowledgeBasePage()" aria-label="photo" class="md-icon-button">
+		<md-button aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-comment-plus-outline"></md-icon>
         </md-button>
       </md-fab-actions>

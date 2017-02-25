@@ -25,19 +25,19 @@
 					<md-input-container flex>
 						<md-icon md-font-icon="icon-magnify"></md-icon>
 						<label>Search</label>
-						<input ng-model="user.firstName">
+                        <input ng-keyup="$event.keyCode == 13 && vm.searchKbCategoryData()" ng-model="vm.search_data.search_text">
 						<md-icon ng-model="collapsed" ng-click="collapsed=!collapsed" md-font-icon="icon-chevron-down"></md-icon>
 					
 						<div style="padding-top:49px;" ng-show="collapsed">
 							<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>ID</label>
-										<input ng-model="user.firstName">
+                                        <input ng-model="vm.search_data.code">
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Name</label>
-										<input ng-model="user.firstName">
+                                        <input ng-model="vm.search_data.name">
 									</md-input-container>
 									<md-input-container class="md-block" flex-gt-sm>
                                         <md-datepicker ng-model="vm.search_data.created_at" md-placeholder="Date Created"></md-datepicker>
@@ -47,13 +47,17 @@
 									
 									<md-input-container class="md-block" flex="33">
 										<label>Created By</label>
-										<input ng-model="user.firstName">
-									</md-input-container>
+                                        <md-select ng-model="vm.search_data.created_by_id">
+                                            <md-option ng-repeat="user in get_users" value="{{user.id}}">
+                                                {{user.name}}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
                                 </div>
 								
 								<div class="actions" layout="row" layout-align="start center">
-									<md-button class="md-raised md-accent">Search</md-button>
-									<md-button class="md-raised md-accent">Clear</md-button>
+                                    <md-button ng-click="vm.searchKbCategoryData()" class="md-raised md-accent">Search</md-button>
+                                    <md-button ng-click="vm.searchKbCategoryDataClear()" class="md-raised md-accent">Clear</md-button>
 								</div>								
 						</div>
 					
@@ -120,24 +124,24 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="order in ::vm.orders">
-                            <td><md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+                        <tr ng-repeat="kb_category in kb_categories_data">
+                            <td><md-checkbox ng-model="kb_category.checked" aria-label="Checkbox 1">
 								</md-checkbox>
 							</td>
-                            <td>{{order.id}}</td>
-                            <td>{{order.name}}</td>
-							<td>{{order.test}}</td>
-							<td>{{order.name}}</td>
+                            <td>{{kb_category.code}}</td>
+                            <td><a ng-click="vm.viewKbCategoryPage(kb_category.id)" href="">{{kb_category.name}}</a></td>
+							<td>{{kb_category.created_at}}</td>
+							<td>{{kb_category.created_by}}</td>
                         </tr>
                     </tbody>
                 </table>
 
             </div>
             <!-- / CONTENT -->
-			<div class="actions" layout="row" layout-align="start center">
+<!-- 			<div class="actions" layout="row" layout-align="start center">
 				<md-button class="md-raised md-accent">Delete</md-button>
 				<md-button class="md-raised md-accent">Add</md-button>
-			</div>
+			</div> -->
 
         </div>
         <!-- / CONTENT CARD -->
@@ -168,13 +172,13 @@
         <md-button aria-label="comment" class="md-icon-button">
           <md-icon md-font-icon="icon-menu"></md-icon>
         </md-button>
-		<md-button aria-label="photo" class="md-icon-button">
+		<md-button ng-click="vm.deleteAllKbCategory()" aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-delete"></md-icon>
         </md-button>
         <md-button aria-label="label" class="md-icon-button">
           <md-icon md-font-icon="icon-pencil"></md-icon>
         </md-button>
-		<md-button aria-label="photo" class="md-icon-button">
+		<md-button  ng-click="vm.newKbCategoryPage()" aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-comment-plus-outline"></md-icon>
         </md-button>
       </md-fab-actions>

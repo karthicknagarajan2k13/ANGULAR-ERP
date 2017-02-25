@@ -4,10 +4,10 @@
 
     angular
         .module('app.knowledge-base')
-        .controller('kbhtmleditController', kbhtmleditController);
+        .controller('editKnowledgeBasesController', editKnowledgeBasesController);
 
     /** @ngInject */
-    function kbhtmleditController($scope, $document, $state, Product)
+    function editKnowledgeBasesController(kbApi, $scope, $document, $state, Product)
     {
 		
 		$scope.isOpen = false;
@@ -17,6 +17,43 @@
 			selectedDirection: 'left'
 		  };
         var vm = this;
+
+
+        var dataPromise = kbApi.get_employees({});
+        dataPromise.then(function(result) { 
+            $scope.get_employees = result;
+        });
+        var dataPromise = kbApi.get_kb_categories({});
+        dataPromise.then(function(result) { 
+            $scope.get_kb_categories = result;
+        });
+
+
+        vm.knowledge_base = $state.params.obj
+        console.log("vm.knowledge_base",vm.knowledge_base)
+
+        
+        vm.updateKnowledgeBase = function(){
+           var dataPromise = kbApi.updateKnowledgeBase(vm.knowledge_base.knowledge_base.id,vm.knowledge_base);
+            dataPromise.then(function(result) { 
+                $scope.data = result; 
+                if( typeof($scope.data.message) !== "undefined"){
+                    console.log("response",$scope.data.message)
+                }else{
+                    if( typeof($scope.data.knowledge_base_id) !== "undefined"){
+                        $state.go('app.knowledge-base.knowledge-base-view', {obj:{id: $scope.data.knowledge_base_id}}); 
+                    }
+                }
+            }); 
+        }
+        vm.viewKnowledgeBasePage =function(id){
+            $state.go('app.knowledge-base.knowledge-base-view', {obj:{id: id}}); 
+        }
+        vm.newKnowledgeBasePage = function(){
+            $state.go('app.knowledge-base.knowledge-base-new'); 
+        }
+
+
 
         // Data
         vm.taToolbar = [

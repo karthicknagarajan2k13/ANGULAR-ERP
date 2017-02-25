@@ -26,59 +26,56 @@
                             <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>ID</label>
-										<input type="text" value="CUS0001" disabled>
+										<input type="text" value="{{knowledge_base_data.code}}" disabled>
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Title</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<input type="text" value="{{knowledge_base_data.title}}" disabled>
 									</md-input-container>
 
                                     <md-input-container flex>
 										<label>Status</label>
-										<md-select ng-model="vm.search_data.c_type1" multiple>
-											<md-option ng-repeat="type in ['Draft', 'Expired', 'In-Review', 'Approved']" value="{{type}}">
-												{{type}}
-											</md-option>
-										</md-select>
+                                        <input type="text" value="{{knowledge_base_data.status}}" disabled>
+
 									</md-input-container>
                                 </div>
 								<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Revision</label>
-                                        <input type="text" value="Lola J Bolden" disabled>
+                                        <input type="text" value="{{knowledge_base_data.revision}}" disabled>
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Category</label>
-										<input type="text" value="2946 Luke Lane" disabled>
+                                        <input type="text" value="{{knowledge_base_data.kb_category}}" disabled>
 									</md-input-container>
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Author</label>
-										<input type="text" value="2946 Luke Lane" disabled>
+                                        <input type="text" value="{{knowledge_base_data.author}}" disabled>
 									</md-input-container>
                                 </div>
 								<div layout="row" layout-gt-xs="row" flex>
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Approver</label>
-										<input type="text" value="2946 Luke Lane" disabled>
+                                        <input type="text" value="{{knowledge_base_data.approver}}" disabled>
 									</md-input-container>
                                 </div>
 								
 									<h3 class="secondary-text">Body</h3>
-									<div class="htmleditkb"> Some test</div>
+									<div ng-bind-html="knowledge_base_data.body" class="htmleditkb"></div>
 								
 								
 									<h3 class="secondary-text">Resolution</h3>
-									<div class="htmleditkb"> Some test</div>
+									<div ng-bind-html="knowledge_base_data.resolution" class="htmleditkb"></div>
 								
 								
 								
                         </form>
-						<div class="actions" layout="row" layout-align="start center">
+<!-- 						<div class="actions" layout="row" layout-align="start center">
 							<md-button class="md-raised md-accent">Save</md-button>
 							<md-button class="md-raised md-accent">Clear</md-button>
-						</div>
+						</div> -->
                     </div>
                 </md-tab-body>
             </md-tab>
@@ -95,23 +92,23 @@
                             <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Date Created</label>
-										<input type="text" value="22/12/2016" disabled>
+										<input type="text" value="{{knowledge_base_data.created_at}}" disabled>
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Created By</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<input type="text" value="{{knowledge_base_data.created_by}}" disabled>
 									</md-input-container>
 
                                    <md-input-container class="md-block" flex-gt-sm>
 										<label>Date Modified</label>
-										<input type="text" value="12/01/2017" disabled>
+										<input type="text" value="{{knowledge_base_data.updated_at}}" disabled>
 									</md-input-container>
                                 </div>
 								<div layout="row" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex="33">
 										<label>Modified By</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<input type="text" value="{{knowledge_base_data.updated_by}}" disabled>
 									</md-input-container>
 									
                                 </div>
@@ -155,13 +152,13 @@
         <md-button aria-label="comment" class="md-icon-button">
           <md-icon md-font-icon="icon-menu"></md-icon>
         </md-button>
-		<md-button aria-label="photo" class="md-icon-button">
+		<md-button ng-click="vm.deleteKnowledgeBase(knowledge_base_data.id)" aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-delete"></md-icon>
         </md-button>
-        <md-button aria-label="label" class="md-icon-button">
+        <md-button ng-click="vm.editKnowledgeBasePage(knowledge_base_data)" aria-label="label" class="md-icon-button">
           <md-icon md-font-icon="icon-pencil"></md-icon>
         </md-button>
-		<md-button aria-label="photo" class="md-icon-button">
+		<md-button ng-click="vm.newKnowledgeBasePage()" aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-comment-plus-outline"></md-icon>
         </md-button>
       </md-fab-actions>

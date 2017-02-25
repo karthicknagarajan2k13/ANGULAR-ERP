@@ -26,24 +26,24 @@
                             <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>ID</label>
-										<input type="text" value="CUS0001" disabled>
+										<input type="text" value="{{kb_category_data.code}}" disabled>
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Name</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<input type="text" value="{{kb_category_data.name}}" disabled>
 									</md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Description</label>
-										<input type="text" value="580-269-9087" disabled>
+										<input type="text" value="{{kb_category_data.description}}" disabled>
 									</md-input-container>
                                 </div>
                         </form>
-						<div class="actions" layout="row" layout-align="start center">
+<!-- 						<div class="actions" layout="row" layout-align="start center">
 							<md-button class="md-raised md-accent">Edit</md-button>
 							<md-button class="md-raised md-accent">Delete</md-button>
-						</div>
+						</div> -->
                     </div>
                 </md-tab-body>
             </md-tab>
@@ -60,23 +60,23 @@
                             <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Date Created</label>
-										<input type="text" value="22/12/2016" disabled>
+										<input type="text" value="{{kb_category_data.created_at}}" disabled>
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Created By</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<input type="text" value="{{kb_category_data.created_by}}" disabled>
 									</md-input-container>
 
                                    <md-input-container class="md-block" flex-gt-sm>
 										<label>Date Modified</label>
-										<input type="text" value="12/01/2017" disabled>
+										<input type="text" value="{{kb_category_data.updated_at}}" disabled>
 									</md-input-container>
                                 </div>
 								<div layout="row" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex="33">
 										<label>Modified By</label>
-										<input type="text" value="Lola J Bolden" disabled>
+										<input type="text" value="{{kb_category_data.updated_by}}" disabled>
 									</md-input-container>
 									
                                 </div>
@@ -137,22 +137,21 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr ng-repeat="order in ::vm.orders">
-									<td><md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+		                        <tr ng-repeat="knowledge_base in kb_category_data.knowledge_bases">
+		                            <td><md-checkbox ng-model="knowledge_base.checked" aria-label="Checkbox 1">
 										</md-checkbox>
 									</td>
-									<td>{{order.name}}</td>
-									
-									<td>{{order.country}}</td>
-									<td>{{order.date}}</td>
-									<td>{{order.date}}</td>
-									<td>{{order.createdby}}</td>
-								</tr>
+		                            <td><a ng-click="vm.viewKnowledgeBasePage(knowledge_base.id)" href="">{{knowledge_base.title}}</a></td>
+									<td>{{knowledge_base.kb_category}}</td>
+									<td>{{knowledge_base.status}}</td>
+									<td>{{knowledge_base.created_at}}</td>
+									<td>{{knowledge_base.created_by}}</td>
+		                        </tr>
 							</tbody>
 						</table>
 						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Delete</md-button>
-							<md-button class="md-raised md-accent">Add</md-button>
+							<md-button ng-click="vm.deleteAllKnowledgeBase(knowledge_base.id)" class="md-raised md-accent">Delete</md-button>
+							<md-button ng-click="vm.newKnowledgeBasePage()" class="md-raised md-accent">Add</md-button>
 						</div>
 					</div>
                 </md-tab-body>
@@ -186,13 +185,13 @@
         <md-button aria-label="comment" class="md-icon-button">
           <md-icon md-font-icon="icon-menu"></md-icon>
         </md-button>
-		<md-button aria-label="photo" class="md-icon-button">
+		<md-button ng-click="vm.deleteKbCategory(kb_category_data.id)" aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-delete"></md-icon>
         </md-button>
-        <md-button aria-label="label" class="md-icon-button">
+        <md-button ng-click="vm.editKbCategoryPage(kb_category_data)" aria-label="label" class="md-icon-button">
           <md-icon md-font-icon="icon-pencil"></md-icon>
         </md-button>
-		<md-button aria-label="photo" class="md-icon-button">
+		<md-button ng-click="vm.newKbCategoryPage()" aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-comment-plus-outline"></md-icon>
         </md-button>
       </md-fab-actions>
