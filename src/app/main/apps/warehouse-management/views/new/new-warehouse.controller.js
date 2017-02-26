@@ -41,7 +41,9 @@
         vm.newWarehousePage = function(){
             $state.go('app.warehouse-management.warehouse-new'); 
         }
-
+        vm.WarehousesPage = function(){
+            $state.go('app.warehouse-management.warehouse'); 
+        }
         /**
          * File upload success callback
          * Triggers when single upload completed

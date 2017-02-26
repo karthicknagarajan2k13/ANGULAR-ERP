@@ -43,6 +43,9 @@
         vm.newNotePage = function(){
             $state.go('app.crm.note-detail-new'); 
         }
+        vm.NotesPage = function(){
+            $state.go('app.crm.notes'); 
+        }
     }
 
 })();

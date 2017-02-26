@@ -51,6 +51,13 @@
         vm.newPayrollPage = function(){
             $state.go('app.hr.payroll-new'); 
         }
+        vm.PayrollsPage = function(){
+            $state.go('app.hr.payrolls'); 
+        }
+        vm.PayrollReportsPage = function(){
+            $state.go('app.hr.payroll-report'); 
+        }
+        
         /**
          * File upload success callback
          * Triggers when single upload completed

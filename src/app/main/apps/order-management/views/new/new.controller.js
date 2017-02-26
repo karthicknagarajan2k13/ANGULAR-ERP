@@ -28,7 +28,9 @@
             $scope.get_sales_orders = result;
             console.log("get_sales_orders",$scope.get_sales_orders)
         });
-
+        vm.InvoicesPage = function(){
+            $state.go('app.order-management.invoices'); 
+        }
         vm.createSalesOrderInvoice = function(){
             var dataPromise = omApi.createSalesOrderInvoice({invoice:vm.invoice});
             dataPromise.then(function(result) { 

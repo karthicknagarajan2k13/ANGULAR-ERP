@@ -51,6 +51,9 @@
         vm.newTimeclockPage = function(){
             $state.go('app.hr.timeclock-new'); 
         }
+        vm.TimeclocksPage = function(){
+            $state.go('app.hr.timeclock'); 
+        }
         /**
          * File upload success callback
          * Triggers when single upload completed

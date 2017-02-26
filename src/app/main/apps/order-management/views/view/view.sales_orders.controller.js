@@ -62,7 +62,9 @@
             }); 
         };
 
-
+        vm.SalesOrdersPage = function(){
+            $state.go('app.order-management.sales-orders'); 
+        }
 
 
         vm.deleteSalesOrderInvoice = function (id) {

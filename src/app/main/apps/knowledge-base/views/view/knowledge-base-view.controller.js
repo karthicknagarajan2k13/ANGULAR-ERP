@@ -36,7 +36,9 @@
         vm.newKnowledgeBasePage = function(){
             $state.go('app.knowledge-base.knowledge-base-new'); 
         }
-
+        vm.KnowledgeBasePage = function(){
+            $state.go('app.knowledge-base.knowledge-base'); 
+        }
         /**
          * File upload success callback
          * Triggers when single upload completed

@@ -36,7 +36,10 @@
         vm.newMaterialPage = function(){
             $state.go('app.manufacturing.materials-new'); 
         }
-
+        vm.MaterialsPage = function(){
+            $state.go('app.manufacturing.materials'); 
+        }
+        
         /**
          * File upload success callback
          * Triggers when single upload completed

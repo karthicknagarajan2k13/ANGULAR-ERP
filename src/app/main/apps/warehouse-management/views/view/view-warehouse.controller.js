@@ -65,7 +65,9 @@
                 });
             }
         };
-
+        vm.WarehousesPage = function(){
+            $state.go('app.warehouse-management.warehouse'); 
+        }
 
         /**
          * File upload success callback

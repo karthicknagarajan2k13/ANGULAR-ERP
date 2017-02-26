@@ -55,6 +55,9 @@
         vm.newItemPage = function(){
             $state.go('app.inventory-management.items-new'); 
         }
+        vm.ItemsPage = function(){
+            $state.go('app.inventory-management.items'); 
+        }
         /**
          * File upload success callback
          * Triggers when single upload completed

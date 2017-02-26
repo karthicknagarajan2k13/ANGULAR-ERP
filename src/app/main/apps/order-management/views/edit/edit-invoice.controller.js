@@ -34,7 +34,10 @@
             $scope.invoice.refunded_at = new Date($scope.invoice.refunded_at);
             console.log("invoice",$scope.invoice)
         });
-
+        vm.InvoicesPage = function(){
+            $state.go('app.order-management.invoices'); 
+        }
+        
         vm.updateSalesOrderInvoice = function(){
            var dataPromise = omApi.updateSalesOrderInvoice($scope.invoice.id,$scope.invoice);
             dataPromise.then(function(result) { 

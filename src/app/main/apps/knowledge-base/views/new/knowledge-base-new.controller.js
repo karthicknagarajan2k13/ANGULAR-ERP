@@ -48,7 +48,9 @@
         vm.newKnowledgeBasePage = function(){
             $state.go('app.knowledge-base.knowledge-base-new'); 
         }
-
+        vm.KnowledgeBasePage = function(){
+            $state.go('app.knowledge-base.knowledge-base'); 
+        }
         // Data
         vm.taToolbar = [
             ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'pre', 'quote', 'bold', 'italics', 'underline', 'strikeThrough', 'ul', 'ol', 'redo', 'undo', 'clear'],

@@ -50,6 +50,10 @@
         vm.newSupplierPage = function(){
             $state.go('app.inventory-management.suppliers-new'); 
         }
+        vm.SuppliersPage = function(){
+            $state.go('app.inventory-management.suppliers'); 
+        }
+        
         /**
          * File upload success callback
          * Triggers when single upload completed

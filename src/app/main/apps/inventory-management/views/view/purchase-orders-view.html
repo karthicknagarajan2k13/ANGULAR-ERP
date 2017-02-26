@@ -4,7 +4,7 @@
     <div class="header md-accent-bg" layout="row" layout-align="space-between">
         <div layout="column" layout-align="space-between">
             <div class="breadcrumb" layout="row" layout-align="start center">
-                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">Inventory Management </a>&nbsp; / &nbsp;<a href="">Purchase Orders </a> </span>&nbsp; / &nbsp; View
+                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a ng-click="vm.PurchaseOrdersPage()" href="">Inventory Management </a>&nbsp; / &nbsp;<a ng-click="vm.PurchaseOrdersPage()" href="">Purchase Orders </a> </span>&nbsp; / &nbsp; View
             </div>
         </div>
     </div>
@@ -124,16 +124,49 @@
 
                 <md-tab-body>
                     <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
-					
+                    <form ng-submit="vm.addItemPurchaseOrder()" name="submitForm" novalidate>
+                    <div layout="column" layout-gt-xs="row" flex>
+							<md-input-container class="md-block" flex-gt-sm>
+								<label>Item</label>
+                                <md-select name="item_id" ng-model="vm.purchase_order_item_data.item" ng-change="vm.changedItemValue(vm.purchase_order_item_data.item)" required>
+                                    <md-option ng-repeat="item in get_items" value="{{item}}">
+                                        {{item.name}}
+                                    </md-option>
+                                </md-select>	
+                                <div ng-messages="submitForm.item_id.$error" role="alert">
+                                    <div ng-message="required">
+                                        <span >Item field is required</span>
+                                    </div>
+                                </div>
+							</md-input-container>
+                            <md-input-container class="md-block" flex-gt-sm>
+								<label>Quantity</label>
+								<input ng-model="vm.purchase_order_item_data.quantity" name="quantity" type="text" ng-change="vm.calculate_total()" required>
+                                <div ng-messages="submitForm.quantity.$error" role="alert">
+                                    <div ng-message="required">
+                                        <span >Tax field is required</span>
+                                    </div>
+                                </div>
+							</md-input-container>
+                            <md-input-container class="md-block" flex-gt-sm>
+								<label>Unit</label>
+								<input ng-model="vm.purchase_order_item_data.unit_price" name="unit_price" type="text" disabled>
+							</md-input-container>
+                            <md-input-container class="md-block" flex-gt-sm>
+								<label>Total</label>
+								<input  ng-model="vm.purchase_order_item_data.total" name="total" type="text" disabled>
+							</md-input-container>							
+                            <md-button type="submit" class="circlebtn md-raised md-accent" aria-label="Save"
+                                       ng-disabled="submitForm.$invalid || submitForm.$pristine"
+                                       translate="+" translate-attr-aria-label="Save">
+                                <md-icon class="plus-iconmanu" md-font-icon="icon-plus"></md-icon>
+                            </md-button>
+                        </div>
+                        </form>
 						<table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance"
 							   dt-options="vm.dtOptions">
 							<thead>
 								<tr>
-									<th class="secondary-text">
-										<div class="">
-											<span class="column-title">#</span>
-										</div>
-									</th>
 									<th class="secondary-text">
 										<div class="table-header">
 											<span class="column-title">Item ID</span>
@@ -146,12 +179,12 @@
 									</th>
 									<th class="secondary-text">
 										<div class="table-header">
-											<span class="column-title">Manufacturer</span>
+											<span class="column-title">Quantity</span>
 										</div>
 									</th>
 									<th class="secondary-text">
 										<div class="table-header">
-											<span class="column-title">Quantity</span>
+											<span class="column-title">Unit</span>
 										</div>
 									</th>
 									<th class="secondary-text">
@@ -159,37 +192,18 @@
 											<span class="column-title">Total</span>
 										</div>
 									</th>
-									<th class="secondary-text">
-										<div class="table-header">
-											<span class="column-title">Date Created</span>
-										</div>
-									</th>
-									<th class="secondary-text">
-										<div class="table-header">
-											<span class="column-title">Created By</span>
-										</div>
-									</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr ng-repeat="order in ::vm.orders">
-									<td><md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
-										</md-checkbox>
-									</td>
-									<td>{{order.name}}</td>
-									<td>{{order.phone}}</td>
-									<td>{{order.type}}</td>
-									<td>{{order.country}}</td>
-									<td>{{order.date}}</td>
-									<td>{{order.date}}</td>
-									<td>{{order.createdby}}</td>
+								<tr ng-repeat="purchase_order_item in purchase_order_data.purchase_order_items">
+									<td>{{purchase_order_item.code}}</td>
+									<td>{{purchase_order_item.name}}</td>
+									<td>{{purchase_order_item.quantity}}</td>
+									<td>{{purchase_order_item.unit_price}}</td>
+									<td>{{purchase_order_item.total}}</td>
 								</tr>
 							</tbody>
 						</table>
-						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Delete</md-button>
-							<md-button class="md-raised md-accent">Add</md-button>
-						</div>
 					</div>
                 </md-tab-body>
             </md-tab>

@@ -4,7 +4,7 @@
     <div class="header md-accent-bg" layout="row" layout-align="space-between">
         <div layout="column" layout-align="space-between">
             <div class="breadcrumb" layout="row" layout-align="start center">
-                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">Warehouse Management </a>&nbsp; / &nbsp;<a href="">Stock Location </a> </span>&nbsp; / &nbsp; View
+                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a ng-click="vm.LocationsPage()" href="">Warehouse Management </a>&nbsp; / &nbsp;<a ng-click="vm.LocationsPage()" href="">Stock Location </a> </span>&nbsp; / &nbsp; View
             </div>
         </div>
     </div>
@@ -137,16 +137,39 @@
 
                 <md-tab-body>
                     <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
-					
+
+	                    <form ng-submit="vm.addItemWarehouseLocation()" name="submitForm" novalidate>
+	                    	<div layout="column" layout-gt-xs="row" flex>
+								<md-input-container class="md-block" flex-gt-sm>
+									<label>Item</label>
+	                                <md-select name="item_id" ng-model="vm.warehouse_location_item_data.item" ng-change="vm.changedItemValue(vm.warehouse_location_item_data.item)" required>
+	                                    <md-option ng-repeat="item in get_items" value="{{item}}">
+	                                        {{item.name}}
+	                                    </md-option>
+	                                </md-select>	
+	                                <div ng-messages="submitForm.item_id.$error" role="alert">
+	                                    <div ng-message="required">
+	                                        <span >Item field is required</span>
+	                                    </div>
+	                                </div>
+								</md-input-container>
+	                            <md-input-container class="md-block" flex-gt-sm>
+									<label>Ttem Instock</label>
+									<input  ng-model="vm.warehouse_location_item_data.item_in_stock" name="item_in_stock" type="text" disabled>
+								</md-input-container>
+	                            <md-button type="submit" class="circlebtn md-raised md-accent" aria-label="Save"
+	                                       ng-disabled="submitForm.$invalid || submitForm.$pristine"
+	                                       translate="+" translate-attr-aria-label="Save">
+	                                <md-icon class="plus-iconmanu" md-font-icon="icon-plus"></md-icon>
+	                            </md-button>
+	                        </div>
+	                    </form>
+
+
 						<table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance"
 							   dt-options="vm.dtOptions">
 							<thead>
 								<tr>
-									<th class="secondary-text">
-										<div class="">
-											<span class="column-title">#</span>
-										</div>
-									</th>
 									<th class="secondary-text">
 										<div class="table-header">
 											<span class="column-title">Item ID</span>
@@ -176,23 +199,15 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr ng-repeat="order in ::vm.orders">
-									<td><md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
-										</md-checkbox>
-									</td>
-									<td>{{order.name}}</td>
-									
-									<td>{{order.country}}</td>
-									<td>{{order.date}}</td>
-									<td>{{order.date}}</td>
-									<td>{{order.createdby}}</td>
+								<tr ng-repeat="warehouse_location_item in warehouse_location_data.warehouse_location_items">
+									<td>{{warehouse_location_item.code}}</td>
+									<td>{{warehouse_location_item.name}}</td>
+									<td>{{warehouse_location_item.item_in_stock}}</td>
+									<td>{{warehouse_location_item.created_at}}</td>
+									<td>{{warehouse_location_item.created_by}}</td>
 								</tr>
 							</tbody>
 						</table>
-						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Delete</md-button>
-							<md-button class="md-raised md-accent">Add</md-button>
-						</div>
 					</div>
                 </md-tab-body>
             </md-tab>

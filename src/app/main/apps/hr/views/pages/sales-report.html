@@ -31,15 +31,15 @@
                     <ms-widget-front class="white-bg">
                         <div class="ph-16 pv-8 border-bottom" layout="row" layout-align="space-between center"
                              layout-wrap>
-                            <div class="pv-8 h3">{{vm.widget5.title}}</div>
+                            <div class="pv-8 h3">Sales Report</div>
 
                             <div class="pv-8" layout="row" layout-align="start center" layout-align-sm="end"
                                  flex-sm="100">
                                 <md-button class="ph-16"
-                                           ng-repeat="(key, range) in vm.widget5.ranges"
-                                           ng-click="vm.widget5.changeRange(key)"
-                                           ng-disabled="vm.widget5.currentRange == key">
-                                    {{range}}
+                                           ng-repeat="group in ['Day','Month','Year']"
+                                           ng-click="vm.changedGroupValue(group)"
+                                           ng-disabled="vm.search_data.group == group">
+                                    {{group}}
                                 </md-button>
                             </div>
                         </div>
@@ -49,25 +49,21 @@
 							<div layout="column" layout-gt-xs="row" flex>
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Filters</label>
-                                        <md-select ng-model="vm.search_data.customer_id">
-                                            <md-option ng-repeat="customer in vm.get_customers" value="{{customer.customer_id}}">
-                                                {{customer.name}}
+                                        <md-select ng-model="vm.search_data.filter" ng-change="vm.changedFiltersValue()">
+                                            <md-option ng-repeat="marketplace in ['Etsy','Amazon','eBay','Shopify']" value="{{marketplace}}">
+                                                {{marketplace}}
                                             </md-option>
                                         </md-select>
 									</md-input-container>
                                     <md-input-container class="md-block" flex-gt-sm>
-										<md-datepicker ng-model="vm.search_data.created_at" md-placeholder="Start Date"></md-datepicker>
+										<md-datepicker ng-model="vm.search_data.start_date" md-placeholder="Start Date" ng-change="vm.changedDateValue()"></md-datepicker>
 									</md-input-container>
 									<md-input-container class="md-block" flex-gt-sm>
-										<md-datepicker ng-model="vm.search_data.created_at" md-placeholder="End Date"></md-datepicker>
+										<md-datepicker ng-model="vm.search_data.end_date" md-placeholder="End Date" ng-change="vm.changedDateValue()"></md-datepicker>
 									</md-input-container>
                                 </div>
 							
-                            <nvd3 class="h-420 remove-x-lines"
-                                  config="vm.widget5.mainChart.config"
-                                  options="vm.widget5.mainChart.options"
-                                  data="vm.widget5.mainChart.data">
-							</nvd3>
+                            <div zingchart id="myChart" zc-json="myConfig" zc-height=600 zc-width=900></div>
                         </div>
                     </ms-widget-front>
                     <!-- / Front -->

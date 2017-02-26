@@ -4,7 +4,7 @@
     <div class="header md-accent-bg" layout="row" layout-align="space-between">
         <div layout="column" layout-align="space-between">
             <div class="breadcrumb" layout="row" layout-align="start center">
-                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a href="">Inventory Management </a>&nbsp; / &nbsp;<a href="">Items </a> </span>&nbsp; / &nbsp; View
+                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a ng-click="vm.ItemsPage()" href="">Inventory Management </a>&nbsp; / &nbsp;<a ng-click="vm.ItemsPage()" href="">Items </a> </span>&nbsp; / &nbsp; View
             </div>
         </div>
     </div>
@@ -229,11 +229,11 @@
 										</div>
 									</th>
 									
-									<th class="secondary-text">
+<!-- 									<th class="secondary-text">
 										<div class="">
 											<span class="column-title">Action</span>
 										</div>
-									</th>
+									</th> -->
 								   <!--  <th class="secondary-text">
 										<div class="table-header">
 											<span class="column-title">Actions</span>
@@ -248,7 +248,7 @@
 									</td>
 		                            <td><a ng-click="vm.viewPurchaseOrderPage(order.id)" href="">{{order.code}}</a></td>
 		                            <td>{{order.subject}}</td>
-									<td>{{order.supplier}}</td>
+									<td>{{order.total_price}}</td>
 									
 		                            <td>{{order.created_at}}</td>
 		                            <td>{{order.created_by}}</td>
@@ -315,51 +315,26 @@
 											<span class="column-title">Created By</span>
 										</div>
 									</th>
-									<th class="secondary-text">
-										<div class="">
-											<span class="column-title">Action</span>
-										</div>
-									</th>
-								   <!--  <th class="secondary-text">
-										<div class="table-header">
-											<span class="column-title">Actions</span>
-										</div>
-									</th> -->
 								</tr>
 							</thead>
 							<tbody>
-								<tr ng-repeat="order in ::vm.orders1">
-									<td><md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+								<tr ng-repeat="warehouse_location in item_data.warehouse_locations">
+									<td><md-checkbox ng-model="warehouse_location.checked" aria-label="Checkbox 1">
 										</md-checkbox>
 									</td>
-									<td>{{order.name}}</td>
-									<td>{{order.phone}}</td>
-									<td>{{order.type}}</td>
-									<td>{{order.country}}</td>
-									<td>{{order.date}}</td>
-									<td>{{order.date}}</td>
-									<td>{{order.createdby}}</td>
-									<!-- <td>{{order.test}}</td> -->
-									<td>
-										<a class="edit-button md-icon-button"
-										   aria-label="Product details" href="">
-										   <md-icon md-font-icon="icon-pencil" class="s16"></md-icon>
-										</a>
-										<a class="edit-button md-icon-button"
-										   aria-label="Product details" href="">
-										   <md-icon md-font-icon="icon-eye" class="s16"></md-icon>
-										</a>
-										<a href="">
-										   <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
-										</a>
-										
-									</td>
+									<td>{{warehouse_location.code}}</td>
+									<td><a ng-click="vm.viewWarehouseLocationPage(warehouse_location.id)" href="">{{warehouse_location.subject}}</a></td>
+									<td>{{warehouse_location.row_no}}</td>
+									<td>{{warehouse_location.warehouse}}</td>
+									<td>{{warehouse_location.status}}</td>
+									<td>{{warehouse_location.created_at}}</td>
+									<td>{{warehouse_location.created_by}}</td>
 								</tr>
 							</tbody>
 						</table>
 						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Delete</md-button>
-							<md-button class="md-raised md-accent" ng-click="showCustom($event)">Add</md-button>
+							<md-button ng-click="deleteAllWarehouseLocation()" class="md-raised md-accent">Delete</md-button>
+							<md-button class="md-raised md-accent" ng-click="newWarehouseLocationPage()">Add</md-button>
 						</div>
 					</div>
                 </md-tab-body>

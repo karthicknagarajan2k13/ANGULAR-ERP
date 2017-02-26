@@ -51,7 +51,9 @@
                 }
             }); 
         }
-
+        vm.SalesOrdersPage = function(){
+            $state.go('app.order-management.sales-orders'); 
+        }
 		vm.ssName = "s"
 	    vm.orders = Product.data;
         /**

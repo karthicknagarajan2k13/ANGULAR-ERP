@@ -53,6 +53,9 @@
         vm.newPurchaseOrderPage = function(){
             $state.go('app.inventory-management.purchase-orders-new'); 
         }
+        vm.PurchaseOrdersPage = function(){
+            $state.go('app.inventory-management.purchase-orders'); 
+        }
         /**
          * File upload success callback
          * Triggers when single upload completed

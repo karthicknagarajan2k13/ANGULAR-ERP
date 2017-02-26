@@ -66,6 +66,10 @@
                 vm.qa_check_data = {}
             }
         }
+        vm.ManufacturingsPage = function(){
+            $state.go('app.manufacturing.manufacturing'); 
+        }
+        
         /**
          * File upload success callback
          * Triggers when single upload completed

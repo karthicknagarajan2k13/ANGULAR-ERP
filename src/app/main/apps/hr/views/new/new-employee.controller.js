@@ -54,6 +54,9 @@
         vm.employeeDataClear = function(){
             vm.employee = {}
         }
+        vm.EmployeesPage = function(){
+            $state.go('app.hr.employees'); 
+        }
         /**
          * File upload success callback
          * Triggers when single upload completed

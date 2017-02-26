@@ -39,6 +39,10 @@
         vm.newTimeclockPage = function(){
             $state.go('app.hr.timeclock-new'); 
         }
+        vm.TimeclocksPage = function(){
+            $state.go('app.hr.timeclock'); 
+        }
+        
 		vm.ssName = "s"
 	    vm.orders = Product.data;
 

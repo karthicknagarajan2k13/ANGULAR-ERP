@@ -73,6 +73,10 @@
         vm.newItemCategoryPage = function(){
             $state.go('app.inventory-management.item-categories-new'); 
         }
+        vm.CategoriesPage = function(){
+            $state.go('app.inventory-management.item-categories'); 
+        }
+        
         /**
          * File upload success callback
          * Triggers when single upload completed

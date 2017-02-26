@@ -46,6 +46,9 @@
         vm.newSalesOrderInvoice = function(){
             $state.go('app.order-management.invoices-new'); 
         }
+        vm.InvoicesPage = function(){
+            $state.go('app.order-management.invoices'); 
+        }
         
     	vm.ssName = "s"
 	    vm.orders = Product.data;

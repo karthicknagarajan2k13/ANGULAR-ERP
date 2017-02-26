@@ -157,6 +157,11 @@
                return result.data;
            });
         };
+        api.getReportSales = function(data) {
+           return $http({method:"GET", url: api.baseUrl+"report_sales.json",params: data}).then(function(result){
+               return result.data;
+           });
+        };
 
         api.getUsers = function() {
            return $http({method:"GET", url: api.baseUrl+"users/get_users.json"}).then(function(result){

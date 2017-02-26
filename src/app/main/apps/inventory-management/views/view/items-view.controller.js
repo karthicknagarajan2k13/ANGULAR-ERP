@@ -44,25 +44,61 @@
         }
         vm.deleteAllPurchaseOrder = function () {
             var delete_ids = [];
-            angular.forEach($scope.purchase_orders_data, function (checked) {
+            angular.forEach($scope.item_data.purchase_orders, function (checked) {
                 if (checked.checked) {
                     delete_ids.push(checked.id);
                 }
             });
             if (delete_ids.length >= 1){
                 delete_ids = JSON.stringify(delete_ids)
-                imApi.deleteAllPurchaseOrder({ids: delete_ids})
-                $window.location.reload();
+                var dataPromise = imApi.deleteAllPurchaseOrder({ids: delete_ids})
+                dataPromise.then(function(result) {
+                    var dataPromise = imApi.viewItem($state.params.obj.id);
+                    dataPromise.then(function(result) { 
+                        $scope.item_data = result; 
+                    }); 
+                }); 
             }
         }
         vm.newItemPage = function(){
             $state.go('app.inventory-management.items-new'); 
         }
+        vm.ItemsPage = function(){
+            $state.go('app.inventory-management.items'); 
+        }
         
 		vm.ssName = "s"
 	    vm.orders = Product.data;
 
-       
+
+
+
+        vm.newWarehouseLocationPage = function(){
+            $state.go('app.warehouse-management.stock-locations-new'); 
+        }
+        vm.viewWarehouseLocationPage = function(id){
+            $state.go('app.warehouse-management.stock-locations-view', {obj:{id: id}}); 
+        }
+        vm.deleteAllWarehouseLocation = function () {
+            var delete_ids = [];
+            angular.forEach($scope.item_data.warehouse_locations, function (checked) {
+                if (checked.checked) {
+                    delete_ids.push(checked.id);
+                }
+            });
+            if (delete_ids.length >= 1){
+                delete_ids = JSON.stringify(delete_ids)
+                var dataPromise = imApi.deleteAllWarehouseLocation({ids: delete_ids})
+                dataPromise.then(function(result) { 
+                    var dataPromise = imApi.viewItem($state.params.obj.id);
+                    dataPromise.then(function(result) { 
+                        $scope.item_data = result; 
+                    }); 
+                });
+            }
+        };
+
+
         /**
          * File upload success callback
          * Triggers when single upload completed

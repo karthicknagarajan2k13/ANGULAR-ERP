@@ -13,7 +13,8 @@
                 'uiGmapgoogle-maps',
                 'xeditable',
                 'ngSanitize',
-                'ngCsv'
+                'ngCsv',
+                'zingchart-angularjs'
             ]
         )
         .config(config);

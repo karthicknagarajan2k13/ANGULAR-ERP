@@ -50,6 +50,9 @@
         vm.newExpensePage = function(){
             $state.go('app.hr.expenses-new'); 
         }
+        vm.ExpensesPage = function(){
+            $state.go('app.hr.expenses'); 
+        }
         /**
          * File upload success callback
          * Triggers when single upload completed

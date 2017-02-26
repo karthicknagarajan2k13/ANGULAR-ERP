@@ -43,6 +43,11 @@
             console.log("===state")
             $state.go('app.crm.contact-detail-new'); 
         }
+        
+        vm.ContactsPage = function(){
+            $state.go('app.crm.contacts'); 
+        }
+
     }
 
 })();

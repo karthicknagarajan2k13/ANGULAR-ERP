@@ -112,7 +112,9 @@
         vm.newEmployeePage = function(){
             $state.go('app.hr.employees-new'); 
         }
-
+        vm.EmployeesPage = function(){
+            $state.go('app.hr.employees'); 
+        }
 
         /**
          * File upload success callback

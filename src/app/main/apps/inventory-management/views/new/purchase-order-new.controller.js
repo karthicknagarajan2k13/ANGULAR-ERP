@@ -21,7 +21,7 @@
 		
 		var vm = this;
         vm.purchase_order = {}
-		
+
 		vm.ssName = "s"
 	    vm.orders = Product.data;
         var dataPromise = imApi.get_suppliers({});
@@ -47,7 +47,9 @@
         vm.newPurchaseOrderPage = function(){
             $state.go('app.inventory-management.purchase-orders-new'); 
         }
-
+        vm.PurchaseOrdersPage = function(){
+            $state.go('app.inventory-management.purchase-orders'); 
+        }
         /**
          * File upload success callback
          * Triggers when single upload completed

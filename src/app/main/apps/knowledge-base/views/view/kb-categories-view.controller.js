@@ -62,7 +62,10 @@
                 });
             }
         };
-
+        vm.KbCategoriesPage = function(){
+            $state.go('app.knowledge-base.kb-categories'); 
+        }
+        
         /**
          * File upload success callback
          * Triggers when single upload completed

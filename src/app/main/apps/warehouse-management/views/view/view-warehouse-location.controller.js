@@ -19,10 +19,45 @@
 		
 		var vm = this;
 
+        vm.warehouse_location_item_data = {}
+
+        var dataPromise = whApi.get_items({});
+        dataPromise.then(function(result) { 
+            $scope.get_items = result;
+        }); 
+
+        vm.changedItemValue = function(item){
+            var item = angular.fromJson(item)
+            vm.warehouse_location_item_data.item_in_stock = item.item_in_stock
+            vm.warehouse_location_item_data.item_id = item.items_id
+        }
+
+        vm.addItemWarehouseLocation = function(){
+            var dataPromise = whApi.addItemWarehouseLocation({warehouse_location_item:vm.warehouse_location_item_data});
+            dataPromise.then(function(result) { 
+                $scope.data = result; 
+                if( typeof($scope.data.message) !== "undefined"){
+                    console.log("response",$scope.data.message)
+                }else{
+                    if( typeof($scope.data.warehouse_location_item_id) !== "undefined"){
+                        var dataPromise = whApi.viewWarehouseLocation($state.params.obj.id);
+                        dataPromise.then(function(result) { 
+                            $scope.warehouse_location_data = result;
+                            vm.warehouse_location_item_data.warehouse_location_id = $scope.warehouse_location_data.id 
+                        });                    
+                    }
+                }
+            }); 
+        }
+        vm.LocationsPage = function(){
+            $state.go('app.warehouse-management.stock-locations'); 
+        }
+
         //Api Call
         var dataPromise = whApi.viewWarehouseLocation($state.params.obj.id);
         dataPromise.then(function(result) { 
-            $scope.warehouse_location_data = result; 
+            $scope.warehouse_location_data = result;
+            vm.warehouse_location_item_data.warehouse_location_id = $scope.warehouse_location_data.id 
         }); 
 
         vm.editWarehouseLocationPage = function(warehouse_location){
@@ -39,7 +74,7 @@
        
 
 		vm.ssName = "s"
-      
+
         /**
          * File upload success callback
          * Triggers when single upload completed

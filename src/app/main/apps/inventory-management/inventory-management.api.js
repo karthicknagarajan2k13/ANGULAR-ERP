@@ -141,6 +141,11 @@
                return result.data;
            });
         };
+        api.addItemPurchaseOrder = function(data) {
+           return $http({data: data, method:"POST", url: api.baseUrl+"purchase_orders/add_item.json"}).then(function(result){
+               return result.data;
+           });
+        };
 
         api.getUsers = function() {
            return $http({method:"GET", url: api.baseUrl+"users/get_users.json"}).then(function(result){
@@ -154,6 +159,11 @@
         };
         api.get_suppliers = function() {
            return $http({method:"GET", url: api.baseUrl+"suppliers/get_suppliers.json"}).then(function(result){
+               return result.data;
+           });
+        };
+        api.get_items = function() {
+           return $http({method:"GET", url: api.baseUrl+"items/get_items.json"}).then(function(result){
                return result.data;
            });
         };

@@ -41,6 +41,9 @@
         vm.newCustomerPage = function(){
             $state.go('app.crm.customer-detail-new'); 
         }
+        vm.CustomersPage = function(){
+            $state.go('app.crm.customers'); 
+        }
     }
 
 })();

@@ -72,7 +72,9 @@
         }
 		vm.ssName = "s"
 	    vm.orders = Product.data;
-
+        vm.SuppliersPage = function(){
+            $state.go('app.inventory-management.suppliers'); 
+        }
        
         /**
          * File upload success callback

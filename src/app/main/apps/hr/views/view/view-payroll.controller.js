@@ -39,6 +39,13 @@
         vm.newPayrollPage = function(){
             $state.go('app.hr.payroll-new'); 
         }
+        vm.PayrollsPage = function(){
+            $state.go('app.hr.payrolls'); 
+        }
+        vm.PayrollReportsPage = function(){
+            $state.go('app.hr.payroll-report'); 
+        }
+        
 		vm.ssName = "s"
 	    vm.orders = Product.data;
 
