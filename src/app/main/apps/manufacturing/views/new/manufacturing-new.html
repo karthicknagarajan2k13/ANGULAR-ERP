@@ -83,7 +83,7 @@
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Stock Item</label>
                                         <md-select ng-model="vm.manufacturing.item_id">
-                                            <md-option ng-repeat="item in get_items" value="{{item.item_id}}">
+                                            <md-option ng-repeat="item in get_items" value="{{item.items_id}}">
                                                 {{item.name}}
                                             </md-option>
                                         </md-select>	
@@ -145,7 +145,7 @@
 									</td>
 								</tr>
 								<tr>
-									<td>Index</td>
+									<td>000{{vm.qa_check_list.length}}</td>
 									<td>
 										<input type="text" name="quantity" ng-model="vm.qa_check_data.name">
 									</td>
@@ -171,9 +171,31 @@
 
 
 <!-- ADD BUTTON -->
-    <div class="add-btn-fixed">
-        <md-button ng-click="vm.newManufacturingPage()" class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
-            <md-icon md-font-icon="icon-plus"></md-icon>
+	<div class="add-btn-fixed">
+	<md-fab-toolbar md-open="demo.isOpen" count="demo.count"
+                  md-direction="{{demo.selectedDirection}}">
+    <md-fab-trigger class="align-with-text">
+      <md-button aria-label="menu" class="md-fab md-primary">
+        <md-icon md-font-icon="icon-menu"></md-icon>
+      </md-button>
+    </md-fab-trigger>
+
+    <md-toolbar>
+      <md-fab-actions class="md-toolbar-tools">
+        <md-button aria-label="comment" class="md-icon-button">
+          <md-icon md-font-icon="icon-menu"></md-icon>
         </md-button>
-    </div>
+		<md-button aria-label="photo" class="md-icon-button">
+          <md-icon md-font-icon="icon-delete"></md-icon>
+        </md-button>
+        <md-button aria-label="label" class="md-icon-button">
+          <md-icon md-font-icon="icon-pencil"></md-icon>
+        </md-button>
+		<md-button aria-label="photo" class="md-icon-button">
+          <md-icon md-font-icon="icon-comment-plus-outline"></md-icon>
+        </md-button>
+      </md-fab-actions>
+    </md-toolbar>
+  </md-fab-toolbar>
+  </div>
 <!-- / ADD BUTTON -->

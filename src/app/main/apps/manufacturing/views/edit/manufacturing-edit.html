@@ -83,7 +83,7 @@
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Stock Item</label>
                                         <md-select ng-model="vm.manufacturing.manufacturing.item_id">
-                                            <md-option ng-repeat="item in get_items" value="{{item.item_id}}">
+                                            <md-option ng-repeat="item in get_items" value="{{item.items_id}}">
                                                 {{item.name}}
                                             </md-option>
                                         </md-select>	
@@ -145,7 +145,7 @@
 									</td>
 								</tr>
 								<tr>
-									<td>Index</td>
+									<td>000{{vm.manufacturing.manufacturing.qa_check_list.length}}</td>
 									<td>
 										<input type="text" name="quantity" ng-model="vm.qa_check_data.name">
 									</td>
