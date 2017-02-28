@@ -1,5 +1,9 @@
 .md-datepicker-input-container { width:80% !important;}
 
+md-input-container label:not(.md-no-float):not(.md-container-ignore), md-input-container .md-placeholder {
+	font-size:16px !important;
+}
+
 #e-commerce-orders {
 
     .center {
