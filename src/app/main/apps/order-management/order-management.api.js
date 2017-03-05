@@ -113,6 +113,18 @@
            });
         };
 
+        api.updateAccount = function(id,data) {
+           return $http({data: data, method:"PUT", url: api.baseUrl+"accounts/"+id+".json"}).then(function(result){
+               return result.data;
+           });
+        };
+        api.viewAccount = function(id) {
+           return $http({method:"GET", url: api.baseUrl+"accounts/"+id+".json"}).then(function(result){
+               return result.data;
+           });
+        };
+        
+
         api.createSalesOrderInvoice = function(data) {
            return $http({data: data, method:"POST", url: api.baseUrl+"sales_order_invoices.json"}).then(function(result){
                return result.data;

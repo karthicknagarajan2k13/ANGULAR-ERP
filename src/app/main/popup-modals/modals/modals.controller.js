@@ -15,8 +15,7 @@
 
         // Methods
         vm.createTheme = createTheme;
-		vm.test = test;
-		vm.market = market;
+
         //////////
 
         function createTheme(ev)
@@ -31,29 +30,6 @@
             });
         }
 		
-		function test(ev)
-        {
-            $mdDialog.show({
-                controller         : 'CustomThemeDialogController',
-                controllerAs       : 'vm',
-                templateUrl        : 'app/main/popup-modals/modals/dialogs/warehouse-location/manage-sales-event.html',
-                parent             : angular.element($document.body),
-                targetEvent        : ev,
-                clickOutsideToClose: true
-            });
-        }
-		
-		function market(ev)
-        {
-            $mdDialog.show({
-                controller         : 'CustomThemeDialogController',
-                controllerAs       : 'vm',
-                templateUrl        : 'app/main/popup-modals/modals/dialogs/warehouse-location/marketpalce-option.html',
-                parent             : angular.element($document.body),
-                targetEvent        : ev,
-                clickOutsideToClose: true
-            });
-        }
 
     }
 })();

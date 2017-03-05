@@ -7,12 +7,14 @@
         .controller('ConnectedAccountsController', ConnectedAccountsController);
 
     /** @ngInject */
-    function ConnectedAccountsController($window, omApi, $scope, $state, Statuses, Orders)
+    function ConnectedAccountsController(fuseTheming, $mdDialog, $document, $window, omApi, $scope, $state)
     {
 
         var vm = this;
         vm.data = {}
-        vm.new_data ={}
+        vm.new_data = {}
+
+        vm.themes = fuseTheming.themes;
 
         var dataPromise = omApi.getAccounts();
         dataPromise.then(function(result) { 
@@ -103,7 +105,31 @@
             responsive  : true
         };
 		
+        vm.marketpalceOption =function(ev,account_id){
+            $mdDialog.show({
+                controller         : 'OptionAccountController',
+                controllerAs       : 'vm',
+                templateUrl        : 'app/main/apps/order-management/views/pages/marketpalce-option.html',
+                parent             : angular.element($document.body),
+                targetEvent        : ev,
+                clickOutsideToClose: true,
+                 locals: {
+                   account_id: account_id,
+                   mdDialog: $mdDialog
+                 },
+            });
+        }
 
-        
+        vm.manageSalesEvent =function(ev){
+            $mdDialog.show({
+                controller         : 'ConnectedAccountsController',
+                controllerAs       : 'vm',
+                templateUrl        : 'app/main/apps/order-management/views/pages/manage-sales-event.html',
+                parent             : angular.element($document.body),
+                targetEvent        : ev,
+                clickOutsideToClose: true
+            });
+        }
+
     }
 })();
