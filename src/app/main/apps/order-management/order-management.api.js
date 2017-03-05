@@ -86,6 +86,17 @@
                return result.data;
            });
         };
+        api.getMarketplaces = function() {
+           return $http({method:"GET", url: api.baseUrl+"accounts/get_marketplaces.json"}).then(function(result){
+               return result.data;
+           });
+        };
+        api.createMarketplace = function(data) {
+           return $http({data: data, method:"POST", url: api.baseUrl+"accounts.json"}).then(function(result){
+               return result.data;
+           });
+        };
+
         api.desconnectAccounts = function(data) {
            return $http({method:"GET", url: api.baseUrl+"accounts/disconnect_account.json",params: data}).then(function(result){
                return result.data;

@@ -93,8 +93,11 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/order-management/views/pages/etsy.html',
-                        controller : 'SalesOrdersController as vm'
+                        controller : 'AccountConnectedController as vm'
                     }
+                },
+                params: {
+                 obj: null
                 },
                 resolve  : {
                     Orders  : function (msApi)
@@ -114,7 +117,7 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/order-management/views/pages/shopify.html',
-                        controller : 'ShopifyConnectedAccountsController as vm'
+                        controller : 'AccountConnectedController as vm'
                     }
                 },
                 params: {
@@ -138,7 +141,7 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/order-management/views/pages/amazon.html',
-                        controller : 'AmazonConnectedAccountsController as vm'
+                        controller : 'AccountConnectedController as vm'
                     }
                 },
                 params: {
@@ -162,8 +165,11 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/order-management/views/pages/ebay.html',
-                        controller : 'SalesOrdersController as vm'
+                        controller : 'AccountConnectedController as vm'
                     }
+                },
+                params: {
+                 obj: null
                 },
                 resolve  : {
                     Orders  : function (msApi)

@@ -7,7 +7,7 @@
         .controller('NewCustomerController', NewCustomerController);
 
     /** @ngInject */
-    function NewCustomerController($scope, $timeout, crmApi, $document, $state, Customers)
+    function NewCustomerController($scope, $timeout, crmApi, $document, $state)
     {
         
 		

@@ -11,12 +11,48 @@
     {
 
         var vm = this;
+        vm.data = {}
+        vm.new_data ={}
 
         var dataPromise = omApi.getAccounts();
         dataPromise.then(function(result) { 
             $scope.accounts = result; 
             console.log("$scope.accounts",$scope.accounts)
         });
+
+        var dataPromise = omApi.getMarketplaces();
+        dataPromise.then(function(result) { 
+            $scope.marketplaces = result; 
+            console.log("$scope.marketplaces",$scope.marketplaces)
+        });
+
+        vm.createMarketplace = function(){
+            var dataPromise = omApi.createMarketplace(vm.new_data);
+            dataPromise.then(function(result) { 
+                $scope.data = result; 
+                if( typeof($scope.data.message) !== "undefined"){
+                    console.log("response",$scope.data.message)
+                }else{
+                    if( typeof($scope.data.account_id) !== "undefined"){
+                        var dataPromise = omApi.getAccounts();
+                        dataPromise.then(function(result) { 
+                            $scope.accounts = result; 
+                            console.log("$scope.accounts",$scope.accounts)
+                        });                    
+                    }
+                }
+            }); 
+        }
+
+        vm.connect =function(account_id){
+            vm.data.id = account_id
+            vm.data.account_id = account_id
+            var dataPromise = omApi.connectAccount(vm.data);
+            dataPromise.then(function(result) {
+                console.log("url",result.url)
+                $window.location = result.url;              
+            }); 
+        }
 
         vm.amazonAccountConnect =function(id){
             $state.go('app.order-management.amazon',{obj:{id: id}}); 
