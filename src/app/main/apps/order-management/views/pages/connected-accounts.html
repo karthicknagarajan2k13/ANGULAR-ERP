@@ -23,9 +23,30 @@
                                 <span class="ms-form-wizard-step-text">Connected Accounts</span>
                             </span>
                         </md-tab-label>
-
                         <md-tab-body>
-                            <div ms-form-wizard-form >
+                        	<div ms-form-wizard-form >
+			                    <form ng-submit="vm.createMarketplace()" name="submitForm" novalidate>
+			                    	<div layout="row" layout-gt-xs="row" flex>
+										<md-input-container class="md-block" flex="33">
+											<label>Marketplace</label>
+			                                <md-select name="marketplace" ng-model="vm.new_data.marketplace" required>
+			                                    <md-option ng-repeat="marketplace in marketplaces.marketplace" value="{{marketplace}}">
+			                                        {{marketplace.name}}
+			                                    </md-option>
+			                                </md-select>	
+			                                <div ng-messages="submitForm.marketplace.$error" role="alert">
+			                                    <div ng-message="required">
+			                                        <span >Marketplace field is required</span>
+			                                    </div>
+			                                </div>
+										</md-input-container>
+			                            <md-button type="submit" class="circlebtn md-raised md-accent" aria-label="Save"
+			                                       ng-disabled="submitForm.$invalid || submitForm.$pristine"
+			                                       translate="+" translate-attr-aria-label="Save">
+			                                <md-icon class="plus-iconmanu" md-font-icon="icon-plus"></md-icon>
+			                            </md-button>
+			                        </div>
+			                    </form>
 								<div ng-repeat="account in accounts.accounts" ng-show="account.title=='Etsy'" layout="row" layout-xs="column">
 								  <div flex layout="row" layout-align="start center">
 									<h2>Etsy </h2>
@@ -37,10 +58,11 @@
 								
 								<div ng-repeat="account in accounts.accounts" ng-show="account.title=='eBay'" layout="row" layout-xs="column">
 								  <div flex layout="row" layout-align="start center">
-									<h2>eBay </h2>
+									<h2>eBay {{account.id}}</h2>
 								  </div>
 								  <div flex layout="row" layout-align="end center">
-									<md-button class="md-raised md-accent">Connect</md-button>
+									<md-button ng-hide="account.is_connected" ng-click="vm.connect(account.id)" class="md-raised md-accent">Connect</md-button>
+								  	<md-button ng-show="account.is_connected" ng-click="vm.accountDisConnect(account.id)" class="md-raised md-accent">Disconnect</md-button>
 								  </div>
 								</div>
 								

@@ -4,19 +4,16 @@
 
     angular
         .module('app.order-management')
-        .controller('ShopifyConnectedAccountsController', ShopifyConnectedAccountsController);
+        .controller('AccountConnectedController', AccountConnectedController);
 
     /** @ngInject */
-    function ShopifyConnectedAccountsController($window, omApi, $scope, $state, Statuses, Orders)
+    function AccountConnectedController($window, omApi, $scope, $state, Statuses, Orders)
     {
 
         var vm = this;
         vm.data = {}
         vm.data.id = $state.params.obj.id
 
-        vm.cancel =function(){
-            $state.go('app.order-management.acc'); 
-        }
         vm.connect =function(){
             var dataPromise = omApi.connectAccount(vm.data);
             dataPromise.then(function(result) {
@@ -24,6 +21,18 @@
                 $window.location = result.url;              
             }); 
         }
+
+        vm.cancel =function(){
+            $state.go('app.order-management.acc'); 
+        }
+        
+        // vm.connect =function(){
+        //     var dataPromise = omApi.connectAccounts(vm.data);
+        //     dataPromise.then(function(result) {
+        //         console.log('result',result)
+        //         $state.go('app.order-management.acc'); 
+        //     }); 
+        // }
 
         vm.dtInstance = {};
         vm.dtOptions = {
