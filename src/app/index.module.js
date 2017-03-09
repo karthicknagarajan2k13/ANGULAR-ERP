@@ -14,6 +14,7 @@
             'xeditable',
             'Devise',
             'ng-token-auth',
+            'ngMaterialDatePicker',
 
             // Core
             'app.core',

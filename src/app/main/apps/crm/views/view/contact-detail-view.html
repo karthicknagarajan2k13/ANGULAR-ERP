@@ -211,7 +211,7 @@
                 <md-tab-body>
                     <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
 					
-						<table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance"
+						<table class="dataTable row-border hover rowClickable" datatable="ng" dt-instance="vm.dtInstance"
 							   dt-options="vm.dtOptions">
 							<thead>
 								<tr>
@@ -254,8 +254,8 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr ng-repeat="note in vm.contact_data.notes">
-									<td><md-checkbox ng-model="note.checked" aria-label="Checkbox 1">
+								<tr ng-click="vm.viewNotePage(note.id)" ng-repeat="note in vm.contact_data.notes">
+									<td ng-click="$event.stopPropagation()"><md-checkbox ng-model="note.checked" aria-label="Checkbox 1">
 										</md-checkbox>
 									</td>
 									<td>{{note.code}}</td>

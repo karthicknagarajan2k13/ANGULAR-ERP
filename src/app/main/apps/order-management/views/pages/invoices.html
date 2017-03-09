@@ -112,7 +112,7 @@
             <!-- CONTENT -->
             <div class="content fullpage-datatable" layout="column" flex>
 
-                <table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance"
+                <table class="dataTable row-border hover rowClickable" datatable="ng" dt-instance="vm.dtInstance"
                        dt-options="vm.dtOptions">
                     <thead>
                         <tr>
@@ -157,20 +157,26 @@
                                     <span class="column-title">Date Created</span>
                                 </div>
                             </th>
+                            <th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">Deleted?</span>
+                                </div>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="invoice in sales_order_invoices_data">
-                            <td><md-checkbox ng-model="invoice.checked" aria-label="Checkbox 1">
+                        <tr ng-click="vm.salesOrderView(invoice.id)" ng-repeat="invoice in sales_order_invoices_data">
+                            <td ng-click="$event.stopPropagation()"><md-checkbox ng-model="invoice.checked" aria-label="Checkbox 1">
 								</md-checkbox>
 							</td>
-                            <td><a ng-click="vm.salesOrderView(invoice.id)" href="">{{invoice.code}}</a></td>
+                            <td>{{invoice.code}}</td>
                             <td>{{invoice.order_code}}</td>
 							<td>{{invoice.create_timestamp}}</td>
 							<td>{{invoice.grand_total}}</td>
 							<td>{{invoice.customer}}</td>
                             <td>{{invoice.status}}</td>
                             <td>{{invoice.created_at}}</td>
+                            <td>{{invoice.is_deleted}}</td>
                         </tr>
                     </tbody>
                 </table>

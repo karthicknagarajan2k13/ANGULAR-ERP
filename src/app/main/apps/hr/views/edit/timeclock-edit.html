@@ -48,7 +48,8 @@
                                         </div>                                      </md-input-container>
                                     <md-input-container class="md-block" flex-gt-sm>
                                         <label>In-Time</label>
-                                        <input name="in_time" ng-model="vm.timeclock.timeclock.in_time" type="text" required >
+                                        <input mdc-datetime-picker="" date="false" time="true" id="time" short-time="true" placeholder="In-Time" min-date="minDate" format="hh:mm a" ng-model="vm.timeclock.timeclock.in_time" class=" md-input" readonly="readonly" type="text" name="in_time" required>
+
                                         <div ng-messages="submitForm.in_time.$error" role="alert">
                                             <div ng-message="required">
                                                 <span >In-Time field is required</span>
@@ -61,7 +62,7 @@
                                     
                                     <md-input-container class="md-block" flex-gt-sm>
                                         <label>Out-Time</label>
-                                        <input name="out_time" ng-model="vm.timeclock.timeclock.out_time" type="text" required >
+                                        <input mdc-datetime-picker="" date="false" time="true" id="time" short-time="true" placeholder="In-Time" min-date="minDate" format="hh:mm a" ng-model="vm.timeclock.timeclock.out_time" class=" md-input" readonly="readonly" type="text" name="out_time" required>
                                         <div ng-messages="submitForm.out_time.$error" role="alert">
                                             <div ng-message="required">
                                                 <span >Out-Time field is required</span>

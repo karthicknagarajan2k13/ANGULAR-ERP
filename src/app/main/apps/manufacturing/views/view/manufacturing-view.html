@@ -228,8 +228,46 @@
 
                 <md-tab-body>
                     <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
-					
-						<table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance"
+                    <form ng-submit="vm.addManufacturingMaterial()" name="submitForm" novalidate>
+	                    <div layout="column" layout-gt-xs="row" flex>
+								<md-input-container class="md-block" flex-gt-sm>
+									<label>Material</label>
+	                                <md-select name="material_id" ng-model="vm.manufacturing_material_data.material" ng-change="vm.changedMaterialValue(vm.manufacturing_material_data.material)" required>
+	                                    <md-option ng-repeat="material in get_materials" value="{{material}}">
+	                                        {{material.name}}
+	                                    </md-option>
+	                                </md-select>	
+	                                <div ng-messages="submitForm.material_id.$error" role="alert">
+	                                    <div ng-message="required">
+	                                        <span >Material field is required</span>
+	                                    </div>
+	                                </div>
+								</md-input-container>
+	                            <md-input-container class="md-block" flex-gt-sm>
+									<label>Quantity</label>
+									<input ng-model="vm.manufacturing_material_data.quantity" name="quantity" type="text" ng-change="vm.calculate_total()" required>
+	                                <div ng-messages="submitForm.quantity.$error" role="alert">
+	                                    <div ng-message="required">
+	                                        <span >Quantity field is required</span>
+	                                    </div>
+	                                </div>
+								</md-input-container>
+	                            <md-input-container class="md-block" flex-gt-sm>
+									<label>Unit</label>
+									<input ng-model="vm.manufacturing_material_data.unit_price" name="unit_price" type="text" disabled>
+								</md-input-container>
+	                            <md-input-container class="md-block" flex-gt-sm>
+									<label>Total</label>
+									<input  ng-model="vm.manufacturing_material_data.total" name="total" type="text" disabled>
+								</md-input-container>							
+	                            <md-button type="submit" class="circlebtn md-raised md-accent" aria-label="Save"
+	                                       ng-disabled="submitForm.$invalid || submitForm.$pristine"
+	                                       translate="+" translate-attr-aria-label="Save">
+	                                <md-icon class="plus-iconmanu" md-font-icon="icon-plus"></md-icon>
+	                            </md-button>
+	                        </div>
+                        </form>
+						<table class="dataTable row-border hover rowClickable" datatable="ng" dt-instance="vm.dtInstance"
 							   dt-options="vm.dtOptions">
 							<thead>
 								<tr>
@@ -267,22 +305,18 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr ng-repeat="material in manufacturing_data.materials">
-		                            <td><md-checkbox ng-model="material.checked" aria-label="Checkbox 1">
+								<tr ng-click="vm.viewMaterialPage(material.material_id)" ng-repeat="material in manufacturing_data.manufacturing_materials">
+		                            <td ng-click="$event.stopPropagation()"><md-checkbox ng-model="material.checked" aria-label="Checkbox 1">
 										</md-checkbox>
 									</td>
 									<td>{{material.code}}</td>
-		                            <td><a ng-click="vm.viewMaterialPage(material.id)" href="">{{material.name}}</a></td>
-		                            <td>{{material.unit}}</td>
+		                            <td>{{material.name}}</td>
+		                            <td>{{material.unit_price}}</td>
 									<td>{{material.quantity}}</td>
-									<td>{{material.price}}</td>
+									<td>{{material.total}}</td>
 								</tr>
 							</tbody>
 						</table>
-						<div class="actions" layout="row" layout-align="start center">
-                			<md-button ng-click="vm.deleteAllMaterial()" class="md-raised md-accent">Delete</md-button>
-							<md-button ng-click="vm.newMaterialPage()" class="md-raised md-accent">Add</md-button>
-						</div>
 					</div>
                 </md-tab-body>
             </md-tab>

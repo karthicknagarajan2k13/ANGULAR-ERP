@@ -125,7 +125,7 @@
                 <md-tab-body>
                     <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
 					
-						<table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance"
+						<table class="dataTable row-border hover rowClickable" datatable="ng" dt-instance="vm.dtInstance"
 							   dt-options="vm.dtOptions">
 							<thead>
 								<tr>
@@ -173,12 +173,12 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr ng-repeat="warehouse_location in warehouse_data.warehouse_locations">
-	                            <td><md-checkbox ng-model="warehouse_location.checked" aria-label="Checkbox 1">
+								<tr ng-click="vm.viewWarehouseLocationPage(warehouse_location.id)" ng-repeat="warehouse_location in warehouse_data.warehouse_locations">
+	                            <td ng-click="$event.stopPropagation()"><md-checkbox ng-model="warehouse_location.checked" aria-label="Checkbox 1">
 									</md-checkbox>
 								</td>
 	                            <td>{{warehouse_location.code}}</td>
-								<td><a ng-click="vm.viewWarehouseLocationPage(warehouse_location.id)" href="">{{warehouse_location.subject}}</a></td>
+								<td>{{warehouse_location.subject}}</td>
 								<td>{{warehouse_location.description}}</td>
 								<td>{{warehouse_location.row_no}}</td>
 								<td>{{warehouse_location.status}}</td>

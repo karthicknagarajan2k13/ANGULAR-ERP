@@ -121,7 +121,7 @@
             <!-- CONTENT -->
             <div class="content fullpage-datatable" layout="column" flex>
 
-                <table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance"
+                <table class="dataTable row-border hover rowClickable" datatable="ng" dt-instance="vm.dtInstance"
                        dt-options="vm.dtOptions">
                     <thead>
                         <tr>
@@ -168,11 +168,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="contact in vm.contacts_data">
-                            <td><md-checkbox ng-model="contact.checked" aria-label="Checkbox 1">
+                        <tr ng-click="vm.viewContactPage(contact.id)"  ng-repeat="contact in vm.contacts_data">
+                            <td ng-click="$event.stopPropagation()"><md-checkbox ng-model="contact.checked" aria-label="Checkbox 1">
 								</md-checkbox>
 							</td>
-                            <td><a ng-click="vm.viewContactPage(contact.id)" href="">{{contact.code}}</a></td>
+                            <td>{{contact.code}}</td>
                             <td>{{contact.name}}</td>
                             <td>{{contact.phone_mobile}}</td>
                             <td>{{contact.customer}}</td>

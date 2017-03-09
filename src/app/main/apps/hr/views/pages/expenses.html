@@ -102,7 +102,7 @@
             <!-- CONTENT -->
             <div class="content fullpage-datatable" layout="column" flex>
 
-                <table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance"
+                <table class="dataTable row-border hover rowClickable" datatable="ng" dt-instance="vm.dtInstance"
                        dt-options="vm.dtOptions">
                     <thead>
                         <tr>
@@ -155,11 +155,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="expense in expenses_data">
-                            <td><md-checkbox ng-model="expense.checked" aria-label="Checkbox 1">
+                        <tr ng-click="vm.viewExpensePage(expense.id)" ng-repeat="expense in expenses_data">
+                            <td ng-click="$event.stopPropagation()"><md-checkbox ng-model="expense.checked" aria-label="Checkbox 1">
 								</md-checkbox>
 							</td>
-                            <td><a ng-click="vm.viewExpensePage(expense.id)" href="">{{expense.code}}</a></td>
+                            <td>{{expense.code}}</td>
                             <td>{{expense.subject}}</td>
 							<td>{{expense.employee}}</td>
 							<td>{{expense.amount}}</td>

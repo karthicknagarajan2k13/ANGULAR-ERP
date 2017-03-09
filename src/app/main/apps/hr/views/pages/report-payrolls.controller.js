@@ -41,6 +41,7 @@
 
         vm.pdfPayrollData = function(){
             var docDefinition = {
+              pageOrientation: 'landscape',
               content: [
                 {
                   table: {

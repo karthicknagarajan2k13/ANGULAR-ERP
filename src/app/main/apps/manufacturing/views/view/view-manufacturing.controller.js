@@ -19,10 +19,52 @@
         var vm = this;
         vm.ssName = "s"
 
+        vm.manufacturing_material_data = {}
+
+        var dataPromise = mfgApi.get_materials({});
+        dataPromise.then(function(result) { 
+            $scope.get_materials = result;
+        }); 
+
+        vm.changedMaterialValue = function(material){
+            var material = angular.fromJson(material)
+            console.log("changedItemValue",material)
+            vm.manufacturing_material_data.unit_price = material.unit
+            vm.manufacturing_material_data.total = material.unit * vm.manufacturing_material_data.quantity
+            vm.manufacturing_material_data.material_id = material.material_id
+            console.log(vm.manufacturing_material_data)
+        }
+
+        vm.calculate_total = function(){
+            console.log("calculate_total")
+            vm.manufacturing_material_data.total = vm.manufacturing_material_data.unit_price * vm.manufacturing_material_data.quantity
+            console.log(vm.manufacturing_material_data)
+        }
+
+        vm.addManufacturingMaterial = function(){
+            console.log("vm.manufacturing_material_data",vm.manufacturing_material_data)
+            var dataPromise = mfgApi.addManufacturingMaterial({manufacturing_material:vm.manufacturing_material_data});
+            dataPromise.then(function(result) { 
+                $scope.data = result; 
+                if( typeof($scope.data.message) !== "undefined"){
+                    console.log("response",$scope.data.message)
+                }else{
+                    if( typeof($scope.data.manufacturing_material_id) !== "undefined"){
+                        var dataPromise = mfgApi.viewManufacturing($state.params.obj.id);
+                        dataPromise.then(function(result) { 
+                            $scope.manufacturing_data = result;
+                            vm.manufacturing_material_data.manufacturing_id = $scope.manufacturing_data.id
+                        });                      
+                    }
+                }
+            }); 
+        }
+
         //Api Call
         var dataPromise = mfgApi.viewManufacturing($state.params.obj.id);
         dataPromise.then(function(result) { 
-            $scope.manufacturing_data = result; 
+            $scope.manufacturing_data = result;
+            vm.manufacturing_material_data.manufacturing_id = $scope.manufacturing_data.id
         }); 
 
         vm.editManufacturingPage = function(manufacturing){

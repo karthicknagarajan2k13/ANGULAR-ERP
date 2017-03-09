@@ -11,7 +11,7 @@
                 'nvd3',
                 'textAngular',
                 'uiGmapgoogle-maps',
-                'xeditable'
+                'xeditable',
             ]
         )
         .config(config);

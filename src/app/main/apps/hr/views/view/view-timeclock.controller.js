@@ -29,7 +29,7 @@
         }); 
 
         vm.editTimeclockPage = function(timeclock){
-             $state.go('app.hr.expenses-edit', {obj:{timeclock: timeclock}});
+             $state.go('app.hr.timeclock-edit', {obj:{timeclock: timeclock}});
         }
         vm.deleteTimeclock = function(id){
             var delete_ids = JSON.stringify([id])

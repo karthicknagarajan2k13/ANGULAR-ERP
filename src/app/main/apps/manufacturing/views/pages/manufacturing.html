@@ -109,7 +109,7 @@
             <!-- CONTENT -->
             <div class="content fullpage-datatable" layout="column" flex>
 
-                <table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance"
+                <table class="dataTable row-border hover rowClickable" datatable="ng" dt-instance="vm.dtInstance"
                        dt-options="vm.dtOptions">
                     <thead>
                         <tr>
@@ -154,12 +154,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="manufacturing in manufacturings_data">
-                            <td><md-checkbox ng-model="manufacturing.checked" aria-label="Checkbox 1">
+                        <tr ng-click="vm.viewManufacturingPage(manufacturing.id)" ng-repeat="manufacturing in manufacturings_data">
+                            <td ng-click="$event.stopPropagation()"><md-checkbox ng-model="manufacturing.checked" aria-label="Checkbox 1">
 								</md-checkbox>
 							</td>
                             <td>{{manufacturing.code}}</td>
-							<td><a ng-click="vm.viewManufacturingPage(manufacturing.id)" href="">{{manufacturing.subject}}</a></td>
+							<td>{{manufacturing.subject}}</td>
 							<td>{{manufacturing.description}}</td>
 							<td>{{manufacturing.status}}</td>
 							<td>{{manufacturing.created_at}}</td>

@@ -336,7 +336,7 @@
                 <md-tab-body>
                     <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
 					
-						<table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance"
+						<table class="dataTable row-border hover rowClickable" datatable="ng" dt-instance="vm.dtInstance"
 							   dt-options="vm.dtOptions">
 							<thead>
 								<tr>
@@ -379,11 +379,11 @@
 								</tr>
 							</thead>
 		                    <tbody>
-		                        <tr ng-repeat="payroll in employee_data.payrolls">
-		                            <td><md-checkbox ng-model="payroll.checked" aria-label="Checkbox 1">
+		                        <tr ng-click="vm.viewPayrollPage(payroll.id)" ng-repeat="payroll in employee_data.payrolls">
+		                            <td ng-click="$event.stopPropagation()"><md-checkbox ng-model="payroll.checked" aria-label="Checkbox 1">
 										</md-checkbox>
 									</td>
-		                            <td><a ng-click="vm.viewPayrollPage(payroll.id)" href="">{{payroll.code}}</a></td>
+		                            <td>{{payroll.code}}</td>
 		                            <td>{{payroll.subject}}</td>
 									<td>{{payroll.employee}}</td>
 									<td>{{payroll.total}}</td>
@@ -408,7 +408,7 @@
                 <md-tab-body>
                     <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
 					
-						<table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance"
+						<table class="dataTable row-border hover rowClickable" datatable="ng" dt-instance="vm.dtInstance"
 							   dt-options="vm.dtOptions">
 							<thead>
 								<tr>
@@ -456,11 +456,11 @@
 								</tr>
 							</thead>
 		                    <tbody>
-		                        <tr ng-repeat="expense in employee_data.expenses">
-		                            <td><md-checkbox ng-model="expense.checked" aria-label="Checkbox 1">
+		                        <tr ng-click="vm.viewExpensePage(expense.id)" ng-repeat="expense in employee_data.expenses">
+		                            <td ng-click="$event.stopPropagation()"><md-checkbox ng-model="expense.checked" aria-label="Checkbox 1">
 										</md-checkbox>
 									</td>
-		                            <td><a ng-click="vm.viewExpensePage(expense.id)" href="">{{expense.code}}</a></td>
+		                            <td>{{expense.code}}</td>
 		                            <td>{{expense.subject}}</td>
 									<td>{{expense.employee}}</td>
 									<td>{{expense.amount}}</td>
@@ -486,7 +486,7 @@
                 <md-tab-body>
                     <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
 					
-						<table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance"
+						<table class="dataTable row-border hover rowClickable" datatable="ng" dt-instance="vm.dtInstance"
 							   dt-options="vm.dtOptions">
 							<thead>
 								<tr>
@@ -524,11 +524,11 @@
 								</tr>
 							</thead>
 							<tbody>
-		                        <tr ng-repeat="timeclock in employee_data.timeclocks">
-		                            <td><md-checkbox ng-model="timeclock.checked" aria-label="Checkbox 1">
+		                        <tr ng-click="vm.viewTimeclockPage(timeclock.id)" ng-repeat="timeclock in employee_data.timeclocks">
+		                            <td ng-click="$event.stopPropagation()"><md-checkbox ng-model="timeclock.checked" aria-label="Checkbox 1">
 										</md-checkbox>
 									</td>
-		                            <td><a ng-click="vm.viewTimeclockPage(timeclock.id)" href="">{{timeclock.code}}</a></td>
+		                            <td>{{timeclock.code}}</td>
 		                            <td>{{timeclock.subject}}</td>
 		                            <td>{{timeclock.employee}}</td>
 		                            <td>{{timeclock.created_at}}</td>

@@ -113,7 +113,7 @@
             <!-- CONTENT -->
             <div class="content fullpage-datatable" layout="column" flex>
 
-                <table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance"
+                <table class="dataTable row-border hover rowClickable" datatable="ng" dt-instance="vm.dtInstance"
                        dt-options="vm.dtOptions">
                     <thead>
                         <tr>
@@ -162,14 +162,19 @@
                                     <span class="column-title">Date Created</span>
                                 </div>
                             </th>
+                            <th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">Deleted?</span>
+                                </div>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="order in sales_orders_data">
-                            <td><md-checkbox ng-model="order.checked" aria-label="Checkbox 1">
+                        <tr ng-click="vm.salesOrderView(order.id)" ng-repeat="order in sales_orders_data">
+                            <td ng-click="$event.stopPropagation()"><md-checkbox ng-model="order.checked" aria-label="Checkbox 1">
 								</md-checkbox>
 							</td>
-                            <td><a ng-click="vm.salesOrderView(order.id)" href="">{{order.code}}</a></td>
+                            <td>{{order.code}}</td>
                             <td>{{order.uid}}</td>
                             <td>{{order.name}}</td>
 							<td>{{order.create_timestamp}}</td>
@@ -177,6 +182,7 @@
 							<td>{{order.customer}}</td>
                             <td>{{order.status}}</td>
                             <td>{{order.created_at}}</td>
+                            <td>{{order.is_deleted}}</td>
                         </tr>
                     </tbody>
                 </table>

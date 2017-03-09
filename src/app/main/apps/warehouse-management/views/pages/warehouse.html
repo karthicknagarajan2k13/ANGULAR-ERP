@@ -98,7 +98,7 @@
             <!-- CONTENT -->
             <div class="content fullpage-datatable" layout="column" flex>
 
-                <table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance"
+                <table class="dataTable row-border hover rowClickable" datatable="ng" dt-instance="vm.dtInstance"
                        dt-options="vm.dtOptions">
                     <thead>
                         <tr>
@@ -151,12 +151,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="warehouse in warehouses_data">
-                            <td><md-checkbox ng-model="warehouse.checked" aria-label="Checkbox 1">
+                        <tr ng-click="vm.viewWarehousePage(warehouse.id)" ng-repeat="warehouse in warehouses_data">
+                            <td ng-click="$event.stopPropagation()"><md-checkbox ng-model="warehouse.checked" aria-label="Checkbox 1">
 								</md-checkbox>
 							</td>
                             <td>{{warehouse.code}}</td>
-                            <td><a ng-click="vm.viewWarehousePage(warehouse.id)" href="">{{warehouse.subject}}</a></td>
+                            <td>{{warehouse.subject}}</td>
 							<td>{{warehouse.city}}</td>
 							<td>{{warehouse.province}}</td>
 							<td>{{warehouse.country}}</td>

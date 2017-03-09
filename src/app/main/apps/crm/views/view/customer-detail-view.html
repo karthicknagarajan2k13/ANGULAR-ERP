@@ -188,7 +188,7 @@
                 <md-tab-body>
                     <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
 					
-						<table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance"
+						<table class="dataTable row-border hover rowClickable" datatable="ng" dt-instance="vm.dtInstance"
 							   dt-options="vm.dtOptions">
 							<thead>
 								<tr>
@@ -225,11 +225,11 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr ng-repeat="note in vm.customer_data.notes">
-									<td><md-checkbox ng-model="note.checked" aria-label="Checkbox 1">
+								<tr ng-click="vm.viewNotePage(note.id)" ng-repeat="note in vm.customer_data.notes">
+									<td ng-click="$event.stopPropagation()"><md-checkbox ng-model="note.checked" aria-label="Checkbox 1">
 										</md-checkbox>
 									</td>
-									<td><a ng-click="vm.viewNotePage(note.id)" href="">{{note.code}}</a></td>
+									<td>{{note.code}}</td>
 									<td>{{note.subject}}</td>
 									<td>{{note.contact}}</td>
 									<td>{{note.created_at}}</td>
@@ -253,7 +253,7 @@
                 <md-tab-body>
                     <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
 					
-						<table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance"
+						<table class="dataTable row-border hover rowClickable" datatable="ng" dt-instance="vm.dtInstance"
 							   dt-options="vm.dtOptions">
 		                    <thead>
 		                        <tr>
@@ -280,11 +280,11 @@
 		                        </tr>
 		                    </thead>
 							<tbody>
-								<tr ng-repeat="contact in vm.customer_data.contacts">
-									<td><md-checkbox ng-model="contact.checked" aria-label="Checkbox 1">
+								<tr ng-click="vm.viewContactPage(contact.id)" ng-repeat="contact in vm.customer_data.contacts">
+									<td ng-click="$event.stopPropagation()"><md-checkbox ng-model="contact.checked" aria-label="Checkbox 1">
 										</md-checkbox>
 									</td>
-									<td><a ng-click="vm.viewContactPage(contact.id)" href="">{{contact.code}}</a></td>
+									<td>{{contact.code}}</td>
 									<td>{{contact.name}}</td>
 									<td>{{contact.phone_mobile}}</td>
 								</tr>

@@ -406,7 +406,7 @@
                 <md-tab-body>
                     <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
 					
-						<table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance"
+						<table class="dataTable row-border hover rowClickable" datatable="ng" dt-instance="vm.dtInstance"
 							   dt-options="vm.dtOptions">
 							<thead>
 								<tr>
@@ -458,11 +458,11 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr ng-repeat="invoice in sales_order_data.invoices">
-									<td><md-checkbox ng-model="invoice.checked" aria-label="Checkbox 1">
+								<tr ng-click="vm.salesOrderView(invoice.id)" ng-repeat="invoice in sales_order_data.invoices">
+									<td ng-click="$event.stopPropagation()"><md-checkbox ng-model="invoice.checked" aria-label="Checkbox 1">
 										</md-checkbox>
 									</td>
-									<td><a ng-click="vm.salesOrderView(invoice.id)" href="">{{invoice.code}}</a></td>
+									<td>{{invoice.code}}</td>
 									<td>{{invoice.name}}</td>
 									<td>{{invoice.subtotal}}</td>
 									<td>{{invoice.tax}}</td>

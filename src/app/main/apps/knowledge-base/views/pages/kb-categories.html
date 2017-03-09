@@ -92,7 +92,7 @@
             <!-- CONTENT -->
             <div class="content fullpage-datatable" layout="column" flex>
 
-                <table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance"
+                <table class="dataTable row-border hover rowClickable" datatable="ng" dt-instance="vm.dtInstance"
                        dt-options="vm.dtOptions">
                     <thead>
                         <tr>
@@ -124,12 +124,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="kb_category in kb_categories_data">
-                            <td><md-checkbox ng-model="kb_category.checked" aria-label="Checkbox 1">
+                        <tr ng-click="vm.viewKbCategoryPage(kb_category.id)" ng-repeat="kb_category in kb_categories_data">
+                            <td ng-click="$event.stopPropagation()"><md-checkbox ng-model="kb_category.checked" aria-label="Checkbox 1">
 								</md-checkbox>
 							</td>
                             <td>{{kb_category.code}}</td>
-                            <td><a ng-click="vm.viewKbCategoryPage(kb_category.id)" href="">{{kb_category.name}}</a></td>
+                            <td>{{kb_category.name}}</td>
 							<td>{{kb_category.created_at}}</td>
 							<td>{{kb_category.created_by}}</td>
                         </tr>

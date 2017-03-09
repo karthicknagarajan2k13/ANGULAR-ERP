@@ -95,7 +95,7 @@
             <!-- CONTENT -->
             <div class="content fullpage-datatable" layout="column" flex>
 
-                <table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance"
+                <table class="dataTable row-border hover rowClickable" datatable="ng" dt-instance="vm.dtInstance"
                        dt-options="vm.dtOptions">
                     <thead>
                         <tr>
@@ -135,11 +135,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="knowledge_base in knowledge_bases_data">
-                            <td><md-checkbox ng-model="knowledge_base.checked" aria-label="Checkbox 1">
+                        <tr ng-click="vm.viewKnowledgeBasePage(knowledge_base.id)" ng-repeat="knowledge_base in knowledge_bases_data">
+                            <td ng-click="$event.stopPropagation()"><md-checkbox ng-model="knowledge_base.checked" aria-label="Checkbox 1">
 								</md-checkbox>
 							</td>
-                            <td><a ng-click="vm.viewKnowledgeBasePage(knowledge_base.id)" href="">{{knowledge_base.title}}</a></td>
+                            <td>{{knowledge_base.title}}</td>
 							<td>{{knowledge_base.kb_category}}</td>
 							<td>{{knowledge_base.status}}</td>
 							<td>{{knowledge_base.created_at}}</td>

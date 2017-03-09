@@ -67,6 +67,11 @@
                return result.data;
            });
         };
+        api.addManufacturingMaterial = function(data) {
+           return $http({data: data, method:"POST", url: api.baseUrl+"manufacturings/add_material.json"}).then(function(result){
+               return result.data;
+           });
+        };
         
 
         api.createMaterial = function(data) {

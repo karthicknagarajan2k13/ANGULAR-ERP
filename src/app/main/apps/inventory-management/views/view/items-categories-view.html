@@ -119,7 +119,7 @@
                 <md-tab-body>
                     <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
 					
-						<table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance"
+						<table class="dataTable row-border hover rowClickable" datatable="ng" dt-instance="vm.dtInstance"
 							   dt-options="vm.dtOptions">
 							<thead>
 								<tr>
@@ -167,11 +167,11 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr ng-repeat="item in category_data.items">
-									<td><md-checkbox ng-model="item.checked" aria-label="Checkbox 1">
+								<tr ng-click="vm.viewItemPage(item.id)" ng-repeat="item in category_data.items">
+									<td ng-click="$event.stopPropagation()"><md-checkbox ng-model="item.checked" aria-label="Checkbox 1">
 										</md-checkbox>
 									</td>
-                            		<td><a ng-click="vm.viewItemPage(item.id)" href="">{{item.code}}</a></td>
+                            		<td>{{item.code}}</td>
 									<td>{{item.name}}</td>
 									<td>{{item.unit}}</td>
 									<td>{{item.selling_price}}</td>

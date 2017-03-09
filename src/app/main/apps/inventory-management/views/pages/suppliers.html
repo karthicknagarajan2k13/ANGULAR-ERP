@@ -91,7 +91,7 @@
             <!-- CONTENT -->
             <div class="content fullpage-datatable" layout="column" flex>
 
-                <table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance"
+                <table class="dataTable row-border hover rowClickable" datatable="ng" dt-instance="vm.dtInstance"
                        dt-options="vm.dtOptions">
                     <thead>
                         <tr>
@@ -139,11 +139,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="supplier in suppliers_data">
-                            <td><md-checkbox ng-model="supplier.checked" aria-label="Checkbox 1">
+                        <tr ng-click="vm.viewSupplierPage(supplier.id)" ng-repeat="supplier in suppliers_data">
+                            <td ng-click="$event.stopPropagation()"><md-checkbox ng-model="supplier.checked" aria-label="Checkbox 1">
 								</md-checkbox>
 							</td>
-                            <td><a ng-click="vm.viewSupplierPage(supplier.id)" href="">{{supplier.code}}</a></td>
+                            <td>{{supplier.code}}</td>
                             <td>{{supplier.name}}</td>
 							<td>{{supplier.phone}}</td>
 							<td>{{supplier.email}}</td>

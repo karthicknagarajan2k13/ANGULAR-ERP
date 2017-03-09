@@ -109,7 +109,7 @@
             <!-- CONTENT -->
             <div class="content fullpage-datatable" layout="column" flex>
 
-                <table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance"
+                <table class="dataTable row-border hover rowClickable" datatable="ng" dt-instance="vm.dtInstance"
                        dt-options="vm.dtOptions">
                     <thead>
                         <tr>
@@ -153,11 +153,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="category in categories_data">
-                            <td><md-checkbox ng-model="category.checked" aria-label="Checkbox 1">
+                        <tr ng-click="vm.viewItemCategoryPage(category.id)" ng-repeat="category in categories_data">
+                            <td ng-click="$event.stopPropagation()"><md-checkbox ng-model="category.checked" aria-label="Checkbox 1">
 								</md-checkbox>
 							</td>
-                            <td><a ng-click="vm.viewItemCategoryPage(category.id)" href="">{{category.code}}</a></td>
+                            <td>{{category.code}}</td>
                             <td>{{category.name}}</td>
 							<td>{{category.unit}}</td>
 							<td>{{category.tax}}</td>

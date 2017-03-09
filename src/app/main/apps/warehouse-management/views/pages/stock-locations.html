@@ -126,7 +126,7 @@
             <!-- CONTENT -->
             <div class="content fullpage-datatable" layout="column" flex>
 
-                <table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance"
+                <table class="dataTable row-border hover rowClickable" datatable="ng" dt-instance="vm.dtInstance"
                        dt-options="vm.dtOptions">
                     <thead>
                         <tr>
@@ -180,12 +180,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="warehouse_location in warehouse_locations_data">
-                            <td><md-checkbox ng-model="warehouse_location.checked" aria-label="Checkbox 1">
+                        <tr ng-click="vm.viewWarehouseLocationPage(warehouse_location.id)" ng-repeat="warehouse_location in warehouse_locations_data">
+                            <td ng-click="$event.stopPropagation()"><md-checkbox ng-model="warehouse_location.checked" aria-label="Checkbox 1">
 								</md-checkbox>
 							</td>
                             <td>{{warehouse_location.code}}</td>
-							<td><a ng-click="vm.viewWarehouseLocationPage(warehouse_location.id)" href="">{{warehouse_location.subject}}</a></td>
+							<td>{{warehouse_location.subject}}</td>
 							<td>{{warehouse_location.description}}</td>
 							<td>{{warehouse_location.row_no}}</td>
 							<td>{{warehouse_location.status}}</td>

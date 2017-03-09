@@ -160,7 +160,7 @@
                 <md-tab-body>
                     <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
 					
-						<table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance"
+						<table class="dataTable row-border hover rowClickable" datatable="ng" dt-instance="vm.dtInstance"
 							   dt-options="vm.dtOptions">
 							<thead>
 								<tr>
@@ -197,11 +197,11 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr ng-repeat="purchase_order in supplier_data.purchase_orders">
-									<td><md-checkbox ng-model="purchase_order.checked" aria-label="Checkbox 1">
+								<tr ng-click="vm.viewPurchaseOrderPage(purchase_order.id)" ng-repeat="purchase_order in supplier_data.purchase_orders">
+									<td ng-click="$event.stopPropagation()"><md-checkbox ng-model="purchase_order.checked" aria-label="Checkbox 1">
 										</md-checkbox>
 									</td>
-                            		<td><a ng-click="vm.viewPurchaseOrderPage(purchase_order.id)" href="">{{purchase_order.code}}</a></td>
+                            		<td>{{purchase_order.code}}</td>
 									
 									<td>{{purchase_order.subject}}</td>
 									<td>{{purchase_order.grand_total}}</td>

@@ -98,7 +98,7 @@
             <!-- CONTENT -->
             <div class="content fullpage-datatable" layout="column" flex>
 
-                <table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance"
+                <table class="dataTable row-border hover rowClickable" datatable="ng" dt-instance="vm.dtInstance"
                        dt-options="vm.dtOptions">
                     <thead>
                         <tr>
@@ -153,11 +153,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="item in items_data">
-                            <td><md-checkbox ng-model="item.checked" aria-label="Checkbox 1">
+                        <tr ng-click="vm.viewItemPage(item.id)" ng-repeat="item in items_data">
+                            <td ng-click="$event.stopPropagation()"><md-checkbox ng-model="item.checked" aria-label="Checkbox 1">
 								</md-checkbox>
 							</td>
-                            <td><a ng-click="vm.viewItemPage(item.id)" href="">{{item.code}}</a></td>
+                            <td>{{item.code}}</td>
                             <td>{{item.name}}</td>
 							<td>{{item.category}}</td>
 							<td>{{item.unit}}</td>

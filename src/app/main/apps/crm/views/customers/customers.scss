@@ -115,3 +115,7 @@ md-icon.top-icon {
         }
     }
 }
+
+.rowClickable td:not(:first-child) {
+    cursor: pointer;
+}

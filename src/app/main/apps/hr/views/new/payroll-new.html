@@ -47,7 +47,7 @@
 	                                    </div>									</md-input-container>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Base Pay</label>
-										<input name="base_pay" ng-model="vm.payroll.base_pay" type="text" required >
+										<input name="base_pay" ng-model="vm.payroll.base_pay" type="text" ng-change="vm.total_calculation()" required >
 	                                    <div ng-messages="newItemForm.base_pay.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Base Pay field is required</span>
@@ -59,7 +59,7 @@
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Allowances</label>
-										<input name="allowances" ng-model="vm.payroll.allowances" type="text" required >
+										<input name="allowances" ng-model="vm.payroll.allowances" type="text" ng-change="vm.total_calculation()" required >
 	                                    <div ng-messages="newItemForm.allowances.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Allowances field is required</span>
@@ -68,7 +68,7 @@
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Deductions</label>
-										<input name="deductions" ng-model="vm.payroll.deductions" type="text" required >
+										<input name="deductions" ng-model="vm.payroll.deductions" type="text" ng-change="vm.total_calculation()" required >
 	                                    <div ng-messages="newItemForm.deductions.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Deductions field is required</span>
@@ -76,7 +76,7 @@
 	                                    </div>									</md-input-container>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Expenses</label>
-										<input name="expenses" ng-model="vm.payroll.expenses" type="text" required >
+										<input name="expenses" ng-model="vm.payroll.expenses" type="text" ng-change="vm.total_calculation()" required >
 	                                    <div ng-messages="newItemForm.expenses.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Expenses field is required</span>
@@ -88,7 +88,7 @@
 
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Tax</label>
-										<input name="tax" ng-model="vm.payroll.tax" type="text" required >
+										<input name="tax" ng-model="vm.payroll.tax" type="text" ng-change="vm.total_calculation()" required >
 	                                    <div ng-messages="newItemForm.tax.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Tax field is required</span>
@@ -96,7 +96,7 @@
 	                                    </div>									</md-input-container>
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Total</label>
-										<input name="total" ng-model="vm.payroll.total" type="text" required >
+										<input name="total" ng-model="vm.payroll.total" type="text" required disabled>
 	                                    <div ng-messages="newItemForm.total.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Total field is required</span>

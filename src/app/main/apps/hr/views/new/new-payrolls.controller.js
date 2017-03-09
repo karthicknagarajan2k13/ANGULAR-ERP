@@ -43,6 +43,12 @@
                 }
             }); 
         }
+        vm.total_calculation = function(){
+            if(vm.payroll.base_pay && vm.payroll.allowances && vm.payroll.deductions && vm.payroll.expenses && vm.payroll.tax){
+                vm.payroll.total =  parseInt(vm.payroll.base_pay, 10) + parseInt(vm.payroll.allowances, 10) + parseInt(vm.payroll.expenses, 10) - parseInt(vm.payroll.deductions, 10) - parseInt(vm.payroll.tax, 10)
+            }
+        }
+
         vm.payrollDataClear = function(){
             vm.payroll = {}
         }

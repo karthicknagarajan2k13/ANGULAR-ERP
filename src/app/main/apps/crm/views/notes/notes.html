@@ -98,7 +98,7 @@
             <!-- CONTENT -->
             <div class="content fullpage-datatable" layout="column" flex>
 
-                <table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance"
+                <table class="dataTable row-border hover rowClickable" datatable="ng" dt-instance="vm.dtInstance"
                        dt-options="vm.dtOptions">
                     <thead>
                         <tr>
@@ -130,11 +130,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="note in vm.notes_data">
-                            <td><md-checkbox ng-model="note.checked" aria-label="Checkbox 1">
+                        <tr ng-click="vm.viewNotePage(note.id)" ng-repeat="note in vm.notes_data">
+                            <td ng-click="$event.stopPropagation()"><md-checkbox ng-model="note.checked" aria-label="Checkbox 1">
 								</md-checkbox>
 							</td>
-                            <td><a ng-click="vm.viewNotePage(note.id)" href="">{{note.code}}</a></td>
+                            <td>{{note.code}}</td>
                             <td>{{note.subject}}</td>
                             <td>{{note.customer}}</td>
                             <td>{{note.contact}}</td>

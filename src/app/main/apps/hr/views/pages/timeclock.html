@@ -99,7 +99,7 @@
             <!-- CONTENT -->
             <div class="content fullpage-datatable" layout="column" flex>
 
-                <table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance"
+                <table class="dataTable row-border hover rowClickable" datatable="ng" dt-instance="vm.dtInstance"
                        dt-options="vm.dtOptions">
                     <thead>
                         <tr>
@@ -137,11 +137,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="timeclock in timeclocks_data">
-                            <td><md-checkbox ng-model="timeclock.checked" aria-label="Checkbox 1">
+                        <tr ng-click="vm.viewTimeclockPage(timeclock.id)" ng-repeat="timeclock in timeclocks_data">
+                            <td ng-click="$event.stopPropagation()"><md-checkbox ng-model="timeclock.checked" aria-label="Checkbox 1">
 								</md-checkbox>
 							</td>
-                            <td><a ng-click="vm.viewTimeclockPage(timeclock.id)" href="">{{timeclock.code}}</a></td>
+                            <td>{{timeclock.code}}</td>
                             <td>{{timeclock.subject}}</td>
                             <td>{{timeclock.employee}}</td>
                             <td>{{timeclock.created_at}}</td>
