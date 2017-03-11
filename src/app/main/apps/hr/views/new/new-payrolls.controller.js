@@ -21,6 +21,7 @@
 		
 		var vm = this;
         vm.payroll = {}
+        vm.payroll.employee_id = $state.params.employee_id
 		
 		vm.ssName = "s"
 	    vm.orders = Product.data;

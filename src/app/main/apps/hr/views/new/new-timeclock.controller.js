@@ -27,7 +27,8 @@
 		
 		var vm = this;
         vm.timeclock = {}
-		
+        vm.timeclock.employee_id = $state.params.employee_id
+
 		vm.ssName = "s"
 	    vm.orders = Product.data;
 

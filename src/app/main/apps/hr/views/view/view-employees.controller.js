@@ -37,7 +37,7 @@
             $state.go('app.hr.employees'); 
         }
         vm.newPayrollPage = function(){
-            $state.go('app.hr.payroll-new'); 
+            $state.go('app.hr.payroll-new',{employee_id: $scope.employee_data.id}); 
         }
         vm.viewPayrollPage = function(id){
             $state.go('app.hr.payroll-view', {obj:{id: id}}); 
@@ -62,7 +62,7 @@
             }
         };
         vm.newExpensePage = function(){
-            $state.go('app.hr.expenses-new'); 
+            $state.go('app.hr.expenses-new',{employee_id: $scope.employee_data.id}); 
         }
         vm.viewExpensePage = function(id){
             $state.go('app.hr.expenses-view', {obj:{id: id}}); 
@@ -86,7 +86,7 @@
             }
         };
         vm.newTimeclockPage = function(){
-            $state.go('app.hr.timeclock-new'); 
+            $state.go('app.hr.timeclock-new',{employee_id: $scope.employee_data.id}); 
         }
         vm.viewTimeclockPage = function(id){
             $state.go('app.hr.timeclock-view', {obj:{id: id}}); 

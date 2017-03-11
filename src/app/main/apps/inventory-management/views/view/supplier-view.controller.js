@@ -36,7 +36,7 @@
             $state.go('app.inventory-management.suppliers'); 
         }
         vm.newPurchaseOrderPage = function(){
-            $state.go('app.inventory-management.purchase-orders-new'); 
+            $state.go('app.inventory-management.purchase-orders-new',{supplier_id: $scope.supplier_data.id}); 
         }
         vm.editPurchaseOrderPage = function(id){
              $state.go('app.inventory-management.purchase-orders-edit', {obj:{id: id}});

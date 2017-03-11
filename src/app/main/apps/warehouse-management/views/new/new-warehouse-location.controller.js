@@ -21,6 +21,8 @@
 		
 		var vm = this;
         vm.warehouse_location = {}
+        vm.warehouse_location.warehouse_id = $state.params.warehouse_id
+
 		vm.ssName = "s"
         var dataPromise = whApi.get_warehouses({});
         dataPromise.then(function(result) { 

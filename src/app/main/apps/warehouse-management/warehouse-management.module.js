@@ -95,6 +95,9 @@
                         controller : 'newWarehouseLocationController as vm'
                     }
                 },
+                params: {
+                 warehouse_id: null
+                },
                 resolve  : {
                     Product: function (msApi)
                     {

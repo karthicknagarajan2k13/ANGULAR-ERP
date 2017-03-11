@@ -235,6 +235,9 @@
                         controller : 'newTimeclocksController as vm'
                     }
                 },
+                params: {
+                 employee_id: null
+                },
                 resolve  : {
                     Product: function (msApi)
                     {
@@ -271,6 +274,9 @@
                         controller : 'newExpensesController as vm'
                     }
                 },
+                params: {
+                 employee_id: null
+                },
                 resolve  : {
                     Product: function (msApi)
                     {
@@ -306,6 +312,9 @@
                         templateUrl: 'app/main/apps/hr/views/new/payroll-new.html',
                         controller : 'newPayrollsController as vm'
                     }
+                },
+                params: {
+                 employee_id: null
                 },
                 resolve  : {
                     Product: function (msApi)

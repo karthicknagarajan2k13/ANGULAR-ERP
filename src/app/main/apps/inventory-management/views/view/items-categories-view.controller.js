@@ -39,7 +39,7 @@
             $state.go('app.inventory-management.item-categories'); 
         }
         vm.newItemPage = function(){
-            $state.go('app.inventory-management.items-new'); 
+            $state.go('app.inventory-management.items-new',{category_id: $scope.category_data.id}); 
         }
         vm.editItemPage = function(category){
              $state.go('app.inventory-management.items-edit', {obj:{item: category}});

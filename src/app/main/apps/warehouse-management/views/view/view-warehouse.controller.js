@@ -42,7 +42,7 @@
         }
 
         vm.newWarehouseLocationPage = function(){
-            $state.go('app.warehouse-management.stock-locations-new'); 
+            $state.go('app.warehouse-management.stock-locations-new',{warehouse_id: $scope.warehouse_data.id}); 
         }
         vm.viewWarehouseLocationPage = function(id){
             $state.go('app.warehouse-management.stock-locations-view', {obj:{id: id}}); 

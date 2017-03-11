@@ -20,9 +20,11 @@
 		var vm = this;
         vm.contact = {}
         vm.contact.contact_attributes = {}
+        console.log("$state.params.customer_id",$state.params.customer_id)
+        vm.contact.contact_attributes.customer_id = $state.params.customer_id
         var session = $window.JSON.parse($window.localStorage.getItem('current_user'))
         vm.get_customers = User.get_customers({token:session.email});
-
+        console.log("vm.get_customers",vm.get_customers)
         vm.saveContact = function(){
             var dataPromise = crmApi.createContact({contact:vm.contact});
             dataPromise.then(function(result) { 

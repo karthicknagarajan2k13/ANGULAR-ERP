@@ -182,7 +182,7 @@
                     }
                 },
                 params: {
-                 obj: null
+                 category_id: null
                 },
                 resolve  : {
                     Product: function (msApi)
@@ -297,6 +297,9 @@
                         templateUrl: 'app/main/apps/inventory-management/views/new/purchase-orders-new.html',
                         controller : 'newPurchaseOrderController as vm'
                     }
+                },
+                params: {
+                 supplier_id: null
                 },
                 resolve  : {
                     Product: function (msApi)

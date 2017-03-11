@@ -39,7 +39,7 @@
 
 
         vm.newKnowledgeBasePage = function(){
-            $state.go('app.knowledge-base.knowledge-base-new'); 
+            $state.go('app.knowledge-base.knowledge-base-new',{kb_category_id: $scope.kb_category_data.id}); 
         }
         vm.viewKnowledgeBasePage = function(id){
             $state.go('app.knowledge-base.knowledge-base-view', {obj:{id: id}}); 

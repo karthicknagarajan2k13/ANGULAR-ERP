@@ -67,7 +67,7 @@
             $state.go('app.crm.customers');
         }
         vm.newContactPage = function(){
-            $state.go('app.crm.contact-detail-new'); 
+            $state.go('app.crm.contact-detail-new',{customer_id: vm.customer_data.id}); 
         }
         vm.deleteAllContact = function () {
             var delete_ids = [];
@@ -105,7 +105,8 @@
             $state.go('app.crm.note-detail-view', {obj:{id: id}}); 
         }
         vm.newNotePage = function(){
-            $state.go('app.crm.note-detail-new'); 
+            console.log("vm.customer_data",vm.customer_data)
+            $state.go('app.crm.note-detail-new', {customer_id: vm.customer_data.id}); 
         }
         vm.deleteNote = function(id){
             Note.delete({id:id});

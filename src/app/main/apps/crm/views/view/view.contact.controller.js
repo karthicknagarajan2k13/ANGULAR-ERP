@@ -70,7 +70,7 @@
             $state.go('app.crm.note-detail-view', {obj:{id: id}}); 
         }
         vm.newNotePage = function(){
-            $state.go('app.crm.note-detail-new'); 
+            $state.go('app.crm.note-detail-new',{contact_id: vm.contact_data.id}); 
         }
         vm.deleteNote = function(id){
             Note.delete({id:id});

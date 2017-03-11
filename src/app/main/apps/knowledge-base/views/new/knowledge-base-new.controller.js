@@ -28,6 +28,8 @@
         });
 
         vm.knowledge_base = {}
+        vm.knowledge_base.kb_category_id = $state.params.kb_category_id
+        
         vm.saveKnowledgeBase = function(){
             console.log("knowledge_base",vm.knowledge_base)
             var dataPromise = kbApi.createKnowledgeBase({knowledge_base:vm.knowledge_base});

@@ -21,12 +21,14 @@
 		
 		var vm = this;
         vm.purchase_order = {}
-
+        vm.purchase_order.supplier_user_id = $state.params.supplier_id
+        console.log("$state.params.supplier_id",$state.params.supplier_id)
 		vm.ssName = "s"
 	    vm.orders = Product.data;
         var dataPromise = imApi.get_suppliers({});
         dataPromise.then(function(result) { 
             $scope.get_suppliers = result;
+            console.log("$scope.get_suppliers",$scope.get_suppliers)
         }); 
         vm.savePurchaseOrder = function(){
             var dataPromise = imApi.createPurchaseOrder({purchase_order:vm.purchase_order});

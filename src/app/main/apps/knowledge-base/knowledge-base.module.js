@@ -132,6 +132,9 @@
                         controller : 'newKnowledgeBasesController as vm'
                     }
                 },
+                params: {
+                 kb_category_id: null
+                },
                 resolve  : {
                     Product: function (msApi)
                     {

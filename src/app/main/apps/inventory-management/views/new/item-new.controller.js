@@ -21,6 +21,7 @@
 		
 		var vm = this;
         vm.item = {}
+        vm.item.category_id = $state.params.category_id
 		
 		vm.ssName = "s"
 	    vm.orders = Product.data;

@@ -20,7 +20,8 @@
 		
 		var vm = this;
         vm.expense = {}
-		
+        vm.expense.employee_id = $state.params.employee_id
+
 		vm.ssName = "s"
 	    vm.orders = Product.data;
 

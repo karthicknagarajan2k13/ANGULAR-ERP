@@ -20,6 +20,8 @@
 		
 		var vm = this;
         vm.note = {}
+        vm.note.customer_id = $state.params.customer_id
+        vm.note.contact_id = $state.params.contact_id
         var session = $window.JSON.parse($window.localStorage.getItem('current_user'))
         vm.get_customers = User.get_customers({token:session.email});
         vm.get_contacts = Contact_User.get_contacts({token:session.email});

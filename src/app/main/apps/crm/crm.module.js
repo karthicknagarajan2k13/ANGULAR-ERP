@@ -119,7 +119,7 @@
                     }
                 },
                 params: {
-                 obj: null
+                 customer_id: null
                 },
                 resolve  : {
                     Product: function (msApi)
@@ -159,7 +159,8 @@
                     }
                 },
                 params: {
-                 obj: null
+                 customer_id: null,
+                 contact_id: null
                 },
                 resolve  : {
                     Product: function (msApi)
