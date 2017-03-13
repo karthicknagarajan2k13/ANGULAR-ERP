@@ -49,7 +49,7 @@
 			                    </form>
 								<div ng-repeat="account in accounts.accounts" ng-show="account.title=='Etsy'" layout="row" layout-xs="column">
 								  <div flex layout="row" layout-align="start center">
-								  	<h2>Etsy </h2> &nbsp; &nbsp; <h4> / <a ng-click="vm.manageSalesEvent($event);" href="">Manage Sale Events</a> / <a ng-click="vm.marketpalceOption($event,account.id);" href="">Options</a></h4>
+								  	<h2>Etsy </h2> &nbsp; &nbsp; <h4> / <a ng-click="vm.manageSalesEvent($event,account.id);" href="">Manage Sale Events</a> / <a ng-click="vm.marketpalceOption($event,account.id);" href="">Options</a></h4>
 								  </div>
 								  <div flex layout="row" layout-align="end center">
 									<md-button class="md-raised md-accent">Connect</md-button>
@@ -58,7 +58,7 @@
 								
 								<div ng-repeat="account in accounts.accounts" ng-show="account.title=='eBay'" layout="row" layout-xs="column">
 								  <div flex layout="row" layout-align="start center">
-								  	<h2>eBay </h2> &nbsp; &nbsp; <h4> / <a ng-click="vm.manageSalesEvent($event);" href="">Manage Sale Events</a> / <a ng-click="vm.marketpalceOption($event,account.id);" href="">Options</a></h4>
+								  	<h2>eBay </h2> &nbsp; &nbsp; <h4> / <a ng-click="vm.manageSalesEvent($event,account.id);" href="">Manage Sale Events</a> / <a ng-click="vm.marketpalceOption($event,account.id);" href="">Options</a></h4>
 								  </div>
 								  <div flex layout="row" layout-align="end center">
 									<md-button ng-hide="account.is_connected" ng-click="vm.connect(account.id)" class="md-raised md-accent">Connect</md-button>
@@ -68,7 +68,7 @@
 								
 								<div ng-repeat="account in accounts.accounts" ng-show="account.title=='Amazon'" layout="row" layout-xs="column">
 								  <div flex layout="row" layout-align="start center">
-								  <h2>Amazon </h2> &nbsp; &nbsp; <h4> / <a ng-click="vm.manageSalesEvent($event);" href="">Manage Sale Events</a> / <a ng-click="vm.marketpalceOption($event,account.id);" href="">Options</a></h4>
+								  <h2>Amazon </h2> &nbsp; &nbsp; <h4> / <a ng-click="vm.manageSalesEvent($event,account.id);" href="">Manage Sale Events</a> / <a ng-click="vm.marketpalceOption($event,account.id);" href="">Options</a></h4>
 								  </div>
 								  <div flex layout="row" layout-align="end center">
 									<md-button ng-hide="account.is_connected" ng-click="vm.amazonAccountConnect(account.id)" class="md-raised md-accent">Connect</md-button>
@@ -78,7 +78,7 @@
 								
 								<div ng-repeat="account in accounts.accounts" ng-show="account.title=='Shopify'" layout="row" layout-xs="column">
 								  <div flex layout="row" layout-align="start center">
-								  	 <h2>Shopify </h2> &nbsp; &nbsp; <h4> / <a ng-click="vm.manageSalesEvent($event);" href="">Manage Sale Events</a> / <a ng-click="vm.marketpalceOption($event,account.id);" href="">Options</a></h4>
+								  	 <h2>Shopify </h2> &nbsp; &nbsp; <h4> / <a ng-click="vm.manageSalesEvent($event,account.id);" href="">Manage Sale Events</a> / <a ng-click="vm.marketpalceOption($event,account.id);" href="">Options</a></h4>
 								  </div>
 								  <div flex layout="row" layout-align="end center">
 									<md-button ng-hide="account.is_connected" ng-click="vm.shopifyAccountConnect(account.id)" class="md-raised md-accent">Connect</md-button>

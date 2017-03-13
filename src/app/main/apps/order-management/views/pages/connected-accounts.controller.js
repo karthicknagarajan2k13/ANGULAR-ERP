@@ -120,14 +120,18 @@
             });
         }
 
-        vm.manageSalesEvent =function(ev){
+        vm.manageSalesEvent =function(ev,account_id){
             $mdDialog.show({
-                controller         : 'ConnectedAccountsController',
+                controller         : 'ManageSalesEventController',
                 controllerAs       : 'vm',
                 templateUrl        : 'app/main/apps/order-management/views/pages/manage-sales-event.html',
                 parent             : angular.element($document.body),
                 targetEvent        : ev,
-                clickOutsideToClose: true
+                clickOutsideToClose: true,
+                 locals: {
+                   account_id: account_id,
+                   mdDialog: $mdDialog
+                 },
             });
         }
 

@@ -15,55 +15,47 @@
             <div layout="row" layout-gt-xs="row" flex>
 				<md-input-container flex="50">
 					<label>Choose Category</label>
-					<md-select ng-model="vm.search_data.c_type1" multiple>
-						<md-option ng-repeat="type in ['Contractor', 'Sales Customer']" value="{{type}}">
-							{{type}}
-						</md-option>
-					</md-select>
+                    <md-select ng-model="vm.category" name="category" required>
+                        <md-option ng-repeat="category in get_categories" value="{{category}}">
+                            {{category.name}}
+                        </md-option>
+                    </md-select>
 				</md-input-container>
 				<div style="margin-top:17px;">
-					<md-button class="md-icon-button" aria-label="Delete">
+					<md-button ng-click="vm.add_category_event(vm.category)" lass="md-icon-button" aria-label="Delete">
 						<md-icon md-font-icon="icon-plus-circle"></md-icon>
 						<md-tooltip><span>Add Category</span></md-tooltip>
 					</md-button>
 				</div>
 			</div>
 
-            <div layout="row" layout-gt-xs="row" flex>
-									<md-input-container class="md-block" flex="11">
-										<div style="margin-top:10px;">Category 1</div>
-									</md-input-container>
-									<md-input-container class="md-block" flex="10">
-										<md-button class="md-icon-button" aria-label="Delete">
-											<md-icon md-font-icon="icon-delete"></md-icon>
-											<md-tooltip><span>Delete Category</span></md-tooltip>
-										</md-button>
-									</md-input-container>
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>25-02-2017</label>
-										<input ng-model="vm.search_data.code">
-									</md-input-container>
-									
-									<md-input-container class="md-block" flex-gt-sm>
-										<label>25-02-2017</label>
-										<input ng-model="vm.search_data.name">
-									</md-input-container>
-
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Dsc.</label>
-										<input ng-model="vm.search_data.phone">
-									</md-input-container>
-									<md-input-container class="md-block" flex="10">
-										%
-									</md-input-container>
-                                </div>
-
+            <div ng-hide="sale_event.is_delete" ng-repeat="sale_event in vm.account.sale_events_attributes" layout="row" layout-gt-xs="row" flex>
+				<md-input-container class="md-block"  flex="15">
+					<div style="margin-top:10px;">{{sale_event.category}}</div>
+				</md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+					<md-datepicker ng-model="sale_event.start_date" md-placeholder="Start Date"></md-datepicker>
+				</md-input-container>
+				<md-input-container class="md-block" flex-gt-sm>
+					<md-datepicker ng-model="sale_event.end_date" md-placeholder="End Date"></md-datepicker>
+				</md-input-container>
+                <md-input-container class="md-block" flex="10">
+					<label>Discount %</label>
+					<input ng-model="sale_event.discount_percent">
+				</md-input-container>
+				<md-input-container class="md-block" flex="10">
+					<md-button ng-click="vm.delete_category_event(sale_event)" class="md-icon-button" aria-label="Delete">
+						<md-icon md-font-icon="icon-delete"></md-icon>
+						<md-tooltip><span>Delete Sale Event</span></md-tooltip>
+					</md-button>
+				</md-input-container>
+            </div>
         </md-dialog-content>
 
         <md-dialog-actions layout="row" layout-align="space-between center">
             <div class="actions" layout="row" layout-align="start center">
-				<md-button ng-click="vm.searchCustomerData()" class="md-raised md-accent">Save</md-button>
-				<md-button ng-click="vm.searchCustomerDataClear()" class="md-raised md-accent">Cancel</md-button>
+				<md-button ng-click="vm.updateOptionAccount()" class="md-raised md-accent">Save</md-button>
+				<md-button ng-click="vm.closeDialog()" class="md-raised md-accent">Cancel</md-button>
 			</div>
         </md-dialog-actions>
     </form>

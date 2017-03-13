@@ -140,8 +140,11 @@
                return result.data;
            });
         };
-
-
+        api.get_categories = function() {
+           return $http({method:"GET", url: api.baseUrl+"categories/get_categories.json"}).then(function(result){
+               return result.data;
+           });
+        };
         return api;
     }
 
