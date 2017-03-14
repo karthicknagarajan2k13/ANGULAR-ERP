@@ -101,5 +101,13 @@
         vm.ContactsPage = function(){
             $state.go('app.crm.contacts'); 
         }
+
+        vm.dtInstance = {};
+        vm.dtOptions = {
+            bLengthChange  : false,
+            paging: false,
+            searching: false,
+            bInfo: false,
+        };
     }
 })();

@@ -9,14 +9,21 @@
     /** @ngInject */
     function viewManufacturingController(mfgApi, $scope, $document, $state)
     {
-
+        var vm = this;
         $scope.isOpen = false;
         $scope.demo = {
-        isOpen: false,
-        count: 0,
-        selectedDirection: 'left'
+            isOpen: false,
+            count: 0,
+            selectedDirection: 'left'
         };
-        var vm = this;
+        vm.dtInstance = {};
+        vm.dtOptions = {
+            bLengthChange  : false,
+            paging: false,
+            searching: false,
+            bInfo: false,
+        };
+        
         vm.ssName = "s"
 
         vm.manufacturing_material_data = {}

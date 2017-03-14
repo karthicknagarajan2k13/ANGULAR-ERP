@@ -136,6 +136,12 @@
         vm.CustomersPage = function(){
             $state.go('app.crm.customers'); 
         }
-
+        vm.dtInstance = {};
+        vm.dtOptions = {
+            bLengthChange  : false,
+            paging: false,
+            searching: false,
+            bInfo: false,
+        };
     }
 })();

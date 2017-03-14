@@ -17,6 +17,14 @@
 			count: 0,
 			selectedDirection: 'left'
 		};
+        vm.dtInstance = {};
+        vm.dtOptions = {
+            bLengthChange  : false,
+            paging: false,
+            searching: false,
+            bInfo: false,
+        };
+        
         vm.purchase_order_item_data = {}
 
         //Api Call
@@ -109,6 +117,6 @@
                 }
             });
         }
-		
+
     }
 })();

@@ -11,16 +11,22 @@
     {
 
         
-		
+		var vm = this;
 		$scope.isOpen = false;
 		$scope.demo = {
 			isOpen: false,
 			count: 0,
 			selectedDirection: 'left'
 		};
+        vm.dtInstance = {};
+        vm.dtOptions = {
+            bLengthChange  : false,
+            paging: false,
+            searching: false,
+            bInfo: false,
+        };
 		
 		
-		var vm = this;
 
         //Api Call
         var dataPromise = imApi.viewItem($state.params.obj.id);
@@ -129,6 +135,6 @@
                 }
             });
         }
-		
+
     }
 })();
