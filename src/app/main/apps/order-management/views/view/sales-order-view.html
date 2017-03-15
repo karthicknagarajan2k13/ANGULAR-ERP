@@ -175,8 +175,8 @@
                         <form>
                             <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>Shipping Paid</label>
-										<input type="text" value="{{sales_order_data.shipped}}" disabled>
+										<md-checkbox ng-model="sales_order_data.shipped" aria-label="Shipping Paid" disabled>Shipping Paid
+										</md-checkbox>
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
