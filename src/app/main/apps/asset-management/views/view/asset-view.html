@@ -1,0 +1,218 @@
+<div id="e-commerce-product" class="page-layout simple tabbed" layout="column">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="space-between">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a ng-click="vm.AssetPage()" href=""> Maintanances </a>&nbsp; / &nbsp;<a ng-click="vm.AssetPage()" href=""> Asset </a> </span>&nbsp; / &nbsp; View
+            </div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <md-tabs md-dynamic-height>
+
+            <md-tab>
+                <md-tab-label>
+                    <span>General Info</span>
+                </md-tab-label>
+
+                <md-tab-body>
+                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+                        <form>
+                            <div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                              <label>ID</label>
+                              <input type="text" value="{{asset_data.code}}" disabled>
+                           </md-input-container>
+                           
+                           <md-input-container class="md-block" flex-gt-sm>
+                              <label>Subject</label>
+                              <input type="text" value="{{asset_data.subject}}" disabled>
+                           </md-input-container>
+                            <md-input-container class="md-block" flex-gt-sm>
+                              <label>Description</label>
+                              <input type="text" value="{{asset_data.description}}" disabled>
+                           </md-input-container>
+
+                           <md-input-container class="md-block" flex-gt-sm>
+                              <label>status</label>
+                              <input type="text" value="{{asset_data.status}}" disabled>
+                           </md-input-container>
+                           <md-input-container class="md-block" flex-gt-sm>
+                              <label>Category</label>
+                              <input type="text" value="{{asset_data.category}}" disabled>
+                           </md-input-container>
+                           <md-input-container class="md-block" flex-gt-sm>
+                              <label>Location</label>
+                              <input type="text" value="{{asset_data.location}}" disabled>
+                           </md-input-container>
+                                </div>
+                        
+                        </form>
+<!--                 <div class="actions" layout="row" layout-align="start center">
+                     <md-button class="md-raised md-accent">Edit</md-button>
+                     <md-button class="md-raised md-accent">Delete</md-button>
+                  </div> -->
+                    </div>
+                </md-tab-body>
+            </md-tab>
+
+
+            <md-tab>
+                <md-tab-label>
+                    <span>Other Info</span>
+                </md-tab-label>
+
+                <md-tab-body>
+                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+                        <form>
+                            <div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                              <label>Date Created</label>
+                              <input type="text" value="{{asset_data.created_at}}" disabled>
+                           </md-input-container>
+                           
+                           <md-input-container class="md-block" flex-gt-sm>
+                              <label>Created By</label>
+                              <input type="text" value="{{asset_data.created_by}}" disabled>
+                           </md-input-container>
+
+                                   <md-input-container class="md-block" flex-gt-sm>
+                              <label>Date Modified</label>
+                              <input type="text" value="{{asset_data.updated_at}}" disabled>
+                           </md-input-container>
+                                </div>
+                        <div layout="row" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex="33">
+                              <label>Modified By</label>
+                              <input type="text" value="{{asset_data.updated_by}}" disabled>
+                           </md-input-container>
+                           
+                                </div>
+                        
+                        </form>
+                  
+                  <!-- <div class="actions" layout="row" layout-align="start center">
+                     <md-button class="md-raised md-accent">Save</md-button>
+                     <md-button class="md-raised md-accent">Clear</md-button>
+                  </div> -->
+                    </div>
+                </md-tab-body>
+            </md-tab>
+         
+         <md-tab>
+                <md-tab-label>
+                    <span>Maintanance</span>
+                </md-tab-label>
+
+                <md-tab-body>
+                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+               
+                  <table class="dataTable row-border hover rowClickable" datatable="ng" dt-instance="vm.dtInstance"
+                        dt-options="vm.dtOptions">
+                     <thead>
+                        <tr>
+                           <th class="secondary-text">
+                              <div class="">
+                                 <span class="column-title">#</span>
+                              </div>
+                           </th>
+                           <th class="secondary-text">
+                              <div class="table-header">
+                                 <span class="column-title">Title</span>
+                              </div>
+                           </th>
+                           <th class="secondary-text">
+                              <div class="table-header">
+                                 <span class="column-title">Category</span>
+                              </div>
+                           </th>
+                           <th class="secondary-text">
+                              <div class="table-header">
+                                 <span class="column-title">Status</span>
+                              </div>
+                           </th>
+                           <th class="secondary-text">
+                              <div class="table-header">
+                                 <span class="column-title">Created By</span>
+                              </div>
+                           </th>
+                           <th class="secondary-text">
+                              <div class="table-header">
+                                 <span class="column-title">Date Created</span>
+                              </div>
+                           </th>
+                           
+                        </tr>
+                     </thead>
+                     <tbody>
+                              <tr ng-repeat="maintanance_schedule in asset_data.maintanance_schedules" ng-click="vm.viewMaintanancePage(maintanance_schedule.id)">
+                                  <td ng-click="$event.stopPropagation()"><md-checkbox ng-model="maintanance_schedule.checked" aria-label="Checkbox 1">
+                              </md-checkbox>
+                           </td>
+                                  <td>{{maintanance_schedule.subject}}</td>
+                           <td>{{maintanance_schedule.category}}</td>
+                           <td>{{maintanance_schedule.status}}</td>
+                           <td>{{maintanance_schedule.created_at}}</td>
+                           <td>{{maintanance_schedule.created_by}}</td>
+                              </tr>
+                     </tbody>
+                  </table>
+                  <div class="actions" layout="row" layout-align="start center">
+                     <md-button ng-click="vm.deleteAllMaintanance(maintanance_schedule.id)" class="md-raised md-accent">Delete</md-button>
+                     <md-button ng-click="vm.newMaintanancePage()" class="md-raised md-accent">Add</md-button>
+                  </div>
+               </div>
+                </md-tab-body>
+            </md-tab>
+        </md-tabs>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>
+
+
+<!-- ADD BUTTON -->
+   <!-- <div class="add-btn-fixed">
+      <md-button  ng-click="vm.newCustomerPage()" class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
+         <md-icon md-font-icon="icon-plus"></md-icon>
+      </md-button>
+   </div> -->
+   
+   <div class="add-btn-fixed">
+   <md-fab-toolbar md-open="demo.isOpen" count="demo.count"
+                  md-direction="{{demo.selectedDirection}}">
+    <md-fab-trigger class="align-with-text">
+      <md-button aria-label="menu" class="md-fab md-primary">
+        <md-icon md-font-icon="icon-menu"></md-icon>
+      </md-button>
+    </md-fab-trigger> 
+   
+    <md-toolbar>
+      <md-fab-actions class="md-toolbar-tools"> 
+        <md-button aria-label="comment" class="md-icon-button">
+          <md-icon md-font-icon="icon-menu"></md-icon>
+        </md-button>
+      <md-button ng-click="vm.deleteAllAsset(asset_data.id)" aria-label="photo" class="md-icon-button">
+          <md-icon md-font-icon="icon-delete"></md-icon>
+        </md-button>
+        <md-button ng-click="vm.editAssetPage(asset_data)" aria-label="label" class="md-icon-button">
+          <md-icon md-font-icon="icon-pencil"></md-icon>
+        </md-button>
+      <md-button ng-click="vm.newAssetPage()" aria-label="photo" class="md-icon-button">
+          <md-icon md-font-icon="icon-comment-plus-outline"></md-icon>
+        </md-button>
+      </md-fab-actions>
+    </md-toolbar>
+  </md-fab-toolbar>
+  </div>
+  
+<!-- / ADD BUTTON -->
+
+
+

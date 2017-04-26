@@ -1,0 +1,117 @@
+
+
+<div id="e-commerce-product" class="page-layout simple tabbed" layout="column">
+   <!-- HEADER -->
+   <div class="header md-accent-bg" layout="row" layout-align="space-between">
+      <div layout="column" layout-align="space-between">
+         <div class="breadcrumb" layout="row" layout-align="start center">
+            <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a ng-click="vm.AssetPage()" href="">Asset Management </a>&nbsp; / &nbsp;<a ng-click="vm.AssetPage()" href="">Assets </a> </span>&nbsp; / &nbsp; New
+         </div>
+      </div>
+   </div>
+   <!-- / HEADER -->
+   <!-- CONTENT -->
+   <div class="content">
+      <md-tabs md-dynamic-height>
+         <md-tab>
+            <md-tab-label>
+               <span>General Info</span>
+            </md-tab-label>
+            <md-tab-body>
+               <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+                  <form ng-submit="vm.saveAsset()" name="submitForm" novalidate>
+                     <div layout="column" layout-gt-xs="row" flex>
+                        <md-input-container class="md-block" flex-gt-sm>
+                           <label>Subject</label>
+                           <input type="text" name="subject" ng-model="vm.asset.subject" required>
+                           <div ng-messages="submitForm.subject.$error" role="alert">
+                              <div ng-message="required">
+                                 <span >Subject field is required</span>
+                              </div>
+                           </div>
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                           <label>Description</label>
+                           <input type="text" name="description" ng-model="vm.asset.description">
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-sm>
+                        <label>Status</label>
+                        <md-select name="status" ng-model="vm.asset.status">
+                          <md-option ng-repeat="status in ['Active', 'Inactive']" value="{{status}}">
+                            {{status}}
+                          </md-option>
+                        </md-select>
+                      </md-input-container>
+                 </div>
+                  <div layout="column" layout-gt-xs="row" flex>
+
+                   <md-input-container class="md-block" flex-gt-sm>
+                    <label>Category</label>
+                    <md-select name="status" ng-model="vm.asset.category">
+                      <md-option ng-repeat="category in ['Vehicles', 'Plant and Equipments']" value="{{category}}">
+                        {{category}}
+                      </md-option>
+                    </md-select>
+                  </md-input-container>
+
+
+                   <md-input-container class="md-block" flex-gt-sm>
+                    <label>Location</label>
+                    <md-select name="status" ng-model="vm.asset.location">
+                      <md-option ng-repeat="location in ['Head Office', 'Branch 1']" value="{{location}}">
+                        {{location}}
+                      </md-option>
+                    </md-select>
+                  </md-input-container>
+
+              </div>
+                     <div class="actions" layout="row" layout-align="start center">
+                        <md-button type="submit" class="md-raised md-accent submit-button" aria-label="Save"
+                           ng-disabled="submitForm.$invalid || submitForm.$pristine"
+                           translate="Save" translate-attr-aria-label="Save">
+                           Save
+                        </md-button>
+                        <md-button ng-click="vm.AssetDataClear()" class="md-raised md-accent">Clear</md-button>
+                  </form>
+               </div>
+            </md-tab-body>
+         </md-tab>
+      </md-tabs>
+   </div>
+   <!-- / CONTENT -->
+</div>
+<!-- ADD BUTTON -->
+<!-- <div class="add-btn-fixed">
+   <md-button  ng-click="vm.newCustomerPage()" class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
+    <md-icon md-font-icon="icon-plus"></md-icon>
+   </md-button>
+   </div> -->
+<div class="add-btn-fixed">
+   <md-fab-toolbar md-open="demo.isOpen" count="demo.count"
+      md-direction="{{demo.selectedDirection}}">
+      <md-fab-trigger class="align-with-text">
+         <md-button aria-label="menu" class="md-fab md-primary">
+            <md-icon md-font-icon="icon-menu"></md-icon>
+         </md-button>
+      </md-fab-trigger>
+      <md-toolbar>
+         <md-fab-actions class="md-toolbar-tools">
+            <md-button aria-label="comment" class="md-icon-button">
+               <md-icon md-font-icon="icon-menu"></md-icon>
+            </md-button>
+            <md-button aria-label="photo" class="md-icon-button">
+               <md-icon md-font-icon="icon-delete"></md-icon>
+            </md-button>
+            <md-button aria-label="label" class="md-icon-button">
+               <md-icon md-font-icon="icon-pencil"></md-icon>
+            </md-button>
+            <md-button ng-click="vm.newAssetPage()" aria-label="photo" class="md-icon-button">
+               <md-icon md-font-icon="icon-comment-plus-outline"></md-icon>
+            </md-button>
+         </md-fab-actions>
+      </md-toolbar>
+   </md-fab-toolbar>
+</div>
+<!-- / ADD BUTTON -->
+

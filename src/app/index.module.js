@@ -33,6 +33,7 @@
 			'app.warehouse-management',
 			'app.manufacturing',
 			'app.knowledge-base',
+            'app.asset-management',
 			
 			// User Interface
             'app.popup-modals',

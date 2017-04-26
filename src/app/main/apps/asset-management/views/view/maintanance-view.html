@@ -1,0 +1,160 @@
+<div id="e-commerce-product" class="page-layout simple tabbed" layout="column">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="space-between">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a ng-click="vm.MaintanancePage()" href="">Maintanance </a>&nbsp; / &nbsp;<a ng-click="vm.MaintanancePage()" href="">Maintanance </a> </span>&nbsp; / &nbsp; View
+            </div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <md-tabs md-dynamic-height>
+
+            <md-tab>
+                <md-tab-label>
+                    <span>General Info</span>
+                </md-tab-label>
+
+                <md-tab-body>
+                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+                        <form>
+                            <div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>ID</label>
+										<input type="text" value="{{maintanance_data.code}}" disabled>
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Subject</label>
+										<input type="text" value="{{maintanance_data.subject}}" disabled>
+									</md-input-container>
+
+                                    <md-input-container flex>
+										<label>Status</label>
+                                        <input type="text" value="{{maintanance_data.status}}" disabled>
+
+									</md-input-container>
+                                </div>
+								<div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Schedule_date</label>
+                                        <input type="text" value="{{maintanance_data.schedule_date}}" disabled>
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Asset</label>
+                                        <input type="text" value="{{maintanance_data.asset}}" disabled>
+									</md-input-container>
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Description</label>
+                                        <input type="text" value="{{maintanance_data.description}}" disabled>
+									</md-input-container>
+                                </div>
+								</div>
+								
+								
+								
+                        </form>
+<!-- 						<div class="actions" layout="row" layout-align="start center">
+							<md-button class="md-raised md-accent">Save</md-button>
+							<md-button class="md-raised md-accent">Clear</md-button>
+						</div> -->
+                    </div>
+                </md-tab-body>
+            </md-tab>
+
+
+            <md-tab>
+                <md-tab-label>
+                    <span>Other Info</span>
+                </md-tab-label>
+
+                <md-tab-body>
+                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+                        <form>
+                            <div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Date Created</label>
+										<input type="text" value="{{maintanance_data.created_at}}" disabled>
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Created By</label>
+										<input type="text" value="{{maintanance_data.created_by}}" disabled>
+									</md-input-container>
+
+                                   <md-input-container class="md-block" flex-gt-sm>
+										<label>Date Modified</label>
+										<input type="text" value="{{maintanance_data.updated_at}}" disabled>
+									</md-input-container>
+                                </div>
+								<div layout="row" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex="33">
+										<label>Modified By</label>
+										<input type="text" value="{{maintanance_data.updated_by}}" disabled>
+									</md-input-container>
+									
+                                </div>
+								
+                        </form>
+						
+						<!-- <div class="actions" layout="row" layout-align="start center">
+							<md-button class="md-raised md-accent">Save</md-button>
+							<md-button class="md-raised md-accent">Clear</md-button>
+						</div> -->
+                    </div>
+                </md-tab-body>
+            </md-tab>
+			
+			
+        </md-tabs>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>
+
+<!-- ADD BUTTON -->
+	<!-- <div class="add-btn-fixed">
+		<md-button  ng-click="vm.newCustomerPage()" class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
+			<md-icon md-font-icon="icon-plus"></md-icon>
+		</md-button>
+	</div> -->
+	
+	<div class="add-btn-fixed">
+	<md-fab-toolbar md-open="demo.isOpen" count="demo.count"
+                  md-direction="{{demo.selectedDirection}}">
+    <md-fab-trigger class="align-with-text">
+      <md-button aria-label="menu" class="md-fab md-primary">
+        <md-icon md-font-icon="icon-menu"></md-icon>
+      </md-button>
+    </md-fab-trigger>
+
+    <md-toolbar>
+      <md-fab-actions class="md-toolbar-tools">
+        <md-button aria-label="comment" class="md-icon-button">
+          <md-icon md-font-icon="icon-menu"></md-icon>
+        </md-button>
+		<md-button ng-click="vm.deleteAllMaintanance(maintanance_data.id)" aria-label="photo" class="md-icon-button">
+          <md-icon md-font-icon="icon-delete"></md-icon>
+        </md-button>
+        <md-button ng-click="vm.editMaintanancePage(maintanance_data)" aria-label="label" class="md-icon-button">
+          <md-icon md-font-icon="icon-pencil"></md-icon>
+        </md-button>
+		<md-button ng-click="vm.newMaintanancePage()" aria-label="photo" class="md-icon-button">
+          <md-icon md-font-icon="icon-comment-plus-outline"></md-icon>
+        </md-button>
+      </md-fab-actions>
+    </md-toolbar>
+  </md-fab-toolbar>
+  </div>
+  
+<!-- / ADD BUTTON -->
+
+
+

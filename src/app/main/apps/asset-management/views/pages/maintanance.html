@@ -1,0 +1,217 @@
+<div id="forms" class="page-layout simple fullwidth doc-page" layout="column" style="min-height:auto;">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="space-between">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <span style="color:#00bcff; font-weight:normal;" class="parent"> <a href="">Asset Management</a> </span>&nbsp; / &nbsp; Maintanance
+            </div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+</div>
+
+
+
+<div style="height:auto; min-height:auto; margin-top:20px; margin-bottom: -20px;" class="page-layout carded fullwidth" layout="row">
+    <!-- CENTER -->
+    <div class="center" layout="row" flex>
+        <!-- CONTENT CARD -->
+        <div class="content-card" layout="column" flex>
+			<div style="padding:20px 20px 0px 20px; font-size:18px;">
+				<div layout="column" layout-gt-xs="row">
+				
+					
+					<md-input-container flex>
+						<md-icon md-font-icon="icon-magnify"></md-icon>
+						<label>Search</label>
+                        <input ng-keyup="$event.keyCode == 13 && vm.searchMaintananceData()" ng-model="vm.search_data.search_text">
+						<md-icon ng-model="collapsed" ng-click="collapsed=!collapsed" md-font-icon="icon-chevron-down"></md-icon>
+					
+						<div style="padding-top:49px;" ng-show="collapsed">
+							<div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Subject</label>
+                                        <input ng-model="vm.search_data.subject">
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+                                        <md-datepicker ng-model="vm.search_data.schedule_date" md-placeholder="Schedule Date"></md-datepicker>
+                                    </md-input-container>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Status</label>
+										<md-select ng-model="vm.search_data.status" multiple>
+											<md-option ng-repeat="status in ['Draft', 'Inprogress', 'Completed', 'Failed']" value="{{status}}">
+												{{status}}
+											</md-option>
+										</md-select>
+									</md-input-container>
+
+                                </div>
+								<div layout="row" layout-gt-xs="row" flex>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Asset</label>
+                                        <input ng-model="vm.search_data.title">
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex="33">
+                                        <md-datepicker ng-model="vm.search_data.created_at" md-placeholder="Date Created"></md-datepicker>
+                                    </md-input-container>
+                                </div>
+								
+								<div class="actions" layout="row" layout-align="start center">
+                                    <md-button ng-click="vm.searchMaintananceData()" class="md-raised md-accent">Search</md-button>
+                                    <md-button ng-click="vm.searchMaintananceDataClear()" class="md-raised md-accent">Clear</md-button>
+								</div>							
+						</div>
+					
+					</md-input-container>
+					
+					
+                </div>
+				
+			</div>
+        </div>
+        <!-- / CONTENT CARD -->
+    </div>
+    <!-- / CENTER -->
+</div>
+
+
+
+<div id="e-commerce-orders" class="page-layout carded fullwidth" layout="row">
+
+    <!-- CENTER -->
+    <div class="center" layout="column" flex>
+
+        <!-- CONTENT CARD -->
+        <div class="content-card" layout="column" flex>
+			
+			<div style="padding:25px; font-size:18px;"> Maintanance </div>
+
+            <!-- CONTENT TOOLBAR -->
+
+            <!-- / CONTENT TOOLBAR -->
+
+            <!-- CONTENT -->
+            <div class="content fullpage-datatable" layout="column" flex>
+
+                <table class="dataTable row-border hover rowClickable" datatable="ng" dt-instance="vm.dtInstance"
+                       dt-options="vm.dtOptions">
+                    <thead>
+                        <tr>
+                            <th class="secondary-text">
+                                <div class="">
+                                    <span class="column-title">#</span>
+                                </div>
+                            </th>
+                            <th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">Subject</span>
+                                </div>
+                            </th>
+                            
+                            
+                          
+                            <th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">Status</span>
+                                </div>
+                            </th>
+							
+                              <th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">Schedule Date</span>
+                                </div>
+                            </th>
+							<th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">Asset</span>
+                                </div>
+                            </th>
+                            
+							<th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">Date Created</span>
+                                </div>
+                            </th>
+							
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="maintanance in maintanance_data" ng-click="vm.viewMaintanancePage(maintanance.id)">
+                            <td ng-click="$event.stopPropagation()"><md-checkbox ng-model="maintanance.checked" aria-label="Checkbox 1">
+								</md-checkbox>
+							</td>
+                            <td>{{maintanance.subject}}</td>
+                            <td>{{maintanance.status}}</td>
+<!--                             <td>{{maintanance.status}}</td>
+ -->
+                            <td>{{maintanance.schedule_date}}</td>
+                            <td>{{maintanance.asset}}</td>
+                            <td>{{maintanance.created_at}}</td>
+                           <!--  <td><a ng-click="vm.viewKnowledgeBasePage(knowledge_base.id)" href="">{{maintanance.title}}</a></td>
+							<td>{{maintanance.kb_category}}</td>
+							
+							
+							<td>{{maintanance.created_by}}</td> -->
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <!-- / CONTENT -->
+<!-- 			<div class="actions" layout="row" layout-align="start center">
+				<md-button class="md-raised md-accent">Delete</md-button>
+				<md-button class="md-raised md-accent">Add</md-button>
+			</div>
+ -->
+        </div>
+        <!-- / CONTENT CARD -->
+
+    </div>
+    <!-- / CENTER -->
+
+</div>
+
+<!-- ADD BUTTON -->
+	<!-- <div class="add-btn-fixed">
+		<md-button  ng-click="vm.newCustomerPage()" class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
+			<md-icon md-font-icon="icon-plus"></md-icon>
+		</md-button>
+	</div> -->
+	
+	<div class="add-btn-fixed">
+	<md-fab-toolbar md-open="demo.isOpen" count="demo.count"
+                  md-direction="{{demo.selectedDirection}}">
+    <md-fab-trigger class="align-with-text">
+      <md-button aria-label="menu" class="md-fab md-primary">
+        <md-icon md-font-icon="icon-menu"></md-icon>
+      </md-button>
+    </md-fab-trigger>
+
+    <md-toolbar>
+      <md-fab-actions class="md-toolbar-tools">
+        <md-button aria-label="comment" class="md-icon-button">
+          <md-icon md-font-icon="icon-menu"></md-icon>
+        </md-button>
+		<md-button ng-click="vm.deleteAllMaintanance()" aria-label="photo" class="md-icon-button">
+          <md-icon md-font-icon="icon-delete"></md-icon>
+        </md-button>
+        <md-button aria-label="label" class="md-icon-button">
+          <md-icon md-font-icon="icon-pencil"></md-icon>
+        </md-button>
+		<md-button ng-click="vm.newMaintanancePage()" aria-label="photo" class="md-icon-button">
+          <md-icon md-font-icon="icon-comment-plus-outline"></md-icon>
+        </md-button>
+      </md-fab-actions>
+    </md-toolbar>
+  </md-fab-toolbar>
+  </div>
+  
+<!-- / ADD BUTTON -->
+
+
+
