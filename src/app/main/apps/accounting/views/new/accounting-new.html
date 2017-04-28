@@ -1,0 +1,154 @@
+<div id="e-commerce-product" class="page-layout simple tabbed" layout="column">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="space-between">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a ng-click="vm.WarehousesPage()" href="">Accounting </a>&nbsp; / &nbsp;<a ng-click="vm.WarehousesPage()" href="">Accounts </a> </span>&nbsp; / &nbsp; Edit
+            </div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <md-tabs md-dynamic-height>
+
+            <md-tab>
+                <md-tab-label>
+                    <span>General Info</span>
+                </md-tab-label>
+
+                <md-tab-body>
+                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+                        <form>
+                            <div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>ID</label>
+										<input type="text" value=""> 
+									</md-input-container>
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Code</label>
+										<input type="text" value="">
+									</md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Name</label>
+                                        <input type="text" value="">
+									</md-input-container>
+                                </div>
+								<div layout="row" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Description</label>
+										<input type="text" value="">
+									</md-input-container>
+								</div>
+								<div layout="row" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex="33">
+										<label>Type</label>
+										<md-select ng-model="vm.search_data.c_type1">
+											<md-option ng-repeat="type in ['Profit/Loss', 'Balance Sheet']" value="{{type}}">
+												{{type}}
+											</md-option>
+										</md-select>
+									</md-input-container>
+                                </div>
+								
+								
+								
+                        </form>
+<!-- 						<div class="actions" layout="row" layout-align="start center">
+							<md-button ng-click="vm.editWarehousePage(warehouse_data)" class="md-raised md-accent">Edit</md-button>
+							<md-button ng-click="vm.deleteWarehouse(warehouse_data.id)" class="md-raised md-accent">Delete</md-button>
+						</div> -->
+                    </div>
+                </md-tab-body>
+            </md-tab>
+
+
+            <md-tab>
+                <md-tab-label>
+                    <span>Other Info</span>
+                </md-tab-label>
+
+                <md-tab-body>
+                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+                        <form>
+                            <div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Date Created</label>
+										<input type="text" value="">
+									</md-input-container>
+									
+									<md-input-container class="md-block" flex-gt-sm>
+										<label>Created By</label>
+										<input type="text" value="">
+									</md-input-container>
+
+                                   <md-input-container class="md-block" flex-gt-sm>
+										<label>Date Modified</label>
+										<input type="text" value="">
+									</md-input-container>
+                                </div>
+								<div layout="row" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex="33">
+										<label>Modified By</label>
+										<input type="text" value="">
+									</md-input-container>
+									
+                                </div>
+								
+                        </form>
+						
+<!-- 						<div class="actions" layout="row" layout-align="start center">
+							<md-button ng-click="vm.editWarehousePage(warehouse_data)" class="md-raised md-accent">Edit</md-button>
+							<md-button ng-click="vm.deleteWarehouse(warehouse_data.id)" class="md-raised md-accent">Delete</md-button>
+						</div> -->
+                    </div>
+                </md-tab-body>
+            </md-tab>
+			
+			
+        </md-tabs>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>
+
+<!-- ADD BUTTON -->
+	<!-- <div class="add-btn-fixed">
+		<md-button  ng-click="vm.newCustomerPage()" class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
+			<md-icon md-font-icon="icon-plus"></md-icon>
+		</md-button>
+	</div> -->
+	
+	<div class="add-btn-fixed">
+	<md-fab-toolbar md-open="demo.isOpen" count="demo.count"
+                  md-direction="{{demo.selectedDirection}}">
+    <md-fab-trigger class="align-with-text">
+      <md-button aria-label="menu" class="md-fab md-primary">
+        <md-icon md-font-icon="icon-menu"></md-icon>
+      </md-button>
+    </md-fab-trigger>
+
+    <md-toolbar>
+      <md-fab-actions class="md-toolbar-tools">
+        <md-button aria-label="comment" class="md-icon-button">
+          <md-icon md-font-icon="icon-menu"></md-icon>
+        </md-button>
+		<md-button ng-click="vm.deleteWarehouse(warehouse_data.id)" aria-label="photo" class="md-icon-button">
+          <md-icon md-font-icon="icon-delete"></md-icon>
+        </md-button>
+        <md-button ng-click="vm.editWarehousePage(warehouse_data)" aria-label="label" class="md-icon-button">
+          <md-icon md-font-icon="icon-pencil"></md-icon>
+        </md-button>
+		<md-button ng-click="vm.newWarehousePage()" aria-label="photo" class="md-icon-button">
+          <md-icon md-font-icon="icon-comment-plus-outline"></md-icon>
+        </md-button>
+      </md-fab-actions>
+    </md-toolbar>
+  </md-fab-toolbar>
+  </div>
+  
+<!-- / ADD BUTTON -->

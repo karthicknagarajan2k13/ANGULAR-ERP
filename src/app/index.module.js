@@ -34,6 +34,7 @@
 			'app.manufacturing',
 			'app.knowledge-base',
             'app.asset-management',
+			'app.accounting',
 			
 			// User Interface
             'app.popup-modals',
