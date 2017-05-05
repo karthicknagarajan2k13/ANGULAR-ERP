@@ -25,7 +25,7 @@
         {date: '22/04/2017', type: 'type-5', name: 'Bonnie M Huynh', code: '0000002', notify: 'test notify', orderID: '00001', total: '$056', status: 'test status'}
 		];
 		
-		$scope.id = "CUS0001";
+		$scope.id = "CUS0007";
 		$scope.code = "123456";
 		$scope.name = "John";
 		$scope.description = "Lorem Ipsum is simply dummy text";

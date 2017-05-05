@@ -35,6 +35,7 @@
 			'app.knowledge-base',
             'app.asset-management',
 			'app.accounting',
+			'app.return-wizard',
 			
 			// User Interface
             'app.popup-modals',
