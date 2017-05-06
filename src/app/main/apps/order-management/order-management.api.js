@@ -140,6 +140,11 @@
                return result.data;
            });
         };
+        api.get_invoices = function(data) {
+           return $http({method:"GET", url: api.baseUrl+"sales_order_invoices/get_sales_order_invoices.json"}).then(function(result){
+               return result.data;
+           });
+        };
         api.get_categories = function() {
            return $http({method:"GET", url: api.baseUrl+"categories/get_categories.json"}).then(function(result){
                return result.data;

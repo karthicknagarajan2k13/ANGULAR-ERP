@@ -14,6 +14,11 @@
         // Base Url
         api.baseUrl = 'https://ror-erp.herokuapp.com/';
 
+        api.get_customers = function() {
+           return $http({method:"GET", url: api.baseUrl+"customers/get_customers.json"}).then(function(result){
+               return result.data;
+           });
+        };
         api.createCustomer = function(data) {
            return $http({data: data, method:"POST", url: api.baseUrl+"customers.json"}).then(function(result){
                return result.data;

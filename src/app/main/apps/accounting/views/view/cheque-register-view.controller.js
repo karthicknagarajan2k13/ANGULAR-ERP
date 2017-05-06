@@ -4,10 +4,10 @@
 
     angular
         .module('app.accounting')
-        .controller('viewAccountController', viewAccountController);
+        .controller('viewChequeRegisterController', viewChequeRegisterController);
 
     /** @ngInject */
-    function viewAccountController(accApi, $scope, $document, $state)
+    function viewChequeRegisterController(accApi, $scope, $document, $state)
     {
         var vm = this;
         $scope.isOpen = false;
@@ -26,27 +26,27 @@
         
         vm.ssName = "s"
 
-        $scope.account_data = {}
+        $scope.cheque_register_data = {}
 
         //Api Call
-        var dataPromise = accApi.viewAccount($state.params.obj.id);
+        var dataPromise = accApi.viewChequeRegister($state.params.obj.id);
         dataPromise.then(function(result) { 
-            $scope.account_data = result;
+            $scope.cheque_register_data = result;
         }); 
 
-        vm.editAccountPage = function(account){
-             $state.go('app.accounting.accounting-edit', {obj:{acc_account: account}});
+        vm.editChequeRegisterPage = function(cheque_register){
+             $state.go('app.accounting.cheque-register-edit', {obj:{cheque_register: cheque_register}});
         }
-        vm.deleteAccount = function(id){
+        vm.deleteChequeRegister = function(id){
             var delete_ids = JSON.stringify([id])
-            accApi.deleteAllAccount({ids: delete_ids})
-            $state.go('app.accounting.accounting'); 
+            accApi.deleteAllChequeRegister({ids: delete_ids})
+            $state.go('app.accounting.cheque-register'); 
         }
-        vm.newAccountPage = function(){
-            $state.go('app.accounting.accounting-new'); 
+        vm.newChequeRegisterPage = function(){
+            $state.go('app.accounting.cheque-register-new'); 
         }
-        vm.AccountsPage = function(){
-            $state.go('app.accounting.accounting'); 
+        vm.ChequeRegistersPage = function(){
+            $state.go('app.accounting.cheque-register'); 
         }
         
         /**

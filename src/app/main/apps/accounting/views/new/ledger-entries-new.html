@@ -4,7 +4,7 @@
     <div class="header md-accent-bg" layout="row" layout-align="space-between">
         <div layout="column" layout-align="space-between">
             <div class="breadcrumb" layout="row" layout-align="start center">
-                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a ng-click="vm.WarehousesPage()" href="">Accounting </a>&nbsp; / &nbsp;<a ng-click="vm.WarehousesPage()" href="">Ledger Entries </a> </span>&nbsp; / &nbsp; New
+                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a ng-click="vm.LedgerEntrysPage()" href="">Accounting </a>&nbsp; / &nbsp;<a ng-click="vm.LedgerEntrysPage()" href="">Ledger Entries </a> </span>&nbsp; / &nbsp; New
             </div>
         </div>
     </div>
@@ -22,90 +22,56 @@
 
                 <md-tab-body>
                     <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
-                        <form>
+                        <form  ng-submit="vm.saveLedgerEntry()" name="submitForm" novalidate>
                             <div layout="column" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>ID</label>
-										<input type="text" value=""> 
-									</md-input-container>
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Subject</label>
-										<input type="text" value="">
+										<input ng-model="vm.ledger_entry.subject" type="text" value="">
 									</md-input-container>
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>Account</label>
-                                        <input type="text" value="">
-									</md-input-container>
+                                        <label>Amount</label>
+                                        <input ng-model="vm.ledger_entry.amount" type="text" value="">
+                                    </md-input-container>
                                 </div>
 								
 								 <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>Invoice</label>
-										<input type="text" value=""> 
-									</md-input-container>
-									<md-input-container class="md-block" flex-gt-sm>
-										<label>Customer</label>
-										<input type="text" value="">
-									</md-input-container>
+                                        <label>Invoice</label>
+                                        <md-select ng-model="vm.ledger_entry.invoice_id">
+                                            <md-option ng-repeat="invoice in get_invoices" value="{{invoice.invoice_id}}">
+                                                {{invoice.name}}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>Amount</label>
-                                        <input type="text" value="">
-									</md-input-container>
-                                </div>
-																							
-								
+                                        <label>Customer</label>
+                                        <md-select ng-model="vm.ledger_entry.customer_id">
+                                            <md-option ng-repeat="customer in get_customers" value="{{customer.customer_id}}">
+                                                {{customer.name}}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Account</label>
+                                        <md-select ng-model="vm.ledger_entry.acc_account_id">
+                                            <md-option ng-repeat="account in get_accounts" value="{{account.acc_account_id}}">
+                                                {{account.name}}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                </div>												
+                            <div class="actions" layout="row" layout-align="start center">
+                                    <md-button type="submit" class="md-raised md-accent submit-button" aria-label="Save"
+                                               ng-disabled="submitForm.$invalid || submitForm.$pristine"
+                                               translate="Save" translate-attr-aria-label="Save">
+                                        Save
+                                    </md-button>
+                                    <md-button ng-click="vm.ledger_entryDataClear()" class="md-raised md-accent">Clear</md-button>
+                            </div> 
                         </form>
-<!-- 						<div class="actions" layout="row" layout-align="start center">
-							<md-button ng-click="vm.editWarehousePage(warehouse_data)" class="md-raised md-accent">Edit</md-button>
-							<md-button ng-click="vm.deleteWarehouse(warehouse_data.id)" class="md-raised md-accent">Delete</md-button>
-						</div> -->
                     </div>
                 </md-tab-body>
             </md-tab>
-
-
-            <md-tab>
-                <md-tab-label>
-                    <span>Other Info</span>
-                </md-tab-label>
-
-                <md-tab-body>
-                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
-                        <form>
-                            <div layout="column" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Date Created</label>
-										<input type="text" value="">
-									</md-input-container>
-									
-									<md-input-container class="md-block" flex-gt-sm>
-										<label>Created By</label>
-										<input type="text" value="">
-									</md-input-container>
-
-                                   <md-input-container class="md-block" flex-gt-sm>
-										<label>Date Modified</label>
-										<input type="text" value="">
-									</md-input-container>
-                                </div>
-								<div layout="row" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex="33">
-										<label>Modified By</label>
-										<input type="text" value="">
-									</md-input-container>
-									
-                                </div>
-								
-                        </form>
-						
-<!-- 						<div class="actions" layout="row" layout-align="start center">
-							<md-button ng-click="vm.editWarehousePage(warehouse_data)" class="md-raised md-accent">Edit</md-button>
-							<md-button ng-click="vm.deleteWarehouse(warehouse_data.id)" class="md-raised md-accent">Delete</md-button>
-						</div> -->
-                    </div>
-                </md-tab-body>
-            </md-tab>
-			
 			
         </md-tabs>
 

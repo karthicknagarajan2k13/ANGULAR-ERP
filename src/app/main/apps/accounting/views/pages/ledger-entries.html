@@ -26,35 +26,51 @@
 					<md-input-container flex>
 						<md-icon md-font-icon="icon-magnify"></md-icon>
 						<label>Search</label>
-                        <input ng-keyup="$event.keyCode == 13 && vm.searchNoteData()" ng-model="vm.search_data.search_text">
+                        <input ng-keyup="$event.keyCode == 13 && vm.searchLedgerEntryData()" ng-model="vm.search_data.search_text">
 						<md-icon ng-model="collapsed" ng-click="collapsed=!collapsed" md-font-icon="icon-chevron-down"></md-icon>
 					
 						<div style="padding-top:49px;" ng-show="collapsed">
 							<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Subject</label>
-										<input ng-model="vm.search_data.code">
-									</md-input-container>
-									
-									<md-input-container class="md-block" flex-gt-sm>
-										<label>Customer</label>
 										<input ng-model="vm.search_data.subject">
 									</md-input-container>
-
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Account</label>
-                                        <input ng-model="vm.search_data.subject">
-									</md-input-container>
-                                </div>
-								<div  layout="row" layout-gt-xs="row" flex>
+									
                                    <md-input-container class="md-block" flex="33">
                                         <md-datepicker ng-model="vm.search_data.created_at" md-placeholder="Date Created"></md-datepicker>
+                                    </md-input-container>>
+                                </div>
+								<div  layout="row" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Invoice</label>
+                                        <md-select ng-model="vm.search_data.invoice_id">
+                                            <md-option ng-repeat="invoice in get_invoices" value="{{invoice.invoice_id}}">
+                                                {{invoice.name}}
+                                            </md-option>
+                                        </md-select>
                                     </md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Customer</label>
+                                        <md-select ng-model="vm.search_data.customer_id">
+                                            <md-option ng-repeat="customer in get_customers" value="{{customer.customer_id}}">
+                                                {{customer.name}}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Account</label>
+                                        <md-select ng-model="vm.search_data.acc_account_id">
+                                            <md-option ng-repeat="account in get_accounts" value="{{account.acc_account_id}}">
+                                                {{account.name}}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
+
                                 </div>
 								
 								<div class="actions" layout="row" layout-align="start center">
-									<md-button ng-click="vm.searchNoteData()" class="md-raised md-accent">Search</md-button>
-									<md-button ng-click="vm.searchNoteDataClear()" class="md-raised md-accent">Clear</md-button>
+									<md-button ng-click="vm.searchLedgerEntryData()" class="md-raised md-accent">Search</md-button>
+									<md-button ng-click="vm.searchLedgerEntryDataClear()" class="md-raised md-accent">Clear</md-button>
 								</div>								
 						</div>
 					
@@ -121,14 +137,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="accounts in ::vm.tabledata1">
+                        <tr ng-click="vm.viewLedgerEntryPage(ledger_entry.id)"  ng-repeat="ledger_entry in ledger_entries_data">
                             <td ng-click="$event.stopPropagation()">
-								<md-checkbox ng-model="accounts.checked" aria-label="Checkbox 1"></md-checkbox>
+								<md-checkbox ng-model="ledger_entry.checked" aria-label="Checkbox 1"></md-checkbox>
 							</td>
-                            <td>{{accounts.notify}}</td>
-                            <td>{{accounts.name}}</td>
-                            <td>{{accounts.total}}</td>
-                            <td>{{accounts.date}}</td>
+                            <td>{{ledger_entry.subject}}</td>
+                            <td>{{ledger_entry.customer}}</td>
+                            <td>{{ledger_entry.amount}}</td>
+                            <td>{{ledger_entry.created_at}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -169,13 +185,13 @@
         <md-button aria-label="comment" class="md-icon-button">
           <md-icon md-font-icon="icon-menu"></md-icon>
         </md-button>
-		<md-button ng-click="vm.deleteAllNote()" aria-label="photo" class="md-icon-button">
+		<md-button ng-click="vm.deleteAllLedgerEntry()" aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-delete"></md-icon>
         </md-button>
         <md-button aria-label="label" class="md-icon-button">
           <md-icon md-font-icon="icon-pencil"></md-icon>
         </md-button>
-		<md-button ng-click="vm.newNotePage()" aria-label="photo" class="md-icon-button">
+		<md-button ng-click="vm.newLedgerEntryPage()" aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-comment-plus-outline"></md-icon>
         </md-button>
       </md-fab-actions>

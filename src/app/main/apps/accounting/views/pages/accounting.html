@@ -26,24 +26,24 @@
 					<md-input-container flex>
 						<md-icon md-font-icon="icon-magnify"></md-icon>
 						<label>Search</label>
-                        <input ng-keyup="$event.keyCode == 13 && vm.searchNoteData()" ng-model="vm.search_data.search_text">
+                        <input ng-keyup="$event.keyCode == 13 && vm.searchAccountData()" ng-model="vm.search_data.search_text">
 						<md-icon ng-model="collapsed" ng-click="collapsed=!collapsed" md-font-icon="icon-chevron-down"></md-icon>
 					
 						<div style="padding-top:49px;" ng-show="collapsed">
 							<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Account Code</label>
-										<input ng-model="vm.search_data.code">
+										<input ng-model="vm.search_data.acc_code">
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Name</label>
-										<input ng-model="vm.search_data.subject">
+										<input ng-model="vm.search_data.name">
 									</md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Type</label>
-                                        <md-select ng-model="vm.search_data.c_type1" multiple>
+                                        <md-select ng-model="vm.search_data.acc_type" multiple>
 											<md-option ng-repeat="type in ['Profit/Loss', 'Balance Sheet']" value="{{type}}">
 												{{type}}
 											</md-option>
@@ -56,8 +56,8 @@
                                 </div>
 								
 								<div class="actions" layout="row" layout-align="start center">
-									<md-button ng-click="vm.searchNoteData()" class="md-raised md-accent">Search</md-button>
-									<md-button ng-click="vm.searchNoteDataClear()" class="md-raised md-accent">Clear</md-button>
+									<md-button ng-click="vm.searchAccountData()" class="md-raised md-accent">Search</md-button>
+									<md-button ng-click="vm.searchAccountDataClear()" class="md-raised md-accent">Clear</md-button>
 								</div>								
 						</div>
 					
@@ -124,14 +124,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="accounts in ::vm.tabledata1">
+                        <tr ng-click="vm.viewAccountPage(accounts.id)" ng-repeat="accounts in accounts_data">
                             <td ng-click="$event.stopPropagation()">
 								<md-checkbox ng-model="accounts.checked" aria-label="Checkbox 1"></md-checkbox>
 							</td>
-                            <td>{{accounts.code}}</td>
+                            <td>{{accounts.acc_code}}</td>
                             <td>{{accounts.name}}</td>
-                            <td>{{accounts.type}}</td>
-                            <td>{{accounts.date}}</td>
+                            <td>{{accounts.acc_type}}</td>
+                            <td>{{accounts.created_at}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -172,13 +172,13 @@
         <md-button aria-label="comment" class="md-icon-button">
           <md-icon md-font-icon="icon-menu"></md-icon>
         </md-button>
-		<md-button ng-click="vm.deleteAllNote()" aria-label="photo" class="md-icon-button">
+		<md-button ng-click="vm.deleteAllAccount()" aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-delete"></md-icon>
         </md-button>
         <md-button aria-label="label" class="md-icon-button">
           <md-icon md-font-icon="icon-pencil"></md-icon>
         </md-button>
-		<md-button ng-click="vm.newNotePage()" aria-label="photo" class="md-icon-button">
+		<md-button ng-click="vm.newAccountPage()" aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-comment-plus-outline"></md-icon>
         </md-button>
       </md-fab-actions>

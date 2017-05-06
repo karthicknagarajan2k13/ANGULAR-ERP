@@ -26,30 +26,33 @@
 					<md-input-container flex>
 						<md-icon md-font-icon="icon-magnify"></md-icon>
 						<label>Search</label>
-                        <input ng-keyup="$event.keyCode == 13 && vm.searchNoteData()" ng-model="vm.search_data.search_text">
+                        <input ng-keyup="$event.keyCode == 13 && vm.searchChequeRegisterData()" ng-model="vm.search_data.search_text">
 						<md-icon ng-model="collapsed" ng-click="collapsed=!collapsed" md-font-icon="icon-chevron-down"></md-icon>
 					
 						<div style="padding-top:49px;" ng-show="collapsed">
 							<div layout="row" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
-										<md-datepicker ng-model="vm.search_data.created_at" md-placeholder="Date Created"></md-datepicker>
+										<label>Date</label>
+										<md-input-container class="md-block" flex-gt-sm>
+											<md-datepicker ng-model="vm.search_data.cheque_date" md-placeholder="Date Created"></md-datepicker>
+										</md-input-container>
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Payee</label>
-										<input ng-model="vm.search_data.subject">
+										<input ng-model="vm.search_data.payee">
 									</md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Debit</label>
-										<input ng-model="vm.search_data.subject">
+										<input ng-model="vm.search_data.debit">
 									</md-input-container>
                                 </div>
 								
 								<div  layout="row" layout-gt-xs="row" flex>
 									<md-input-container class="md-block" flex="33">
 										<label>Credit</label>
-										<input ng-model="vm.search_data.subject">
+										<input ng-model="vm.search_data.credit">
 									</md-input-container>
                                    <md-input-container class="md-block" flex="33">
                                         <md-datepicker ng-model="vm.search_data.created_at" md-placeholder="Date Created"></md-datepicker>
@@ -57,8 +60,8 @@
                                 </div>
 								
 								<div class="actions" layout="row" layout-align="start center">
-									<md-button ng-click="vm.searchNoteData()" class="md-raised md-accent">Search</md-button>
-									<md-button ng-click="vm.searchNoteDataClear()" class="md-raised md-accent">Clear</md-button>
+									<md-button ng-click="vm.searchChequeRegisterData()" class="md-raised md-accent">Search</md-button>
+									<md-button ng-click="vm.searchChequeRegisterDataClear()" class="md-raised md-accent">Clear</md-button>
 								</div>								
 						</div>
 					
@@ -130,15 +133,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="accounts in ::vm.tabledata1">
+                        <tr ng-click="vm.viewChequeRegisterPage(cheque_register.id)" ng-repeat="cheque_register in cheque_registers_data">
                             <td ng-click="$event.stopPropagation()">
-								<md-checkbox ng-model="accounts.checked" aria-label="Checkbox 1"></md-checkbox>
+								<md-checkbox ng-model="cheque_register.checked" aria-label="Checkbox 1"></md-checkbox>
 							</td>
-                            <td>{{accounts.date}}</td>
-                            <td>{{accounts.name}}</td>
-                            <td>{{accounts.total}}</td>
-							<td>{{accounts.total}}</td>
-                            <td>{{accounts.date}}</td>
+                            <td>{{cheque_register.cheque_date}}</td>
+                            <td>{{cheque_register.payee}}</td>
+                            <td>{{cheque_register.debit}}</td>
+							<td>{{cheque_register.credit}}</td>
+                            <td>{{cheque_register.created_at}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -179,13 +182,13 @@
         <md-button aria-label="comment" class="md-icon-button">
           <md-icon md-font-icon="icon-menu"></md-icon>
         </md-button>
-		<md-button ng-click="vm.deleteAllNote()" aria-label="photo" class="md-icon-button">
+		<md-button ng-click="vm.deleteAllChequeRegister()" aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-delete"></md-icon>
         </md-button>
         <md-button aria-label="label" class="md-icon-button">
           <md-icon md-font-icon="icon-pencil"></md-icon>
         </md-button>
-		<md-button ng-click="vm.newNotePage()" aria-label="photo" class="md-icon-button">
+		<md-button ng-click="vm.newChequeRegisterPage()" aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-comment-plus-outline"></md-icon>
         </md-button>
       </md-fab-actions>

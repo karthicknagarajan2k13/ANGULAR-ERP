@@ -4,7 +4,7 @@
     <div class="header md-accent-bg" layout="row" layout-align="space-between">
         <div layout="column" layout-align="space-between">
             <div class="breadcrumb" layout="row" layout-align="start center">
-                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a ng-click="vm.WarehousesPage()" href="">Accounting </a>&nbsp; / &nbsp;<a ng-click="vm.WarehousesPage()" href="">Accounts </a> </span>&nbsp; / &nbsp; View
+                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a ng-click="vm.AccountsPage()" href="">Accounting </a>&nbsp; / &nbsp;<a ng-click="vm.AccountsPage()" href="">Accounts </a> </span>&nbsp; / &nbsp; View
             </div>
         </div>
     </div>
@@ -26,41 +26,34 @@
                             <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>ID</label>
-										<input type="text" ng-model="id" value="" disabled> 
+										<input type="text" ng-model="account_data.code" value="" disabled> 
 									</md-input-container>
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Code</label>
-										<input type="text" ng-model="code" value="" disabled>
+										<input type="text" ng-model="account_data.acc_code" value="" disabled>
 									</md-input-container>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Name</label>
-                                        <input type="text"  ng-model="name" value="" disabled>
+                                        <input type="text"  ng-model="account_data.name" value="" disabled>
 									</md-input-container>
                                 </div>
 								<div layout="row" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Description</label>
-										<input type="text"  ng-model="description" value="" disabled>
+										<input type="text"  ng-model="account_data.description" value="" disabled>
 									</md-input-container>
 								</div>
 								<div layout="row" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex="33">
 										<label>Type</label>
-										<md-select ng-model="vm.search_data.c_type1">
+										<md-select ng-model="account_data.acc_type" disabled>
 											<md-option ng-repeat="type in ['Profit/Loss', 'Balance Sheet']" value="{{type}}">
 												{{type}}
 											</md-option>
 										</md-select>
 									</md-input-container>
                                 </div>
-								
-								
-								
                         </form>
-<!-- 						<div class="actions" layout="row" layout-align="start center">
-							<md-button ng-click="vm.editWarehousePage(warehouse_data)" class="md-raised md-accent">Edit</md-button>
-							<md-button ng-click="vm.deleteWarehouse(warehouse_data.id)" class="md-raised md-accent">Delete</md-button>
-						</div> -->
                     </div>
                 </md-tab-body>
             </md-tab>
@@ -76,34 +69,30 @@
                         <form>
                             <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>Date Created</label>
-										<input type="text" ng-model="date" value="" disabled>
-									</md-input-container>
-									
-									<md-input-container class="md-block" flex-gt-sm>
-										<label>Created By</label>
-										<input type="text" ng-model="date" value="" disabled>
-									</md-input-container>
+                                        <label>Date Created</label>
+                                        <input type="text" value="{{account_data.created_at}}" disabled>
+                                    </md-input-container>
+                                    
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Created By</label>
+                                        <input type="text" value="{{account_data.created_by}}" disabled>
+                                    </md-input-container>
 
                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Date Modified</label>
-										<input type="text" ng-model="date" value="" disabled>
-									</md-input-container>
+                                        <label>Date Modified</label>
+                                        <input type="text" value="{{account_data.updated_at}}" disabled>
+                                    </md-input-container>
                                 </div>
-								<div layout="row" layout-gt-xs="row" flex>
+                                <div layout="row" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex="33">
-										<label>Modified By</label>
-										<input type="text" ng-model="name" value="" disabled>
-									</md-input-container>
-									
+                                        <label>Modified By</label>
+                                        <input type="text" value="{{account_data.updated_by}}" disabled>
+                                    </md-input-container>
+                                    
                                 </div>
-								
+                                
                         </form>
 						
-<!-- 						<div class="actions" layout="row" layout-align="start center">
-							<md-button ng-click="vm.editWarehousePage(warehouse_data)" class="md-raised md-accent">Edit</md-button>
-							<md-button ng-click="vm.deleteWarehouse(warehouse_data.id)" class="md-raised md-accent">Delete</md-button>
-						</div> -->
                     </div>
                 </md-tab-body>
             </md-tab>
@@ -115,13 +104,6 @@
     <!-- / CONTENT -->
 
 </div>
-
-<!-- ADD BUTTON -->
-	<!-- <div class="add-btn-fixed">
-		<md-button  ng-click="vm.newCustomerPage()" class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
-			<md-icon md-font-icon="icon-plus"></md-icon>
-		</md-button>
-	</div> -->
 	
 	<div class="add-btn-fixed">
 	<md-fab-toolbar md-open="demo.isOpen" count="demo.count"
@@ -137,13 +119,13 @@
         <md-button aria-label="comment" class="md-icon-button">
           <md-icon md-font-icon="icon-menu"></md-icon>
         </md-button>
-		<md-button ng-click="vm.deleteWarehouse(warehouse_data.id)" aria-label="photo" class="md-icon-button">
+		<md-button ng-click="vm.deleteAccount(account_data.id)" aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-delete"></md-icon>
         </md-button>
-        <md-button ng-click="vm.editWarehousePage(warehouse_data)" aria-label="label" class="md-icon-button">
+        <md-button ng-click="vm.editAccountPage(account_data)" aria-label="label" class="md-icon-button">
           <md-icon md-font-icon="icon-pencil"></md-icon>
         </md-button>
-		<md-button ng-click="vm.newWarehousePage()" aria-label="photo" class="md-icon-button">
+		<md-button ng-click="vm.newAccountPage()" aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-comment-plus-outline"></md-icon>
         </md-button>
       </md-fab-actions>

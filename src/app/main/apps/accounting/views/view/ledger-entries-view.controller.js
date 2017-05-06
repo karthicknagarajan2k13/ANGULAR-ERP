@@ -4,10 +4,10 @@
 
     angular
         .module('app.accounting')
-        .controller('viewAccountController', viewAccountController);
+        .controller('viewLedgerEntryController', viewLedgerEntryController);
 
     /** @ngInject */
-    function viewAccountController(accApi, $scope, $document, $state)
+    function viewLedgerEntryController(accApi, $scope, $document, $state)
     {
         var vm = this;
         $scope.isOpen = false;
@@ -26,27 +26,28 @@
         
         vm.ssName = "s"
 
-        $scope.account_data = {}
+        $scope.ledger_entry_data = {}
 
         //Api Call
-        var dataPromise = accApi.viewAccount($state.params.obj.id);
+        var dataPromise = accApi.viewLedgerEntry($state.params.obj.id);
         dataPromise.then(function(result) { 
-            $scope.account_data = result;
+            $scope.ledger_entry_data = result;
+            console.log("$scope.ledger_entry_data",$scope.ledger_entry_data)
         }); 
 
-        vm.editAccountPage = function(account){
-             $state.go('app.accounting.accounting-edit', {obj:{acc_account: account}});
+        vm.editLedgerEntryPage = function(ledger_entry){
+             $state.go('app.accounting.ledger-entries-edit', {obj:{ledger_entry: ledger_entry}});
         }
-        vm.deleteAccount = function(id){
+        vm.deleteLedgerEntry = function(id){
             var delete_ids = JSON.stringify([id])
-            accApi.deleteAllAccount({ids: delete_ids})
-            $state.go('app.accounting.accounting'); 
+            accApi.deleteAllLedgerEntry({ids: delete_ids})
+            $state.go('app.accounting.ledger-entries'); 
         }
-        vm.newAccountPage = function(){
-            $state.go('app.accounting.accounting-new'); 
+        vm.newLedgerEntryPage = function(){
+            $state.go('app.accounting.ledger-entries-new'); 
         }
-        vm.AccountsPage = function(){
-            $state.go('app.accounting.accounting'); 
+        vm.LedgerEntrysPage = function(){
+            $state.go('app.accounting.ledger-entries'); 
         }
         
         /**

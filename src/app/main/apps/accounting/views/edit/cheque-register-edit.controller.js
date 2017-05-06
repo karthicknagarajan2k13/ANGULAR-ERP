@@ -4,49 +4,45 @@
 
     angular
         .module('app.accounting')
-        .controller('viewAccountController', viewAccountController);
+        .controller('editChequeRegisterController', editChequeRegisterController);
 
     /** @ngInject */
-    function viewAccountController(accApi, $scope, $document, $state)
+    function editChequeRegisterController(accApi, $scope, $document, $state)
     {
-        var vm = this;
+
         $scope.isOpen = false;
         $scope.demo = {
-            isOpen: false,
-            count: 0,
-            selectedDirection: 'left'
+        isOpen: false,
+        count: 0,
+        selectedDirection: 'left'
         };
-        vm.dtInstance = {};
-        vm.dtOptions = {
-            bLengthChange  : false,
-            paging: false,
-            searching: false,
-            bInfo: false,
-        };
-        
+        var vm = this;
+        vm.cheque_register = $state.params.obj
+        console.log("vm.cheque_register",vm.cheque_register)
+
         vm.ssName = "s"
 
-        $scope.account_data = {}
-
-        //Api Call
-        var dataPromise = accApi.viewAccount($state.params.obj.id);
-        dataPromise.then(function(result) { 
-            $scope.account_data = result;
-        }); 
-
-        vm.editAccountPage = function(account){
-             $state.go('app.accounting.accounting-edit', {obj:{acc_account: account}});
+        vm.updateChequeRegister = function(){
+           var dataPromise = accApi.updateChequeRegister(vm.cheque_register.cheque_register.id,vm.cheque_register);
+            dataPromise.then(function(result) { 
+                $scope.data = result; 
+                if( typeof($scope.data.message) !== "undefined"){
+                    console.log("response",$scope.data.message)
+                }else{
+                    if( typeof($scope.data.cheque_register_id) !== "undefined"){
+                        $state.go('app.accounting.cheque-register-view', {obj:{id: $scope.data.cheque_register_id}}); 
+                    }
+                }
+            }); 
         }
-        vm.deleteAccount = function(id){
-            var delete_ids = JSON.stringify([id])
-            accApi.deleteAllAccount({ids: delete_ids})
-            $state.go('app.accounting.accounting'); 
+        vm.viewChequeRegisterPage =function(id){
+            $state.go('app.accounting.cheque-register-view', {obj:{id: id}}); 
         }
-        vm.newAccountPage = function(){
-            $state.go('app.accounting.accounting-new'); 
+        vm.newChequeRegisterPage = function(){
+            $state.go('app.accounting.cheque-register-new'); 
         }
-        vm.AccountsPage = function(){
-            $state.go('app.accounting.accounting'); 
+        vm.ChequeRegistersPage = function(){
+            $state.go('app.accounting.cheque-register'); 
         }
         
         /**

@@ -33,7 +33,7 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/accounting/views/pages/accounting.html',
-                        controller : 'AccountingController as vm'
+                        controller : 'AccountController as vm'
                     }
                 },
                 resolve  : {
@@ -51,7 +51,7 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/accounting/views/pages/ledger-entries.html',
-                        controller : 'AccountingController as vm'
+                        controller : 'LedgerEntryController as vm'
                     }
                 },
                 resolve  : {
@@ -69,7 +69,7 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/accounting/views/pages/cheque-register.html',
-                        controller : 'AccountingController as vm'
+                        controller : 'ChequeRegisterController as vm'
                     }
                 },
                 resolve  : {
@@ -86,8 +86,11 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/accounting/views/edit/accounting-edit.html',
-                        controller : 'AccountingEditController as vm'
+                        controller : 'editAccountController as vm'
                     }
+                },
+                params: {
+                 obj: null
                 },
                 resolve  : {
 					DashboardData: function (msApi)
@@ -103,8 +106,11 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/accounting/views/edit/ledger-entries-edit.html',
-                        controller : 'AccountingEditController as vm'
+                        controller : 'editLedgerEntryController as vm'
                     }
+                },
+                params: {
+                 obj: null
                 },
                 resolve  : {
 					DashboardData: function (msApi)
@@ -120,8 +126,11 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/accounting/views/edit/cheque-register-edit.html',
-                        controller : 'AccountingEditController as vm'
+                        controller : 'editChequeRegisterController as vm'
                     }
+                },
+                params: {
+                 obj: null
                 },
                 resolve  : {
 					DashboardData: function (msApi)
@@ -137,8 +146,11 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/accounting/views/view/accounting-view.html',
-                        controller : 'AccountingViewController as vm'
+                        controller : 'viewAccountController as vm'
                     }
+                },
+                params: {
+                 obj: null
                 },
                 resolve  : {
 					DashboardData: function (msApi)
@@ -154,8 +166,11 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/accounting/views/view/ledger-entries-view.html',
-                        controller : 'AccountingViewController as vm'
+                        controller : 'viewLedgerEntryController as vm'
                     }
+                },
+                params: {
+                 obj: null
                 },
                 resolve  : {
 					DashboardData: function (msApi)
@@ -171,8 +186,11 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/accounting/views/view/cheque-register-view.html',
-                        controller : 'AccountingViewController as vm'
+                        controller : 'viewChequeRegisterController as vm'
                     }
+                },
+                params: {
+                 obj: null
                 },
                 resolve  : {
 					DashboardData: function (msApi)
@@ -188,7 +206,7 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/accounting/views/new/accounting-new.html',
-                        controller : 'AccountingNewController as vm'
+                        controller : 'newAccountController as vm'
                     }
                 },
                 resolve  : {
@@ -205,7 +223,7 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/accounting/views/new/ledger-entries-new.html',
-                        controller : 'AccountingNewController as vm'
+                        controller : 'newLedgerEntryController as vm'
                     }
                 },
                 resolve  : {
@@ -222,7 +240,7 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/accounting/views/new/cheque-register-new.html',
-                        controller : 'AccountingNewController as vm'
+                        controller : 'newChequeRegisterController as vm'
                     }
                 },
                 resolve  : {

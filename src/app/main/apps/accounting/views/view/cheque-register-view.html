@@ -4,7 +4,7 @@
     <div class="header md-accent-bg" layout="row" layout-align="space-between">
         <div layout="column" layout-align="space-between">
             <div class="breadcrumb" layout="row" layout-align="start center">
-                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a ng-click="vm.WarehousesPage()" href="">Accounting </a>&nbsp; / &nbsp;<a ng-click="vm.WarehousesPage()" href="">Cheque Register </a> </span>&nbsp; / &nbsp; View
+                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a ng-click="vm.ChequeRegistersPage()" href="">Accounting </a>&nbsp; / &nbsp;<a ng-click="vm.ChequeRegistersPage()" href="">Cheque Register </a> </span>&nbsp; / &nbsp; View
             </div>
         </div>
     </div>
@@ -26,38 +26,46 @@
                             <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>ID</label>
-										<input type="text" ng-model="id" value="" disabled> 
+										<input type="text"  value="{{cheque_register_data.code}}" disabled> 
 									</md-input-container>
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>date</label>
-										<input type="text" ng-model="date" value="" disabled>
+										<input type="text" value="{{cheque_register_data.cheque_date}}" disabled>
 									</md-input-container>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Payee</label>
-                                        <input type="text"  ng-model="name" value="" disabled>
+                                        <input type="text"   value="{{cheque_register_data.payee}}" disabled>
 									</md-input-container>
                                 </div>
 								
 								 <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Debit</label>
-										<input type="text" ng-model="amount" value="" disabled> 
+										<input type="text" value="{{cheque_register_data.debit}}" disabled> 
 									</md-input-container>
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Credit</label>
-										<input type="text" ng-model="amount" value="" disabled>
+										<input type="text"  value="{{cheque_register_data.credit}}" disabled>
 									</md-input-container>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Notes</label>
-                                        <input type="text"  ng-model="subject" value="" disabled>
+                                        <input type="text"   value="{{cheque_register_data.notes}}" disabled>
 									</md-input-container>
                                 </div>
-																							
-								
+                                 <div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Type</label>
+                                        <md-select ng-model="cheque_register_data.status" disabled>
+                                            <md-option ng-repeat="status in ['Cheque Cleared', 'Cheque Rejected']" value="{{status}}">
+                                                {{status}}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                </div>												
                         </form>
 <!-- 						<div class="actions" layout="row" layout-align="start center">
-							<md-button ng-click="vm.editWarehousePage(warehouse_data)" class="md-raised md-accent">Edit</md-button>
-							<md-button ng-click="vm.deleteWarehouse(warehouse_data.id)" class="md-raised md-accent">Delete</md-button>
+							<md-button ng-click="vm.editWarehousePage(cheque_register_data)" class="md-raised md-accent">Edit</md-button>
+							<md-button ng-click="vm.deleteWarehouse(cheque_register_data.id)" class="md-raised md-accent">Delete</md-button>
 						</div> -->
                     </div>
                 </md-tab-body>
@@ -74,33 +82,33 @@
                         <form>
                             <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>Date Created</label>
-										<input type="text" ng-model="date" value="" disabled>
-									</md-input-container>
-									
-									<md-input-container class="md-block" flex-gt-sm>
-										<label>Created By</label>
-										<input type="text" ng-model="date" value="" disabled>
-									</md-input-container>
+                                        <label>Date Created</label>
+                                        <input type="text" value="{{cheque_register_data.created_at}}" disabled>
+                                    </md-input-container>
+                                    
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Created By</label>
+                                        <input type="text" value="{{cheque_register_data.created_by}}" disabled>
+                                    </md-input-container>
 
                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Date Modified</label>
-										<input type="text" ng-model="date" value="" disabled>
-									</md-input-container>
+                                        <label>Date Modified</label>
+                                        <input type="text" value="{{cheque_register_data.updated_at}}" disabled>
+                                    </md-input-container>
                                 </div>
-								<div layout="row" layout-gt-xs="row" flex>
+                                <div layout="row" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex="33">
-										<label>Modified By</label>
-										<input type="text" ng-model="name" value="" disabled>
-									</md-input-container>
-									
+                                        <label>Modified By</label>
+                                        <input type="text" value="{{cheque_register_data.updated_by}}" disabled>
+                                    </md-input-container>
+                                    
                                 </div>
-								
+                                
                         </form>
 						
 <!-- 						<div class="actions" layout="row" layout-align="start center">
-							<md-button ng-click="vm.editWarehousePage(warehouse_data)" class="md-raised md-accent">Edit</md-button>
-							<md-button ng-click="vm.deleteWarehouse(warehouse_data.id)" class="md-raised md-accent">Delete</md-button>
+							<md-button ng-click="vm.editWarehousePage(cheque_register_data)" class="md-raised md-accent">Edit</md-button>
+							<md-button ng-click="vm.deleteWarehouse(cheque_register_data.id)" class="md-raised md-accent">Delete</md-button>
 						</div> -->
                     </div>
                 </md-tab-body>
@@ -135,13 +143,13 @@
         <md-button aria-label="comment" class="md-icon-button">
           <md-icon md-font-icon="icon-menu"></md-icon>
         </md-button>
-		<md-button ng-click="vm.deleteWarehouse(warehouse_data.id)" aria-label="photo" class="md-icon-button">
+		<md-button ng-click="vm.deleteChequeRegister(cheque_register_data.id)" aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-delete"></md-icon>
         </md-button>
-        <md-button ng-click="vm.editWarehousePage(warehouse_data)" aria-label="label" class="md-icon-button">
+        <md-button ng-click="vm.editChequeRegisterPage(cheque_register_data)" aria-label="label" class="md-icon-button">
           <md-icon md-font-icon="icon-pencil"></md-icon>
         </md-button>
-		<md-button ng-click="vm.newWarehousePage()" aria-label="photo" class="md-icon-button">
+		<md-button ng-click="vm.newChequeRegisterPage()" aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-comment-plus-outline"></md-icon>
         </md-button>
       </md-fab-actions>
