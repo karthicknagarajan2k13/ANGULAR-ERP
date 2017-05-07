@@ -26,7 +26,7 @@
 					<md-input-container flex>
 						<md-icon md-font-icon="icon-magnify"></md-icon>
 						<label>Search</label>
-                        <input ng-keyup="$event.keyCode == 13 && vm.searchNoteData()" ng-model="vm.search_data.search_text">
+                        <input ng-keyup="$event.keyCode == 13 && vm.searchReturnWizardData()" ng-model="vm.search_data.search_text">
 						<md-icon ng-model="collapsed" ng-click="collapsed=!collapsed" md-font-icon="icon-chevron-down"></md-icon>
 					
 						<div style="padding-top:49px;" ng-show="collapsed">
@@ -43,7 +43,7 @@
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Amount</label>
-										<input ng-model="vm.search_data.subject">
+										<input ng-model="vm.search_data.original_amount">
 									</md-input-container>
 
                                     
@@ -53,16 +53,16 @@
 								<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Status</label>
-                                        <md-select ng-model="vm.search_data.c_type1" multiple>
-											<md-option ng-repeat="type in ['1', '2']" value="{{type}}">
+                                        <md-select ng-model="vm.search_data.status1" multiple>
+											<md-option ng-repeat="type in ['Draft', 'Return Inprogress', 'Cancelled']" value="{{type}}">
 												{{type}}
 											</md-option>
 										</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Reason</label>
-                                        <md-select ng-model="vm.search_data.c_type1" multiple>
-											<md-option ng-repeat="type in ['1', '2']" value="{{type}}">
+                                        <md-select ng-model="vm.search_data.reason_for_return1" multiple>
+											<md-option ng-repeat="type in ['Defective item', 'Listing error', 'Technician error', 'Buyer’s Remorse', 'Automatic Claim', 'Other']" value="{{type}}">
 												{{type}}
 											</md-option>
 										</md-input-container>
@@ -77,8 +77,8 @@
 								
 								
 								<div class="actions" layout="row" layout-align="start center">
-									<md-button ng-click="vm.searchNoteData()" class="md-raised md-accent">Search</md-button>
-									<md-button ng-click="vm.searchNoteDataClear()" class="md-raised md-accent">Clear</md-button>
+									<md-button ng-click="vm.searchReturnWizardData()" class="md-raised md-accent">Search</md-button>
+									<md-button ng-click="vm.searchReturnWizardDataClear()" class="md-raised md-accent">Clear</md-button>
 								</div>								
 						</div>
 					
@@ -156,16 +156,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="accounts in ::vm.tabledata1">
+                        <tr ng-click="vm.viewReturnWizardPage(return_wizard.id)" ng-repeat="return_wizard in return_wizards_data">
                             <td ng-click="$event.stopPropagation()">
-								<md-checkbox ng-model="accounts.checked" aria-label="Checkbox 1"></md-checkbox>
+								<md-checkbox ng-model="return_wizard.checked" aria-label="Checkbox 1"></md-checkbox>
 							</td>
-                            <td>{{accounts.notify}}</td>
-                            <td>{{accounts.name}}</td>
-                            <td>{{accounts.total}}</td>
-							<td>{{accounts.status}}</td>
-                            <td>{{accounts.notify}}</td>
-                            <td>{{accounts.date}}</td>
+                            <td>{{return_wizard.subject}}</td>
+                            <td>{{return_wizard.customer}}</td>
+                            <td>{{return_wizard.original_amount}}</td>
+							<td>{{return_wizard.status}}</td>
+                            <td>{{return_wizard.reason_for_return}}</td>
+                            <td>{{return_wizard.created_at}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -206,13 +206,13 @@
         <md-button aria-label="comment" class="md-icon-button">
           <md-icon md-font-icon="icon-menu"></md-icon>
         </md-button>
-		<md-button ng-click="vm.deleteAllNote()" aria-label="photo" class="md-icon-button">
+		<md-button ng-click="vm.deleteAllReturnWizard()" aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-delete"></md-icon>
         </md-button>
         <md-button aria-label="label" class="md-icon-button">
           <md-icon md-font-icon="icon-pencil"></md-icon>
         </md-button>
-		<md-button ng-click="vm.newNotePage()" aria-label="photo" class="md-icon-button">
+		<md-button ng-click="vm.newReturnWizardPage()" aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-comment-plus-outline"></md-icon>
         </md-button>
       </md-fab-actions>

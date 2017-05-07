@@ -52,8 +52,11 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/return-wizard/views/edit/return-wizard-edit.html',
-                        controller : 'ReturnWizardEditController as vm'
+                        controller : 'editReturnWizardController as vm'
                     }
+                },
+                params: {
+                 obj: null
                 },
                 resolve  : {
 					DashboardData: function (msApi)
@@ -71,8 +74,11 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/return-wizard/views/view/return-wizard-view.html',
-                        controller : 'ReturnWizardViewController as vm'
+                        controller : 'viewReturnWizardController as vm'
                     }
+                },
+                params: {
+                 obj: null
                 },
                 resolve  : {
 					DashboardData: function (msApi)
@@ -90,7 +96,7 @@
                 views    : {
                     'content@app': {
                         templateUrl: 'app/main/apps/return-wizard/views/new/return-wizard-new.html',
-                        controller : 'ReturnWizardNewController as vm'
+                        controller : 'newReturnWizardController as vm'
                     }
                 },
                 resolve  : {

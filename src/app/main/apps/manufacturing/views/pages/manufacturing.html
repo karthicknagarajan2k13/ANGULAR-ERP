@@ -42,7 +42,7 @@
 
                                     <md-input-container flex>
 										<label>Status</label>
-										<md-select ng-model="vm.search_data.status" multiple>
+										<md-select ng-model="vm.search_data.status1" multiple>
 											<md-option ng-repeat="status in ['Draft', 'InProgress', 'Failed', 'Failed & Restarted', 'Completed']" value="{{status}}">
 												{{status}}
 											</md-option>
@@ -52,7 +52,7 @@
 								<div layout="column" layout-gt-xs="row" flex>
 									<md-input-container flex>
 										<label>Type</label>
-										<md-select ng-model="vm.search_data.m_type" multiple>
+										<md-select ng-model="vm.search_data.m_type1" multiple>
 											<md-option ng-repeat="m_type in ['Made - to - Order', 'Made - to - Stock']" value="{{m_type}}">
 												{{m_type}}
 											</md-option>

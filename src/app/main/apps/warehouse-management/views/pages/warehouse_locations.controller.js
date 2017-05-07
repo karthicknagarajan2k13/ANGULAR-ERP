@@ -105,8 +105,9 @@
             var dataPromise = whApi.getWarehouseLocations(vm.search_data);
             dataPromise.then(function(result) { 
                 $scope.warehouse_locations_data = result; 
+                vm.search_data.status = ''
             });
-            vm.search_data.status = ''
+            
         }
         vm.searchWarehouseLocationDataClear = function(id){
             vm.search_data = {}

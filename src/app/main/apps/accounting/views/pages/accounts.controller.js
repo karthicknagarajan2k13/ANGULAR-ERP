@@ -20,6 +20,8 @@
 
         // Data
         vm.search_data = {}
+        vm.search_data.acc_type1 = []
+
         var dataPromise = accApi.getAccounts({});
         dataPromise.then(function(result) { 
             $scope.accounts_data = result;
@@ -83,9 +85,11 @@
             } 
         };
         vm.searchAccountData = function(id){
+            vm.search_data.acc_type =  JSON.stringify(vm.search_data.acc_type1)
             var dataPromise = accApi.getAccounts(vm.search_data);
             dataPromise.then(function(result) { 
-                $scope.accounts_data = result; 
+                $scope.accounts_data = result;
+                vm.search_data.acc_type = ""
             }); 
         }
         vm.searchAccountDataClear = function(id){

@@ -4,7 +4,7 @@
     <div class="header md-accent-bg" layout="row" layout-align="space-between">
         <div layout="column" layout-align="space-between">
             <div class="breadcrumb" layout="row" layout-align="start center">
-                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a ng-click="vm.WarehousesPage()" href="">Return Wizard </a>&nbsp; / &nbsp;<a ng-click="vm.WarehousesPage()" href="">Returns </a> </span>&nbsp; / &nbsp; New
+                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a ng-click="vm.ReturnWizardsPage()" href="">Return Wizard </a>&nbsp; / &nbsp;<a ng-click="vm.ReturnWizardsPage()" href="">Returns </a> </span>&nbsp; / &nbsp; New
             </div>
         </div>
     </div>
@@ -22,52 +22,53 @@
 
                 <md-tab-body>
                     <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
-                        <form>
+                        <form ng-submit="vm.saveReturnWizard()" name="submitForm" novalidate>
                             <div layout="column" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>ID</label>
-										<input type="text" ng-model="" value=""> 
-									</md-input-container>
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Subject</label>
-										<input type="text" ng-model="" value="">
+										<input type="text" ng-model="vm.return_wizard.subject" value="" required>
+                                       <div ng-messages="submitForm.subject.$error" role="alert">
+                                          <div ng-message="required">
+                                             <span >Subject field is required</span>
+                                          </div>
+                                       </div>
 									</md-input-container>
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>Invoice</label>
-                                        <md-select ng-model="vm.search_data.c_type1">
-											<md-option ng-repeat="type in ['1', '2']" value="{{type}}">
-												{{type}}
-											</md-option>
-										</md-select>
-									</md-input-container>
+                                        <label>Invoice</label>
+                                        <md-select ng-model="vm.return_wizard.invoice_id">
+                                            <md-option ng-repeat="invoice in get_invoices" value="{{invoice.invoice_id}}">
+                                                {{invoice.name}}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Customer</label>
+                                        <md-select ng-model="vm.return_wizard.customer_id">
+                                            <md-option ng-repeat="customer in get_customers" value="{{customer.customer_id}}">
+                                                {{customer.name}}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
                                 </div>
 								<div layout="row" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Customer</label>
-										<md-select ng-model="vm.search_data.c_type1">
-											<md-option ng-repeat="type in ['1', '2']" value="{{type}}">
-												{{type}}
-											</md-option>
-										</md-select>
-									</md-input-container>
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Original Amount</label>
-										<input type="text"  ng-model="" value="">
+										<input type="text"  ng-model="vm.return_wizard.original_amount" value="">
 									</md-input-container>
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Shipping Charges</label>
-										<input type="text"  ng-model="" value="">
+										<input type="text"  ng-model="vm.return_wizard.shipping_charges" value="">
+									</md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+										<label>Amount to be Refunded</label>
+										<input type="text" ng-model="vm.return_wizard.amount_to_be_refunded" value="">
 									</md-input-container>
 								</div>
 								
 								<div layout="row" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Amount to be Refunded</label>
-										<input type="text"  ng-model="" value="">
-									</md-input-container>
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Refund Type</label>
-										<md-select ng-model="vm.search_data.c_type1">
+										<md-select ng-model="vm.return_wizard.refund_type">
 											<md-option ng-repeat="type in ['Full', 'Partial']" value="{{type}}">
 												{{type}}
 											</md-option>
@@ -75,22 +76,21 @@
 									</md-input-container>
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Payment Type</label>
-										<md-select ng-model="vm.search_data.c_type1">
+										<md-select ng-model="vm.return_wizard.payment_type">
 											<md-option ng-repeat="type in ['Cash', 'Cheque', 'Credit/Debit Cart']" value="{{type}}">
 												{{type}}
 											</md-option>
 										</md-select>
 									</md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <md-datepicker ng-model="vm.return_wizard.date_paid" md-placeholder="Date Paid"></md-datepicker>
+									</md-input-container>
 								</div>
 								
 								<div layout="row" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Date Paid</label>
-										<input type="text"  ng-model="" value="">
-									</md-input-container>
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Status</label>
-										<md-select ng-model="vm.search_data.c_type1">
+										<md-select ng-model="vm.return_wizard.status">
 											<md-option ng-repeat="type in ['Draft', 'Return Inprogress', 'Cancelled']" value="{{type}}">
 												{{type}}
 											</md-option>
@@ -98,7 +98,7 @@
 									</md-input-container>
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Reason for Return</label>
-										<md-select ng-model="vm.search_data.c_type1">
+										<md-select ng-model="vm.return_wizard.reason_for_return">
 											<md-option ng-repeat="type in ['Defective item', 'Listing error', 'Technician error', 'Buyer’s Remorse', 'Automatic Claim', 'Other']" value="{{type}}">
 												{{type}}
 											</md-option>
@@ -109,65 +109,23 @@
 								<div layout="row" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex="33">
 										<label>Return Description</label>
-										<input type="text"  ng-model="" value="">
+										<input type="text"  ng-model="vm.return_wizard.return_description" value="">
 									</md-input-container>
                                 </div>
-								
+                            <div class="actions" layout="row" layout-align="start center">
+                                    <md-button type="submit" class="md-raised md-accent submit-button" aria-label="Save"
+                                               ng-disabled="submitForm.$invalid || submitForm.$pristine"
+                                               translate="Save" translate-attr-aria-label="Save">
+                                        Save
+                                    </md-button>
+                                    <md-button ng-click="vm.return_wizardDataClear()" class="md-raised md-accent">Clear</md-button>
+                            </div> 
 								
 								
                         </form>
-<!-- 						<div class="actions" layout="row" layout-align="start center">
-							<md-button ng-click="vm.editWarehousePage(warehouse_data)" class="md-raised md-accent">Edit</md-button>
-							<md-button ng-click="vm.deleteWarehouse(warehouse_data.id)" class="md-raised md-accent">Delete</md-button>
-						</div> -->
                     </div>
                 </md-tab-body>
             </md-tab>
-
-
-            <md-tab>
-                <md-tab-label>
-                    <span>Other Info</span>
-                </md-tab-label>
-
-                <md-tab-body>
-                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
-                        <form>
-                            <div layout="column" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Date Created</label>
-										<input type="text" ng-model="" value="">
-									</md-input-container>
-									
-									<md-input-container class="md-block" flex-gt-sm>
-										<label>Created By</label>
-										<input type="text" ng-model="" value="">
-									</md-input-container>
-
-                                   <md-input-container class="md-block" flex-gt-sm>
-										<label>Date Modified</label>
-										<input type="text" ng-model="" value="">
-									</md-input-container>
-                                </div>
-								<div layout="row" layout-gt-xs="row" flex>
-                                    <md-input-container class="md-block" flex="33">
-										<label>Modified By</label>
-										<input type="text" ng-model="" value="">
-									</md-input-container>
-									
-                                </div>
-								
-                        </form>
-						
-<!-- 						<div class="actions" layout="row" layout-align="start center">
-							<md-button ng-click="vm.editWarehousePage(warehouse_data)" class="md-raised md-accent">Edit</md-button>
-							<md-button ng-click="vm.deleteWarehouse(warehouse_data.id)" class="md-raised md-accent">Delete</md-button>
-						</div> -->
-                    </div>
-                </md-tab-body>
-            </md-tab>
-			
-			
         </md-tabs>
 
     </div>
@@ -196,13 +154,13 @@
         <md-button aria-label="comment" class="md-icon-button">
           <md-icon md-font-icon="icon-menu"></md-icon>
         </md-button>
-		<md-button ng-click="vm.deleteWarehouse(warehouse_data.id)" aria-label="photo" class="md-icon-button">
+		<md-button aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-delete"></md-icon>
         </md-button>
-        <md-button ng-click="vm.editWarehousePage(warehouse_data)" aria-label="label" class="md-icon-button">
+        <md-button aria-label="label" class="md-icon-button">
           <md-icon md-font-icon="icon-pencil"></md-icon>
         </md-button>
-		<md-button ng-click="vm.newWarehousePage()" aria-label="photo" class="md-icon-button">
+		<md-button aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-comment-plus-outline"></md-icon>
         </md-button>
       </md-fab-actions>

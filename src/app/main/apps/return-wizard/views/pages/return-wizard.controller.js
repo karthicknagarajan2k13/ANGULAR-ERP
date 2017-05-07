@@ -7,26 +7,36 @@
         .controller('ReturnWizardController', ReturnWizardController);
 
     /** @ngInject */
-	
-	
-    function ReturnWizardController($scope, $interval, $state, $mdSidenav, DashboardData)
+    function ReturnWizardController(rwApi,crmApi,omApi,$window, $scope, $state)
     {
+        $scope.isOpen = false;
+        $scope.demo = {
+            isOpen: false,
+            count: 0,
+            selectedDirection: 'left'
+        };
+        
         var vm = this;
 
         // Data
-        vm.dashboardData = DashboardData;
-		vm.projects = vm.dashboardData.projects;
-		
-		vm.tabledata1 = [
-        {date: '22/04/2017', type: 'type-1', name: 'Janis M Parker', code: '0000001', notify: 'Lorem Ipsum is simply dummy text', orderID: '00001', total: '$256', status: 'Booked'},
-		{date: '30/04/2017', type: 'type-2', name: 'Rochelle R Bennett', code: '0000005', notify: ' It was popularised in the 1960s', orderID: '00001', total: '$146', status: 'test status'},
-		{date: '01/08/2017', type: 'type-3', name: 'Anna F Henderson', code: '0000006', notify: 'test notify', orderID: '00005', total: '$559', status: 'test status'},
-		{date: '03/04/2017', type: 'type-4', name: 'Sean M Williams', code: '0000001', notify: ' It was popularised in the 1960s', orderID: '00001', total: '$916', status: 'test status'},
-        {date: '22/04/2017', type: 'type-5', name: 'Bonnie M Huynh', code: '0000002', notify: 'test notify', orderID: '00001', total: '$056', status: 'test status'}
-		];
-		
-		
-		
+        vm.search_data = {}
+        vm.search_data.status1 = []
+        vm.search_data.reason_for_return1 = []
+
+        var dataPromise = rwApi.getReturnWizards({});
+        dataPromise.then(function(result) { 
+            $scope.return_wizards_data = result;
+            console.log("$scope.return_wizards_data",$scope.return_wizards_data)
+        }); 
+
+        var dataPromise = crmApi.get_customers({});
+        dataPromise.then(function(result) { 
+            $scope.get_customers = result;
+        });
+        var dataPromise = omApi.get_invoices({});
+        dataPromise.then(function(result) { 
+            $scope.get_invoices = result;
+        });
 
         vm.dtInstance = {};
         vm.dtOptions = {
@@ -35,7 +45,7 @@
                 {
                     // Target the id column
                     targets: 0,
-                    width  : '72px'
+                    width  : '10px'
                 }
             ],
             initComplete: function ()
@@ -58,19 +68,46 @@
             scrollY     : 'auto',
             responsive  : true
         };
-		
 
-        // Methods
-        vm.notifypage = function(id){
-			 $state.go('app.dashboard.notifications', {id: id});
-		}
-		
-		vm.dbpage = function(id){
-			 $state.go('app.dashboard.dashboard', {id: id});
-		}
-	    //////////
-		
-		
-		
+
+        vm.newReturnWizardPage = function(){
+            $state.go('app.return-wizard.return-wizard-new'); 
+        }
+        vm.viewReturnWizardPage = function(id){
+            $state.go('app.return-wizard.return-wizard-view', {obj:{id: id}}); 
+        }
+        vm.deleteAllReturnWizard = function () {
+            var delete_ids = [];
+            angular.forEach($scope.return_wizards_data, function (checked) {
+                if (checked.checked) {
+                    delete_ids.push(checked.id);
+                }
+            });
+            if (delete_ids.length >= 1){
+                delete_ids = JSON.stringify(delete_ids)
+                var dataPromise = rwApi.deleteAllReturnWizard({ids: delete_ids})
+                dataPromise.then(function(result) { 
+                    var dataPromise = rwApi.getReturnWizards({});
+                    dataPromise.then(function(result) { 
+                        $scope.return_wizards_data = result;
+                    }); 
+                });
+            } 
+        };
+        vm.searchReturnWizardData = function(id){
+            vm.search_data.status =  JSON.stringify(vm.search_data.status1)
+            vm.search_data.reason_for_return =  JSON.stringify(vm.search_data.reason_for_return1)
+            var dataPromise = rwApi.getReturnWizards(vm.search_data);
+            dataPromise.then(function(result) { 
+                $scope.return_wizards_data = result; 
+                vm.search_data.status = ''
+                vm.search_data.reason_for_return = ''
+            });
+        }
+        vm.searchReturnWizardDataClear = function(id){
+            vm.search_data = {}
+        }
+
+        
     }
 })();

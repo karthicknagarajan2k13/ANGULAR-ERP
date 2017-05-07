@@ -20,6 +20,8 @@
 
         // Data
         vm.search_data = {}
+        vm.search_data.status1 = []
+        vm.search_data.m_type1 = []
         var dataPromise = mfgApi.getManufacturings({});
         dataPromise.then(function(result) { 
             $scope.manufacturings_data = result;
@@ -88,9 +90,13 @@
             }
         };
         vm.searchManufacturingData = function(id){
+            vm.search_data.status =  JSON.stringify(vm.search_data.status1)
+            vm.search_data.m_type =  JSON.stringify(vm.search_data.m_type1)
             var dataPromise = mfgApi.getManufacturings(vm.search_data);
             dataPromise.then(function(result) { 
-                $scope.manufacturings_data = result; 
+                $scope.manufacturings_data = result;
+                vm.search_data.status = ""
+                vm.search_data.m_type = ""
             }); 
         }
         vm.searchManufacturingDataClear = function(id){

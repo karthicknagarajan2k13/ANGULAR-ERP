@@ -4,83 +4,85 @@
 
     angular
         .module('app.return-wizard')
-        .controller('ReturnWizardEditController', ReturnWizardEditController);
+        .controller('editReturnWizardController', editReturnWizardController);
 
     /** @ngInject */
-	
-	
-    function ReturnWizardEditController($scope, $interval, $state, $mdSidenav, DashboardData)
+    function editReturnWizardController(omApi,crmApi,rwApi, $scope, $document, $state)
     {
-        var vm = this;
 
-        // Data
-        vm.dashboardData = DashboardData;
-		vm.projects = vm.dashboardData.projects;
-		
-		vm.tabledata1 = [
-        {date: '22/04/2017', type: 'type-1', name: 'Janis M Parker', code: '0000001', notify: 'Lorem Ipsum is simply dummy text', orderID: '00001', total: '$256', status: 'Booked'},
-		{date: '30/04/2017', type: 'type-2', name: 'Rochelle R Bennett', code: '0000005', notify: ' It was popularised in the 1960s', orderID: '00001', total: '$146', status: 'test status'},
-		{date: '01/08/2017', type: 'type-3', name: 'Anna F Henderson', code: '0000006', notify: 'test notify', orderID: '00005', total: '$559', status: 'test status'},
-		{date: '03/04/2017', type: 'type-4', name: 'Sean M Williams', code: '0000001', notify: ' It was popularised in the 1960s', orderID: '00001', total: '$916', status: 'test status'},
-        {date: '22/04/2017', type: 'type-5', name: 'Bonnie M Huynh', code: '0000002', notify: 'test notify', orderID: '00001', total: '$056', status: 'test status'}
-		];
-		
-		$scope.id = "CUS0007";
-		$scope.code = "123456";
-		$scope.name = "John";
-		$scope.description = "Lorem Ipsum is simply dummy text";
-		$scope.date = "22-07-2017";
-		$scope.subject = "Subject";
-		$scope.amount = "$254";
-		$scope.invoice = "No.00001";
-		$scope.date="25-01-2017"
-		
-		
-		
-
-        vm.dtInstance = {};
-        vm.dtOptions = {
-            dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
-            columnDefs  : [
-                {
-                    // Target the id column
-                    targets: 0,
-                    width  : '72px'
-                }
-            ],
-            initComplete: function ()
-            {
-                var api = this.api(),
-                    searchBox = angular.element('body').find('#e-commerce-products-search');
-
-                // Bind an external input as a table wide search box
-                if ( searchBox.length > 0 )
-                {
-                    searchBox.on('keyup', function (event)
-                    {
-                        api.search(event.target.value).draw();
-                    });
-                }
-            },
-            pagingType  : 'simple',
-            lengthMenu  : [10, 20, 30, 50, 100],
-            pageLength  : 20,
-            scrollY     : 'auto',
-            responsive  : true
+        $scope.isOpen = false;
+        $scope.demo = {
+        isOpen: false,
+        count: 0,
+        selectedDirection: 'left'
         };
-		
+        var vm = this;
+        vm.return_wizard = $state.params.obj
 
-        // Methods
-        vm.notifypage = function(id){
-			 $state.go('app.dashboard.notifications', {id: id});
-		}
-		
-		vm.dbpage = function(id){
-			 $state.go('app.dashboard.dashboard', {id: id});
-		}
-	    //////////
-		
-		
-		
+        vm.ssName = "s"
+
+        var dataPromise = crmApi.get_customers({});
+        dataPromise.then(function(result) { 
+            $scope.get_customers = result;
+        });
+        var dataPromise = omApi.get_invoices({});
+        dataPromise.then(function(result) { 
+            $scope.get_invoices = result;
+        });
+
+        vm.updateReturnWizard = function(){
+           var dataPromise = rwApi.updateReturnWizard(vm.return_wizard.return_wizard.id,vm.return_wizard);
+            dataPromise.then(function(result) { 
+                $scope.data = result; 
+                if( typeof($scope.data.message) !== "undefined"){
+                    console.log("response",$scope.data.message)
+                }else{
+                    if( typeof($scope.data.return_wizard_id) !== "undefined"){
+                        $state.go('app.return-wizard.return-wizard-view', {obj:{id: $scope.data.return_wizard_id}}); 
+                    }
+                }
+            }); 
+        }
+        vm.viewReturnWizardPage =function(id){
+            $state.go('app.return-wizard.return-wizard-view', {obj:{id: id}}); 
+        }
+        vm.newReturnWizardPage = function(){
+            $state.go('app.return-wizard.return-wizard-new'); 
+        }
+        vm.ReturnWizardsPage = function(){
+            $state.go('app.return-wizard.return-wizard'); 
+        }
+        
+        /**
+         * File upload success callback
+         * Triggers when single upload completed
+         *
+         * @param file
+         * @param message
+         */
+        function fileSuccess(file, message)  {
+            // Iterate through the media list, find the one we
+            // are added as a temp and replace its data
+            // Normally you would parse the message and extract
+            // the uploaded file data from it
+            angular.forEach(vm.product.images, function (media, index)
+            {
+                if ( media.id === file.uniqueIdentifier )
+                {
+                    // Normally you would update the media item
+                    // from database but we are cheating here!
+                    var fileReader = new FileReader();
+                    fileReader.readAsDataURL(media.file.file);
+                    fileReader.onload = function (event)
+                    {
+                        media.url = event.target.result;
+                    };
+
+                    // Update the image type so the overlay can go away
+                    media.type = 'image';
+                }
+            });
+        }
+        
     }
 })();

@@ -90,8 +90,6 @@
         }
         vm.searchChequeRegisterDataClear = function(id){
             vm.search_data = {}
-        }
-
-		
+        }		
     }
 })();
