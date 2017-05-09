@@ -11,7 +11,8 @@
                 'nvd3',
                 'textAngular',
                 'uiGmapgoogle-maps',
-                'xeditable'
+                'xeditable',
+				'angular-chartist'
             ]
         )
         .config(config);
@@ -232,9 +233,27 @@
 				},
                 bodyClass: 'accounting-new'
             })
+			
+			.state('app.accounting.cash_flow_report', {
+                url      : '/cash_flow_report',
+                views    : {
+                    'content@app': {
+                        templateUrl: 'app/main/apps/accounting/views/pages/cash_flow_report.html',
+                        controller : 'InvoiceController as vm'
+                    }
+                },
+                resolve  : {
+                    Invoice: function (msApi)
+                    {
+                        return msApi.resolve('invoice@get');
+                    }
+                },
+                bodyClass: 'accounting'
+            })
             
 
         // Api
+		msApiProvider.register('invoice', ['app/data/invoice/invoice.json']);
 		msApiProvider.register('dashboard.server', ['app/data/dashboard/server/data.json']);
 		msApiProvider.register('dashboard.project', ['app/data/dashboard/project/data.json']);
 
@@ -262,10 +281,10 @@
             state: 'app.accounting.cheque-register'
         });
 		
-		/* msNavigationServiceProvider.saveItem('apps.accounting.accounting-edit', {
-            title: 'Accounting Edit',
-            state: 'app.accounting.accounting-edit'
-        }); */
+		msNavigationServiceProvider.saveItem('apps.accounting.cash_flow_report', {
+            title: 'Cash Flow Report',
+            state: 'app.accounting.cash_flow_report'
+        });
  
     }
 })();

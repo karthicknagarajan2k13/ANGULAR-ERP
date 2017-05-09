@@ -1,0 +1,73 @@
+{
+    "data": {
+        "from": {
+            "title": "Fuse Inc.",
+            "address": "2810 Country Club Road Cranford, NJ 07016",
+            "phone": "+66 123 455 87",
+            "email": "hello@test.com",
+            "website": "www.test.com"
+        },
+        "client": {
+            "title": "John Doe",
+            "address": "9301 Wood Street Philadelphia, PA 19111",
+            "phone": "+55 552 455 87",
+            "email": "test@mail.com"
+        },
+        "number": "P9-0004",
+        "date": "Jul 19, 2015",
+        "dueDate": "Aug 24, 2015",
+        "services": [
+            {
+                "inflow": "case sales",
+				"outflow": "Miscellaneous Direct Expenses",
+				"amt4": "10",
+                "amt5": "10",
+                "amt6": "10",
+                "total2": "100",
+                "amt1": "10",
+                "amt2": "10",
+                "amt3": "10",
+                "total": "100"
+            },
+			
+			{
+                "inflow": "Main Income",
+				"outflow": "Heat, Light and Power",
+				"amt4": "100",
+                "amt5": "100",
+                "amt6": "150",
+                "total2": "100",
+                "amt1": "100",
+                "amt2": "100",
+                "amt3": "150",
+                "total": "100"
+            },
+			
+			{
+                "inflow": "Other income",
+				"outflow": "Totals",
+				"amt4": "115.00",
+                "amt5": "115.00",
+                "amt6": "165.00",
+                "total2": "205.00",
+                "amt1": "5",
+                "amt2": "5",
+                "amt3": "5",
+                "total": "10"
+            },
+			
+			{
+                "inflow": "Totals",
+                "amt1": "115.00",
+                "amt2": "115.00",
+                "amt3": "165.00",
+                "total": "205.00"
+            }
+            
+        ],
+        "subtotal": "8445",
+        "tax": "675.60",
+        "discount": "120.60",
+        "total": "9000"
+    }
+}

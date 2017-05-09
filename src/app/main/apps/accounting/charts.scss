@@ -1,0 +1,43 @@
+.chart-doc-page {
+
+	ul#flow0 li {display:inline; margin-top:10px;}
+	i.icon.icon-checkbox-blank-circle.inflow {
+		font-size: 18px;
+		color: #00bcff;
+	}
+	
+	i.icon.icon-checkbox-blank-circle.outflow {
+		font-size: 18px;
+		color:#037ca7;
+	}
+	
+	i.icon.icon-checkbox-blank-circle.net0 {
+		font-size: 18px;
+		color:#aae9ff;
+	}
+	
+	
+
+    .content {
+        max-width: 1035px;
+		
+		.ct-series-a .ct-bar, .ct-series-a .ct-line, .ct-series-a .ct-point, .ct-series-a .ct-slice-donut {
+			stroke: #00bcff;
+		}
+		
+		.ct-series-b .ct-bar, .ct-series-b .ct-line, .ct-series-b .ct-point, .ct-series-b .ct-slice-donut {
+			stroke: #037ca7;
+		}
+		.ct-series-c .ct-bar, .ct-series-c .ct-line, .ct-series-c .ct-point, .ct-series-c .ct-slice-donut {
+			stroke: #aae9ff;
+		}
+		
+        .c3 {
+            > svg {
+                min-height: 350px;
+            }
+        }
+    }
+
+}
+

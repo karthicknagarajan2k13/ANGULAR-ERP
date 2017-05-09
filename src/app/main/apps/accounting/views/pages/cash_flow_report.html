@@ -1,0 +1,259 @@
+<div id="forms" class="page-layout simple fullwidth doc-page" layout="column" style="min-height:auto;">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div style="margin-bottom:20px;" layout="column" layout-align="space-between">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <span style="color:#00bcff;" class="parent"> <a href="">Dashboard</a> &nbsp;</span> / Cash Flow Report
+            </div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+</div>
+
+
+
+
+
+<div id="chartist" class="page-layout simple fullwidth doc-page chart-doc-page">
+<!-- CENTER -->
+    <div style="margin:10px 25px;" class="center" layout="column" flex>
+
+        <!-- CONTENT CARD -->
+        <div class="content-card" layout="column" flex>
+            <!-- CONTENT -->
+            <div class="content">
+				<div class="card md-whiteframe-4dp">
+					<div>
+						<ul id="flow0">
+							<li><i class="icon icon-checkbox-blank-circle inflow"></i> Inflow</li>
+							<li><i class="icon icon-checkbox-blank-circle outflow"></i> Outflow</li>
+							<li><i class="icon icon-checkbox-blank-circle net0"></i> Net</li>
+						</ul>
+                    </div>
+					<chartist class="ct-chart ct-golden-section" chartist-data="vm.barChart.data" chartist-chart-type="Bar" chartist-chart-options="vm.barChart.options" chartist-responsive-options="vm.barChart.responsiveOptions"></chartist>
+				</div>
+			</div>
+            <!-- / CONTENT -->
+
+        </div>
+        <!-- / CONTENT CARD -->
+
+    </div>
+<!-- / CENTER -->
+</div>
+
+
+
+ 
+<div id="invoice" class="compact page-layout blank" layout="row" ms-scroll>
+    <div class="invoice-container">
+
+        <!-- INVOICE -->
+        <div class="card md-whiteframe-8dp">
+					
+			<div class="content">
+                <table class="simple invoice-table">
+                    <thead>
+                        <th>Inflow</th>
+                        <th>Apr</th>
+                        <th>May</th>
+						<th>Jun</th>
+                        <th>Jul</th>
+                        <th>Aug</th>
+						<th>Sep</th>
+                        <th>Oct</th>
+                        <th>Nov</th>
+						<th>Dec</th>
+                        <th>Jan</th>
+                        <th>Feb</th>
+						<th>Mar</th>
+                        <th>Total</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="service in vm.invoice.services">
+                            <td>
+                                <div class="title">
+                                    {{service.inflow}}
+                                </div>
+                            </td>
+                            <td>{{service.amt1}}</td>
+                            <td>{{service.amt2}}</td>
+							<td>{{service.amt3}}</td>
+							<td>{{service.amt3}}</td>
+                            <td>{{service.amt1}}</td>
+							<td>{{service.amt2}}</td>
+							<td>{{service.amt3}}</td>
+                            <td>{{service.amt1}}</td>
+							<td>{{service.amt2}}</td>
+							<td>{{service.amt3}}</td>
+                            <td>{{service.amt1}}</td>
+							<td>{{service.amt2}}</td>
+							<td>{{service.total}}</td>
+                        </tr>
+                        <!-- Double the invoice data for demo purposes -->
+                        <!-- <tr ng-repeat="service in vm.invoice.services">
+                            <td>
+                                <div class="title">
+                                    {{service.title}}
+                                </div>
+                            </td>
+                            <td>
+                                {{service.unit}}
+                            </td>
+                            <td class="text-right">
+                                {{service.unitPrice | currency}}
+                            </td>
+                            <td class="text-right">
+                                {{service.quantity}}
+                            </td>
+                            <td class="text-right">
+                                {{service.total | currency}}
+                            </td>
+                        </tr> -->
+                    </tbody>
+                </table>
+				
+				<!-- <div style="border-bottom:1px solid #ccc;"></div> -->
+				
+				<table class="simple invoice-table">
+                    <thead>
+                        <th>Outflow</th>
+                        <th></th>
+                        <th></th>
+						<th></th>
+                        <th></th>
+                        <th></th>
+						<th></th>
+                        <th></th>
+                        <th></th>
+						<th></th>
+                        <th></th>
+                        <th></th>
+						<th></th>
+                        <th></th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="service in vm.invoice.services">
+                            <td>
+                                <div class="title">
+                                    {{service.outflow}}
+                                </div>
+                            </td>
+                            <td>{{service.amt4}}</td>
+                            <td>{{service.amt5}}</td>
+							<td>{{service.amt6}}</td>
+							<td>{{service.amt4}}</td>
+                            <td>{{service.amt5}}</td>
+							<td>{{service.amt6}}</td>
+							<td>{{service.amt4}}</td>
+                            <td>{{service.amt5}}</td>
+							<td>{{service.amt6}}</td>
+							<td>{{service.amt4}}</td>
+                            <td>{{service.amt5}}</td>
+							<td>{{service.amt6}}</td>
+							<td>{{service.total2}}</td>
+                        </tr>
+                        <!-- Double the invoice data for demo purposes -->
+                        <!-- <tr ng-repeat="service in vm.invoice.services">
+                            <td>
+                                <div class="title">
+                                    {{service.title}}
+                                </div>
+                            </td>
+                            <td>
+                                {{service.unit}}
+                            </td>
+                            <td class="text-right">
+                                {{service.unitPrice | currency}}
+                            </td>
+                            <td class="text-right">
+                                {{service.quantity}}
+                            </td>
+                            <td class="text-right">
+                                {{service.total | currency}}
+                            </td>
+                        </tr> -->
+                    </tbody>
+                </table>
+
+                <table class="simple invoice-table-footer">
+                    <tbody>
+                       
+                        <tr class="total">
+                            <td class="text-right">Net Cash Flow :</td>
+                            <td>1066.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            
+        </div>
+        <!-- / INVOICE -->
+
+        <!-- Use the following element to add breaks to your pages -->
+        <!-- This will make sure that the section after this element will be printed on a new page -->
+        <div class="page-break"></div>
+
+    </div>
+</div>
+
+
+
+
+<!-- ADD BUTTON -->
+	<!-- <div class="add-btn-fixed">
+		<md-button  ng-click="vm.newCustomerPage()" class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
+			<md-icon md-font-icon="icon-plus"></md-icon>
+		</md-button>
+	</div> -->
+	
+	<div class="add-btn-fixed">
+	<md-fab-toolbar md-open="demo.isOpen" count="demo.count"
+                  md-direction="{{demo.selectedDirection}}">
+    <md-fab-trigger class="align-with-text">
+      <md-button aria-label="menu" class="md-fab md-primary">
+        <md-icon md-font-icon="icon-menu"></md-icon>
+      </md-button>
+    </md-fab-trigger>
+
+    <md-toolbar>
+      <md-fab-actions class="md-toolbar-tools">
+        <md-button aria-label="comment" class="md-icon-button">
+          <md-icon md-font-icon="icon-menu"></md-icon>
+        </md-button>
+		<md-button ng-click="vm.deleteAllNote()" aria-label="photo" class="md-icon-button">
+          <md-icon md-font-icon="icon-delete"></md-icon>
+        </md-button>
+        <md-button aria-label="label" class="md-icon-button">
+          <md-icon md-font-icon="icon-pencil"></md-icon>
+        </md-button>
+		<md-button ng-click="vm.newNotePage()" aria-label="photo" class="md-icon-button">
+          <md-icon md-font-icon="icon-comment-plus-outline"></md-icon>
+        </md-button>
+      </md-fab-actions>
+    </md-toolbar>
+  </md-fab-toolbar>
+  </div>
+  
+<!-- / ADD BUTTON -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
