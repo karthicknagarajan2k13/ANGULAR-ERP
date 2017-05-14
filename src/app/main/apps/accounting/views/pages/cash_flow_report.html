@@ -28,7 +28,6 @@
 						<ul id="flow0">
 							<li><i class="icon icon-checkbox-blank-circle inflow"></i> Inflow</li>
 							<li><i class="icon icon-checkbox-blank-circle outflow"></i> Outflow</li>
-							<li><i class="icon icon-checkbox-blank-circle net0"></i> Net</li>
 						</ul>
                     </div>
 					<chartist class="ct-chart ct-golden-section" chartist-data="vm.barChart.data" chartist-chart-type="Bar" chartist-chart-options="vm.barChart.options" chartist-responsive-options="vm.barChart.responsiveOptions"></chartist>
@@ -56,124 +55,76 @@
                 <table class="simple invoice-table">
                     <thead>
                         <th>Inflow</th>
-                        <th>Apr</th>
-                        <th>May</th>
-						<th>Jun</th>
-                        <th>Jul</th>
-                        <th>Aug</th>
-						<th>Sep</th>
-                        <th>Oct</th>
-                        <th>Nov</th>
-						<th>Dec</th>
-                        <th>Jan</th>
-                        <th>Feb</th>
-						<th>Mar</th>
-                        <th>Total</th>
+                        <th ng-repeat="month in cash_flow_reports_data.months" >{{month}}</th>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="service in vm.invoice.services">
-                            <td>
-                                <div class="title">
-                                    {{service.inflow}}
+                        <tr>
+                            <td class="title">Sales</td>
+                            <td ng-repeat="sales_flow in cash_flow_reports_data.sales_flow track by $index">
+                                <div >
+                                    {{sales_flow}}
                                 </div>
                             </td>
-                            <td>{{service.amt1}}</td>
-                            <td>{{service.amt2}}</td>
-							<td>{{service.amt3}}</td>
-							<td>{{service.amt3}}</td>
-                            <td>{{service.amt1}}</td>
-							<td>{{service.amt2}}</td>
-							<td>{{service.amt3}}</td>
-                            <td>{{service.amt1}}</td>
-							<td>{{service.amt2}}</td>
-							<td>{{service.amt3}}</td>
-                            <td>{{service.amt1}}</td>
-							<td>{{service.amt2}}</td>
-							<td>{{service.total}}</td>
                         </tr>
-                        <!-- Double the invoice data for demo purposes -->
-                        <!-- <tr ng-repeat="service in vm.invoice.services">
-                            <td>
-                                <div class="title">
-                                    {{service.title}}
+                        <tr>
+                            <td class="title">Cheque Credit</td>
+                            <td ng-repeat="cheque_register_flow in cash_flow_reports_data.cheque_register_flow track by $index">
+                                <div>
+                                    {{cheque_register_flow}}
                                 </div>
                             </td>
-                            <td>
-                                {{service.unit}}
+                        </tr>
+                        <tr>
+                            <td class="title">Total</td>
+                            <td ng-repeat="flow in cash_flow_reports_data.flow track by $index">
+                                <div>
+                                    {{flow}}
+                                </div>
                             </td>
-                            <td class="text-right">
-                                {{service.unitPrice | currency}}
-                            </td>
-                            <td class="text-right">
-                                {{service.quantity}}
-                            </td>
-                            <td class="text-right">
-                                {{service.total | currency}}
-                            </td>
-                        </tr> -->
+                        </tr>
                     </tbody>
                 </table>
-				
-				<!-- <div style="border-bottom:1px solid #ccc;"></div> -->
-				
+								
 				<table class="simple invoice-table">
                     <thead>
                         <th>Outflow</th>
-                        <th></th>
-                        <th></th>
-						<th></th>
-                        <th></th>
-                        <th></th>
-						<th></th>
-                        <th></th>
-                        <th></th>
-						<th></th>
-                        <th></th>
-                        <th></th>
-						<th></th>
-                        <th></th>
+                        <th ng-repeat="month in cash_flow_reports_data.months" >{{month}}</th>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="service in vm.invoice.services">
-                            <td>
-                                <div class="title">
-                                    {{service.outflow}}
+                        <tr>
+                            <td class="title">Order Return</td>         
+                            <td ng-repeat="return_wizard_outflow in cash_flow_reports_data.return_wizard_outflow track by $index">
+                                <div>
+                                    {{return_wizard_outflow}}
                                 </div>
                             </td>
-                            <td>{{service.amt4}}</td>
-                            <td>{{service.amt5}}</td>
-							<td>{{service.amt6}}</td>
-							<td>{{service.amt4}}</td>
-                            <td>{{service.amt5}}</td>
-							<td>{{service.amt6}}</td>
-							<td>{{service.amt4}}</td>
-                            <td>{{service.amt5}}</td>
-							<td>{{service.amt6}}</td>
-							<td>{{service.amt4}}</td>
-                            <td>{{service.amt5}}</td>
-							<td>{{service.amt6}}</td>
-							<td>{{service.total2}}</td>
                         </tr>
-                        <!-- Double the invoice data for demo purposes -->
-                        <!-- <tr ng-repeat="service in vm.invoice.services">
-                            <td>
-                                <div class="title">
-                                    {{service.title}}
+                        <tr>
+                            <td class="title">Cheque Debit</td>
+                            <td ng-repeat="cheque_register_outflow in cash_flow_reports_data.cheque_register_outflow track by $index">
+                                <div>
+                                    {{cheque_register_outflow}}
                                 </div>
                             </td>
-                            <td>
-                                {{service.unit}}
+                        </tr>
+                        <tr>
+                            <td class="title">Material Cost</td>  
+                            <td ng-repeat="material_outflow in cash_flow_reports_data.material_outflow track by $index">
+                                <div>
+                                    {{material_outflow}}
+                                </div>
                             </td>
-                            <td class="text-right">
-                                {{service.unitPrice | currency}}
+                        </tr>
+                        <tr>
+                            <td class="title">Total</td>  
+                            <td ng-repeat="outflow in cash_flow_reports_data.outflow track by $index">
+                                <div>
+                                    {{outflow}}
+                                </div>
                             </td>
-                            <td class="text-right">
-                                {{service.quantity}}
-                            </td>
-                            <td class="text-right">
-                                {{service.total | currency}}
-                            </td>
-                        </tr> -->
+                        </tr>
+
+                        
                     </tbody>
                 </table>
 
@@ -182,7 +133,7 @@
                        
                         <tr class="total">
                             <td class="text-right">Net Cash Flow :</td>
-                            <td>1066.00</td>
+                            <td>{{cash_flow_reports_data.net_cash_flow}}</td>
                         </tr>
                     </tbody>
                 </table>

@@ -124,6 +124,12 @@
            });
         };
 
+        api.getCashFlowReports = function(data) {
+           return $http({method:"GET", url: api.baseUrl+"cash_flow_reports.json",params: data}).then(function(result){
+               return result.data;
+           });
+        };
+        
 
         return api;
     }
