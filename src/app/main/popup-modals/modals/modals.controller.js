@@ -10,6 +10,8 @@
     function modalsController(fuseTheming, $mdDialog, $document)
     {
         var vm = this;
+		
+		
         // Data
         vm.themes = fuseTheming.themes;
 
@@ -17,6 +19,9 @@
         vm.createTheme = createTheme;
 
         //////////
+		
+		
+		
 
         function createTheme(ev)
         {
@@ -29,6 +34,9 @@
                 clickOutsideToClose: true
             });
         }
+		
+		
+		
 		
 
     }
