@@ -27,7 +27,7 @@
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Salutation</label>
-                                        <md-select name="salutation" ng-model="vm.contact.contact_attributes.salutation" required>
+                                        <md-select name="salutation" ng-model="vm.contact.contact_attributes.salutation">
                                             <md-option ng-repeat="salutation in ['Mr.', 'Ms.', 'Mrs.', 'Prof.', 'Dr.']" value="{{salutation}}">
                                                 {{salutation}}
                                             </md-option>
@@ -78,7 +78,7 @@
 									</md-input-container>
                                     <md-input-container class="md-block" flex-gt-sm>
                                         <label>Phone Work</label>
-                                        <input type="text" name="phone_work" ng-model="vm.contact.contact_attributes.phone_work" required>
+                                        <input type="text" name="phone_work" ng-model="vm.contact.contact_attributes.phone_work">
                                         <div ng-messages="newContactForm.phone_work.$error" role="alert">
                                             <div ng-message="required">
                                                 <span >Phone Work field is required</span>
@@ -104,7 +104,7 @@
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Customer</label>
-                                        <md-select name="customer_id" ng-model="vm.contact.contact_attributes.customer_id" required>
+                                        <md-select name="customer_id" ng-model="vm.contact.contact_attributes.customer_id">
                                             <md-option ng-repeat="customer in vm.get_customers" value="{{customer.customer_id}}">
                                                 {{customer.name}}
                                             </md-option>
@@ -117,7 +117,7 @@
 									</md-input-container>
                                     <md-input-container class="md-block" flex-gt-sm>
                                         <label>Designation</label>
-                                        <input type="text" name="designation" ng-model="vm.contact.contact_attributes.designation" required>
+                                        <input type="text" name="designation" ng-model="vm.contact.contact_attributes.designation">
                                         <div ng-messages="newContactForm.designation.$error" role="alert">
                                             <div ng-message="required">
                                                 <span >Designation field is required</span>
@@ -128,7 +128,7 @@
 								<div layout="row" layout-gt-xs="row" flex>
 									<md-input-container class="md-block" flex="33">
 										<label>Department</label>
-										<input type="text" name="department" ng-model="vm.contact.contact_attributes.department" required>
+										<input type="text" name="department" ng-model="vm.contact.contact_attributes.department">
                                         <div ng-messages="newContactForm.department.$error" role="alert">
                                             <div ng-message="required">
                                                 <span >Department field is required</span>
@@ -139,7 +139,7 @@
                                 <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block"  flex="33">
                                         <label>Description</label>
-                                        <input type="text" name="decription" ng-model="vm.contact.contact_attributes.decription" required>
+                                        <input type="text" name="decription" ng-model="vm.contact.contact_attributes.decription">
                                         <div ng-messages="newContactForm.decription.$error" role="alert">
                                             <div ng-message="required">
                                                 <span >Description field is required</span>

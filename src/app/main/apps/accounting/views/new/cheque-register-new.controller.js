@@ -7,7 +7,7 @@
         .controller('newChequeRegisterController', newChequeRegisterController);
 
     /** @ngInject */
-    function newChequeRegisterController(accApi, $scope, $document, $state)
+    function newChequeRegisterController(crmApi, accApi, $scope, $document, $state)
     {
 
         $scope.isOpen = false;
@@ -21,6 +21,11 @@
         vm.ssName = "s"
         $scope.table_data = []
 
+        var dataPromise = crmApi.get_customers({});
+        dataPromise.then(function(result) { 
+            $scope.get_customers = result;
+        });
+
         vm.saveChequeRegister = function(){
             var dataPromise = accApi.createChequeRegister({cheque_register:vm.cheque_register});
             dataPromise.then(function(result) { 
@@ -29,13 +34,28 @@
                     console.log("response",$scope.data.message)
                 }else{
                     if( typeof($scope.data.cheque_register_id) !== "undefined"){
-                        $scope.table_data.push(["Code",$scope.data.cheque_register_id]);
-                        $scope.table_data.push(["Date",vm.cheque_register.cheque_date]);
-                        $scope.table_data.push(["Payee",vm.cheque_register.payee]);
-                        $scope.table_data.push(["Debit",vm.cheque_register.debit]);
-                        $scope.table_data.push(["Credit",vm.cheque_register.credit]);
-                        $scope.table_data.push(["Notes",vm.cheque_register.notes]);
-                        $scope.table_data.push(["Status",vm.cheque_register.status]);
+                        console.log("vm.cheque_register",vm.cheque_register)
+                        if (typeof($scope.data.cheque_register_id) !== "undefined"){
+                            $scope.table_data.push(["Code",$scope.data.cheque_register_id]);
+                        }
+                        if (typeof(vm.cheque_register.cheque_date) !== "undefined"){
+                            $scope.table_data.push(["Date",vm.cheque_register.cheque_date]);
+                        }
+                        if (typeof(vm.cheque_register.payee) !== "undefined"){
+                            $scope.table_data.push(["Payee",vm.cheque_register.payee]);
+                        }
+                        if (typeof(vm.cheque_register.debit) !== "undefined"){
+                            $scope.table_data.push(["Debit",vm.cheque_register.debit]);
+                        }                          
+                        if (typeof(vm.cheque_register.credit) !== "undefined"){
+                            $scope.table_data.push(["Credit",vm.cheque_register.credit]);
+                        }                         
+                        if (typeof(vm.cheque_register.notes) !== "undefined"){
+                            $scope.table_data.push(["Notes",vm.cheque_register.notes]);
+                        }                            
+                        if (typeof(vm.cheque_register.status) !== "undefined"){
+                            $scope.table_data.push(["Status",vm.cheque_register.status]);
+                        }                         
                         var docDefinition = {
                           content: [
                             {

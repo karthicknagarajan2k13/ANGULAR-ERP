@@ -26,7 +26,7 @@
                             <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Salutation</label>
-                                        <md-select name="salutation" ng-model="vm.employee.employee_attributes.salutation" required>
+                                        <md-select name="salutation" ng-model="vm.employee.employee_attributes.salutation">
                                             <md-option ng-repeat="salutation in ['Mr.', 'Ms.', 'Mrs.', 'Prof.', 'Dr.']" value="{{salutation}}">
                                                 {{salutation}}
                                             </md-option>
@@ -71,7 +71,7 @@
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Date Of Birth</label>
-                                        <md-datepicker name="date_of_birth" ng-model="vm.employee.employee_attributes.date_of_birth" md-placeholder="" required></md-datepicker>
+                                        <md-datepicker name="date_of_birth" ng-model="vm.employee.employee_attributes.date_of_birth" md-placeholder=""></md-datepicker>
 	                                    <div ng-messages="submitForm.date_of_birth.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Date Of Birth field is required</span>
@@ -81,7 +81,7 @@
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Gender</label>
-                                        <md-select ng-model="vm.employee.employee_attributes.gender" name="gender" required>
+                                        <md-select ng-model="vm.employee.employee_attributes.gender" name="gender">
                                             <md-option ng-repeat="gender in ['Male', 'Female', 'Other']" value="{{gender}}">
                                                 {{gender}}
                                             </md-option>
@@ -97,7 +97,7 @@
 								<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>B. Group</label>
-										<input ng-model="vm.employee.employee_attributes.b_group" name="b_group" type="text" required>
+										<input ng-model="vm.employee.employee_attributes.b_group" name="b_group" type="text">
 	                                    <div ng-messages="submitForm.b_group.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >B. Group field is required</span>
@@ -107,7 +107,7 @@
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Nationality</label>
-										<input ng-model="vm.employee.employee_attributes.nationality" name="nationality" type="text" required>
+										<input ng-model="vm.employee.employee_attributes.nationality" name="nationality" type="text">
 	                                    <div ng-messages="submitForm.nationality.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Nationality field is required</span>
@@ -117,7 +117,7 @@
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Religion</label>
-										<input ng-model="vm.employee.employee_attributes.religion" name="religion" type="text" required>
+										<input ng-model="vm.employee.employee_attributes.religion" name="religion" type="text">
 	                                    <div ng-messages="submitForm.religion.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Religion field is required</span>
@@ -129,7 +129,7 @@
 								<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Marital Status</label>
-                                        <md-select ng-model="vm.employee.employee_attributes.marital_status" name="marital_status" required>
+                                        <md-select ng-model="vm.employee.employee_attributes.marital_status" name="marital_status">
                                             <md-option ng-repeat="status in ['Married', 'Unmarried']" value="{{status}}">
                                                 {{status}}
                                             </md-option>
@@ -168,7 +168,7 @@
 								<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Phone Office</label>
-										<input ng-model="vm.employee.employee_attributes.phone_office" name="phone_office" type="text" required>
+										<input ng-model="vm.employee.employee_attributes.phone_office" name="phone_office" type="text">
 	                                    <div ng-messages="submitForm.phone_office.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Phone Office field is required</span>
@@ -178,7 +178,7 @@
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Phone Home</label>
-										<input ng-model="vm.employee.employee_attributes.phone_home" name="phone_home" type="text" required>
+										<input ng-model="vm.employee.employee_attributes.phone_home" name="phone_home" type="text">
 	                                    <div ng-messages="submitForm.phone_home.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Phone Home field is required</span>
@@ -187,7 +187,7 @@
 									</md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
-										<input name="photo" type = "file" file-model="vm.employee.employee_attributes.photo" accept="image/*" required />
+										<input name="photo" type = "file" file-model="vm.employee.employee_attributes.photo" accept="image/*" />
 	                                    <div ng-messages="submitForm.photo.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Phone Home field is required</span>
@@ -199,7 +199,7 @@
 								<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Permanent Address Street</label>
-										<input ng-model="vm.employee.employee_attributes.permanent_address_street" name="permanent_address_street" type="text" required>
+										<input ng-model="vm.employee.employee_attributes.permanent_address_street" name="permanent_address_street" type="text">
 	                                    <div ng-messages="submitForm.permanent_address_street.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Permanent Address Street field is required</span>
@@ -209,7 +209,7 @@
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Permanent Address City</label>
-										<input ng-model="vm.employee.employee_attributes.permanent_address_city" name="permanent_address_city" type="text" required>
+										<input ng-model="vm.employee.employee_attributes.permanent_address_city" name="permanent_address_city" type="text">
 	                                    <div ng-messages="submitForm.permanent_address_city.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Permanent Address City field is required</span>
@@ -219,7 +219,7 @@
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Permanent Address State</label>
-										<input ng-model="vm.employee.employee_attributes.permanent_address_state" name="permanent_address_state" type="text" required>
+										<input ng-model="vm.employee.employee_attributes.permanent_address_state" name="permanent_address_state" type="text">
 	                                    <div ng-messages="submitForm.permanent_address_state.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Permanent Address State field is required</span>
@@ -231,7 +231,7 @@
 								<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Permanent Address Postalcode</label>
-										<input ng-model="vm.employee.employee_attributes.permanent_address_postalcode" name="permanent_address_postalcode" type="text" required>
+										<input ng-model="vm.employee.employee_attributes.permanent_address_postalcode" name="permanent_address_postalcode" type="text">
 	                                    <div ng-messages="submitForm.permanent_address_postalcode.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Permanent Address Postalcode field is required</span>
@@ -240,7 +240,7 @@
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Permanent Address Country</label>
-										<input ng-model="vm.employee.employee_attributes.permanent_address_country" name="permanent_address_country" type="text" required>
+										<input ng-model="vm.employee.employee_attributes.permanent_address_country" name="permanent_address_country" type="text">
 	                                    <div ng-messages="submitForm.permanent_address_country.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Permanent Address Country field is required</span>
@@ -249,7 +249,7 @@
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Resident Address Street</label>
-										<input ng-model="vm.employee.employee_attributes.resident_address_street" name="resident_address_street" type="text" required>
+										<input ng-model="vm.employee.employee_attributes.resident_address_street" name="resident_address_street" type="text">
 	                                    <div ng-messages="submitForm.resident_address_street.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Resident Address Street field is required</span>
@@ -260,7 +260,7 @@
 								<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Resident Address City</label>
-										<input ng-model="vm.employee.employee_attributes.resident_address_city" name="resident_address_city" type="text" required>
+										<input ng-model="vm.employee.employee_attributes.resident_address_city" name="resident_address_city" type="text">
 	                                    <div ng-messages="submitForm.resident_address_city.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Resident Address City field is required</span>
@@ -269,7 +269,7 @@
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Resident Address State</label>
-										<input ng-model="vm.employee.employee_attributes.resident_address_state" name="resident_address_state" type="text" required>
+										<input ng-model="vm.employee.employee_attributes.resident_address_state" name="resident_address_state" type="text">
 	                                    <div ng-messages="submitForm.resident_address_state.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Resident Address State field is required</span>
@@ -278,7 +278,7 @@
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Resident Address Postalcode</label>
-										<input ng-model="vm.employee.employee_attributes.resident_address_postalcode" name="resident_address_postalcode" type="text" required>
+										<input ng-model="vm.employee.employee_attributes.resident_address_postalcode" name="resident_address_postalcode" type="text">
 	                                    <div ng-messages="submitForm.resident_address_postalcode.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Resident Address Postalcode field is required</span>
@@ -289,7 +289,7 @@
 								<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Resident Address Country</label>
-										<input ng-model="vm.employee.employee_attributes.resident_address_country" name="resident_address_country" type="text" required>
+										<input ng-model="vm.employee.employee_attributes.resident_address_country" name="resident_address_country" type="text">
 	                                    <div ng-messages="submitForm.resident_address_country.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Resident Address Country field is required</span>

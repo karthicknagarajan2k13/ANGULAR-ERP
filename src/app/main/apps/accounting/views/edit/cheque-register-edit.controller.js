@@ -7,7 +7,7 @@
         .controller('editChequeRegisterController', editChequeRegisterController);
 
     /** @ngInject */
-    function editChequeRegisterController(accApi, $scope, $document, $state)
+    function editChequeRegisterController(crmApi, accApi, $scope, $document, $state)
     {
 
         $scope.isOpen = false;
@@ -21,6 +21,11 @@
         console.log("vm.cheque_register",vm.cheque_register)
 
         vm.ssName = "s"
+
+        var dataPromise = crmApi.get_customers({});
+        dataPromise.then(function(result) { 
+            $scope.get_customers = result;
+        });
 
         vm.updateChequeRegister = function(){
            var dataPromise = accApi.updateChequeRegister(vm.cheque_register.cheque_register.id,vm.cheque_register);

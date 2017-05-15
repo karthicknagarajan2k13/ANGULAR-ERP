@@ -56,6 +56,20 @@
                                         </md-select>
                                     </md-input-container>
                                 </div>
+                                 <div layout="column" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Customer</label>
+                                        <md-select ng-model="vm.cheque_register.customer_id">
+                                            <md-option ng-repeat="customer in get_customers" value="{{customer.customer_id}}">
+                                                {{customer.name}}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                    </md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                    </md-input-container>
+                                </div>
                             <div class="actions" layout="row" layout-align="start center">
                                     <md-button type="submit" class="md-raised md-accent submit-button" aria-label="Save"
                                                ng-disabled="submitForm.$invalid || submitForm.$pristine"

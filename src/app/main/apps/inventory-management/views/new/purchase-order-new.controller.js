@@ -52,6 +52,12 @@
         vm.PurchaseOrdersPage = function(){
             $state.go('app.inventory-management.purchase-orders'); 
         }
+
+        vm.total_calculation = function(){
+            if(vm.purchase_order.tax && vm.purchase_order.sub_total){
+                vm.purchase_order.grand_total =  parseInt(vm.purchase_order.tax, 10) + parseInt(vm.purchase_order.sub_total, 10)
+            }
+        }
         /**
          * File upload success callback
          * Triggers when single upload completed

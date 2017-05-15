@@ -56,6 +56,13 @@
         vm.PurchaseOrdersPage = function(){
             $state.go('app.inventory-management.purchase-orders'); 
         }
+        vm.total_calculation = function(){
+            if($scope.purchase_order.tax && $scope.purchase_order.sub_total){
+                $scope.purchase_order.grand_total =  parseInt($scope.purchase_order.tax, 10) + parseInt($scope.purchase_order.sub_total, 10)
+            }
+        }
+
+        
         /**
          * File upload success callback
          * Triggers when single upload completed

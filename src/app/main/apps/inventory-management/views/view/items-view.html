@@ -52,10 +52,6 @@
 
                                 </div>
                         </form>
-						<div class="actions" layout="row" layout-align="start center">
-							<md-button ng-click="vm.editItemPage(item_data)" class="md-raised md-accent">Edit</md-button>
-							<md-button ng-click="vm.deleteItem(item_data.id)" class="md-raised md-accent">Delete</md-button>
-						</div>
                     </div>
                 </md-tab-body>
             </md-tab>
@@ -101,10 +97,6 @@
                                 </div>
 								
                         </form>
-						<div class="actions" layout="row" layout-align="start center">
-							<md-button ng-click="vm.editItemPage(item_data)" class="md-raised md-accent">Edit</md-button>
-							<md-button ng-click="vm.deleteItem(item_data.id)" class="md-raised md-accent">Delete</md-button>
-						</div>
                     </div>
                 </md-tab-body>
             </md-tab>
@@ -135,11 +127,6 @@
                                 </div>
 								
                         </form>
-						
-						<div class="actions" layout="row" layout-align="start center">
-							<md-button ng-click="vm.editItemPage(item_data)" class="md-raised md-accent">Edit</md-button>
-							<md-button ng-click="vm.deleteItem(item_data.id)" class="md-raised md-accent">Delete</md-button>
-						</div>
                     </div>
                 </md-tab-body>
             </md-tab>
@@ -177,11 +164,6 @@
                                 </div>
 								
                         </form>
-						<!-- 
-						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Save</md-button>
-							<md-button class="md-raised md-accent">Clear</md-button>
-						</div> -->
                     </div>
                 </md-tab-body>
             </md-tab>
@@ -369,10 +351,10 @@
         <md-button aria-label="comment" class="md-icon-button">
           <md-icon md-font-icon="icon-menu"></md-icon>
         </md-button>
-		<md-button aria-label="photo" class="md-icon-button">
+		<md-button ng-click="vm.deleteItem(item_data.id)" aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-delete"></md-icon>
         </md-button>
-        <md-button aria-label="label" class="md-icon-button">
+        <md-button ng-click="vm.editItemPage(item_data)" aria-label="label" class="md-icon-button">
           <md-icon md-font-icon="icon-pencil"></md-icon>
         </md-button>
 		<md-button aria-label="photo" class="md-icon-button">

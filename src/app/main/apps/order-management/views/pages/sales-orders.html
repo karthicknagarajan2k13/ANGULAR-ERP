@@ -190,7 +190,6 @@
             </div>
             <!-- / CONTENT -->
 			<div class="actions" layout="row" layout-align="start center">
-				<md-button ng-click="vm.deleteAllSalesOrder()" class="md-raised md-accent">Delete</md-button>
                 <md-button ng-click="vm.refreshSalesOrder()" class="md-raised md-accent">Refresh</md-button>
 			</div>
 
@@ -226,7 +225,7 @@
         <md-button aria-label="comment" class="md-icon-button">
           <md-icon md-font-icon="icon-menu"></md-icon>
         </md-button>
-		<md-button aria-label="photo" class="md-icon-button">
+		<md-button ng-click="vm.deleteAllSalesOrder()" aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-delete"></md-icon>
         </md-button>
         <md-button aria-label="label" class="md-icon-button">
