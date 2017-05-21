@@ -12,7 +12,7 @@
         var api = {};
 
         // Base Url
-        api.baseUrl = 'http://localhost:8000/';
+        api.baseUrl = 'https://erp-rails.herokuapp.com/';
 
         api.createAccount = function(data) {
            return $http({data: data, method:"POST", url: api.baseUrl+"acc_accounts.json"}).then(function(result){

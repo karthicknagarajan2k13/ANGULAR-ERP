@@ -12,7 +12,7 @@
         var api = {};
 
         // Base Url
-        api.baseUrl = 'http://localhost:8000/';
+        api.baseUrl = 'https://erp-rails.herokuapp.com/';
 
         api.createEmployee = function(data) {
            var fd = new FormData();
