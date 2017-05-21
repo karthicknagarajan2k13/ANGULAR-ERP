@@ -37,19 +37,6 @@
 			last = angular.extend({},current);
 		  }
 
-		  $scope.showSimpleToast = function() {
-			var pinTo = $scope.getToastPosition();
-
-			$mdToast.show(
-			  $mdToast.simple()
-				.textContent('Simple Toast!')
-				.position(pinTo )
-				.hideDelay(3000)
-			);
-		  }; //Toast Control End
-  
-		
-		
         $scope.user = {
             email: '',
             password: '',
@@ -63,7 +50,13 @@
         $scope.login = function(){
             Auth.login($scope.user, config).then(function(user) {
                 if(typeof(user.error) !== "undefined"){
-                    console.log("error",user.error)
+                    var pinTo = $scope.getToastPosition();
+                    $mdToast.show(
+                      $mdToast.simple()
+                        .textContent(user.error)
+                        .position(pinTo )
+                        .hideDelay(3000)
+                    );
                 }else{
                     $window.localStorage.setItem('current_user',JSON.stringify($scope.user));
                     $state.go('app.crm.customers');  

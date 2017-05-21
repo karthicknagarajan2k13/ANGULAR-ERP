@@ -7,7 +7,7 @@
         .controller('editManufacturingController', editManufacturingController);
 
     /** @ngInject */
-    function editManufacturingController(mfgApi, $scope, $document, $state)
+    function editManufacturingController($mdToast,mfgApi, $scope, $document, $state)
     {
 
         $scope.isOpen = false;
@@ -20,7 +20,27 @@
 		vm.manufacturing = $state.params.obj
         vm.manufacturing.manufacturing.start_date = new Date(vm.manufacturing.manufacturing.start_date);
         vm.manufacturing.manufacturing.expected_completion_date = new Date(vm.manufacturing.manufacturing.expected_completion_date);
-
+        var last = {
+          bottom: false,
+          top: true,
+          left: false,
+          right: true
+        };
+        function sanitizePosition() {
+            var current = $scope.toastPosition;
+            if ( current.bottom && last.top ) current.top = false;
+            if ( current.top && last.bottom ) current.bottom = false;
+            if ( current.right && last.left ) current.left = false;
+            if ( current.left && last.right ) current.right = false;
+            last = angular.extend({},current);
+        }
+        $scope.toastPosition = angular.extend({},last);
+        $scope.getToastPosition = function() {
+        sanitizePosition();
+        return Object.keys($scope.toastPosition)
+          .filter(function(pos) { return $scope.toastPosition[pos]; })
+          .join(' ');
+        };
 
         console.log("vm.manufacturing",vm.manufacturing)
 
@@ -42,7 +62,13 @@
             dataPromise.then(function(result) { 
                 $scope.data = result; 
                 if( typeof($scope.data.message) !== "undefined"){
-                    console.log("response",$scope.data.message)
+                    var pinTo = $scope.getToastPosition();
+                    $mdToast.show(
+                      $mdToast.simple()
+                        .textContent($scope.data.message)
+                        .position(pinTo )
+                        .hideDelay(3000)
+                    );
                 }else{
                     if( typeof($scope.data.manufacturing_id) !== "undefined"){
                         $state.go('app.manufacturing.manufacturing-view', {obj:{id: $scope.data.manufacturing_id}}); 
