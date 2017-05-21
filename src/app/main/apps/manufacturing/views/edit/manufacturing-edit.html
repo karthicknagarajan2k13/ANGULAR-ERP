@@ -131,7 +131,7 @@
 							</thead>
 							<tbody>
 								<tr ng-repeat="qa_check in vm.manufacturing.manufacturing.qa_check_list">
-									<td>000{{$index}}</td>
+									<td>000{{$index+1}}</td>
 									<td>{{qa_check.name}}</td>
 									<td class="qa-check-td">
 										<md-checkbox class="qacheckbox" ng-model="qa_check.passed" aria-label="Checkbox 1"></md-checkbox>
@@ -145,7 +145,7 @@
 									</td>
 								</tr>
 								<tr>
-									<td>000{{vm.manufacturing.manufacturing.qa_check_list.length}}</td>
+									<td>000{{vm.manufacturing.manufacturing.qa_check_list.length+1}}</td>
 									<td>
 										<input type="text" name="quantity" ng-model="vm.qa_check_data.name">
 									</td>

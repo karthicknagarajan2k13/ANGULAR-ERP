@@ -57,10 +57,8 @@
                                         </div>                                      </md-input-container>
 
                                 </div>
-                                <div layout="column" layout-gt-xs="row" flex>
-
-                                    
-                                    <md-input-container class="md-block" flex-gt-sm>
+                                <div layout="row" layout-gt-xs="row" flex>
+                                    <md-input-container class="md-block" flex="33">
                                         <label>Out-Time</label>
                                         <input mdc-datetime-picker="" date="false" time="true" id="time" short-time="true" placeholder="In-Time" min-date="minDate" format="hh:mm a" ng-model="vm.timeclock.timeclock.out_time" class=" md-input" readonly="readonly" type="text" name="out_time" required>
                                         <div ng-messages="submitForm.out_time.$error" role="alert">

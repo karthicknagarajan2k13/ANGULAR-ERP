@@ -37,6 +37,7 @@
             var material = angular.fromJson(material)
             console.log("changedItemValue",material)
             vm.manufacturing_material_data.unit_price = material.unit
+            vm.manufacturing_material_data.quantity = material.quantity
             vm.manufacturing_material_data.total = material.unit * vm.manufacturing_material_data.quantity
             vm.manufacturing_material_data.material_id = material.material_id
             console.log(vm.manufacturing_material_data)

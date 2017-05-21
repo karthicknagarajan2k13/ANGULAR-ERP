@@ -18,7 +18,8 @@
         };
 
         var vm = this;
-        vm.maintanance = $state.params.obj
+        vm.maintanance = {}
+        vm.maintanance.asset_id = $state.params.asset_id
         vm.ssName = "s"
 
         var dataPromise = amApi.get_assets({});

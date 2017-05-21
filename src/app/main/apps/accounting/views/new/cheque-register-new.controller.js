@@ -34,40 +34,6 @@
                     console.log("response",$scope.data.message)
                 }else{
                     if( typeof($scope.data.cheque_register_id) !== "undefined"){
-                        console.log("vm.cheque_register",vm.cheque_register)
-                        if (typeof($scope.data.cheque_register_id) !== "undefined"){
-                            $scope.table_data.push(["Code",$scope.data.cheque_register_id]);
-                        }
-                        if (typeof(vm.cheque_register.cheque_date) !== "undefined"){
-                            $scope.table_data.push(["Date",vm.cheque_register.cheque_date]);
-                        }
-                        if (typeof(vm.cheque_register.payee) !== "undefined"){
-                            $scope.table_data.push(["Payee",vm.cheque_register.payee]);
-                        }
-                        if (typeof(vm.cheque_register.debit) !== "undefined"){
-                            $scope.table_data.push(["Debit",vm.cheque_register.debit]);
-                        }                          
-                        if (typeof(vm.cheque_register.credit) !== "undefined"){
-                            $scope.table_data.push(["Credit",vm.cheque_register.credit]);
-                        }                         
-                        if (typeof(vm.cheque_register.notes) !== "undefined"){
-                            $scope.table_data.push(["Notes",vm.cheque_register.notes]);
-                        }                            
-                        if (typeof(vm.cheque_register.status) !== "undefined"){
-                            $scope.table_data.push(["Status",vm.cheque_register.status]);
-                        }                         
-                        var docDefinition = {
-                          content: [
-                            {
-                              table: {
-                                headerColumns: 1,
-                                widths: [ '50%', '50%'],
-                                body: $scope.table_data
-                              }
-                            }
-                          ]
-                        };            
-                        pdfMake.createPdf(docDefinition).open();
                         $state.go('app.accounting.cheque-register-view', {obj:{id: $scope.data.cheque_register_id}}); 
                     }
                 }

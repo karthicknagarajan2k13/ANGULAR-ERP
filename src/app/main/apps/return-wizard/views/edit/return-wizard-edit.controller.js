@@ -52,7 +52,10 @@
         vm.ReturnWizardsPage = function(){
             $state.go('app.return-wizard.return-wizard'); 
         }
-        
+        vm.calculateRefundedAmount = function(){
+           vm.return_wizard.return_wizard.amount_to_be_refunded = vm.return_wizard.return_wizard.original_amount - vm.return_wizard.return_wizard.shipping_charges
+        }
+       
         /**
          * File upload success callback
          * Triggers when single upload completed

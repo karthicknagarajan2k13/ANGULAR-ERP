@@ -12,7 +12,7 @@
         var api = {};
 
         // Base Url
-        api.baseUrl = 'https://ror-erp.herokuapp.com/';
+        api.baseUrl = 'http://localhost:8000/';
 
         api.emailConfirmation = function(confirmation_token) {
            return $http({method:"GET", url: api.baseUrl+"users/email_confirmation.json?confirmation_token="+confirmation_token}).then(function(result){

@@ -132,6 +132,9 @@
                         controller : 'newMaintananceController as vm'
                     }
                 },
+                params: {
+                 asset_id: null,
+                },
                 resolve  : {
                     Product: function (msApi)
                     {
@@ -200,7 +203,7 @@
         });
 		
 		msNavigationServiceProvider.saveItem('apps.asset-management.maintanance', {
-            title: 'maintenance Service',
+            title: 'Maintenance Service',
             state: 'app.asset-management.maintanance'
         }); 
 		

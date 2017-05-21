@@ -40,7 +40,7 @@
 
 
         vm.newMaintanancePage = function(){
-            $state.go('app.asset-management.maintanance-new'); 
+            $state.go('app.asset-management.maintanance-new',{asset_id: $scope.asset_data.id}); 
         }
         vm.viewMaintanancePage = function(id){
             $state.go('app.asset-management.maintanance-view', {obj:{id: id}}); 

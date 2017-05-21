@@ -105,7 +105,7 @@
 							</thead>
 							<tbody>
 								<tr ng-repeat="qa_check in manufacturing_data.qa_check_list">
-									<td>000{{$index}}</td>
+									<td>000{{$index+1}}</td>
 									<td>{{qa_check.name}}</td>
 									<td class="qa-check-td">
 										<md-checkbox ng-model="qa_check.passed" aria-label="Checkbox 1" disabled></md-checkbox>

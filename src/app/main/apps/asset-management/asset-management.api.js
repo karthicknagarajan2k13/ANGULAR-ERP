@@ -13,7 +13,7 @@
         var api = {};
 
         // Base Url
-        api.baseUrl = 'https://ror-erp.herokuapp.com/';
+        api.baseUrl = 'http://localhost:8000/';
         // api.baseUrl = 'http://localhost:8000/';
  
         api.createAsset = function(data) {
