@@ -46,7 +46,7 @@
                 scrollY     : 'auto',
                 responsive  : true
             };
-            
+        
         });
         var dataPromise = imApi.get_suppliers({});
         dataPromise.then(function(result) { 
@@ -56,10 +56,6 @@
         dataPromise.then(function(result) { 
             $scope.get_categories = result;
         }); 
-
-
-
-
 
         function initComplete(){
             $scope.show_table1 = true

@@ -44,7 +44,6 @@
                 scrollY     : 'auto',
                 responsive  : true
             };
-            
         });
         var dataPromise = hrApi.get_employees({});
         dataPromise.then(function(result) { 
@@ -55,8 +54,6 @@
             $scope.get_users = result;
         });
         
-
-
         function initComplete(){
             $scope.show_table1 = true
         }

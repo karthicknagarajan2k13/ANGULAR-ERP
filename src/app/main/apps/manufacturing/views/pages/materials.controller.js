@@ -44,6 +44,7 @@
                 responsive  : true
             };
 
+
         }); 
 
         var dataPromise = mfgApi.get_manufacturings({});

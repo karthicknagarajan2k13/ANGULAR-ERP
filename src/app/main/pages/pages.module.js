@@ -27,5 +27,11 @@
         /** @ngInject */
         function config(msNavigationServiceProvider)
         {
+            // // Navigation
+            // msNavigationServiceProvider.saveItem('pages', {
+            //     title : 'PAGES',
+            //     group : true,
+            //     weight: 2
+            // });
         }
 })();

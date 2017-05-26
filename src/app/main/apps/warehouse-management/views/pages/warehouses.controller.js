@@ -46,6 +46,7 @@
                 responsive  : true
             };
             
+
         }); 
         var dataPromise = whApi.getUsers({});
         dataPromise.then(function(result) { 

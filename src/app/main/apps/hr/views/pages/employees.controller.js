@@ -96,9 +96,6 @@
             vm.search_data = {}
         }
 
-
-
-
         function initComplete(){
             $scope.show_table1 = true
         }

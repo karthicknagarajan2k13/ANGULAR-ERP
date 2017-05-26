@@ -46,6 +46,7 @@
                 responsive  : true
             };
             
+
         }); 
 
         var dataPromise = crmApi.get_customers({});

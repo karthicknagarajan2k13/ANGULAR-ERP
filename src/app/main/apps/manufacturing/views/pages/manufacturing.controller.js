@@ -44,6 +44,7 @@
                 scrollY     : 'auto',
                 responsive  : true
             };
+
         }); 
         var dataPromise = mfgApi.getUsers({});
         dataPromise.then(function(result) { 

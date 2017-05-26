@@ -56,8 +56,6 @@
         }); 
 
 
-
-
         function initComplete(){
             $scope.show_table1 = true
         }

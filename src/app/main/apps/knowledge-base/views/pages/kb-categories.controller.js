@@ -42,8 +42,6 @@
                 scrollY     : 'auto',
                 responsive  : true
             };
-
-            
         }); 
 
         var dataPromise = kbApi.getUsers({});
