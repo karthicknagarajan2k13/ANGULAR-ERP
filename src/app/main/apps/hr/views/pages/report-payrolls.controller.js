@@ -7,7 +7,7 @@
         .controller('ReportPayrollsController', ReportPayrollsController);
 
     /** @ngInject */
-    function ReportPayrollsController($window, hrApi, $scope, $state, Statuses, Orders)
+    function ReportPayrollsController($window, hrApi, $scope, $state)
     {
 
         var vm = this;
@@ -55,8 +55,6 @@
             pdfMake.createPdf(docDefinition).open();
         }
 
-        vm.orders = Orders.data;
-        vm.statuses = Statuses.data;
         vm.dtInstance = {};
         vm.dtOptions = {
             dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',

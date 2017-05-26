@@ -7,7 +7,7 @@
         .controller('purchaseOrdersController', purchaseOrdersController);
 
     /** @ngInject */
-    function purchaseOrdersController($window, imApi, $scope, $state, Statuses, Orders)
+    function purchaseOrdersController($window, imApi, $scope, $state)
     {
 
         $scope.isOpen = false;
@@ -25,7 +25,6 @@
         var dataPromise = imApi.getPurchaseOrders({});
         dataPromise.then(function(result) { 
             $scope.purchase_orders_data = result;
-            console.log("$scope.purchase_orders_data",$scope.purchase_orders_data)
         }); 
         var dataPromise = imApi.get_suppliers({});
         dataPromise.then(function(result) { 
@@ -37,8 +36,6 @@
         }); 
 
 
-        vm.orders = Orders.data;
-        vm.statuses = Statuses.data;
         vm.dtInstance = {};
         vm.dtOptions = {
             dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',

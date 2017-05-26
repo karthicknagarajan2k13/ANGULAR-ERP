@@ -33,16 +33,6 @@
                         controller : 'ManufacturingController as vm'
                     }
                 },
-                resolve  : {
-                    Orders  : function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    },
-                    Statuses: function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    }
-                },
                 bodyClass: 'manufacturing'
             })
 			 
@@ -52,16 +42,6 @@
                     'content@app': {
                         templateUrl: 'app/main/apps/manufacturing/views/pages/materials.html',
                         controller : 'MaterialController as vm'
-                    }
-                },
-                resolve  : {
-                    Orders  : function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    },
-                    Statuses: function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
                     }
                 },
                 bodyClass: 'manufacturing'
@@ -78,12 +58,6 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
-                },
                 bodyClass: 'warehouse-management'
             })
 
@@ -93,12 +67,6 @@
                     'content@app': {
                         templateUrl: 'app/main/apps/manufacturing/views/new/manufacturing-new.html',
                         controller : 'newManufacturingController as vm'
-                    }
-                },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
                     }
                 },
                 bodyClass: 'warehouse-management'
@@ -115,12 +83,6 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
-                },
                 bodyClass: 'warehouse-management'
             })
 
@@ -130,12 +92,6 @@
                     'content@app': {
                         templateUrl: 'app/main/apps/manufacturing/views/new/materials-new.html',
                         controller : 'newMaterialController as vm'
-                    }
-                },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
                     }
                 },
                 bodyClass: 'warehouse-management'
@@ -152,12 +108,6 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
-                },
                 bodyClass: 'warehouse'
             })
 			
@@ -172,20 +122,8 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
-                },
                 bodyClass: 'warehouse'
             })
-			 
-        // Api
-		msApiProvider.register('order-management.sales-orders', ['app/data/order-management/sales-orders.json']);
-		msApiProvider.register('crm.orders', ['app/data/crm/qa.json']);
-        msApiProvider.register('crm.statuses', ['app/data/crm/statuses.json']);
-        // Navigation
 		
         msNavigationServiceProvider.saveItem('apps.manufacturing', {
             title : 'Manufacturing Management',

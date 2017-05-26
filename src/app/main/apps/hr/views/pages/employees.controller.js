@@ -7,7 +7,7 @@
         .controller('EmployeesController', EmployeesController);
 
     /** @ngInject */
-    function EmployeesController($window, hrApi, $scope, $state, Statuses, Orders)
+    function EmployeesController($window, hrApi, $scope, $state)
     {
 
         
@@ -75,9 +75,6 @@
             vm.search_data = {}
         }
 
-        // Data
-        vm.orders = Orders.data;
-        vm.statuses = Statuses.data;
         vm.dtInstance = {};
         vm.dtOptions = {
             dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',

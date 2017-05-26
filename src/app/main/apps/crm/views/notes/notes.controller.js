@@ -7,7 +7,7 @@
         .controller('notesController', notesController);
 
     /** @ngInject */
-    function notesController($scope, crmApi, $window, $state, Statuses, Orders, Note, User, Contact_User)
+    function notesController($scope, crmApi, $window, $state, Note, User, Contact_User)
     {
 		$scope.isOpen = false;
 		$scope.demo = {
@@ -25,13 +25,10 @@
         });
 
         vm.search_data = {};
-        vm.orders = Orders.data;
-        vm.statuses = Statuses.data;
         var session = $window.JSON.parse($window.localStorage.getItem('current_user'))
 
         vm.get_customers = User.get_customers({token:session.email});
         vm.get_contacts = Contact_User.get_contacts({token:session.email});
-        console.log("User",vm.get_contacts)
 
         vm.dtInstance = {};
         vm.dtOptions = {

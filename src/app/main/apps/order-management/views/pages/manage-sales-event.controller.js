@@ -11,7 +11,6 @@
     {
 
         var vm = this;
-        console.log("account",account_id)
 
         var dataPromise = omApi.viewAccount(account_id);
         dataPromise.then(function(result) { 

@@ -7,7 +7,7 @@
         .controller('editPurchaseOrderController', editPurchaseOrderController);
 
     /** @ngInject */
-    function editPurchaseOrderController($mdToast,imApi, $scope, $document, $state, Product)
+    function editPurchaseOrderController($mdToast,imApi, $scope, $document, $state)
     {
 
         
@@ -40,11 +40,9 @@
         };		
 		
 		var vm = this;
-        console.log("$state.params",$state.params)
         var dataPromise = imApi.editPurchaseOrder({id:$state.params.obj.id});
         dataPromise.then(function(result) { 
             $scope.purchase_order = result;
-            console.log("purchase_order",$scope.purchase_order)
         });
         var dataPromise = imApi.get_suppliers({});
         dataPromise.then(function(result) { 
@@ -52,7 +50,6 @@
         });
         
 		vm.ssName = "s"
-	    vm.orders = Product.data;
 
         vm.updatePurchaseOrder = function(){
            var dataPromise = imApi.updatePurchaseOrder($scope.purchase_order.id,$scope.purchase_order);
@@ -87,38 +84,5 @@
                 $scope.purchase_order.grand_total =  parseInt($scope.purchase_order.tax, 10) + parseInt($scope.purchase_order.sub_total, 10)
             }
         }
-
-        
-        /**
-         * File upload success callback
-         * Triggers when single upload completed
-         *
-         * @param file
-         * @param message
-         */
-        function fileSuccess(file, message)  {
-            // Iterate through the media list, find the one we
-            // are added as a temp and replace its data
-            // Normally you would parse the message and extract
-            // the uploaded file data from it
-            angular.forEach(vm.product.images, function (media, index)
-            {
-                if ( media.id === file.uniqueIdentifier )
-                {
-                    // Normally you would update the media purchase_order
-                    // from database but we are cheating here!
-                    var fileReader = new FileReader();
-                    fileReader.readAsDataURL(media.file.file);
-                    fileReader.onload = function (event)
-                    {
-                        media.url = event.target.result;
-                    };
-
-                    // Update the image type so the overlay can go away
-                    media.type = 'image';
-                }
-            });
-        }
-		
     }
 })();

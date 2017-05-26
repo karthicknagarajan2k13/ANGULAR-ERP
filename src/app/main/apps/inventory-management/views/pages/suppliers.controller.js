@@ -7,7 +7,7 @@
         .controller('suppliersController', suppliersController);
 
     /** @ngInject */
-    function suppliersController($window, imApi, $scope, $state, Statuses, Orders)
+    function suppliersController($window, imApi, $scope, $state)
     {
 
         
@@ -26,12 +26,7 @@
         var dataPromise = imApi.getSuppliers({});
         dataPromise.then(function(result) { 
             $scope.suppliers_data = result;
-            console.log("$scope.suppliers_data",$scope.suppliers_data)
         }); 
-
-
-        vm.orders = Orders.data;
-        vm.statuses = Statuses.data;
         vm.dtInstance = {};
         vm.dtOptions = {
             dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',

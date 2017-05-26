@@ -23,11 +23,6 @@
         vm.closeDialog = closeDialog;
 
         //////////
-
-        /**
-         * Put custom theme into the cookies
-         * and reload for generate styles
-         */
         function setTheme()
         {
             $cookies.putObject('customTheme', vm.theme);

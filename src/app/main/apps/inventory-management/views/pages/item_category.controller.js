@@ -7,7 +7,7 @@
         .controller('itemCategoryController', itemCategoryController);
 
     /** @ngInject */
-    function itemCategoryController($window, imApi, $scope, $state, Statuses, Orders)
+    function itemCategoryController($window, imApi, $scope, $state)
     {
 
         
@@ -34,8 +34,6 @@
         }); 
 
 
-        vm.orders = Orders.data;
-        vm.statuses = Statuses.data;
         vm.dtInstance = {};
         vm.dtOptions = {
             dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',

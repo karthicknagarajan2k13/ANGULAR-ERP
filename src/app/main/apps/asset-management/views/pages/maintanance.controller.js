@@ -24,7 +24,6 @@
         var dataPromise = amApi.getMaintanances({});
         dataPromise.then(function(result) { 
             $scope.maintanance_data = result;
-            console.log("$scope.maintanance_data",JSON.stringify(result))
         }); 
 
         var dataPromise = kbApi.getUsers({});

@@ -7,7 +7,7 @@
         .controller('AccountConnectedController', AccountConnectedController);
 
     /** @ngInject */
-    function AccountConnectedController($window, omApi, $scope, $state, Statuses, Orders)
+    function AccountConnectedController($window, omApi, $scope, $state)
     {
 
         var vm = this;
@@ -26,14 +26,6 @@
             $state.go('app.order-management.acc'); 
         }
         
-        // vm.connect =function(){
-        //     var dataPromise = omApi.connectAccounts(vm.data);
-        //     dataPromise.then(function(result) {
-        //         console.log('result',result)
-        //         $state.go('app.order-management.acc'); 
-        //     }); 
-        // }
-
         vm.dtInstance = {};
         vm.dtOptions = {
             dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',

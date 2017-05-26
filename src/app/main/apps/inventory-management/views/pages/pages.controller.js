@@ -7,7 +7,7 @@
         .controller('inventoryController', inventoryController);
 
     /** @ngInject */
-    function inventoryController($scope, $state, Statuses, Orders)
+    function inventoryController($scope, $state)
     {
 
         
@@ -21,8 +21,6 @@
 		var vm = this;
 
         // Data
-        vm.orders = Orders.data;
-        vm.statuses = Statuses.data;
         vm.dtInstance = {};
         vm.dtOptions = {
             dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',

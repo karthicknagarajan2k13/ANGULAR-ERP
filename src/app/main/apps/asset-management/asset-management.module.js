@@ -33,16 +33,6 @@
                         controller : 'AssetController as vm'
                     }
                 },
-                resolve  : { 
-                    Orders  : function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    },
-                    Statuses: function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    }
-                },
                 bodyClass: 'knowledge-base'
             }) 
 			 
@@ -52,16 +42,6 @@
                     'content@app': {
                         templateUrl: 'app/main/apps/asset-management/views/pages/maintanance.html',
                         controller : 'MaintananceController as vm'
-                    }
-                },
-                resolve  : {
-                    Orders  : function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    },
-                    Statuses: function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
                     }
                 },
                 bodyClass: 'knowledge-base'
@@ -78,12 +58,6 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
-                },
                 bodyClass: 'kb'
             })
 
@@ -93,12 +67,6 @@
                     'content@app': {
                         templateUrl: 'app/main/apps/asset-management/views/new/asset-new.html',
                         controller : 'newAssetController as vm'
-                    }
-                },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
                     }
                 },
                 bodyClass: 'kb'
@@ -115,12 +83,6 @@
                 params: {
                  obj: null
                 },
-				resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('e-commerce.product@get');
-                    }
-                },
                 bodyClass: 'kb'
             })
 
@@ -134,12 +96,6 @@
                 },
                 params: {
                  asset_id: null,
-                },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('e-commerce.product@get');
-                    }
                 },
                 bodyClass: 'kb'
             })
@@ -155,12 +111,6 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
-                },
                 bodyClass: 'kb'
             })
 			
@@ -175,20 +125,9 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
-                },
                 bodyClass: 'kb'
             }) 
 			 
-        // Api
-		msApiProvider.register('e-commerce.product', ['app/data/e-commerce/product.json']);
-		msApiProvider.register('order-management.sales-orders', ['app/data/order-management/sales-orders.json']);
-		msApiProvider.register('crm.orders', ['app/data/crm/orders.json']);
-        msApiProvider.register('crm.statuses', ['app/data/crm/statuses.json']);
         // Navigation
 		
         msNavigationServiceProvider.saveItem('apps.asset-management', {

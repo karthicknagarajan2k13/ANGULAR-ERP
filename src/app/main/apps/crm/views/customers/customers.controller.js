@@ -7,7 +7,7 @@
         .controller('customerssController', customerssController);
 
     /** @ngInject */
-    function customerssController($scope, crmApi, $http, $window, Staff_User, $state, Statuses, Orders, Customer)
+    function customerssController($scope, crmApi, $http, $window, Staff_User, $state, Customer)
     {
 		
 		$scope.isOpen = false;
@@ -26,8 +26,6 @@
 
         vm.search_data = {};
         vm.search_data.c_type1 = []
-        vm.orders = Orders.data;
-        vm.statuses = Statuses.data;
 
         var session = $window.JSON.parse($window.localStorage.getItem('current_user'))
 
@@ -69,7 +67,6 @@
 			 $state.go('app.crm.customer-detail-edit', {obj:{customer: customer}});
 		}
 	    vm.viewCustomerPage = function(id){
-            console.log("===viewCustomerPage===")
 			$state.go('app.crm.customer-detail-view', {obj:{id: id}}); 
 		}
         vm.newCustomerPage = function(){

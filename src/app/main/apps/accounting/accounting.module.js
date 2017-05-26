@@ -36,12 +36,6 @@
                         controller : 'AccountController as vm'
                     }
                 },
-                resolve  : {
-					DashboardData: function (msApi)
-					{
-						return msApi.resolve('dashboard.server@get');
-					}
-				},
                 bodyClass: 'accounting'
             })
 			
@@ -54,12 +48,6 @@
                         controller : 'LedgerEntryController as vm'
                     }
                 },
-                resolve  : {
-					DashboardData: function (msApi)
-					{
-						return msApi.resolve('dashboard.server@get');
-					}
-				},
                 bodyClass: 'accounting'
             })
 			
@@ -72,12 +60,6 @@
                         controller : 'ChequeRegisterController as vm'
                     }
                 },
-                resolve  : {
-					DashboardData: function (msApi)
-					{
-						return msApi.resolve('dashboard.server@get');
-					}
-				},
                 bodyClass: 'accounting'
             })
 			
@@ -92,12 +74,6 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-					DashboardData: function (msApi)
-					{
-						return msApi.resolve('dashboard.server@get');
-					}
-				},
                 bodyClass: 'accounting-edit'
             })
 			
@@ -112,12 +88,6 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-					DashboardData: function (msApi)
-					{
-						return msApi.resolve('dashboard.server@get');
-					}
-				},
                 bodyClass: 'accounting-edit'
             })
 			
@@ -132,12 +102,6 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-					DashboardData: function (msApi)
-					{
-						return msApi.resolve('dashboard.server@get');
-					}
-				},
                 bodyClass: 'accounting-edit'
             })
 			
@@ -152,12 +116,6 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-					DashboardData: function (msApi)
-					{
-						return msApi.resolve('dashboard.server@get');
-					}
-				},
                 bodyClass: 'accounting-view'
             })
 			
@@ -172,12 +130,6 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-					DashboardData: function (msApi)
-					{
-						return msApi.resolve('dashboard.server@get');
-					}
-				},
                 bodyClass: 'accounting-view'
             })
 			
@@ -192,12 +144,6 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-					DashboardData: function (msApi)
-					{
-						return msApi.resolve('dashboard.server@get');
-					}
-				},
                 bodyClass: 'accounting-view'
             })
 			
@@ -209,12 +155,6 @@
                         controller : 'newAccountController as vm'
                     }
                 },
-                resolve  : {
-					DashboardData: function (msApi)
-					{
-						return msApi.resolve('dashboard.server@get');
-					}
-				},
                 bodyClass: 'accounting-new'
             })
 			
@@ -226,12 +166,6 @@
                         controller : 'newLedgerEntryController as vm'
                     }
                 },
-                resolve  : {
-					DashboardData: function (msApi)
-					{
-						return msApi.resolve('dashboard.server@get');
-					}
-				},
                 bodyClass: 'accounting-new'
             })
 			
@@ -243,12 +177,6 @@
                         controller : 'newChequeRegisterController as vm'
                     }
                 },
-                resolve  : {
-					DashboardData: function (msApi)
-					{
-						return msApi.resolve('dashboard.server@get');
-					}
-				},
                 bodyClass: 'accounting-new'
             })
 			
@@ -260,21 +188,9 @@
                         controller : 'InvoiceController as vm'
                     }
                 },
-                resolve  : {
-                    Invoice: function (msApi)
-                    {
-                        return msApi.resolve('invoice@get');
-                    }
-                },
                 bodyClass: 'accounting'
             })
             
-
-        // Api
-		msApiProvider.register('invoice', ['app/data/invoice/invoice.json']);
-		msApiProvider.register('dashboard.server', ['app/data/dashboard/server/data.json']);
-		msApiProvider.register('dashboard.project', ['app/data/dashboard/project/data.json']);
-
         // Navigation
 		
         msNavigationServiceProvider.saveItem('apps.accounting', {

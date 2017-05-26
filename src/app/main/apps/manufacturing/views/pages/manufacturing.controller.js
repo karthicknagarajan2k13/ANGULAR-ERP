@@ -25,7 +25,6 @@
         var dataPromise = mfgApi.getManufacturings({});
         dataPromise.then(function(result) { 
             $scope.manufacturings_data = result;
-            console.log("$scope.manufacturings_data",$scope.manufacturings_data)
         }); 
         var dataPromise = mfgApi.getUsers({});
         dataPromise.then(function(result) { 

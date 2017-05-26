@@ -33,16 +33,6 @@
                         controller : 'WarehouseLocationController as vm'
                     }
                 },
-                resolve  : {
-                    Orders  : function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    },
-                    Statuses: function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    }
-                },
                 bodyClass: 'warehouse-management'
             })
 			
@@ -52,16 +42,6 @@
                     'content@app': {
                         templateUrl: 'app/main/apps/warehouse-management/views/pages/warehouse.html',
                         controller : 'WareHouseController as vm'
-                    }
-                },
-                resolve  : {
-                    Orders  : function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    },
-                    Statuses: function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
                     }
                 },
                 bodyClass: 'warehouse-management'
@@ -78,12 +58,6 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('e-commerce.product@get');
-                    }
-                },
                 bodyClass: 'warehouse-management'
             })
 
@@ -97,12 +71,6 @@
                 },
                 params: {
                  warehouse_id: null
-                },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('e-commerce.product@get');
-                    }
                 },
                 bodyClass: 'warehouse-management'
             })
@@ -118,12 +86,6 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
-                },
                 bodyClass: 'warehouse-management'
             })
 
@@ -133,12 +95,6 @@
                     'content@app': {
                         templateUrl: 'app/main/apps/warehouse-management/views/new/warehouse-new.html',
                         controller : 'newWarehouseController as vm'
-                    }
-                },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
                     }
                 },
                 bodyClass: 'warehouse-management'
@@ -155,12 +111,6 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
-                },
                 bodyClass: 'warehouse'
             })
 			
@@ -175,20 +125,9 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
-                },
                 bodyClass: 'warehouse'
             })
 			
-        // Api
-		msApiProvider.register('e-commerce.product', ['app/data/e-commerce/product.json']);
-		msApiProvider.register('order-management.sales-orders', ['app/data/order-management/sales-orders.json']);
-		msApiProvider.register('crm.orders', ['app/data/crm/orders.json']);
-        msApiProvider.register('crm.statuses', ['app/data/crm/statuses.json']);
         // Navigation
 		
         msNavigationServiceProvider.saveItem('apps.warehouse-management', {
@@ -206,7 +145,5 @@
             title: 'Warehouse',
             state: 'app.warehouse-management.warehouse'
         });
-		
-		
     }
 })();

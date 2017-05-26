@@ -37,16 +37,6 @@
                         controller : 'EmployeesController as vm'
                     }
                 },
-                resolve  : {
-                    Orders  : function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    },
-                    Statuses: function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    }
-                },
                 bodyClass: 'hr'
             })
 			
@@ -56,16 +46,6 @@
                     'content@app': {
                         templateUrl: 'app/main/apps/hr/views/pages/payrolls.html',
                         controller : 'PayrollsController as vm'
-                    }
-                },
-                resolve  : {
-                    Orders  : function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    },
-                    Statuses: function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
                     }
                 },
                 bodyClass: 'hr'
@@ -79,16 +59,6 @@
                         controller : 'ExpensesController as vm'
                     }
                 },
-                resolve  : {
-                    Orders  : function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    },
-                    Statuses: function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    }
-                },
                 bodyClass: 'hr'
             })
 			
@@ -98,16 +68,6 @@
                     'content@app': {
                         templateUrl: 'app/main/apps/hr/views/pages/timeclock.html',
                         controller : 'TimeclocksController as vm'
-                    }
-                },
-                resolve  : {
-                    Orders  : function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    },
-                    Statuses: function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
                     }
                 },
                 bodyClass: 'hr'
@@ -121,16 +81,6 @@
                         controller : 'ReportPayrollsController as vm'
                     }
                 },
-                resolve  : {
-                    Orders  : function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    },
-                    Statuses: function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    }
-                },
                 bodyClass: 'hr'
             })
 			
@@ -142,16 +92,6 @@
                         controller : 'ReportExpensesController as vm'
                     }
                 },
-                resolve  : {
-                    Orders  : function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    },
-                    Statuses: function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    }
-                },
                 bodyClass: 'hr'
             })
 			
@@ -161,12 +101,6 @@
                     'content@app': {
                         templateUrl: 'app/main/apps/hr/views/pages/sales-report.html',
                         controller : 'SalesReportcontroller as vm'
-                    }
-                },
-                resolve  : {
-                    Dashboard: function (msApi)
-                    {
-                        return msApi.resolve('e-commerce.dashboard@get');
                     }
                 },
                 bodyClass: 'hr'
@@ -183,12 +117,6 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
-                },
                 bodyClass: 'hr'
             })
             .state('app.hr.employees-new', {
@@ -197,12 +125,6 @@
                     'content@app': {
                         templateUrl: 'app/main/apps/hr/views/new/employees-new.html',
                         controller : 'newEmployeesController as vm'
-                    }
-                },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
                     }
                 },
                 bodyClass: 'hr'
@@ -219,12 +141,6 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
-                },
                 bodyClass: 'hr'
             })
             .state('app.hr.timeclock-new', {
@@ -237,12 +153,6 @@
                 },
                 params: {
                  employee_id: null
-                },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
                 },
                 bodyClass: 'hr'
             })
@@ -258,12 +168,6 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
-                },
                 bodyClass: 'hr'
             })
             .state('app.hr.expenses-new', {
@@ -276,12 +180,6 @@
                 },
                 params: {
                  employee_id: null
-                },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
                 },
                 bodyClass: 'hr'
             })
@@ -297,12 +195,6 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
-                },
                 bodyClass: 'hr'
             })
             .state('app.hr.payroll-new', {
@@ -315,12 +207,6 @@
                 },
                 params: {
                  employee_id: null
-                },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
                 },
                 bodyClass: 'hr'
             })
@@ -336,12 +222,6 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
-                },
                 bodyClass: 'hr'
             })
 			
@@ -355,12 +235,6 @@
                 },
                 params: {
                  obj: null
-                },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
                 },
                 bodyClass: 'hr'
             })
@@ -376,12 +250,6 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
-                },
                 bodyClass: 'hr'
             })
 			
@@ -396,20 +264,8 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
-                },
                 bodyClass: 'hr'
             })
-
-        // Api
-		msApiProvider.register('e-commerce.dashboard', ['app/data/hr/dashboard.json']);
-		msApiProvider.register('order-management.sales-orders', ['app/data/order-management/sales-orders.json']);
-		msApiProvider.register('crm.orders', ['app/data/crm/orders.json']);
-        msApiProvider.register('crm.statuses', ['app/data/crm/statuses.json']);
         // Navigation
 		
         msNavigationServiceProvider.saveItem('apps.hr', {

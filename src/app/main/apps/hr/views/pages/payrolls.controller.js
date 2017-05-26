@@ -7,7 +7,7 @@
         .controller('PayrollsController', PayrollsController);
 
     /** @ngInject */
-    function PayrollsController($window, hrApi, $scope, $state, Statuses, Orders)
+    function PayrollsController($window, hrApi, $scope, $state)
     {
 
         
@@ -26,7 +26,6 @@
         var dataPromise = hrApi.getPayrolls({});
         dataPromise.then(function(result) { 
             $scope.payrolls_data = result;
-            console.log("$scope.payrolls_data",$scope.payrolls_data)
         });
         var dataPromise = hrApi.get_employees({});
         dataPromise.then(function(result) { 
@@ -37,8 +36,7 @@
         dataPromise.then(function(result) { 
             $scope.get_users = result;
         });
-        vm.orders = Orders.data;
-        vm.statuses = Statuses.data;
+
         vm.dtInstance = {};
         vm.dtOptions = {
             dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',

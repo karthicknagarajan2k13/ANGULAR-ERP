@@ -7,7 +7,7 @@
         .controller('ReportExpensesController', ReportExpensesController);
 
     /** @ngInject */
-    function ReportExpensesController($window, hrApi, $scope, $state, Statuses, Orders)
+    function ReportExpensesController($window, hrApi, $scope, $state)
     {
 
         var vm = this;
@@ -33,7 +33,6 @@
         var dataPromise = hrApi.get_employees({});
         dataPromise.then(function(result) { 
             $scope.get_employees = result;
-            console.log($scope.get_employees)
         });  
 
         vm.pdfExpenseData = function(){
@@ -51,8 +50,6 @@
             pdfMake.createPdf(docDefinition).open();
         }
 
-        vm.orders = Orders.data;
-        vm.statuses = Statuses.data;
         vm.dtInstance = {};
         vm.dtOptions = {
             dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',

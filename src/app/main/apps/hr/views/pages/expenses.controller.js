@@ -7,7 +7,7 @@
         .controller('ExpensesController', ExpensesController);
 
     /** @ngInject */
-    function ExpensesController($window, hrApi, $scope, $state, Statuses, Orders)
+    function ExpensesController($window, hrApi, $scope, $state)
     {
 
         
@@ -25,20 +25,16 @@
         var dataPromise = hrApi.getExpenses({});
         dataPromise.then(function(result) { 
             $scope.expenses_data = result;
-            console.log("$scope.expenses_data",$scope.expenses_data)
         });
         var dataPromise = hrApi.get_employees({});
         dataPromise.then(function(result) { 
             $scope.get_employees = result;
-            console.log($scope.get_employees)
         });  
         var dataPromise = hrApi.getUsers({});
         dataPromise.then(function(result) { 
             $scope.get_users = result;
         });
         
-        vm.orders = Orders.data;
-        vm.statuses = Statuses.data;
         vm.dtInstance = {};
         vm.dtOptions = {
             dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',

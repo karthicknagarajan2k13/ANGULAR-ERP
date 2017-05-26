@@ -7,7 +7,7 @@
         .controller('SalesOrderController', SalesOrderController);
 
     /** @ngInject */
-    function SalesOrderController($mdToast,$window, omApi, $scope, $state, Statuses, Orders)
+    function SalesOrderController($mdToast,$window, omApi, $scope, $state)
     {
 
         
@@ -42,7 +42,6 @@
         vm.dtInstance = {};
 
         //Data
-        console.log("$scope.sales_orders_data")
         vm.search_data = {}
         var dataPromise = omApi.getSalesOrders({});
         dataPromise.then(function(result) { 

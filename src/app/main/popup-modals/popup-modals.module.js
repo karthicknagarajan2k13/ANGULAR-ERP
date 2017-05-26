@@ -11,18 +11,18 @@
     /** @ngInject */
     function config(msNavigationServiceProvider)
     {
-        // Navigation
-        msNavigationServiceProvider.saveItem('popup-modals', {
-            title : 'Popup Modals',
-            group : true,
-            weight: 3
-        });
+        // // Navigation
+        // msNavigationServiceProvider.saveItem('popup-modals', {
+        //     title : 'Popup Modals',
+        //     group : true,
+        //     weight: 3
+        // });
 
-        msNavigationServiceProvider.saveItem('popup-modals.modals', {
-            title: 'Warehouse Location Popup',
-            icon : 'icon-arrange-send-backward',
-            state: 'app.warehouse-location'
-        });
+        // msNavigationServiceProvider.saveItem('popup-modals.modals', {
+        //     title: 'Warehouse Location Popup',
+        //     icon : 'icon-arrange-send-backward',
+        //     state: 'app.warehouse-location'
+        // });
 		
 	}
 })();

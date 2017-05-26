@@ -7,7 +7,7 @@
         .controller('WareHouseController', WareHouseController);
 
     /** @ngInject */
-    function WareHouseController($window, whApi, $scope, $state, Statuses)
+    function WareHouseController($window, whApi, $scope, $state)
     {
 
         
@@ -26,7 +26,6 @@
         var dataPromise = whApi.getWarehouses({});
         dataPromise.then(function(result) { 
             $scope.warehouses_data = result;
-            console.log("$scope.warehouses_data",$scope.warehouses_data)
         }); 
         var dataPromise = whApi.getUsers({});
         dataPromise.then(function(result) { 

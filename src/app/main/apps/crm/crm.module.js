@@ -36,16 +36,6 @@
                     }
                 },
                 loginRequired : true,
-                resolve  : {
-                    Orders  : function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    },
-                    Statuses: function (msApi)
-                    {
-                        return msApi.resolve('crm.statuses@get');
-                    }
-                },
                 bodyClass: 'crm'
             })
 			
@@ -61,12 +51,6 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
-                },
                 bodyClass: 'crm'
             })
 
@@ -80,12 +64,6 @@
                 },
                 params: {
                  obj: null
-                },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
                 },
                 bodyClass: 'crm'
             })		
@@ -101,12 +79,6 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
-                },
                 bodyClass: 'crm'
             })
 
@@ -121,12 +93,6 @@
                 params: {
                  customer_id: null
                 },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
-                },
                 bodyClass: 'crm'
             })
 
@@ -140,12 +106,6 @@
                 },
                 params: {
                  obj: null
-                },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
                 },
                 bodyClass: 'crm'
             })
@@ -162,12 +122,6 @@
                  customer_id: null,
                  contact_id: null
                 },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
-                },
                 bodyClass: 'crm'
             })
 
@@ -182,12 +136,6 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
-                },
                 bodyClass: 'crm'
             })
 			
@@ -201,12 +149,6 @@
                 },
                 params: {
                  obj: null
-                },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
                 },
                 bodyClass: 'crm'
             })
@@ -223,12 +165,6 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
-                },
                 bodyClass: 'crm'
             })
 			
@@ -238,16 +174,6 @@
                     'content@app': {
                         templateUrl: 'app/main/apps/crm/views/contacts/contacts.html',
                         controller : 'contactsController as vm'
-                    }
-                },
-                resolve  : {
-                    Orders  : function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    },
-                    Statuses: function (msApi)
-                    {
-                        return msApi.resolve('crm.statuses@get');
                     }
                 },
                 bodyClass: 'crm'
@@ -261,16 +187,6 @@
                         controller : 'notesController as vm'
                     }
                 },
-                resolve  : {
-                    Orders  : function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    },
-                    Statuses: function (msApi)
-                    {
-                        return msApi.resolve('crm.statuses@get');
-                    }
-                },
                 bodyClass: 'crm'
             })
 			
@@ -278,10 +194,6 @@
 
         // Translation
         $translatePartialLoaderProvider.addPart('app/main/apps/crm');
-
-        // Api
-        msApiProvider.register('crm.orders', ['app/data/crm/orders.json']);
-        msApiProvider.register('crm.statuses', ['app/data/crm/statuses.json']);
 
         // Navigation
 		msNavigationServiceProvider.saveItem('apps', {

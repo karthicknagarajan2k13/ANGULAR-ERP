@@ -23,7 +23,6 @@
         var dataPromise = mfgApi.getMaterials({});
         dataPromise.then(function(result) { 
             $scope.materials_data = result;
-            console.log("$scope.materials_data",$scope.materials_data)
         }); 
 
         var dataPromise = mfgApi.get_manufacturings({});

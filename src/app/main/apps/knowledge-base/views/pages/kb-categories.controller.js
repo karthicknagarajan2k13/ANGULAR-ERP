@@ -23,7 +23,6 @@
         var dataPromise = kbApi.getKbCategories({});
         dataPromise.then(function(result) { 
             $scope.kb_categories_data = result;
-            console.log("$scope.kb_categories_data",$scope.kb_categories_data)
         }); 
 
         var dataPromise = kbApi.getUsers({});

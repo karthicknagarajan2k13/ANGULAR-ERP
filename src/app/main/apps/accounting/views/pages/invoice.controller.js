@@ -7,21 +7,15 @@
         .controller('InvoiceController', InvoiceController);
 
     /** @ngInject */
-    function InvoiceController(accApi, $scope, Invoice)
+    function InvoiceController(accApi, $scope)
     {
         var vm = this;
-
-        // Data
-        vm.invoice = Invoice.data;
 
         $scope.cash_flow_reports_data = {}
 
         var dataPromise = accApi.getCashFlowReports({});
         dataPromise.then(function(result) { 
             $scope.cash_flow_reports_data = result;
-            console.log("$scope.cash_flow_reports_data",$scope.cash_flow_reports_data)
-
-
     		// bar chart
             vm.barChart = {
                 data: {

@@ -23,7 +23,6 @@
         var dataPromise = kbApi.getKnowledgeBases({});
         dataPromise.then(function(result) { 
             $scope.knowledge_bases_data = result;
-            console.log("$scope.knowledge_bases_data",$scope.knowledge_bases_data)
         }); 
 
         var dataPromise = kbApi.getUsers({});

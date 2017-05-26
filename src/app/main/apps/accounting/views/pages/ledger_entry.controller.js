@@ -23,7 +23,6 @@
         var dataPromise = accApi.getLedgerEntries({});
         dataPromise.then(function(result) { 
             $scope.ledger_entries_data = result;
-            console.log("$scope.ledger_entries_data",$scope.ledger_entries_data)
         }); 
 
         var dataPromise = crmApi.get_customers({});

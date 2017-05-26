@@ -7,7 +7,7 @@
         .controller('WarehouseLocationController', WarehouseLocationController);
 
     /** @ngInject */
-    function WarehouseLocationController($window, whApi, $scope, $state, Statuses)
+    function WarehouseLocationController($window, whApi, $scope, $state)
     {
 
         
@@ -28,7 +28,6 @@
         var dataPromise = whApi.getWarehouseLocations({});
         dataPromise.then(function(result) { 
             $scope.warehouse_locations_data = result;
-            console.log("$scope.warehouse_locations_data",$scope.warehouse_locations_data)
         });
 
         var dataPromise = whApi.get_warehouses({});

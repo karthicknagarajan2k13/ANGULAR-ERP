@@ -33,16 +33,6 @@
                         controller : 'SalesOrderController as vm'
                     }
                 },
-                resolve  : {
-                    Orders  : function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    },
-                    Statuses: function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    }
-                },
                 bodyClass: 'order-management'
             })
 			
@@ -54,16 +44,6 @@
                         controller : 'SalesOrderInvoicesController as vm'
                     }
                 },
-                resolve  : {
-                    Orders  : function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    },
-                    Statuses: function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    }
-                },
                 bodyClass: 'order-management'
             })
 			
@@ -73,16 +53,6 @@
                     'content@app': {
                         templateUrl: 'app/main/apps/order-management/views/pages/return-wizard.html',
                         controller : 'SalesOrdersController as vm'
-                    }
-                },
-                resolve  : {
-                    Orders  : function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    },
-                    Statuses: function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
                     }
                 },
                 bodyClass: 'order-management'
@@ -99,16 +69,6 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-                    Orders  : function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    },
-                    Statuses: function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    }
-                },
                 bodyClass: 'order-management'
             })
 			
@@ -122,16 +82,6 @@
                 },
                 params: {
                  obj: null
-                },
-                resolve  : {
-                    Orders  : function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    },
-                    Statuses: function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    }
                 },
                 bodyClass: 'order-management'
             })
@@ -147,16 +97,6 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-                    Orders  : function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    },
-                    Statuses: function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    }
-                },
                 bodyClass: 'order-management'
             })
 			
@@ -171,16 +111,6 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-                    Orders  : function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    },
-                    Statuses: function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    }
-                },
                 bodyClass: 'order-management'
             })
 			
@@ -190,16 +120,6 @@
                     'content@app': {
                         templateUrl: 'app/main/apps/order-management/views/pages/connected-accounts.html',
                         controller : 'ConnectedAccountsController as vm'
-                    }
-                },
-                resolve  : {
-                    Orders  : function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    },
-                    Statuses: function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
                     }
                 },
                 bodyClass: 'order-management'
@@ -217,12 +137,6 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
-                },
                 bodyClass: 'order-management'
             })
 			
@@ -232,12 +146,6 @@
                     'content@app': {
                         templateUrl: 'app/main/apps/order-management/views/new/invoices-new.html',
                         controller : 'NewSalesOrdersInvoicesController as vm'
-                    }
-                },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
                     }
                 },
                 bodyClass: 'order-management'
@@ -253,12 +161,6 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
-                },
                 bodyClass: 'order-management'
             })			
 			
@@ -272,12 +174,6 @@
                 },
                 params: {
                  obj: null
-                },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
                 },
                 bodyClass: 'order-management'
             })
@@ -293,12 +189,6 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
-                },
                 bodyClass: 'order-management'
             })
 			
@@ -307,9 +197,6 @@
         // Translation
         $translatePartialLoaderProvider.addPart('app/main/apps/order-management');
 
-        // Api
-		msApiProvider.register('order-management.sales-orders', ['app/data/order-management/sales-orders.json']);
-        
 		// Navigation
         msNavigationServiceProvider.saveItem('apps.order-management', {
             title : 'Order Management',
@@ -326,31 +213,6 @@
             title: 'Invoices',
             state: 'app.order-management.invoices'
         });
-		
-		// msNavigationServiceProvider.saveItem('apps.order-management.return-wizard', {
-  //           title: 'Return Wizard',
-  //           state: 'app.order-management.return-wizard'
-  //       });
-		
-		// msNavigationServiceProvider.saveItem('apps.order-management.ebay', {
-  //           title: 'eBay',
-  //           state: 'app.order-management.ebay'
-  //       });
-		
-		// msNavigationServiceProvider.saveItem('apps.order-management.shopify', {
-  //           title: 'Shopify',
-  //           state: 'app.order-management.shopify'
-  //       });
-		
-		// msNavigationServiceProvider.saveItem('apps.order-management.etsy', {
-  //           title: 'Etsy',
-  //           state: 'app.order-management.etsy'
-  //       });
-		
-		// msNavigationServiceProvider.saveItem('apps.order-management.amazon', {
-  //           title: 'Amazon',
-  //           state: 'app.order-management.amazon'
-  //       });
 		
 		msNavigationServiceProvider.saveItem('apps.order-management.acc', {
             title: 'Connected Accounts',

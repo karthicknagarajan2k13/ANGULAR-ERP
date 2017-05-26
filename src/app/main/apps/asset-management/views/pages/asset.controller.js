@@ -22,9 +22,7 @@
         vm.search_data = {}
         var dataPromise = amApi.getAssets({});
         dataPromise.then(function(result) { 
-    
             $scope.assets_data = result;
-            console.log("$scope.assets_data",$scope.assets_data)
         }); 
 
         var dataPromise = kbApi.getUsers({});

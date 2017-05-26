@@ -26,7 +26,6 @@
         var dataPromise = rwApi.getReturnWizards({});
         dataPromise.then(function(result) { 
             $scope.return_wizards_data = result;
-            console.log("$scope.return_wizards_data",$scope.return_wizards_data)
         }); 
 
         var dataPromise = crmApi.get_customers({});

@@ -33,16 +33,6 @@
                         controller : 'itemController as vm'
                     }
                 },
-                resolve  : {
-                    Orders  : function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    },
-                    Statuses: function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    }
-                },
                 bodyClass: 'order-management'
             })
 			
@@ -52,16 +42,6 @@
                     'content@app': {
                         templateUrl: 'app/main/apps/inventory-management/views/pages/item-categories.html',
                         controller : 'itemCategoryController as vm'
-                    }
-                },
-                resolve  : {
-                    Orders  : function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    },
-                    Statuses: function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
                     }
                 },
                 bodyClass: 'order-management'
@@ -76,16 +56,6 @@
                         controller : 'suppliersController as vm'
                     }
                 },
-                resolve  : {
-                    Orders  : function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    },
-                    Statuses: function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    }
-                },
                 bodyClass: 'order-management'
             })
 			
@@ -95,16 +65,6 @@
                     'content@app': {
                         templateUrl: 'app/main/apps/inventory-management/views/pages/purchase-orders.html',
                         controller : 'purchaseOrdersController as vm'
-                    }
-                },
-                resolve  : {
-                    Orders  : function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    },
-                    Statuses: function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
                     }
                 },
                 bodyClass: 'order-management'
@@ -118,16 +78,6 @@
                         controller : 'inventoryController as vm'
                     }
                 },
-                resolve  : {
-                    Orders  : function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    },
-                    Statuses: function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    }
-                },
                 bodyClass: 'order-management'
             })
 			
@@ -137,16 +87,6 @@
                     'content@app': {
                         templateUrl: 'app/main/apps/order-management/views/pages/return-wizard.html',
                         controller : 'inventoryController as vm'
-                    }
-                },
-                resolve  : {
-                    Orders  : function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
-                    },
-                    Statuses: function (msApi)
-                    {
-                        return msApi.resolve('order-management.sales-orders@get');
                     }
                 },
                 bodyClass: 'order-management'
@@ -164,12 +104,6 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
-                },
                 bodyClass: 'crm'
             })
 
@@ -183,12 +117,6 @@
                 },
                 params: {
                  category_id: null
-                },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
                 },
                 bodyClass: 'crm'
             })
@@ -204,12 +132,6 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
-                },
                 bodyClass: 'crm'
             })
 
@@ -223,12 +145,6 @@
                 },
                 params: {
                  obj: null
-                },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
                 },
                 bodyClass: 'crm'
             })
@@ -244,12 +160,6 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
-                },
                 bodyClass: 'crm'
             })
 
@@ -259,12 +169,6 @@
                     'content@app': {
                         templateUrl: 'app/main/apps/inventory-management/views/new/suppliers-new.html',
                         controller : 'newSupplierController as vm'
-                    }
-                },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
                     }
                 },
                 bodyClass: 'crm'
@@ -281,12 +185,6 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
-                },
                 bodyClass: 'crm'
             })
 
@@ -300,12 +198,6 @@
                 },
                 params: {
                  supplier_id: null
-                },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
                 },
                 bodyClass: 'crm'
             })
@@ -321,12 +213,6 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
-                },
                 bodyClass: 'crm'
             })
 			
@@ -340,12 +226,6 @@
                 },
                 params: {
                  obj: null
-                },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
                 },
                 bodyClass: 'crm'
             })
@@ -361,12 +241,6 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
-                },
                 bodyClass: 'crm'
             })
 			
@@ -381,20 +255,9 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-                    Product: function (msApi)
-                    {
-                        return msApi.resolve('crm.orders@get');
-                    }
-                },
                 bodyClass: 'crm'
             })
 			
-
-        // Api
-		msApiProvider.register('order-management.sales-orders', ['app/data/order-management/sales-orders.json']);
-		msApiProvider.register('crm.orders', ['app/data/crm/orders.json']);
-        msApiProvider.register('crm.statuses', ['app/data/crm/statuses.json']);
         // Navigation
 		
         msNavigationServiceProvider.saveItem('apps.inventory-management', {
@@ -422,17 +285,5 @@
             title: 'Purchase Orders',
             state: 'app.inventory-management.purchase-orders'
         });
-		
-		// msNavigationServiceProvider.saveItem('apps.inventory-management.sales-orders', {
-  //           title: 'Sales Orders',
-  //           state: 'app.inventory-management.sales-orders'
-  //       });
-		
-		// msNavigationServiceProvider.saveItem('apps.inventory-management.return-wizard', {
-  //           title: 'Return Wizard',
-  //           state: 'app.inventory-management.return-wizard'
-  //       });
-		
-		
     }
 })();

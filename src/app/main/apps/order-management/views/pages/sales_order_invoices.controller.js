@@ -7,7 +7,7 @@
         .controller('SalesOrderInvoicesController', SalesOrderInvoicesController);
 
     /** @ngInject */
-    function SalesOrderInvoicesController($window, omApi, $scope, $state, Statuses, Orders)
+    function SalesOrderInvoicesController($window, omApi, $scope, $state)
     {
 
         

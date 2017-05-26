@@ -35,12 +35,6 @@
                         controller : 'ReturnWizardController as vm'
                     }
                 },
-                resolve  : {
-					DashboardData: function (msApi)
-					{
-						return msApi.resolve('dashboard.server@get');
-					}
-				},
                 bodyClass: 'accounting'
             })
 			
@@ -58,12 +52,6 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-					DashboardData: function (msApi)
-					{
-						return msApi.resolve('dashboard.server@get');
-					}
-				},
                 bodyClass: 'accounting-edit'
             })
 			
@@ -80,12 +68,6 @@
                 params: {
                  obj: null
                 },
-                resolve  : {
-					DashboardData: function (msApi)
-					{
-						return msApi.resolve('dashboard.server@get');
-					}
-				},
                 bodyClass: 'accounting-view'
             })
 			
@@ -99,21 +81,9 @@
                         controller : 'newReturnWizardController as vm'
                     }
                 },
-                resolve  : {
-					DashboardData: function (msApi)
-					{
-						return msApi.resolve('dashboard.server@get');
-					}
-				},
                 bodyClass: 'accounting-new'
             })
 			
-			
-
-        // Api
-		msApiProvider.register('dashboard.server', ['app/data/dashboard/server/data.json']);
-		msApiProvider.register('dashboard.project', ['app/data/dashboard/project/data.json']);
-
         // Navigation
 		
         msNavigationServiceProvider.saveItem('apps.return-wizard', {
@@ -127,21 +97,5 @@
             title: 'Returns',
             state: 'app.return-wizard.return-wizard'
         });
-		
-		/* msNavigationServiceProvider.saveItem('apps.accounting.ledger-entries', {
-            title: 'Ledger Entries',
-            state: 'app.accounting.ledger-entries'
-        });
-		
-		msNavigationServiceProvider.saveItem('apps.accounting.cheque-register', {
-            title: 'Cheque Register',
-            state: 'app.accounting.cheque-register'
-        }); */
-		
-		/* msNavigationServiceProvider.saveItem('apps.accounting.accounting-edit', {
-            title: 'Accounting Edit',
-            state: 'app.accounting.accounting-edit'
-        }); */
- 
     }
 })();

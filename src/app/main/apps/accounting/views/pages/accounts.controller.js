@@ -25,7 +25,6 @@
         var dataPromise = accApi.getAccounts({});
         dataPromise.then(function(result) { 
             $scope.accounts_data = result;
-            console.log("$scope.accounts_data",$scope.accounts_data)
         }); 
 
         vm.dtInstance = {};

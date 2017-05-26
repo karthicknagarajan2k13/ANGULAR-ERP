@@ -23,7 +23,6 @@
         var dataPromise = accApi.getChequeRegisters({});
         dataPromise.then(function(result) { 
             $scope.cheque_registers_data = result;
-            console.log("$scope.cheque_registers_data",$scope.cheque_registers_data)
         }); 
 
         vm.dtInstance = {};

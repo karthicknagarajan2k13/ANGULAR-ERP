@@ -19,9 +19,6 @@
         vm.createTheme = createTheme;
 
         //////////
-		
-		
-		
 
         function createTheme(ev)
         {
@@ -34,10 +31,6 @@
                 clickOutsideToClose: true
             });
         }
-		
-		
-		
-		
 
     }
 })();

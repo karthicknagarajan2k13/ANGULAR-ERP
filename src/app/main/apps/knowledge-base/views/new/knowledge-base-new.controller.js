@@ -7,7 +7,7 @@
         .controller('newKnowledgeBasesController', newKnowledgeBasesController);
 
     /** @ngInject */
-    function newKnowledgeBasesController($mdToast,kbApi, $scope, $document, $state, Product)
+    function newKnowledgeBasesController($mdToast,kbApi, $scope, $document, $state)
     {
 		
 		$scope.isOpen = false;
@@ -17,6 +17,7 @@
 			selectedDirection: 'left'
 		  };
         var vm = this;
+        vm.product = {}
 
         var dataPromise = kbApi.get_employees({});
         dataPromise.then(function(result) { 
@@ -84,7 +85,6 @@
             ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'pre', 'quote', 'bold', 'italics', 'underline', 'strikeThrough', 'ul', 'ol', 'redo', 'undo', 'clear'],
             ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', 'indent', 'outdent', 'html', 'insertImage', 'insertLink', 'insertVideo', 'wordcount', 'charcount']
         ];
-        vm.product = Product.data;
         vm.categoriesSelectFilter = '';
         vm.ngFlowOptions = {
             // You can configure the ngFlow from here
@@ -205,14 +205,6 @@
 
             vm.ngFlow.flow.upload();
         }
-
-        /**
-         * File upload success callback
-         * Triggers when single upload completed
-         *
-         * @param file
-         * @param message
-         */
         function fileSuccess(file, message)
         {
             // Iterate through the media list, find the one we
@@ -237,5 +229,9 @@
                 }
             });
         }
+
+
+
+
     }
 })();

@@ -7,7 +7,7 @@
         .controller('SalesOrdersController', SalesOrdersController);
 
     /** @ngInject */
-    function SalesOrdersController($scope, $state, Statuses, Orders)
+    function SalesOrdersController($scope, $state)
     {
 
         $scope.isOpen = false;
@@ -20,9 +20,6 @@
 		
 		var vm = this;
 
-        // Data
-        vm.orders = Orders.data;
-        vm.statuses = Statuses.data;
         vm.dtInstance = {};
         vm.dtOptions = {
             dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
@@ -70,7 +67,5 @@
 			 $state.go('app.order-management.invoices-view', {id: id}); 
 		}
 		
-
-        //////////
     }
 })();

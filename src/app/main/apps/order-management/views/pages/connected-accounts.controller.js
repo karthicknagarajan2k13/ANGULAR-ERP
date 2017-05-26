@@ -39,13 +39,11 @@
         var dataPromise = omApi.getAccounts();
         dataPromise.then(function(result) { 
             $scope.accounts = result; 
-            console.log("$scope.accounts",$scope.accounts)
         });
 
         var dataPromise = omApi.getMarketplaces();
         dataPromise.then(function(result) { 
             $scope.marketplaces = result; 
-            console.log("$scope.marketplaces",$scope.marketplaces)
         });
 
         vm.createMarketplace = function(){

@@ -7,7 +7,7 @@
         .controller('contactsController', contactsController);
 
     /** @ngInject */
-    function contactsController($scope, crmApi, User, $rootScope, $window, $state, Statuses, Orders, Contact)
+    function contactsController($scope, crmApi, User, $rootScope, $window, $state, Contact)
     {
 		
 		$scope.isOpen = false;
@@ -30,8 +30,6 @@
 		
 
         vm.search_data = {};
-        vm.orders = Orders.data;
-        vm.statuses = Statuses.data;
 
         var session = $window.JSON.parse($window.localStorage.getItem('current_user'))
         vm.get_customers = User.get_customers({token:session.email});
