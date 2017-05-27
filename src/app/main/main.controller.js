@@ -7,12 +7,8 @@
         .controller('MainController', MainController);
 
     /** @ngInject */
-    function MainController($scope, $rootScope,  Auth)
+    function MainController($scope, $rootScope)
     {
-        // Data
-
-        //////////
-
         // Remove the splash screen
         $scope.$on('$viewContentAnimationEnded', function (event)
         {
@@ -21,6 +17,5 @@
                 $rootScope.$broadcast('msSplashScreen::remove');
             }
         });
-
     }
 })();

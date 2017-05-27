@@ -20,6 +20,8 @@
 
         // Data
         vm.search_data = {}
+        vm.search_data.rate_type1 = []
+
         var dataPromise = accApi.getChequeRegisters({});
         dataPromise.then(function(result) { 
             $scope.cheque_registers_data = result;
@@ -82,9 +84,11 @@
             } 
         };
         vm.searchChequeRegisterData = function(id){
+            vm.search_data.rate_type =  JSON.stringify(vm.search_data.rate_type1)
             var dataPromise = accApi.getChequeRegisters(vm.search_data);
             dataPromise.then(function(result) { 
-                $scope.cheque_registers_data = result; 
+                $scope.cheque_registers_data = result;
+                vm.search_data.rate_type = ""
             }); 
         }
         vm.searchChequeRegisterDataClear = function(id){

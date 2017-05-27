@@ -33,15 +33,19 @@
                                         <input type="text" name="name" ng-model="vm.cheque_register.payee">
                                     </md-input-container>
                                     <md-input-container class="md-block" flex-gt-sm>
-                                        <label>Debit</label>
-                                        <input type="text" name="name" ng-model="vm.cheque_register.debit">
+                                        <label>Type</label>
+                                        <md-select ng-model="vm.cheque_register.rate_type">
+                                            <md-option ng-repeat="type in ['Credit', 'Debit']" value="{{type}}">
+                                                {{type}}
+                                            </md-option>
+                                        </md-select>
                                     </md-input-container>
                                 </div>
 								
 								 <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
-                                        <label>Credit</label>
-                                        <input type="text" name="name" ng-model="vm.cheque_register.credit">
+                                        <label>Rate</label>
+                                        <input type="text" name="name" ng-model="vm.cheque_register.rate">
                                     </md-input-container>
                                     <md-input-container class="md-block" flex-gt-sm>
                                         <label>Notes</label>

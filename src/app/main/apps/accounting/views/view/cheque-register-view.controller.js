@@ -59,11 +59,11 @@
             if (typeof($scope.cheque_register_data.payee) !== "undefined"){
                 $scope.table_data.push(["Payee",$scope.cheque_register_data.payee]);
             }
-            if (typeof($scope.cheque_register_data.debit) !== "undefined"){
-                $scope.table_data.push(["Debit",$scope.cheque_register_data.debit]);
+            if (typeof($scope.cheque_register_data.rate) !== "undefined"){
+                $scope.table_data.push(["Rate",$scope.cheque_register_data.rate]);
             }                          
-            if (typeof($scope.cheque_register_data.credit) !== "undefined"){
-                $scope.table_data.push(["Credit",$scope.cheque_register_data.credit]);
+            if (typeof($scope.cheque_register_data.rate_type) !== "undefined"){
+                $scope.table_data.push(["Type",$scope.cheque_register_data.rate_type]);
             }                         
             if (typeof($scope.cheque_register_data.notes) !== "undefined"){
                 $scope.table_data.push(["Notes",$scope.cheque_register_data.notes]);
