@@ -47,6 +47,6 @@ gulp.task('watch', ['inject'], function ()
         path.join(conf.paths.src, '/app/**/*.html')
     ], function (event)
     {
-        browserSync.reload(event.path);
+        gulp.src('./app/*.html').pipe(connect.reload());
     });
 });

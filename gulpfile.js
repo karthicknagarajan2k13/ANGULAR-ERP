@@ -8,7 +8,7 @@
 
 var gulp = require('gulp');
 var wrench = require('wrench');
-
+var connect = require('gulp-connect');
 /**
  *  This will load all js or coffee files in the gulp directory
  *  in order to load all gulp tasks
@@ -26,13 +26,4 @@ wrench.readdirSyncRecursive('./gulp').filter(function(file) {
  */
 gulp.task('default', ['clean'], function () {
   gulp.start('build');
-});
-
-
-gulp.task('serveprod', function() {
-  connect.server({
-    root: path,
-    port: process.env.PORT || 5000, // localhost:5000
-    livereload: false
-  });
 });
