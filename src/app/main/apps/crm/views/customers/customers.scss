@@ -7,12 +7,12 @@ md-icon.top-icon {
 }
 
 .add-btn-fixed {
-    position: fixed;
+    position: sticky;
     right: 0;
-    top: 90%;
+    bottom: 40px;
     margin-right: 33px;
     z-index: 99;
-	width:94%;
+    /* width: 94%; */
 }
 
 .md-button.md-default-theme.md-primary.md-raised:not([disabled]):hover, .md-button.md-primary.md-raised:not([disabled]):hover, .md-button.md-default-theme.md-primary.md-fab:not([disabled]):hover, .md-button.md-primary.md-fab:not([disabled]):hover {
