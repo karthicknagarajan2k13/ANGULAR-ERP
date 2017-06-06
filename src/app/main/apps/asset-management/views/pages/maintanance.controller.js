@@ -43,7 +43,7 @@
                 scrollY     : 'auto',
                 responsive  : true
             };
-        
+
         }); 
 
         var dataPromise = amApi.get_assets({});
