@@ -53,7 +53,11 @@
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Asset</label>
-                                        <input ng-model="vm.search_data.title">
+                                        <md-select ng-model="vm.search_data.asset_id">
+                                            <md-option ng-repeat="assets in get_assets" value="{{assets.asset_id}}">
+                                                {{assets.name}}
+                                            </md-option>
+                                        </md-select>
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex="33">
@@ -81,7 +85,7 @@
 
 
 
-<div id="e-commerce-orders" class="page-layout carded fullwidth" layout="row">
+<div ng-show="show_table1 && show_table2" id="e-commerce-orders" class="page-layout carded fullwidth" layout="row">
 
     <!-- CENTER -->
     <div class="center" layout="column" flex>

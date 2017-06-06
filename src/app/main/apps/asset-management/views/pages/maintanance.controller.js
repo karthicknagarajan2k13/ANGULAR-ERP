@@ -18,13 +18,39 @@
             selectedDirection: 'left'
         };
         var vm = this;
-
+        $scope.show_table1 = false
+        $scope.show_table2 = false
         // Data
         vm.search_data = {}
         var dataPromise = amApi.getMaintanances({});
         dataPromise.then(function(result) { 
             $scope.maintanance_data = result;
+            $scope.show_table2 = true
+            vm.dtInstance = {};
+            vm.dtOptions = {
+                dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
+                columnDefs  : [
+                    {
+                        // Target the id column
+                        targets: 0,
+                        width  : '10px'
+                    }
+                ],
+                initComplete: initComplete,
+                pagingType  : 'simple',
+                lengthMenu  : [10, 20, 30, 50, 100],
+                pageLength  : 20,
+                scrollY     : 'auto',
+                responsive  : true
+            };
+            
         }); 
+
+        var dataPromise = amApi.get_assets({});
+        dataPromise.then(function(result) { 
+            console.log("result",result)
+            $scope.get_assets = result;
+        });
 
         var dataPromise = kbApi.getUsers({});
         dataPromise.then(function(result) { 
@@ -36,38 +62,12 @@
             $scope.get_kb_categories = result;
         });
 
-        vm.dtInstance = {};
-        vm.dtOptions = {
-            dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
-            columnDefs  : [
-                {
-                    // Target the id column
-                    targets: 0,
-                    width  : '10px'
-                }
-            ],
-            initComplete: function ()
-            {
-                var api = this.api(),
-                    searchBox = angular.element('body').find('#e-commerce-products-search');
-
-                // Bind an external input as a table wide search box
-                if ( searchBox.length > 0 )
-                {
-                    searchBox.on('keyup', function (event)
-                    {
-                        api.search(event.target.value).draw();
-                    });
-                }
-            },
-            pagingType  : 'simple',
-            lengthMenu  : [10, 20, 30, 50, 100],
-            pageLength  : 20,
-            scrollY     : 'auto',
-            responsive  : true
-        };
 
 
+        function initComplete(){
+            $scope.show_table1 = true
+        }
+        
         vm.newMaintanancePage = function(){
             $state.go('app.asset-management.maintanance-new'); 
         }
@@ -100,7 +100,7 @@
             }); 
         }
         vm.searchMaintananceDataClear = function(id){
-            vm.maintanance_data = {}
+            vm.search_data = {}
         }
 
 		
