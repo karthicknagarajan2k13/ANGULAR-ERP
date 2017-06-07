@@ -24,6 +24,10 @@
         dataPromise.then(function(result) { 
             vm.contacts_data = result;
         });
+		
+		
+		
+		
 
         vm.search_data = {};
         vm.orders = Orders.data;
