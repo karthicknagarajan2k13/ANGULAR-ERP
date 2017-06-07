@@ -7,7 +7,7 @@
         .controller('AssetController', AssetController);
 
     /** @ngInject */
-    function AssetController($window, kbApi, $scope, $state, amApi)
+    function AssetController($timeout,$window, kbApi, $scope, $state, amApi)
     {
 
         $scope.isOpen = false;
@@ -24,7 +24,6 @@
         var dataPromise = amApi.getAssets({});
         dataPromise.then(function(result) { 
             $scope.assets_data = result;
-            $scope.show_table2 = true
             vm.dtInstance = {};
             vm.dtOptions = {
                 dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
@@ -42,7 +41,9 @@
                 scrollY     : 'auto',
                 responsive  : true
             };
-
+            $timeout(function(){
+                $scope.show_table2 = true
+            }, 2000);
         }); 
 
         var dataPromise = kbApi.getUsers({});

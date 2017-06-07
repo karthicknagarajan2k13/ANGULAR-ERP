@@ -7,7 +7,7 @@
         .controller('ChequeRegisterController', ChequeRegisterController);
 
     /** @ngInject */
-    function ChequeRegisterController($window, accApi, $scope, $state)
+    function ChequeRegisterController($timeout,$window, accApi, $scope, $state)
     {
         $scope.isOpen = false;
         $scope.demo = {
@@ -26,8 +26,6 @@
         var dataPromise = accApi.getChequeRegisters({});
         dataPromise.then(function(result) { 
             $scope.cheque_registers_data = result;
-            $scope.show_table2 = true
-
             vm.dtInstance = {};
             vm.dtOptions = {
                 dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
@@ -45,6 +43,9 @@
                 scrollY     : 'auto',
                 responsive  : true
             }; 
+            $timeout(function(){
+                $scope.show_table2 = true
+            }, 2000);
         }); 
 
 

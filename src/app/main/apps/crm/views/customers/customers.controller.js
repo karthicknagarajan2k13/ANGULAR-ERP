@@ -7,9 +7,10 @@
         .controller('customerssController', customerssController);
 
     /** @ngInject */
-    function customerssController($scope, crmApi, $http, $window, Staff_User, $state, Customer)
+    function customerssController($timeout,$scope, crmApi, $http, $window, Staff_User, $state, Customer)
     {
 		
+
 		$scope.isOpen = false;
 		$scope.demo = {
 			isOpen: false,
@@ -20,12 +21,11 @@
         $scope.show_table2 = false
 		
         var vm = this;
+
         // Data
         var dataPromise = crmApi.getCustomers({});
         dataPromise.then(function(result) { 
             vm.customers_data = result;
-            $scope.show_table2 = true
-
             vm.dtInstance = {};
             vm.dtOptions = {
                 dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
@@ -43,20 +43,17 @@
                 scrollY     : 'auto',
                 responsive  : true
             };
-
-
-
-            
+            $timeout(function(){
+                $scope.show_table2 = true
+            }, 2000);
         });
-
+        
         vm.search_data = {};
         vm.search_data.c_type1 = []
 
         var session = $window.JSON.parse($window.localStorage.getItem('current_user'))
 
         vm.get_users = Staff_User.get_users({token:session.email});
-
-
 
         function initComplete(){
             $scope.show_table1 = true

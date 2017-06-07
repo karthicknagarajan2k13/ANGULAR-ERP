@@ -7,7 +7,7 @@
         .controller('MaintananceController', MaintananceController);
 
     /** @ngInject */
-    function MaintananceController($window, amApi, $scope, $state, kbApi)
+    function MaintananceController($timeout,$window, amApi, $scope, $state, kbApi)
     {
        console.log("hi");
 
@@ -25,7 +25,6 @@
         var dataPromise = amApi.getMaintanances({});
         dataPromise.then(function(result) { 
             $scope.maintanance_data = result;
-            $scope.show_table2 = true
             vm.dtInstance = {};
             vm.dtOptions = {
                 dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
@@ -43,7 +42,9 @@
                 scrollY     : 'auto',
                 responsive  : true
             };
-
+            $timeout(function(){
+                $scope.show_table2 = true
+            }, 2000);
         }); 
 
         var dataPromise = amApi.get_assets({});

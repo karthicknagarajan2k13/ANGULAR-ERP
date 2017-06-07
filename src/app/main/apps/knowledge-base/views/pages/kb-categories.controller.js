@@ -7,7 +7,7 @@
         .controller('KbCategoriesController', KbCategoriesController);
 
     /** @ngInject */
-    function KbCategoriesController($window, kbApi, $scope, $state)
+    function KbCategoriesController($timeout,$window, kbApi, $scope, $state)
     {
 
         $scope.isOpen = false;
@@ -24,7 +24,6 @@
         var dataPromise = kbApi.getKbCategories({});
         dataPromise.then(function(result) { 
             $scope.kb_categories_data = result;
-            $scope.show_table2 = true
             vm.dtInstance = {};
             vm.dtOptions = {
                 dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
@@ -42,7 +41,9 @@
                 scrollY     : 'auto',
                 responsive  : true
             };
-
+            $timeout(function(){
+                $scope.show_table2 = true
+            }, 2000);
         }); 
 
         var dataPromise = kbApi.getUsers({});

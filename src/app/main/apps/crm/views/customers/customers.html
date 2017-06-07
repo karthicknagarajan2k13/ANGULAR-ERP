@@ -97,7 +97,7 @@
 
 
 
-<div ng-show="show_table1 && show_table2" id="e-commerce-orders" class="page-layout carded fullwidth" layout="row">
+<div id="e-commerce-orders" class="page-layout carded fullwidth" layout="row">
 
     <!-- CENTER -->
     <div class="center" layout="column" flex>
@@ -114,8 +114,8 @@
             <!-- CONTENT -->
             <div class="content fullpage-datatable" layout="column" flex>
 
-                <table class="dataTable row-border hover rowClickable" datatable="ng" dt-instance="vm.dtInstance" bRetrieve="true" bDestroy="true" dt-options="vm.dtOptions">
-                    <thead>
+                <table  class="dataTable row-border hover rowClickable" datatable="ng" dt-instance="vm.dtInstance" bRetrieve="true" bDestroy="true" dt-options="vm.dtOptions">
+                    <thead >
                         <tr>
                             <th class="secondary-text">
                                 <div class="">
@@ -124,7 +124,7 @@
                             </th>
                             <th class="secondary-text">
                                 <div class="table-header">
-                                    <span class="column-title">Customer Name</span>
+                                    <span id="loadclick" class="column-title">Customer Name</span>
                                 </div>
                             </th>
                             <th class="secondary-text">
@@ -154,7 +154,7 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody ng-show="show_table1 && show_table2">
                         <tr ng-repeat="customer in vm.customers_data" ng-click="vm.viewCustomerPage(customer.id)">
                             <td ng-click="$event.stopPropagation()"><md-checkbox ng-model="customer.checked" aria-label="Checkbox 1">
 								</md-checkbox>

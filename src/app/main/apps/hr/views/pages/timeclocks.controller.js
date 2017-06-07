@@ -7,7 +7,7 @@
         .controller('TimeclocksController', TimeclocksController);
 
     /** @ngInject */
-    function TimeclocksController($window, hrApi, $scope, $state)
+    function TimeclocksController($timeout,$window, hrApi, $scope, $state)
     {
 
         
@@ -26,7 +26,6 @@
         var dataPromise = hrApi.getTimeclocks({});
         dataPromise.then(function(result) { 
             $scope.timeclocks_data = result;
-            $scope.show_table2 = true
             vm.dtInstance = {};
             vm.dtOptions = {
                 dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
@@ -44,7 +43,9 @@
                 scrollY     : 'auto',
                 responsive  : true
             };
-
+            $timeout(function(){
+                $scope.show_table2 = true
+            }, 2000);
         });
         var dataPromise = hrApi.get_employees({});
         dataPromise.then(function(result) { 

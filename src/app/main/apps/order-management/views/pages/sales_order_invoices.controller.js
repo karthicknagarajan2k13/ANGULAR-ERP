@@ -7,7 +7,7 @@
         .controller('SalesOrderInvoicesController', SalesOrderInvoicesController);
 
     /** @ngInject */
-    function SalesOrderInvoicesController($window, omApi, $scope, $state)
+    function SalesOrderInvoicesController($timeout,$window, omApi, $scope, $state)
     {
 
         
@@ -27,7 +27,6 @@
         var dataPromise = omApi.getSalesOrderInvoices({});
         dataPromise.then(function(result) { 
             $scope.sales_order_invoices_data = result;  
-            $scope.show_table2 = true
             vm.dtInstance = {};
             vm.dtOptions = {
                 dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
@@ -45,7 +44,9 @@
                 scrollY     : 'auto',
                 responsive  : true
             };
-            
+            $timeout(function(){
+                $scope.show_table2 = true
+            }, 2000);            
         }); 
 
 

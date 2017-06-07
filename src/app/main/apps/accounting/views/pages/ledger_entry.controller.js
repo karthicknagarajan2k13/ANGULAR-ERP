@@ -7,7 +7,7 @@
         .controller('LedgerEntryController', LedgerEntryController);
 
     /** @ngInject */
-    function LedgerEntryController(crmApi,omApi,$window, accApi, $scope, $state)
+    function LedgerEntryController($timeout,crmApi,omApi,$window, accApi, $scope, $state)
     {
         $scope.isOpen = false;
         $scope.demo = {
@@ -24,7 +24,6 @@
         var dataPromise = accApi.getLedgerEntries({});
         dataPromise.then(function(result) { 
             $scope.ledger_entries_data = result;
-            $scope.show_table2 = true
             vm.dtInstance = {};
             vm.dtOptions = {
                 dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
@@ -42,7 +41,9 @@
                 scrollY     : 'auto',
                 responsive  : true
             };
-            
+            $timeout(function(){
+                $scope.show_table2 = true
+            }, 2000);
         }); 
 
         var dataPromise = crmApi.get_customers({});

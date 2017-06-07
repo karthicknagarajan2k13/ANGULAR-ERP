@@ -7,7 +7,7 @@
         .controller('suppliersController', suppliersController);
 
     /** @ngInject */
-    function suppliersController($window, imApi, $scope, $state)
+    function suppliersController($timeout,$window, imApi, $scope, $state)
     {
 
         
@@ -28,7 +28,6 @@
         var dataPromise = imApi.getSuppliers({});
         dataPromise.then(function(result) { 
             $scope.suppliers_data = result;
-            $scope.show_table2 = true
             vm.dtInstance = {};
             vm.dtOptions = {
                 dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
@@ -46,6 +45,9 @@
                 scrollY     : 'auto',
                 responsive  : true  
             };
+            $timeout(function(){
+                $scope.show_table2 = true
+            }, 2000);            
         }); 
 
 

@@ -7,7 +7,7 @@
         .controller('purchaseOrdersController', purchaseOrdersController);
 
     /** @ngInject */
-    function purchaseOrdersController($window, imApi, $scope, $state)
+    function purchaseOrdersController($timeout,$window, imApi, $scope, $state)
     {
 
         $scope.isOpen = false;
@@ -26,7 +26,6 @@
         var dataPromise = imApi.getPurchaseOrders({});
         dataPromise.then(function(result) { 
             $scope.purchase_orders_data = result;
-            $scope.show_table2 = true
 
             vm.dtInstance = {};
             vm.dtOptions = {
@@ -45,6 +44,9 @@
                 scrollY     : 'auto',
                 responsive  : true
             };
+            $timeout(function(){
+                $scope.show_table2 = true
+            }, 2000);            
         }); 
         var dataPromise = imApi.get_suppliers({});
         dataPromise.then(function(result) { 

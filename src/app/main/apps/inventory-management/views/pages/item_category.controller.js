@@ -7,7 +7,7 @@
         .controller('itemCategoryController', itemCategoryController);
 
     /** @ngInject */
-    function itemCategoryController($window, imApi, $scope, $state)
+    function itemCategoryController($timeout,$window, imApi, $scope, $state)
     {
 
         
@@ -27,7 +27,6 @@
         var dataPromise = imApi.getCategories({});
         dataPromise.then(function(result) { 
             $scope.categories_data = result;
-            $scope.show_table2 = true
             vm.dtInstance = {};
             vm.dtOptions = {
                 dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
@@ -45,7 +44,9 @@
                 scrollY     : 'auto',
                 responsive  : true
             };
-
+            $timeout(function(){
+                $scope.show_table2 = true
+            }, 2000);
             
             console.log("$scope.categories_data",$scope.categories_data)
         }); 

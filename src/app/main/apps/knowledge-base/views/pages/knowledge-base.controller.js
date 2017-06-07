@@ -7,7 +7,7 @@
         .controller('KnowledgeBasesController', KnowledgeBasesController);
 
     /** @ngInject */
-    function KnowledgeBasesController($window, kbApi, $scope, $state)
+    function KnowledgeBasesController($timeout,$window, kbApi, $scope, $state)
     {
 
         $scope.isOpen = false;
@@ -24,7 +24,6 @@
         var dataPromise = kbApi.getKnowledgeBases({});
         dataPromise.then(function(result) { 
             $scope.knowledge_bases_data = result;
-            $scope.show_table2 = true
             vm.dtInstance = {};
             vm.dtOptions = {
                 dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
@@ -42,7 +41,9 @@
                 scrollY     : 'auto',
                 responsive  : true
             };
-            
+            $timeout(function(){
+                $scope.show_table2 = true
+            }, 2000);            
         }); 
 
         var dataPromise = kbApi.getUsers({});

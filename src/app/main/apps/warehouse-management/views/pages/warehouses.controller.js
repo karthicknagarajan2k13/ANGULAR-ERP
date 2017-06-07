@@ -7,7 +7,7 @@
         .controller('WareHouseController', WareHouseController);
 
     /** @ngInject */
-    function WareHouseController($window, whApi, $scope, $state)
+    function WareHouseController($timeout,$window, whApi, $scope, $state)
     {
 
         
@@ -27,7 +27,6 @@
         var dataPromise = whApi.getWarehouses({});
         dataPromise.then(function(result) { 
             $scope.warehouses_data = result;
-            $scope.show_table2 = true
             vm.dtInstance = {};
             vm.dtOptions = {
                 dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
@@ -45,7 +44,9 @@
                 scrollY     : 'auto',
                 responsive  : true
             };
-            
+            $timeout(function(){
+                $scope.show_table2 = true
+            }, 2000);            
 
         }); 
         var dataPromise = whApi.getUsers({});

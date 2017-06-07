@@ -96,7 +96,7 @@
 
 
 
-<div ng-show="show_table1 && show_table2"  id="e-commerce-orders" class="page-layout carded fullwidth" layout="row">
+<div   id="e-commerce-orders" class="page-layout carded fullwidth" layout="row">
 
     <!-- CENTER -->
     <div class="center" layout="column" flex>
@@ -155,7 +155,7 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody ng-show="show_table1 && show_table2">
                         <tr ng-click="vm.viewReturnWizardPage(return_wizard.id)" ng-repeat="return_wizard in return_wizards_data">
                             <td ng-click="$event.stopPropagation()">
 								<md-checkbox ng-model="return_wizard.checked" aria-label="Checkbox 1"></md-checkbox>

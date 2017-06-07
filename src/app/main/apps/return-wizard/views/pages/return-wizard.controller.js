@@ -7,7 +7,7 @@
         .controller('ReturnWizardController', ReturnWizardController);
 
     /** @ngInject */
-    function ReturnWizardController(rwApi,crmApi,omApi,$window, $scope, $state)
+    function ReturnWizardController($timeout,rwApi,crmApi,omApi,$window, $scope, $state)
     {
         $scope.isOpen = false;
         $scope.demo = {
@@ -27,7 +27,6 @@
         var dataPromise = rwApi.getReturnWizards({});
         dataPromise.then(function(result) { 
             $scope.return_wizards_data = result;
-            $scope.show_table2 = true
             vm.dtInstance = {};
             vm.dtOptions = {
                 dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
@@ -46,7 +45,9 @@
                 responsive  : true
             };
             
-
+            $timeout(function(){
+                $scope.show_table2 = true
+            }, 2000);
         }); 
 
         var dataPromise = crmApi.get_customers({});

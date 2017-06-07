@@ -7,7 +7,7 @@
         .controller('ExpensesController', ExpensesController);
 
     /** @ngInject */
-    function ExpensesController($window, hrApi, $scope, $state)
+    function ExpensesController($timeout,$window, hrApi, $scope, $state)
     {
 
         
@@ -26,7 +26,6 @@
         var dataPromise = hrApi.getExpenses({});
         dataPromise.then(function(result) { 
             $scope.expenses_data = result;
-            $scope.show_table2 = true
             vm.dtInstance = {};
             vm.dtOptions = {
                 dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
@@ -44,7 +43,9 @@
                 scrollY     : 'auto',
                 responsive  : true
             };
-
+            $timeout(function(){
+                $scope.show_table2 = true
+            }, 2000);
         });
         var dataPromise = hrApi.get_employees({});
         dataPromise.then(function(result) { 

@@ -7,7 +7,7 @@
         .controller('MaterialController', MaterialController);
 
     /** @ngInject */
-    function MaterialController($window, mfgApi, $scope, $state)
+    function MaterialController($timeout,$window, mfgApi, $scope, $state)
     {
 
         $scope.isOpen = false;
@@ -25,7 +25,6 @@
         var dataPromise = mfgApi.getMaterials({});
         dataPromise.then(function(result) { 
             $scope.materials_data = result;
-            $scope.show_table2 = true
             vm.dtInstance = {};
             vm.dtOptions = {
                 dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
@@ -43,7 +42,9 @@
                 scrollY     : 'auto',
                 responsive  : true
             };
-
+            $timeout(function(){
+                $scope.show_table2 = true
+            }, 2000);
 
         }); 
 

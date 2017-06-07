@@ -92,7 +92,7 @@
 
 
 
-<div ng-show="show_table1 && show_table2" id="e-commerce-orders" class="page-layout carded fullwidth" layout="row">
+<div  id="e-commerce-orders" class="page-layout carded fullwidth" layout="row">
 
     <!-- CENTER -->
     <div class="center" layout="column" flex>
@@ -153,7 +153,7 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody ng-show="show_table1 && show_table2">
                         <tr ng-click="vm.viewManufacturingPage(manufacturing.id)" ng-repeat="manufacturing in manufacturings_data">
                             <td ng-click="$event.stopPropagation()"><md-checkbox ng-model="manufacturing.checked" aria-label="Checkbox 1">
 								</md-checkbox>

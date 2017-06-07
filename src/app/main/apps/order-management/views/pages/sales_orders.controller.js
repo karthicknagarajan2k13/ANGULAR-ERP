@@ -7,7 +7,7 @@
         .controller('SalesOrderController', SalesOrderController);
 
     /** @ngInject */
-    function SalesOrderController($mdToast,$window, omApi, $scope, $state)
+    function SalesOrderController($timeout,$mdToast,$window, omApi, $scope, $state)
     {
 
         
@@ -48,7 +48,6 @@
         var dataPromise = omApi.getSalesOrders({});
         dataPromise.then(function(result) { 
             $scope.sales_orders_data = result; 
-            $scope.show_table2 = true
             vm.dtInstance = {};
             vm.dtOptions = {
                 dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
@@ -66,6 +65,10 @@
                 scrollY     : 'auto',
                 responsive  : true
             };
+            $timeout(function(){
+                $scope.show_table2 = true
+            }, 2000);
+
             console.log("$scope.sales_orders_data",$scope.sales_orders_data)
         }); 
 

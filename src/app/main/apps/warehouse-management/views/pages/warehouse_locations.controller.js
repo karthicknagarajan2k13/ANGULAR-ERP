@@ -7,7 +7,7 @@
         .controller('WarehouseLocationController', WarehouseLocationController);
 
     /** @ngInject */
-    function WarehouseLocationController($window, whApi, $scope, $state)
+    function WarehouseLocationController($timeout,$window, whApi, $scope, $state)
     {
 
         
@@ -29,7 +29,6 @@
         var dataPromise = whApi.getWarehouseLocations({});
         dataPromise.then(function(result) { 
             $scope.warehouse_locations_data = result;
-            $scope.show_table2 = true
 
             vm.dtInstance = {};
             vm.dtOptions = {
@@ -48,7 +47,9 @@
                 scrollY     : 'auto',
                 responsive  : true
             };
-            
+            $timeout(function(){
+                $scope.show_table2 = true
+            }, 2000);            
         });
 
         var dataPromise = whApi.get_warehouses({});

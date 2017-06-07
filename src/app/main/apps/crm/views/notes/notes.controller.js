@@ -7,7 +7,7 @@
         .controller('notesController', notesController);
 
     /** @ngInject */
-    function notesController($scope, crmApi, $window, $state, Note, User, Contact_User)
+    function notesController($timeout,$scope, crmApi, $window, $state, Note, User, Contact_User)
     {
 		$scope.isOpen = false;
 		$scope.demo = {
@@ -23,7 +23,6 @@
         var dataPromise = crmApi.getNotes({});
         dataPromise.then(function(result) { 
             vm.notes_data = result;
-            $scope.show_table2 = true
             vm.dtInstance = {};
             vm.dtOptions = {
                 dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
@@ -41,7 +40,9 @@
                 scrollY     : 'auto',
                 responsive  : true
             };
-            
+            $timeout(function(){
+                $scope.show_table2 = true
+            }, 2000);            
         });
 
         vm.search_data = {};

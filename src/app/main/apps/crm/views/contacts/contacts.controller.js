@@ -7,7 +7,7 @@
         .controller('contactsController', contactsController);
 
     /** @ngInject */
-    function contactsController($scope, crmApi, User, $rootScope, $window, $state, Contact)
+    function contactsController($timeout,$scope, crmApi, User, $rootScope, $window, $state, Contact)
     {
 		
 		$scope.isOpen = false;
@@ -25,7 +25,6 @@
         var dataPromise = crmApi.getContacts({});
         dataPromise.then(function(result) { 
             vm.contacts_data = result;
-            $scope.show_table2 = true
             vm.dtInstance = {};
             vm.dtOptions = {
                 dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
@@ -43,7 +42,9 @@
                 scrollY     : 'auto',
                 responsive  : true
             };
-
+            $timeout(function(){
+                $scope.show_table2 = true
+            }, 2000);
             
         });
 		
