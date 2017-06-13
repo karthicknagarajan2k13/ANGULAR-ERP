@@ -1,19 +1,27 @@
 md-icon.top-icon {
-					color: #fff;
-					margin: 0 5px;
-				}
-				.layout-align-start-center.layout-row {
+	color: #fff;
+	margin: 0 5px;
+}
+.layout-align-start-center.layout-row {
     padding-right: 10px;
 }
 
+
+/* 13-06-2017 design changes start*/
+
 .add-btn-fixed {
+    position: -webkit-sticky;
     position: sticky;
     right: 0;
-    bottom: 40px;
+    bottom: 0px;
     margin-right: 33px;
     z-index: 99;
     /* width: 94%; */
 }
+
+/* 13-06-2017 design changes end*/
+
+
 
 .md-button.md-default-theme.md-primary.md-raised:not([disabled]):hover, .md-button.md-primary.md-raised:not([disabled]):hover, .md-button.md-default-theme.md-primary.md-fab:not([disabled]):hover, .md-button.md-primary.md-fab:not([disabled]):hover {
     background-color: rgb(3, 155, 229);
