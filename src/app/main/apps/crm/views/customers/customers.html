@@ -102,7 +102,21 @@
     <!-- CENTER -->
     <div class="center" layout="column" flex>
 
-        <!-- CONTENT CARD -->
+        
+		<!-- 15-06-2017 design changes start -->
+			<div class="center">
+				<div class="spinner-wrapper0">
+					<div class="spinner-circle0">
+						<div ng-show="vm.loading" layout="row" layout-sm="column" layout-align="space-around">
+							  <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+						</div>
+					</div>
+				</div>
+			</div>
+		<!-- 15-06-2017 design changes end -->
+		
+		
+		<!-- CONTENT CARD -->
         <div class="content-card" layout="column" flex>
 			
 			<div style="padding:25px; font-size:18px;"> Customers </div>
@@ -113,11 +127,7 @@
 
             <!-- CONTENT -->
 			
-			<!-- 13-06-2017 design changes start -->
-			<div ng-hide="show_table1 && show_table2" layout="row" layout-sm="column" layout-align="space-around">
-				  <md-progress-circular md-mode="indeterminate"></md-progress-circular>
-			</div>
-			<!-- 13-06-2017 design changes end -->
+			
             <div class="content fullpage-datatable" layout="column" flex>
 
                 <table  class="dataTable row-border hover rowClickable" datatable="ng" dt-instance="vm.dtInstance" bRetrieve="true" bDestroy="true" dt-options="vm.dtOptions">

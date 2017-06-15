@@ -21,10 +21,16 @@
         $scope.show_table2 = false
 		
         var vm = this;
+		// 15-06-2017 design changes start 
+		vm.loading = true;
+		// 15-06-2017 design changes end 
         // Data
         var dataPromise = crmApi.getCustomers({});
         dataPromise.then(function(result) { 
             vm.customers_data = result;
+			// 15-06-2017 design changes start 
+			vm.loading = false;
+			// 15-06-2017 design changes end 
             vm.dtInstance = {};
             vm.dtOptions = {
                 dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',

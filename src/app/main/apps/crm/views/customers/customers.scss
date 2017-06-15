@@ -7,6 +7,17 @@ md-icon.top-icon {
 }
 
 
+.layout-sm-column.layout-align-space-around-stretch.layout-row {
+    background: #fff;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9;
+}
+
+
 /* 13-06-2017 design changes start*/
 
 .add-btn-fixed {
