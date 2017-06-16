@@ -104,15 +104,15 @@
 
         
 		<!-- 15-06-2017 design changes start -->
-			<div class="center">
-				<div class="spinner-wrapper0">
-					<div class="spinner-circle0">
-						<div ng-show="vm.loading" layout="row" layout-sm="column" layout-align="space-around">
-							  <md-progress-circular md-mode="indeterminate"></md-progress-circular>
-						</div>
-					</div>
-				</div>
-			</div>
+            <div class="center" ng-hide="show_table1 && show_table2">
+                <div class="spinner-wrapper0">
+                    <div class="spinner-circle0">
+                        <div layout="row" layout-sm="column" layout-align="space-around">
+                              <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+                        </div>
+                    </div>
+                </div>
+            </div>
 		<!-- 15-06-2017 design changes end -->
 		
 		
