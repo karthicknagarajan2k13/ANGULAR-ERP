@@ -47,7 +47,59 @@
 			                            </md-button>
 			                        </div>
 			                    </form>
-								<div ng-repeat="account in accounts.accounts" ng-show="account.title=='Etsy'" layout="row" layout-xs="column">
+								
+								
+								
+								<table style="width: 100%;">
+									<tr ng-repeat="account in accounts.accounts" ng-show="account.title=='Etsy'">
+										<td><h2>Etsy </h2></td>
+										<td>
+											<md-button ng-click="vm.manageSalesEvent($event,account.id);" class="md-raised md-accent">Manage Sale Events</md-button>
+											<md-button ng-click="vm.marketpalceOption($event,account.id);" class="md-raised md-accent">Options</md-button>
+										</td>
+										<td align="right"><md-button class="md-raised md-accent connected-acc-btn">Connect</md-button></td>
+									</tr>
+									
+									<tr ng-repeat="account in accounts.accounts" ng-show="account.title=='eBay'" >
+										<td><h2>eBay </h2></td>
+										<td>
+											<md-button ng-click="vm.manageSalesEvent($event,account.id);" class="md-raised md-accent">Manage Sale Events</md-button>
+											<md-button ng-click="vm.marketpalceOption($event,account.id);" class="md-raised md-accent">Options</md-button>
+										</td>
+										<td align="right">
+											<md-button ng-hide="account.is_connected" ng-click="vm.connect(account.id)" class="md-raised md-accent">Connect</md-button>
+											<md-button ng-show="account.is_connected" ng-click="vm.accountDisConnect(account.id)" class="md-raised md-accent">Disconnect</md-button>
+										</td>
+									</tr>
+									
+									<tr ng-repeat="account in accounts.accounts" ng-show="account.title=='Amazon'" >
+										<td><h2>eBay </h2></td>
+										<td>
+											<md-button ng-click="vm.manageSalesEvent($event,account.id);" class="md-raised md-accent">Manage Sale Events</md-button>
+											<md-button ng-click="vm.marketpalceOption($event,account.id);" class="md-raised md-accent">Options</md-button>
+										</td>
+										<td align="right">
+											<md-button ng-hide="account.is_connected" ng-click="vm.amazonAccountConnect(account.id)" class="md-raised md-accent">Connect</md-button>
+											<md-button ng-show="account.is_connected" ng-click="vm.accountDisConnect(account.id)" class="md-raised md-accent">Disconnect</md-button>
+										</td>
+									</tr>
+									
+									<tr ng-repeat="account in accounts.accounts" ng-show="account.title=='Shopify'" >
+										<td><h2>eBay </h2></td>
+										<td>
+											<md-button ng-click="vm.manageSalesEvent($event,account.id);" class="md-raised md-accent">Manage Sale Events</md-button>
+											<md-button ng-click="vm.marketpalceOption($event,account.id);" class="md-raised md-accent">Options</md-button>
+										</td>
+										<td align="right">
+											<md-button ng-hide="account.is_connected" ng-click="vm.shopifyAccountConnect(account.id)" class="md-raised md-accent">Connect</md-button>
+											<md-button ng-show="account.is_connected" ng-click="vm.accountDisConnect(account.id)" class="md-raised md-accent">Disconnect</md-button>
+										</td>
+									</tr>
+								</table>
+								
+								
+								
+								<!-- <div ng-repeat="account in accounts.accounts" ng-show="account.title=='Etsy'" layout="row" layout-xs="column">
 								  <div flex layout="row" layout-align="start center">
 								  	<h2>Etsy </h2> &nbsp; &nbsp; <h4> / <a ng-click="vm.manageSalesEvent($event,account.id);" href="">Manage Sale Events</a> / <a ng-click="vm.marketpalceOption($event,account.id);" href="">Options</a></h4>
 								  </div>
@@ -84,7 +136,11 @@
 									<md-button ng-hide="account.is_connected" ng-click="vm.shopifyAccountConnect(account.id)" class="md-raised md-accent">Connect</md-button>
 								  	<md-button ng-show="account.is_connected" ng-click="vm.accountDisConnect(account.id)" class="md-raised md-accent">Disconnect</md-button>
 								  </div>
-								</div>
+								</di -->
+								
+								
+								
+								
 								
                             </div>
                         </md-tab-body>

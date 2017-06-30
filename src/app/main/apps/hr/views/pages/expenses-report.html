@@ -59,16 +59,22 @@
     <div class="center" layout="row" flex>
         <!-- CONTENT CARD -->
         <div class="content-card" layout="column" flex>
+		
+			<div style="padding:20px 20px 0px 20px; font-size:18px;" class="actions" layout="row" layout-align="end center">
+				<md-button ng-csv="table_data" filename="test.csv" class="md-raised md-accent">Export to CSV</md-button>
+                <md-button ng-click="vm.pdfExpenseData()" class="md-raised md-accent">Export to PDF</md-button>
+			</div>
+			
             <div style="padding:20px 20px 0px 20px; font-size:18px;">
                 <div layout="column" layout-gt-xs="row">
                     <md-input-container flex>
                         <div>
-                                <div class="actions" layout="row" layout-align="start center">
+                                <!-- <div class="actions" layout="row" layout-align="start center">
                                     <md-button ng-click="vm.searchExpenseData()" class="md-raised md-accent">Update Filter</md-button>
                                     <md-button ng-click="vm.searchExpenseDataClear()" class="md-raised md-accent">Clear Filter</md-button>
                                     <md-button ng-csv="table_data" filename="test.csv" class="md-raised md-accent">Export to CSV</md-button>
                                     <md-button ng-click="vm.pdfExpenseData()" class="md-raised md-accent">Export to PDF</md-button>
-                                </div>                              
+                                </div>  -->                             
                         </div>
                     </md-input-container>
                 </div>

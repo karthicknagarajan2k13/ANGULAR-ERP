@@ -18,19 +18,21 @@ md-icon.top-icon {
 }
 
 
-/* 13-06-2017 design changes start*/
+/* 30-06-2017 design changes start*/
 
 .add-btn-fixed {
-    position: -webkit-sticky;
-    position: sticky;
+    position: -webkit-sticky !important;
+    position: sticky !important;
     right: 0;
-    bottom: 0px;
-    margin-right: 33px;
+    bottom: 3px !important;
+    margin-right: 26px;
+    padding-left: 6px;
     z-index: 99;
-    /* width: 94%; */
+    width: 96%;
+    float: right;
 }
 
-/* 13-06-2017 design changes end*/
+/* 30-06-2017 design changes end*/
 
 
 
