@@ -18,36 +18,42 @@
     <div class="center" layout="row" flex>
         <!-- CONTENT CARD -->
         <div class="content-card" layout="column" flex>
-			<div style="padding:20px 20px 0px 20px; font-size:18px;">
-				<div layout="column" layout-gt-xs="row">
-					<md-input-container flex>
-						<md-icon md-font-icon="icon-magnify"></md-icon>
-						<label>Search</label>
+        
+            <div style="padding:20px 20px 0px 20px; font-size:18px;" class="actions" layout="row" layout-align="end center">
+                <md-button ng-csv="table_data" filename="test.csv" class="md-raised md-accent">Export to CSV</md-button>
+                <md-button ng-click="vm.pdfExpenseData()" class="md-raised md-accent">Export to PDF</md-button>
+            </div>
+            
+            <div style="padding:20px 20px 0px 20px; font-size:18px;">
+                <div layout="column" layout-gt-xs="row">
+                    <md-input-container flex>
+                        <md-icon md-font-icon="icon-magnify"></md-icon>
+                        <label>Search</label>
                         <input ng-keyup="$event.keyCode == 13 && vm.searchExpenseData()" ng-model="vm.search_data.search_text">
-						<md-icon ng-model="collapsed" ng-click="collapsed=!collapsed" md-font-icon="icon-chevron-down"></md-icon>
-						<div style="padding-top:49px;" ng-show="collapsed">
-							<div layout="column" layout-gt-xs="row" flex>
+                        <md-icon ng-model="collapsed" ng-click="collapsed=!collapsed" md-font-icon="icon-chevron-down"></md-icon>
+                        <div style="padding-top:49px;" ng-show="collapsed">
+                            <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>Employee</label>
+                                        <label>Employee</label>
                                     <md-select ng-model="vm.search_data.employee_id">
                                         <md-option ng-repeat="employee in get_employees" value="{{employee.employee_id}}">
                                             {{employee.name}}
                                         </md-option>
-                                    </md-select> 							</md-input-container>
-									<md-input-container class="md-block" flex-gt-sm>
-										<label>Range - From</label>
-										<md-datepicker ng-model="vm.search_data.from_date" md-placeholder="Date Created"></md-datepicker>
-									</md-input-container>
+                                    </md-select>                            </md-input-container>
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>Range - To</label>
-										<md-datepicker ng-model="vm.search_data.to_date" md-placeholder="Date Created"></md-datepicker>
-									</md-input-container>
-                                </div>							
-						</div>
-					</md-input-container>
+                                        <label>Range - From</label>
+                                        <md-datepicker ng-model="vm.search_data.from_date" md-placeholder="Date Created"></md-datepicker>
+                                    </md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Range - To</label>
+                                        <md-datepicker ng-model="vm.search_data.to_date" md-placeholder="Date Created"></md-datepicker>
+                                    </md-input-container>
+                                </div>                          
+                        </div>
+                    </md-input-container>
                 </div>
-				
-			</div>
+                
+            </div>
         </div>
         <!-- / CONTENT CARD -->
     </div>
@@ -59,12 +65,9 @@
     <div class="center" layout="row" flex>
         <!-- CONTENT CARD -->
         <div class="content-card" layout="column" flex>
-		
-			<div style="padding:20px 20px 0px 20px; font-size:18px;" class="actions" layout="row" layout-align="end center">
-				<md-button ng-csv="table_data" filename="test.csv" class="md-raised md-accent">Export to CSV</md-button>
-                <md-button ng-click="vm.pdfExpenseData()" class="md-raised md-accent">Export to PDF</md-button>
-			</div>
-			
+        
+            
+            
             <div style="padding:20px 20px 0px 20px; font-size:18px;">
                 <div layout="column" layout-gt-xs="row">
                     <md-input-container flex>
@@ -92,8 +95,8 @@
 
         <!-- CONTENT CARD -->
         <div class="content-card" layout="column" flex>
-			
-			<div style="padding:25px; font-size:18px;"> Expenses Report </div>
+            
+            <div style="padding:25px; font-size:18px;"> Expenses Report </div>
 
             <!-- CONTENT TOOLBAR -->
 
@@ -137,12 +140,12 @@
                                     <span class="column-title">Date Created </span>
                                 </div>
                             </th>
-							<th class="secondary-text">
+                            <th class="secondary-text">
                                 <div class="table-header">
                                     <span class="column-title">Created By </span>
                                 </div>
                             </th>
-							
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -150,11 +153,11 @@
                             
                             <td>{{expense.code}}</td>
                             <td>{{expense.subject}}</td>
-							<td>{{expense.employee}}</td>
+                            <td>{{expense.employee}}</td>
                             
-							<td>{{expense.amount}}</td>
-							<td>{{expense.status}}</td>
-							<td>{{expense.created_at}}</td>
+                            <td>{{expense.amount}}</td>
+                            <td>{{expense.status}}</td>
+                            <td>{{expense.created_at}}</td>
                             <td>{{expense.created_by}}</td>
                             
                         </tr>
@@ -163,7 +166,7 @@
 
             </div>
             <!-- / CONTENT -->
-			
+            
 
         </div>
         <!-- / CONTENT CARD -->

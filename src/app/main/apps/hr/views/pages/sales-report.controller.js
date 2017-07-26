@@ -31,20 +31,20 @@
                             "height": "25%",
                             "width": "31%",
                             "border-width": "1px",
-                            "border-color": "#384653",
+                            "border-color": "#00bcff",
                             "border-radius": 4,
                             "background-color": "#fbfcf7",
                             "title": {
                                 "text": "COUNT",
                                 "background-color": "none",
-                                "font-color": "#384653",
+                                "font-color": "#00bcff",
                                 "font-size": "12px",
                                 "text-align": "center",
                                 "height": "70px"
                             },
                             "subtitle": {
                                 "text": $scope.sales_data.count_heading,
-                                "font-color": "#dd655f",
+                                "font-color": "#00bcff",
                                 "font-size": "24px",
                                 "bold": true,
                                 "text-align": "center",
@@ -59,20 +59,20 @@
                             "height": "25%",
                             "width": "31%",
                             "border-width": "1px",
-                            "border-color": "#384653",
+                            "border-color": "#0c1224",
                             "border-radius": 4,
                             "background-color": "#fbfcf7",
                             "title": {
                                 "text": "REVENUE",
                                 "background-color": "none",
-                                "font-color": "#384653",
+                                "font-color": "#0c1224",
                                 "font-size": "12px",
                                 "text-align": "center",
                                 "height": "70px"
                             },
                             "subtitle": {
-                                "text": '$' + $scope.sales_data.revenue_heading,
-                                "font-color": "#4cc2bb",
+                                "text": '$' + $scope.sales_data.revenue_heading.toFixed(2),
+                                "font-color": "#0c1224",
                                 "font-size": "24px",
                                 "bold": true,
                                 "text-align": "center",
@@ -87,20 +87,20 @@
                             "height": "25%",
                             "width": "31%",
                             "border-width": "1px",
-                            "border-color": "#384653",
+                            "border-color": "#037ca7",
                             "border-radius": 4,
                             "background-color": "#fbfcf7",
                             "title": {
                                 "text": "NET",
-                                "font-color": "#104053",
+                                "font-color": "#037ca7",
                                 "font-size": "12px",
                                 "background-color": "none",
                                 "text-align": "center",
                                 "height": "70px"
                             },
                             "subtitle": {
-                                "text": '$' + $scope.sales_data.revenue_heading,
-                                "font-color": "#4f5963",
+                                "text": '$' + $scope.sales_data.revenue_heading.toFixed(2),
+                                "font-color": "#037ca7",
                                 "font-size": "24px",
                                 "bold": true,
                                 "text-align": "center",
@@ -115,7 +115,7 @@
                             "height": "68%",
                             "width": "96%",
                             "border-width": "1px",
-                            "border-color": "#384653",
+                            "border-color": "#037ca7",
                             "border-radius": 4,
                             "background-color": "#fbfcf7",
                             "legend": {
@@ -138,7 +138,7 @@
                                     "visible": false
                                 },
                                 "item": {
-                                    "font-color": "#384653"
+                                    "font-color": "#037ca7"
                                 },
                                 "tick": {
                                     "visible": false
@@ -153,7 +153,7 @@
                                 },
                                 "item": {
                                     "padding-right": "5%",
-                                    "font-color": "#384653"
+                                    "font-color": "#037ca7"
                                 },
                                 "tick": {
                                     "visible": false
@@ -162,26 +162,26 @@
                             "series": [
                                 {
                                     "values": $scope.sales_data.count,
-                                    "background-color": "#4cc2bb",
+                                    "background-color": "#00bcff",
                                     "text": "Count",
                                     "legend-marker": {
-                                        "border-color": "#4cc2bb"
+                                        "border-color": "#00bcff"
                                     }
                                 },
                                 {
                                     "values": $scope.sales_data.revenue,
-                                    "background-color": "#4c707e",
+                                    "background-color": "#0c1224",
                                     "text": "Revenue",
                                     "legend-marker": {
-                                        "border-color": "#4c707e"
+                                        "border-color": "#0c1224"
                                     }
                                 },
                                 {
                                     "values": $scope.sales_data.revenue,
-                                    "background-color": "#dd655f",
+                                    "background-color": "#037ca7",
                                     "text": "Net",
                                     "legend-marker": {
-                                        "border-color": "#dd655f"
+                                        "border-color": "#037ca7"
                                     }
                                 }
                             ],

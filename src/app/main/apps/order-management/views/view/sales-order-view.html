@@ -7,6 +7,9 @@
                 <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a ng-click="vm.SalesOrdersPage()" href="">Order Management </a>&nbsp; / &nbsp;<a ng-click="vm.SalesOrdersPage()" href="">Sales Order </a> </span>&nbsp; / &nbsp; View
             </div>
         </div>
+        <div layout="column" layout-align="end center">
+        	<md-icon ng-if="sales_order_data.is_active" md-font-icon="icon-delete" class="red-icon-delete"></md-icon>
+        </div>
     </div>
     <!-- / HEADER -->
 
