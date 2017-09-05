@@ -9,7 +9,7 @@
     /** @ngInject */
     function routeConfig(AuthProvider, $httpProvider, $stateProvider, $urlRouterProvider, $locationProvider)
     {
-        $locationProvider.html5Mode(true);
+        // $locationProvider.html5Mode(true);
         
         AuthProvider.loginPath('https://erp-rails.herokuapp.com/users.json');
         AuthProvider.registerPath('https://erp-rails.herokuapp.com/auth_users.json');
