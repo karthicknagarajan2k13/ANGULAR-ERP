@@ -191,6 +191,17 @@
                 },
                 bodyClass: 'order-management'
             })
+
+            .state('app.order-management.sales-order-new', {
+                url      : '/sales-order-new',
+                views    : {
+                    'content@app': {
+                        templateUrl: 'app/main/apps/order-management/views/new/sales-order-new.html',
+                        controller : 'NewSalesOrdersInvoicesController as vm'
+                    }
+                },
+                bodyClass: 'order-management'
+            })
 			
 			
 

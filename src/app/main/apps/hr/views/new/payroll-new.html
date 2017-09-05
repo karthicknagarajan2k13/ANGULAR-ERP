@@ -88,7 +88,7 @@
 
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Tax</label>
-										<input name="tax" ng-model="vm.payroll.tax" type="text" ng-change="vm.total_calculation()" required >
+										<input name="tax" ng-model="vm.payroll.tax" type="number" ng-change="vm.total_calculation()" required >
 	                                    <div ng-messages="newItemForm.tax.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Tax field is required</span>

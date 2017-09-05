@@ -53,11 +53,11 @@
 								<div layout="row" layout-gt-xs="row" flex>
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Original Amount</label>
-										<input type="text" ng-change="vm.calculateRefundedAmount()"  ng-model="vm.return_wizard.original_amount" value="">
+										<input type="number" ng-change="vm.calculateRefundedAmount()"  ng-model="vm.return_wizard.original_amount" value="">
 									</md-input-container>
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Shipping Charges</label>
-										<input type="text"  ng-change="vm.calculateRefundedAmount()" ng-model="vm.return_wizard.shipping_charges" value="">
+										<input type="number"  ng-change="vm.calculateRefundedAmount()" ng-model="vm.return_wizard.shipping_charges" value="">
 									</md-input-container>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Amount to be Refunded</label>

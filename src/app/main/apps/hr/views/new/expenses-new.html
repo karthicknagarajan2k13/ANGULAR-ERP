@@ -48,7 +48,7 @@
                                         </div>  									</md-input-container>
                                     <md-input-container class="md-block" flex-gt-sm>
                                         <label>Amount</label>
-                                        <input name="amount" ng-model="vm.expense.amount" type="text" required >
+                                        <input name="amount" ng-model="vm.expense.amount" type="number" required >
                                         <div ng-messages="submitForm.amount.$error" role="alert">
                                             <div ng-message="required">
                                                 <span >Amount field is required</span>

@@ -120,10 +120,12 @@
         };
         vm.salesOrderView = function(id){
             $state.go('app.order-management.sales-order-view', {obj:{id: id}}); 
-        }
+        };
         vm.salesOrderEdit = function(id){
             $state.go('app.order-management.sales-order-edit', {obj:{id: id}}); 
-        }
-        
+        };
+        vm.SalesOrderNew = function(id){
+            $state.go('app.order-management.sales-order-new'); 
+        };
     }
 })();

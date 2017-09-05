@@ -36,7 +36,7 @@
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Phone#</label>
-										<input type="text" name="phone" ng-model="vm.customer.customer_attributes.phone" required>
+										<input type="number" name="phone" ng-model="vm.customer.customer_attributes.phone" required>
                                         <div ng-messages="newCustomerForm.phone.$error" role="alert">
                                             <div ng-message="required">
                                                 <span >Phone field is required</span>
@@ -104,7 +104,7 @@
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Postal Code</label>
-										<input type="text" name="postal_code" ng-model="vm.customer.customer_attributes.postal_code">
+										<input type="number" name="postal_code" ng-model="vm.customer.customer_attributes.postal_code">
                                         <div ng-messages="newCustomerForm.postal_code.$error" role="alert">
                                             <div ng-message="required">
                                                 <span >Postal Code field is required</span>

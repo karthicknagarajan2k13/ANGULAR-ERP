@@ -155,7 +155,7 @@
 								</md-input-container>
 	                            <md-input-container class="md-block" flex-gt-sm>
 									<label>Ttem Instock</label>
-									<input  ng-model="vm.warehouse_location_item_data.item_in_stock" name="item_in_stock" type="text">
+									<input  ng-model="vm.warehouse_location_item_data.item_in_stock" name="item_in_stock" type="text" required>
 								</md-input-container>
 	                            <md-button type="submit" class="circlebtn md-raised md-accent" aria-label="Save"
 	                                       ng-disabled="submitForm.$invalid || submitForm.$pristine"
@@ -195,6 +195,8 @@
 											<span class="column-title">Created By</span>
 										</div>
 									</th>
+									<th class="secondary-text">
+									</th>
 									
 								</tr>
 							</thead>
@@ -205,6 +207,11 @@
 									<td>{{warehouse_location_item.item_in_stock}}</td>
 									<td>{{warehouse_location_item.created_at}}</td>
 									<td>{{warehouse_location_item.created_by}}</td>
+									<td>
+										<md-button ng-click="" class="md-icon-button">
+											<md-icon md-font-icon="icon-delete"></md-icon>
+										</md-button>
+									</td>
 								</tr>
 							</tbody>
 						</table>

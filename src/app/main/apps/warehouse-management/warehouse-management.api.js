@@ -67,7 +67,7 @@
         };
         api.addItemWarehouseLocation = function(data) {
            return $http({data: data, method:"POST", url: api.baseUrl+"warehouse_locations/add_item.json"}).then(function(result){
-               return result.data;
+              return result.data;
            });
         };
         api.getWarehouseLocations = function(data) {

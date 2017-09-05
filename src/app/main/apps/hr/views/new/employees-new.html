@@ -156,7 +156,7 @@
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Mobile</label>
-										<input ng-model="vm.employee.employee_attributes.mobile" name="mobile" type="text" required>
+										<input ng-model="vm.employee.employee_attributes.mobile" name="mobile" type="number" required>
 	                                    <div ng-messages="submitForm.mobile.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Mobile field is required</span>
@@ -168,7 +168,7 @@
 								<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Phone Office</label>
-										<input ng-model="vm.employee.employee_attributes.phone_office" name="phone_office" type="text">
+										<input ng-model="vm.employee.employee_attributes.phone_office" name="phone_office" type="number">
 	                                    <div ng-messages="submitForm.phone_office.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Phone Office field is required</span>
@@ -178,7 +178,7 @@
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Phone Home</label>
-										<input ng-model="vm.employee.employee_attributes.phone_home" name="phone_home" type="text">
+										<input ng-model="vm.employee.employee_attributes.phone_home" name="phone_home" type="number">
 	                                    <div ng-messages="submitForm.phone_home.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Phone Home field is required</span>
