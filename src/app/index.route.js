@@ -12,11 +12,11 @@
         // route issue, so i hided
         // $locationProvider.html5Mode(true);
 
-        AuthProvider.loginPath('https://erp-rails-app.herokuapp.com//users.json');
-        AuthProvider.registerPath('https://erp-rails-app.herokuapp.com//auth_users.json');
-        AuthProvider.sendResetPasswordInstructionsPath('https://erp-rails-app.herokuapp.com//auth_users/password.json');
-        AuthProvider.resetPasswordPath('https://erp-rails-app.herokuapp.com//auth_users/password.json');
-        AuthProvider.logoutPath('https://erp-rails-app.herokuapp.com//users/logout');
+        AuthProvider.loginPath('https://erb-angular-app.herokuapp.com/users.json');
+        AuthProvider.registerPath('https://erb-angular-app.herokuapp.com/auth_users.json');
+        AuthProvider.sendResetPasswordInstructionsPath('https://erb-angular-app.herokuapp.com/auth_users/password.json');
+        AuthProvider.resetPasswordPath('https://erb-angular-app.herokuapp.com/auth_users/password.json');
+        AuthProvider.logoutPath('https://erb-angular-app.herokuapp.com/users/logout');
 
         AuthProvider.resetPasswordMethod('PUT');
         AuthProvider.sendResetPasswordInstructionsMethod('POST');
