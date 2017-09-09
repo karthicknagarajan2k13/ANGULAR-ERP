@@ -10,7 +10,7 @@ function createServerTask(name, pre, root) {
 gulp.task(name, pre, function() {
   connect.server({
     root: root,
-    port: 3000,
+    port: process.env.PORT,
     middleware: function(connect) {
         return [connect().use('/bower_components', connect.static('bower_components'))];
     }
