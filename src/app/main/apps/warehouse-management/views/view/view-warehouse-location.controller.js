@@ -77,6 +77,11 @@
         vm.newWarehouseLocationPage = function(){
             $state.go('app.warehouse-management.stock-locations-new'); 
         }
+        vm.deleteItem = function(id){
+            var delete_id = id
+            whApi.deleteWarehouseLocationItem({location_item_id: delete_id})
+            $state.go('app.warehouse-management.stock-locations'); 
+        }
        
 
 		vm.ssName = "s"

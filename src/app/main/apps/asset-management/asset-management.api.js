@@ -13,7 +13,7 @@
         var api = {};
 
         // Base Url
-        api.baseUrl = 'https://erp-rails.herokuapp.com/';
+        api.baseUrl = 'https://erp-rails-app.herokuapp.com/';
         // api.baseUrl = 'http://localhost:8000/';
  
         api.createAsset = function(data) {

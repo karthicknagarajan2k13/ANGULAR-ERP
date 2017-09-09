@@ -12,7 +12,7 @@
         var api = {};
 
         // Base Url
-        api.baseUrl = 'https://erp-rails.herokuapp.com/';
+        api.baseUrl = 'https://erp-rails-app.herokuapp.com/';
 
         api.createEmployee = function(data) {
            var fd = new FormData();

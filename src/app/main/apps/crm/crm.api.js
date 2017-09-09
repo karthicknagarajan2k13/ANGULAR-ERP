@@ -12,7 +12,7 @@
         var api = {};
 
         // Base Url
-        api.baseUrl = 'https://erp-rails.herokuapp.com/';
+        api.baseUrl = 'https://erp-rails-app.herokuapp.com/';
 
         api.get_customers = function() {
            return $http({method:"GET", url: api.baseUrl+"customers/get_customers.json"}).then(function(result){

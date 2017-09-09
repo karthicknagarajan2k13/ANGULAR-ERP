@@ -9,13 +9,14 @@
     /** @ngInject */
     function routeConfig(AuthProvider, $httpProvider, $stateProvider, $urlRouterProvider, $locationProvider)
     {
+        // route issue, so i hided
         // $locationProvider.html5Mode(true);
-        
-        AuthProvider.loginPath('https://erp-rails.herokuapp.com/users.json');
-        AuthProvider.registerPath('https://erp-rails.herokuapp.com/auth_users.json');
-        AuthProvider.sendResetPasswordInstructionsPath('https://erp-rails.herokuapp.com/auth_users/password.json');
-        AuthProvider.resetPasswordPath('https://erp-rails.herokuapp.com/auth_users/password.json');
-        AuthProvider.logoutPath('https://erp-rails.herokuapp.com/users/logout');
+
+        AuthProvider.loginPath('https://erp-rails-app.herokuapp.com//users.json');
+        AuthProvider.registerPath('https://erp-rails-app.herokuapp.com//auth_users.json');
+        AuthProvider.sendResetPasswordInstructionsPath('https://erp-rails-app.herokuapp.com//auth_users/password.json');
+        AuthProvider.resetPasswordPath('https://erp-rails-app.herokuapp.com//auth_users/password.json');
+        AuthProvider.logoutPath('https://erp-rails-app.herokuapp.com//users/logout');
 
         AuthProvider.resetPasswordMethod('PUT');
         AuthProvider.sendResetPasswordInstructionsMethod('POST');

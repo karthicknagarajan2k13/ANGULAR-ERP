@@ -12,7 +12,7 @@
         var api = {};
 
         // Base Url
-        api.baseUrl = 'https://erp-rails.herokuapp.com/';
+        api.baseUrl = 'https://erp-rails-app.herokuapp.com/';
 
         api.createManufacturing = function(data) {
            return $http({data: data, method:"POST", url: api.baseUrl+"manufacturings.json"}).then(function(result){

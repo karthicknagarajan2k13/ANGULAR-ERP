@@ -6,43 +6,43 @@
 
 
     .factory('Customer', ['$resource', function($resource){
-      return $resource('https://erp-rails.herokuapp.com/customers/:id.json', {}, {
+      return $resource('https://erp-rails-app.herokuapp.com/customers/:id.json', {}, {
         delete: { method: 'DELETE', params: {id: '@id'} }
       });
     }])
 
     .factory('User', ['$resource', function($resource){
-      return $resource('https://erp-rails.herokuapp.com/customers/get_customers.json', {}, {
+      return $resource('https://erp-rails-app.herokuapp.com/customers/get_customers.json', {}, {
         get_customers: { method: 'GET' , isArray: true},
       })
     }])
 
     .factory('Contact_User', ['$resource', function($resource){
-      return $resource('https://erp-rails.herokuapp.com/contacts/get_contacts.json', {}, {
+      return $resource('https://erp-rails-app.herokuapp.com/contacts/get_contacts.json', {}, {
         get_contacts: { method: 'GET' , isArray: true},
       })
     }])
 
     .factory('Staff_User', ['$resource', function($resource){
-      return $resource('https://erp-rails.herokuapp.com/users/get_users.json', {}, {
+      return $resource('https://erp-rails-app.herokuapp.com/users/get_users.json', {}, {
         get_users: { method: 'GET' , isArray: true},
       })
     }])
 
     .factory('Contact', ['$resource', function($resource){
-      return $resource('https://erp-rails.herokuapp.com/contacts/:id.json', {}, {
+      return $resource('https://erp-rails-app.herokuapp.com/contacts/:id.json', {}, {
         delete: { method: 'DELETE', params: {id: '@id'} }
       });
     }])
 
     .factory('Contact_form', ['$resource', function($resource){
-      return $resource('https://erp-rails.herokuapp.com/contacts/edit_form.json', {}, {
+      return $resource('https://erp-rails-app.herokuapp.com/contacts/edit_form.json', {}, {
         edit_form: { method: 'GET', params: {id: '@contact_id'} },
       });
     }])
 
     .factory('Note', ['$resource', function($resource){
-      return $resource('https://erp-rails.herokuapp.com/notes/:id.json', {}, {
+      return $resource('https://erp-rails-app.herokuapp.com/notes/:id.json', {}, {
         show: { method: 'GET' },
         delete: { method: 'DELETE', params: {id: '@id'} }
       });

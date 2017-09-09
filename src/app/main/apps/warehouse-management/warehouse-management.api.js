@@ -12,7 +12,7 @@
         var api = {};
 
         // Base Url
-        api.baseUrl = 'https://erp-rails.herokuapp.com/';
+        api.baseUrl = 'https://erp-rails-app.herokuapp.com/';
 
         api.createWarehouse = function(data) {
            return $http({data: data, method:"POST", url: api.baseUrl+"warehouses.json"}).then(function(result){
@@ -78,6 +78,11 @@
         api.deleteAllWarehouseLocation = function(data) {
            return $http({method:"GET", url: api.baseUrl+"warehouse_locations/delete_all.json",params: data}).then(function(result){
                return result.data;
+           });
+        };
+        api.deleteWarehouseLocationItem = function(data) {
+          return $http({data: data, method:"POST", url: api.baseUrl+"warehouse_locations/remove_item.json"}).then(function(result){
+              return result.data;
            });
         };
         api.viewWarehouseLocation = function(id) {
