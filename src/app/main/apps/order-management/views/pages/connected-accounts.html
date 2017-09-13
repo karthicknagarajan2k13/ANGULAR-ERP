@@ -57,7 +57,10 @@
 											<md-button ng-click="vm.manageSalesEvent($event,account.id);" class="md-raised md-accent">Manage Sale Events</md-button>
 											<md-button ng-click="vm.marketpalceOption($event,account.id);" class="md-raised md-accent">Options</md-button>
 										</td>
-										<td align="right"><md-button class="md-raised md-accent connected-acc-btn">Connect</md-button></td>
+										<td align="right">
+										<md-button ng-hide="account.is_connected" ng-click="vm.connect(account.id)" class="md-raised md-accent">Connect</md-button>
+										<md-button ng-show="account.is_connected" ng-click="vm.accountDisConnect(account.id)" class="md-raised md-accent">Disconnect</md-button>
+										</td>
 									</tr>
 									
 									<tr ng-repeat="account in accounts.accounts" ng-show="account.title=='eBay'" >
