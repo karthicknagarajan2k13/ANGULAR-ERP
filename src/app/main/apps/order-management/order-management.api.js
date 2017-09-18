@@ -98,7 +98,7 @@
         };
 
         api.desconnectAccounts = function(data) {
-           return $http({method:"GET", url: api.baseUrl+"accounts/disconnect_account.json",params: data}).then(function(result){
+           return $http({method:"POST", url: api.baseUrl+"accounts/disconnect_account.json",params: data}).then(function(result){
                return result.data;
            });
         };
@@ -108,7 +108,7 @@
            });
         };
         api.connectAccount = function(data) {
-           return $http({method:"POST", url: api.baseUrl+"integration/4/connect",data: data}).then(function(result){
+           return $http({method:"POST", url: api.baseUrl+"/integration/4/connect",data: data}).then(function(result){
                return result.data;
            });
         };
