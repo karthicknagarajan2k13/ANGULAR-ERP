@@ -4,7 +4,45 @@
 
     angular
         .module('app.hr')
-        .controller('newPayrollsController', newPayrollsController);
+        .controller('newPayrollsController', newPayrollsController)
+        .directive('allowDecimalNumbers', function () {  
+            return {  
+                restrict: 'A',  
+                link: function (scope, elm, attrs, ctrl) {  
+                    elm.on('keydown', function (event) {  
+                        var $input = $(this);  
+                        var value = $input.val();  
+                        value = value.replace(/[^0-9\.]/g, '')  
+                        var findsDot = new RegExp(/\./g)  
+                        var containsDot = value.match(findsDot)  
+                        if (containsDot != null && ([46, 110, 190].indexOf(event.which) > -1)) {  
+                            event.preventDefault();  
+                            return false;  
+                        }  
+                        $input.val(value);  
+                        if (event.which == 64 || event.which == 16) {  
+                            // numbers  
+                            return false;  
+                        } if ([8, 13, 27, 37, 38, 39, 40, 110].indexOf(event.which) > -1) {  
+                            // backspace, enter, escape, arrows  
+                            return true;  
+                        } else if (event.which >= 48 && event.which <= 57) {  
+                            // numbers  
+                            return true;  
+                        } else if (event.which >= 96 && event.which <= 105) {  
+                            // numpad number  
+                            return true;  
+                        } else if ([46, 110, 190].indexOf(event.which) > -1) {  
+                            // dot and numpad dot  
+                            return true;  
+                        } else {  
+                            event.preventDefault();  
+                            return false;  
+                        }  
+                    });  
+                }  
+            }  
+        });
 
     /** @ngInject */
     function newPayrollsController($mdToast,hrApi, $scope, $document, $state)
@@ -72,7 +110,7 @@
         }
         vm.total_calculation = function(){
             if(vm.payroll.base_pay && vm.payroll.allowances && vm.payroll.deductions && vm.payroll.expenses && vm.payroll.tax){
-                vm.payroll.total =  parseInt(vm.payroll.base_pay, 10) + parseInt(vm.payroll.allowances, 10) + parseInt(vm.payroll.expenses, 10) - parseInt(vm.payroll.deductions, 10) - parseInt(vm.payroll.tax, 10)
+                vm.payroll.total =  parseFloat(vm.payroll.base_pay, 10) + parseFloat(vm.payroll.allowances, 10) + parseFloat(vm.payroll.expenses, 10) - parseInt(vm.payroll.deductions, 10) - parseInt(vm.payroll.tax, 10)
             }
         }
 

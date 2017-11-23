@@ -27,7 +27,7 @@
 						<md-icon md-font-icon="icon-magnify"></md-icon>
 						<label>Search</label>
                         <input ng-keyup="$event.keyCode == 13 && vm.searchReturnWizardData()" ng-model="vm.search_data.search_text">
-						<md-icon ng-model="collapsed" ng-click="collapsed=!collapsed" md-font-icon="icon-chevron-down"></md-icon>
+						<md-icon style="cursor:pointer"  ng-model="collapsed" ng-click="collapsed=!collapsed" md-font-icon="icon-chevron-down"></md-icon>
 					
 						<div style="padding-top:49px;" ng-show="collapsed">
 							<div layout="column" layout-gt-xs="row" flex>
@@ -170,7 +170,7 @@
 							</td>
                             <td>{{return_wizard.subject}}</td>
                             <td>{{return_wizard.customer}}</td>
-                            <td>{{return_wizard.original_amount}}</td>
+                            <td>{{return_wizard.original_amount| number:2}}</td>
 							<td>{{return_wizard.status}}</td>
                             <td>{{return_wizard.reason_for_return}}</td>
                             <td>{{return_wizard.created_at}}</td>

@@ -36,7 +36,7 @@
 
                                     <md-input-container class="md-block" flex-gt-sm>
                                         <label>Employee</label>
-                                        <md-select name="employee_id" ng-model="vm.expense.expense.employee_id" required>
+                                        <md-select name="employee_id" ng-model="vm.expense.expense.employee_id">
                                             <md-option ng-repeat="employee in get_employees" value="{{employee.employee_id}}">
                                                 {{employee.name}}
                                             </md-option>
@@ -48,7 +48,7 @@
                                         </div>                                      </md-input-container>
                                     <md-input-container class="md-block" flex-gt-sm>
                                         <label>Amount</label>
-                                        <input name="amount" ng-model="vm.expense.expense.amount" type="text" required >
+                                        <input name="amount" ng-model="vm.expense.expense.amount" type="text" allow-decimal-numbers   required >
                                         <div ng-messages="submitForm.amount.$error" role="alert">
                                             <div ng-message="required">
                                                 <span >Amount field is required</span>
@@ -70,12 +70,12 @@
 
                                 </div>
                                 
-                        <div class="actions" layout="row" layout-align="start center">
-                            <md-button type="submit" class="md-raised md-accent submit-button" aria-label="Save"
-                                       ng-disabled="submitForm.$invalid || submitForm.$pristine"
-                                       translate="Save" translate-attr-aria-label="Save">
-                                Save
-                            </md-button>
+                                <div class="actions" layout="row" layout-align="start center">
+                                        <md-button type="submit" class="md-raised md-accent submit-button" aria-label="Save"
+                                                   ng-disabled="submitForm.$invalid || submitForm.$pristine"
+                                                   translate="Save" translate-attr-aria-label="Save">
+                                            Save
+                                        </md-button>
 <!--                             <md-button ng-click="vm.viewExpensePage(vm.expense.expense.id)" class="md-raised md-accent">View</md-button>
  -->                        </div>
 

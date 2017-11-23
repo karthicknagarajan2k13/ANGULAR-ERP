@@ -4,7 +4,7 @@
     <div class="header md-accent-bg" layout="row" layout-align="space-between">
         <div layout="column" layout-align="space-between">
             <div class="breadcrumb" layout="row" layout-align="start center">
-                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a ng-click="vm.SalesOrdersPage()" href="">Order Management </a>&nbsp; / &nbsp;<a ng-click="vm.SalesOrdersPage()" href="">Sales Order </a> </span>&nbsp; / &nbsp; Edit
+                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a ng-click="vm.SalesOrdersPage()" href="">Order Management </a>&nbsp; / &nbsp;<a ng-click="vm.SalesOrdersPage()" href="">Sales Order </a> </span>&nbsp; / &nbsp; New
             </div>
         </div>
     </div>
@@ -22,34 +22,40 @@
 
                 <md-tab-body>
                     <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
-                        <form>
+                     <form name="newSalesOrderForm" novalidate>
                             <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
-                                        <label>ID</label>
-                                        <input type="text" value="{{sales_order.code}}" disabled>
+                                        <label>UID</label>
+                                        <input type="text" ng-model="vm.sales_order.uid" required>
                                     </md-input-container>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Customer</label>
-                                        <md-select ng-model="sales_order.customer_user_id">
-                                            <md-option ng-repeat="customer in get_customers" value="{{customer.customer_id}}">
+                                        <md-select ng-model="vm.sales_order.customer_user_id" required> 
+                                            <md-option ng-repeat="customer in vm.get_customers" 
+                                                value="{{customer.customer_id}}">
                                                 {{customer.name}}
                                             </md-option>
                                         </md-select>
 									</md-input-container>
-									<md-input-container class="md-block" flex-gt-sm>
+									<md-input-container class="md-block" flex-gt-sm >
 										<label>Contact</label>
-                                        <md-select ng-model="sales_order.contact_user_id">
-                                            <md-option ng-repeat="contact in get_contacts" value="{{contact.contact_id}}">
+                                        <md-select ng-model="vm.sales_order.contact_user_id" required>
+                                            <md-option ng-repeat="contact in vm.get_contacts" value="{{contact.contact_id}}">
                                                 {{contact.name}}
                                             </md-option>
                                         </md-select>
 									</md-input-container>
                                 </div>
                         </form>
-						<div class="actions" layout="row" layout-align="start center">
-							<md-button ng-click="vm.updateSalesOrder()" class="md-raised md-accent">Save</md-button>
-							<md-button class="md-raised md-accent">Clear</md-button>
-						</div>
+
+                     <div class="actions" layout="row" layout-align="start center">
+                            <md-button ng-click="vm.createSalesOrder();" type="submit" class="md-raised md-accent submit-button" aria-label="Save"
+                                       ng-disabled="newSalesOrderForm.$invalid || newSalesOrderForm.$pristine"
+                                       translate="Save" translate-attr-aria-label="Save">
+                                Save
+                            </md-button>
+                            <md-button ng-click="vm.salesOrderClear()" class="md-raised md-accent">Clear</md-button>
+                        </div>
                     </div>
                 </md-tab-body>
             </md-tab>		

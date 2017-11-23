@@ -1,0 +1,154 @@
+<div id="e-commerce-product" class="page-layout simple tabbed" layout="column">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="space-between">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a ng-click="vm.ItemsPage()" href="">Inventory Management </a>&nbsp; / &nbsp;<a ng-click="vm.ItemsPage()" href="">Inventory Item </a> </span>&nbsp; / &nbsp; View
+            </div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <md-tabs md-dynamic-height>
+
+              <md-tab>
+                <md-tab-label>
+                    <span>General Info</span>
+                </md-tab-label>
+
+                <md-tab-body>
+                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+                        <form>
+                    	    <div layout="column" layout-gt-xs="row" flex>
+                                <md-input-container class="md-block" flex-gt-sm>
+                  									<label>ICC</label>
+                  									<input type="text" value="{{data.icc}}" disabled>
+							                 	</md-input-container>
+                								
+                								<md-input-container class="md-block" flex-gt-sm>
+                									<label>Serial</label>
+                									<input type="text" value="{{data.serial}}" disabled>
+                								</md-input-container>
+
+                                <md-input-container class="md-block" flex-gt-sm>
+                									<label>Make</label>
+                									<input type="text" value="{{data.make}}" disabled>
+                								</md-input-container>
+                             </div>
+							               <div layout="column" layout-gt-xs="row" flex>
+                                <md-input-container class="md-block" flex-gt-sm>
+                									<label>Model</label>
+                                  <input type="text" value="{{data.model}}" disabled>
+                								</md-input-container>
+								
+                								<md-input-container class="md-block" flex-gt-sm>
+                									<label>Status</label>
+                									<input type="text" value="{{data.status}}" disabled>
+                								</md-input-container>
+
+                                <md-input-container class="md-block" flex-gt-sm>
+                                  <label>Location</label>
+                                  <input type="text" value="{{data.location}}" disabled>
+                                </md-input-container>
+                            </div>
+
+                             <div layout="column" layout-gt-xs="row" flex>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                  <label>Notes</label>
+                                  <input type="text" value="{{data.notes}}" disabled>
+                                </md-input-container>
+                
+                                <md-input-container class="md-block" flex-gt-sm>
+                                  <label>Acquisition Cost</label>
+                                  <input type="text" value="{{data.acquisition_cost|number:2}}" disabled>
+                                </md-input-container>
+                                
+                                <md-input-container class="md-block" flex-gt-sm>
+                                  <label>Cached Profit Share Percent</label>
+                                  <input type="text" value="{{data.cached_profit_share_percent|number:2}}%" disabled>
+                                </md-input-container>
+                            </div>
+
+                              <div layout="column" layout-gt-xs="row" flex>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                  <label>Details</label>
+                                  <input type="text" value="{{data.details}}" disabled>
+                                </md-input-container>
+                
+                                <md-input-container class="md-block" flex-gt-sm>
+                                  <label>Check Value</label>
+                                  <input type="text" value="{{data.check_value}}" disabled>
+                                </md-input-container>
+                                
+                                <md-input-container class="md-block" flex-gt-sm>
+                                  <label>Category Name</label>
+                                  <input type="text" value="{{data.item_category_name}}" disabled>
+                                </md-input-container>
+                            </div>
+
+                              <div layout="column" layout-gt-xs="row" flex>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                  <label>Archived</label>
+                                  <input type="text" value="{{(data.archived)?'Yes':'No' }}" disabled>
+                                </md-input-container>
+              
+                                <md-input-container class="md-block" flex-gt-sm>
+                                  <label>Listing</label>
+                                  <input type="text" value="{{listing_name}}" disabled>
+                                </md-input-container>
+                                
+                                <md-input-container class="md-block" flex-gt-sm>
+          
+                                </md-input-container>
+                            </div>
+                        </form>
+                    </div>
+                </md-tab-body>
+            </md-tab>
+        </md-tabs>
+    </div>
+    <!-- / CONTENT -->
+</div>
+
+<!-- ADD BUTTON -->
+	<!-- <div class="add-btn-fixed">
+		<md-button  ng-click="vm.newCustomerPage()" class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
+			<md-icon md-font-icon="icon-plus"></md-icon>
+		</md-button>
+	</div> -->
+	
+	<div class="add-btn-fixed">
+	<md-fab-toolbar md-open="demo.isOpen" count="demo.count"
+                  md-direction="{{demo.selectedDirection}}">
+    <md-fab-trigger class="align-with-text">
+      <md-button aria-label="menu" class="md-fab md-primary">
+        <md-icon md-font-icon="icon-menu"></md-icon>
+      </md-button>
+    </md-fab-trigger>
+
+    <md-toolbar>
+      <md-fab-actions class="md-toolbar-tools">
+        <md-button aria-label="comment" class="md-icon-button">
+          <md-icon md-font-icon="icon-menu"></md-icon>
+        </md-button>
+	     <md-button ng-click="vm.deleteItem(data.id)" aria-label="photo" class="md-icon-button">
+          <md-icon md-font-icon="icon-delete"></md-icon>
+        </md-button>
+        <md-button ng-click="vm.editItemPage(data)" aria-label="label" class="md-icon-button">
+          <md-icon md-font-icon="icon-pencil"></md-icon>
+        </md-button>
+		<md-button aria-label="photo" class="md-icon-button" ng-click="vm.newItemPage()" >
+          <md-icon md-font-icon="icon-comment-plus-outline"></md-icon>
+        </md-button>
+      </md-fab-actions>
+    </md-toolbar>
+  </md-fab-toolbar>
+  </div>
+  
+<!-- / ADD BUTTON -->
+
+

@@ -69,7 +69,8 @@
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Phone Mobile</label>
-										<input type="number" name="phone_mobile" ng-model="vm.contact.contact_attributes.phone_mobile" required>
+                                        <input type="text" name="phone_mobile" ng-model="vm.contact.contact_attributes.phone_mobile" required  numbers-only>
+
                                         <div ng-messages="newContactForm.phone_mobile.$error" role="alert">
                                             <div ng-message="required">
                                                 <span >Phone Mobile field is required</span>

@@ -27,7 +27,7 @@
 						<md-icon md-font-icon="icon-magnify"></md-icon>
 						<label>Search</label>
                         <input ng-keyup="$event.keyCode == 13 && vm.searchLedgerEntryData()" ng-model="vm.search_data.search_text">
-						<md-icon ng-model="collapsed" ng-click="collapsed=!collapsed" md-font-icon="icon-chevron-down"></md-icon>
+						<md-icon class="cursor-pointer"  ng-model="collapsed" ng-click="collapsed=!collapsed" md-font-icon="icon-chevron-down"></md-icon>
 					
 						<div style="padding-top:49px;" ng-show="collapsed">
 							<div layout="column" layout-gt-xs="row" flex>

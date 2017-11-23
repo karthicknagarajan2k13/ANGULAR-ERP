@@ -38,9 +38,14 @@
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Order ID</label>
-                                        <md-select name="sales_order_id" ng-model="vm.invoice.sales_order_id" required>
+                                        <!-- <md-select name="sales_order_id" ng-model="vm.invoice.sales_order_id" required>
                                             <md-option ng-repeat="sales_order in get_sales_orders" value="{{sales_order.sales_order_id}}">
                                                 {{sales_order.name}}
+                                            </md-option>
+                                        </md-select> -->
+                                        <md-select name="sales_order_id" ng-model="vm.invoice.sales_order_id" required>
+                                            <md-option ng-repeat="sales_order in get_sales_orders" value="{{sales_order.id}}">
+                                                {{sales_order.uid}}
                                             </md-option>
                                         </md-select>
 	                                    <div ng-messages="submitForm.sales_order_id.$error" role="alert">
@@ -51,7 +56,7 @@
 
 	                            <md-input-container class="md-block" flex-gt-sm>
 										<label>Order Date</label>
-                                        <md-datepicker name="create_timestamp" ng-model="vm.invoice.create_timestamp"  md-placeholder="22/12/2016" required>
+                                        <md-datepicker md-open-on-focus onkeydown="return false"  name="create_timestamp" ng-model="vm.invoice.create_timestamp"  md-placeholder="22/12/2016" required>
                                         </md-datepicker>
 	                                    <div ng-messages="submitForm.create_timestamp.$error" role="alert">
 	                                        <div ng-message="required">
@@ -77,7 +82,7 @@
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Cancelled At</label>
-                                        <md-datepicker ng-model="vm.invoice.cancelled_at" name="cancelled_at"  md-placeholder="22/12/2016" required>
+                                        <md-datepicker md-open-on-focus onkeydown="return false"  ng-model="vm.invoice.cancelled_at" name="cancelled_at"  md-placeholder="22/12/2016" required>
                                         </md-datepicker>
 	                                    <div ng-messages="submitForm.cancelled_at.$error" role="alert">
 	                                        <div ng-message="required">
@@ -99,7 +104,7 @@
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Payed At</label>
-                                        <md-datepicker ng-model="vm.invoice.paid_at" name="paid_at"  md-placeholder="22/12/2016" required>
+                                        <md-datepicker md-open-on-focus onkeydown="return false"  ng-model="vm.invoice.paid_at" name="paid_at"  md-placeholder="22/12/2016" required>
                                         </md-datepicker>
 
 	                                    <div ng-messages="submitForm.paid_at.$error" role="alert">
@@ -119,7 +124,7 @@
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Refunded At</label>
-                                        <md-datepicker ng-model="vm.invoice.refunded_at" name="refunded_at"  md-placeholder="22/12/2016" required>
+                                        <md-datepicker md-open-on-focus onkeydown="return false"  ng-model="vm.invoice.refunded_at" name="refunded_at"  md-placeholder="22/12/2016" required>
                                         </md-datepicker>
 
 	                                    <div ng-messages="submitForm.refunded_at.$error" role="alert">
@@ -134,7 +139,7 @@
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Subtotal </label>
-										<input ng-model="vm.invoice.subtotal" name="subtotal" type="number" required>
+										<input allow-decimal-numbers  ng-model="vm.invoice.subtotal" name="subtotal" type="text" required>
 	                                    <div ng-messages="submitForm.subtotal.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Subtotal field is required</span>
@@ -142,7 +147,7 @@
 	                                    </div>	                                    </md-input-container>
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Tax </label>
-										<input ng-model="vm.invoice.tax" name="tax" type="number" required>
+										<input allow-decimal-numbers  ng-model="vm.invoice.tax" name="tax" type="text" required>
 	                                    <div ng-messages="submitForm.tax.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Tax field is required</span>
@@ -150,7 +155,7 @@
 	                                    </div>	                                    </md-input-container>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Shipping</label>
-										<input ng-model="vm.invoice.order_shipping_detail_attributes.name" name="shipped" type="number" required>
+										<input allow-decimal-numbers  ng-model="vm.invoice.order_shipping_detail_attributes.name" name="shipped" type="text" required>
 	                                    <div ng-messages="submitForm.shipped.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Shipping field is required</span>
@@ -161,18 +166,19 @@
 
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Discount</label>
-										<input ng-model="vm.invoice.discount" name="discount" type="number" required>
+										<input allow-decimal-numbers  ng-model="vm.invoice.discount" name="discount" type="text" required>
 	                                    <div ng-messages="submitForm.discount.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Discount field is required</span>
 	                                        </div>
-	                                    </div>										</md-input-container>
+	                                    </div>			
+	                                    							</md-input-container>
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Total</label>
-										<input ng-model="vm.invoice.grand_total" name="grand_total" type="number" required>
+										<input allow-decimal-numbers ng-model="vm.invoice.grand_total" name="grand_total" type="text" required>
 	                                    <div ng-messages="submitForm.grand_total.$error" role="alert">
 	                                        <div ng-message="required">
-	                                            <span >Discount field is required</span>
+	                                            <span >Total field is required</span>
 	                                        </div>
 	                                    </div>										</md-input-container>
                                 </div>
@@ -229,7 +235,7 @@
 								<div layout="row" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex="33">
 										<label>Phone</label>
-										<input ng-model="vm.invoice.buyer_attributes.phone_number" name="phone_number" type="text">
+										<input allow-decimal-numbers  ng-model="vm.invoice.buyer_attributes.phone_number" name="phone_number" type="text">
 	                                    <div ng-messages="submitForm.phone_number.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Phone field is required</span>
@@ -328,7 +334,7 @@
 	                                    </div>										</md-input-container>
 									<md-input-container class="md-block" flex="33">
 										<label>Phone</label>
-										<input ng-model="vm.invoice.order_shipping_detail_attributes.phone" name="phone" type="text">
+										<input allow-decimal-numbers  ng-model="vm.invoice.order_shipping_detail_attributes.phone" name="phone" type="text">
 	                                    <div ng-messages="submitForm.phone.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Phone is required</span>
@@ -417,7 +423,7 @@
 									</td>
 								</tr>
 							</tbody>
-							<tfoot>
+							<!-- <tfoot>
 								<tr>
 									<td class="secondary-text7">
 										
@@ -435,7 +441,7 @@
 										
 									</td>
 								</tr>
-							</tfoot>
+							</tfoot> -->
 						</table>
 						<div class="actions" layout="row" layout-align="start center">
 							<md-button class="md-raised md-accent">ADD</md-button>

@@ -48,7 +48,10 @@
             }
         };
         $scope.login = function(){
+            $scope.isLoading = true;
             Auth.login($scope.user, config).then(function(user) {
+                $scope.isLoading = false;
+                $window.localStorage.setItem('userInfo',JSON.stringify(user));
                 if(typeof(user.error) !== "undefined"){
                     var pinTo = $scope.getToastPosition();
                     $mdToast.show(
@@ -58,6 +61,7 @@
                         .hideDelay(3000)
                     );
                 }else{
+
                     $window.localStorage.setItem('current_user',JSON.stringify($scope.user));
                     $state.go('app.crm.customers');  
                 }

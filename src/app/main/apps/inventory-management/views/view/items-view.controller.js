@@ -9,7 +9,7 @@
     /** @ngInject */
     function viewItemController(imApi, $scope, $mdDialog, $document, $state)
     {
-
+        /*$window.localStorage.setItem('current_user',JSON.stringify($scope.user));*/
         
 		var vm = this;
 		$scope.isOpen = false;

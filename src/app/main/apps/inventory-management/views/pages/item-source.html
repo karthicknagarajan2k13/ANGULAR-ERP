@@ -1,0 +1,172 @@
+<div id="forms" class="page-layout simple fullwidth doc-page" layout="column" style="min-height:auto;">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="space-between">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <span style="color:#00bcff; font-weight:normal;" class="parent"> <a href="">Inventory Management</a> </span>&nbsp; / &nbsp; Item Source
+            </div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+</div>
+
+
+<div style="height:auto; min-height:auto; margin-top:20px; margin-bottom: -20px;" class="page-layout carded fullwidth" layout="row">
+     <div class="center" layout="row" flex>
+        <!-- CONTENT CARD -->
+        <div class="content-card" layout="column" flex>
+            <div style="padding:20px 20px 0px 20px; font-size:18px;">
+                <div layout="column" layout-gt-xs="row">
+                
+                    
+                    <md-input-container flex>
+                        <md-icon md-font-icon="icon-magnify"></md-icon>
+                        <label>Search</label>
+                        <input ng-keyup="$event.keyCode == 13 && vm.searchItemSourceData()" ng-model="vm.search_data.search_box">
+                        <md-icon class="cursor-pointer"  ng-model="collapsed" ng-click="collapsed=!collapsed" md-font-icon="icon-chevron-down"></md-icon>
+                    
+                        <div style="padding-top:49px;" ng-show="collapsed">
+                               <div layout="column" layout-gt-xs="row" flex>
+                                    
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Name</label>
+                                        <input ng-model="vm.search_data.name">
+                                    </md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Short Name</label>
+                                        <input ng-model="vm.search_data.short_name">
+                                    </md-input-container>
+
+                                </div>
+                           
+                                <div class="actions" layout="row" layout-align="start center">
+                                    <md-button ng-click="vm.searchItemSourceData()" class="md-raised md-accent">Search</md-button>
+                                    <md-button ng-click="vm.searchItemSourceDataClear()" class="md-raised md-accent">Clear</md-button>
+                                </div>                          
+                        </div>
+                    
+                    </md-input-container>
+                    
+                    
+                </div>
+                
+            </div>
+        </div>
+        <!-- / CONTENT CARD -->
+    </div>
+</div>
+
+
+
+<div  id="e-commerce-orders" class="page-layout carded fullwidth" layout="row">
+
+    <!-- CENTER -->
+    <div class="center" layout="column" flex>
+
+        <!-- CONTENT CARD -->
+        <div class="content-card" layout="column" flex>
+			
+			<div style="padding:25px; font-size:18px;"> Item Source </div>
+
+            <!-- CONTENT TOOLBAR -->
+
+            <!-- / CONTENT TOOLBAR -->
+            <div class="center" ng-hide="show_table1 && show_table2">
+                <div class="spinner-wrapper0">
+                    <div class="spinner-circle0">
+                        <div layout="row" layout-sm="column" layout-align="space-around">
+                              <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- CONTENT -->
+            <div class="content fullpage-datatable" layout="column" flex>
+
+                <table class="dataTable row-border hover rowClickable" datatable="ng" dt-instance="vm.dtInstance"
+                       dt-options="vm.dtOptions">
+                    <thead>
+                        <tr>
+                            <th class="secondary-text">
+                                <div class="">
+                                    <span class="column-title">#</span>
+                                </div>
+                            </th>
+                            <th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">Name</span>
+                                </div>
+                            </th>
+                            <th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">Short Name</span>
+                                </div>
+                            </th>
+                            
+                            <th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">Profit Share Percent</span>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody ng-show="show_table1 && show_table2">
+                        <tr ng-click="vm.viewItemSourcePage(item.id)" ng-repeat="item in get_item_source">
+                            <td ng-click="$event.stopPropagation()"><md-checkbox ng-model="item.checked" aria-label="Checkbox 1">
+								</md-checkbox>
+							</td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.short_name}}</td>
+							<td>{{item.profit_share_percent| number:2}}%</td>
+							
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+        <!-- / CONTENT CARD -->
+
+    </div>
+    <!-- / CENTER -->
+
+</div>
+
+<!-- ADD BUTTON -->
+	<!-- <div class="add-btn-fixed">
+		<md-button  ng-click="vm.newCustomerPage()" class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
+			<md-icon md-font-icon="icon-plus"></md-icon>
+		</md-button>
+	</div> -->
+	
+	<div class="add-btn-fixed">
+	<md-fab-toolbar md-open="demo.isOpen" count="demo.count"
+                  md-direction="{{demo.selectedDirection}}">
+    <md-fab-trigger class="align-with-text">
+      <md-button aria-label="menu" class="md-fab md-primary">
+        <md-icon md-font-icon="icon-menu"></md-icon>
+      </md-button>
+    </md-fab-trigger>
+
+    <md-toolbar>
+      <md-fab-actions class="md-toolbar-tools">
+        <md-button aria-label="comment" class="md-icon-button">
+          <md-icon md-font-icon="icon-menu"></md-icon>
+        </md-button>
+		<md-button ng-click="vm.deleteAllItem()" aria-label="photo" class="md-icon-button">
+          <md-icon md-font-icon="icon-delete"></md-icon>
+        </md-button>
+        <md-button aria-label="label" class="md-icon-button">
+          <md-icon md-font-icon="icon-pencil"></md-icon>
+        </md-button> 
+		<md-button ng-click="vm.newItemPage()" aria-label="photo" class="md-icon-button">
+          <md-icon md-font-icon="icon-comment-plus-outline"></md-icon>
+        </md-button>
+      </md-fab-actions>
+    </md-toolbar>
+  </md-fab-toolbar>
+  </div>
+  
+<!-- / ADD BUTTON -->

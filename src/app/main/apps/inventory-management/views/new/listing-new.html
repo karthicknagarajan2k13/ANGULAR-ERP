@@ -1,0 +1,146 @@
+<div id="e-commerce-product" class="page-layout simple tabbed" layout="column">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="space-between">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a ng-click="vm.ItemsPage()" href="">Inventory Management </a>&nbsp; / &nbsp;<a ng-click="vm.ItemsPage()" href="">Listing New </a> </span>&nbsp; / &nbsp; New
+            </div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content">
+        <md-tabs md-dynamic-height>
+          <md-tab>
+                <md-tab-label>
+                    <span>General Info</span>
+                </md-tab-label>
+                   <md-tab-body>
+                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+                        <form ng-submit="vm.saveItem()" name="newItemForm" novalidate>
+                            <div layout="column" layout-gt-xs="row" flex>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                  <label>Title</label>
+                                  <input name="icc" ng-model="vm.listing.title" type="text" required>
+                                        <div ng-messages="newItemForm.icc.$error" role="alert">
+                                            <div ng-message="required">
+                                                <span>Title field is required</span>
+                                            </div>
+                                        </div>                                
+                                </md-input-container>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                  <label>Make</label>
+                                  <input name="make" ng-model="vm.listing.make" type="text" required>
+                                              <div ng-messages="newItemForm.make.$error" role="alert">
+                                                  <div ng-message="required">
+                                                      <span>Make field is required</span>
+                                                  </div>
+                                              </div> 
+                                </md-input-container>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                  <label>Model</label>
+                                  <input name="model" ng-model="vm.listing.model" type="text" required>
+                                        <div ng-messages="newItemForm.model.$error" role="alert">
+                                            <div ng-message="required">
+                                                <span>Model field is required</span>
+                                            </div>
+                                        </div> 
+                              </md-input-container>
+                            </div>
+                            <div layout="column" layout-gt-xs="row" flex>
+           
+                              <md-input-container class="md-block" flex-gt-sm>
+                                   <label>Item Category</label>
+                                        <md-select ng-model="vm.listing.item_category_id" name="item_category_id" required>
+                                            <md-option ng-repeat="category in get_item_category" value="{{category.id}}">
+                                                {{category.title}}
+                                            </md-option>
+                                        </md-select>
+                                      <div ng-messages="newItemForm.item_category_id.$error" role="alert">
+                                          <div ng-message="required">
+                                              <span >Category field is required</span>
+                                          </div>
+                                      </div> 
+                              </md-input-container>
+                              <md-input-container class="md-block" flex-gt-sm>
+                                  <label>Cost</label>
+                                  <input name="cost" ng-model="vm.listing.cost" 
+                                          type="text" required  allow-decimal-numbers >
+                                          <div ng-messages="newItemForm.cost.$error" role="alert">
+                                              <div ng-message="required">
+                                                  <span>Cost field is required</span>
+                                              </div>
+                                          </div>
+                                </md-input-container>
+
+                                <md-input-container class="md-block" flex-gt-sm>
+                                  <label>Publish On</label>
+                                      <md-datepicker md-open-on-focus onkeydown="return false" 
+                                            ng-model="vm.listing.publish_on" md-placeholder="" required>
+                                      </md-datepicker>
+                                </md-input-container>
+                  
+                            </div> 
+                            <div layout="column" layout-gt-xs="row" flex>
+
+                               <md-input-container class="md-block" flex-gt-sm>
+                                  <label>Description</label>
+                                  <input name="model" ng-model="vm.listing.description" type="text">
+                              </md-input-container>
+                            </div> 
+
+                              <div class="actions" layout="row" layout-align="start center">
+                                <md-button type="submit" class="md-raised md-accent submit-button" aria-label="Save"
+                                           ng-disabled="newItemForm.$invalid || newItemForm.$pristine"
+                                           translate="Save" translate-attr-aria-label="Save">
+                                    Save
+                                </md-button>
+                                <md-button ng-click="vm.itemDataClear()" class="md-raised md-accent">Clear</md-button>
+                              </div>
+                        </form>
+                    </div>
+                </md-tab-body>
+            </md-tab> 
+        </md-tabs>
+    </div>
+    <!-- / CONTENT -->
+</div>
+
+  <!-- ADD BUTTON -->
+	<!-- <div class="add-btn-fixed">
+		<md-button  ng-click="vm.newCustomerPage()" class="md-fab md-accent md-icon-button" id="add-contact-button" 
+                    aria-label="add contact">
+			<md-icon md-font-icon="icon-plus"></md-icon>
+		</md-button>
+	</div> -->
+	
+	<div class="add-btn-fixed">
+	<md-fab-toolbar md-open="demo.isOpen" count="demo.count" md-direction="{{demo.selectedDirection}}">
+    <md-fab-trigger class="align-with-text">
+      <md-button aria-label="menu" class="md-fab md-primary">
+        <md-icon md-font-icon="icon-menu"></md-icon>
+      </md-button>
+    </md-fab-trigger>
+
+    <md-toolbar>
+      <md-fab-actions class="md-toolbar-tools">
+        <md-button aria-label="comment" class="md-icon-button">
+          <md-icon md-font-icon="icon-menu"></md-icon>
+        </md-button>
+		    <md-button aria-label="photo" class="md-icon-button">
+          <md-icon md-font-icon="icon-delete"></md-icon>
+        </md-button>
+        <md-button aria-label="label" class="md-icon-button">
+          <md-icon md-font-icon="icon-pencil"></md-icon>
+        </md-button>
+		    <md-button aria-label="photo" class="md-icon-button">
+          <md-icon md-font-icon="icon-comment-plus-outline"></md-icon>
+        </md-button> 
+      </md-fab-actions>
+    </md-toolbar>
+  </md-fab-toolbar>
+</div>
+  
+<!-- / ADD BUTTON -->

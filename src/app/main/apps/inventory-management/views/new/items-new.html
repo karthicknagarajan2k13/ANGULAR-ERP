@@ -24,67 +24,67 @@
                     <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
                         <form ng-submit="vm.saveItem()" name="newItemForm" novalidate>
                             <div layout="column" layout-gt-xs="row" flex>
-									
-									<md-input-container class="md-block" flex-gt-sm>
-										<label>Item Name</label>
-										<input name="name" ng-model="vm.item.name" type="text" required>
-	                                    <div ng-messages="newItemForm.name.$error" role="alert">
-	                                        <div ng-message="required">
-	                                            <span >Item Name field is required</span>
-	                                        </div>
-	                                    </div>
-									</md-input-container>
+                                    
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Item Name</label>
+                                        <input name="name" ng-model="vm.item.name" type="text" required>
+                                        <div ng-messages="newItemForm.name.$error" role="alert">
+                                            <div ng-message="required">
+                                                <span >Item Name field is required</span>
+                                            </div>
+                                        </div>
+                                    </md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>Category</label>
+                                        <label>Category</label>
                                         <md-select ng-model="vm.item.category_id" name="category" required>
                                             <md-option ng-repeat="category in get_categories" value="{{category.category_id}}">
                                                 {{category.name}}
                                             </md-option>
                                         </md-select>
-	                                    <div ng-messages="newItemForm.category.$error" role="alert">
-	                                        <div ng-message="required">
-	                                            <span >Category field is required</span>
-	                                        </div>
-	                                    </div>
-									</md-input-container>
+                                        <div ng-messages="newItemForm.category.$error" role="alert">
+                                            <div ng-message="required">
+                                                <span >Category field is required</span>
+                                            </div>
+                                        </div>
+                                    </md-input-container>
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>Unit</label>
-										<input name="unit" ng-model="vm.item.unit" type="text" required >
-	                                    <div ng-messages="newItemForm.unit.$error" role="alert">
-	                                        <div ng-message="required">
-	                                            <span >Unit field is required</span>
-	                                        </div>
-	                                    </div>
-									</md-input-container>
+                                        <label>Unit</label>
+                                        <input name="unit" ng-model="vm.item.unit" type="text" required >
+                                        <div ng-messages="newItemForm.unit.$error" role="alert">
+                                            <div ng-message="required">
+                                                <span >Unit field is required</span>
+                                            </div>
+                                        </div>
+                                    </md-input-container>
 
 
 
 
                                 </div>
-								<div layout="column" layout-gt-xs="row" flex>
+                                <div layout="column" layout-gt-xs="row" flex>
 
-									<md-input-container class="md-block" flex>
-										<label>Item Description</label>
-										<input name="item_description" ng-model="vm.item.item_description" type="text" required>
-	                                    <div ng-messages="newItemForm.item_description.$error" role="alert">
-	                                        <div ng-message="required">
-	                                            <span >Item Description field is required</span>
-	                                        </div>
-	                                    </div>
-									</md-input-container>
+                                    <md-input-container class="md-block" flex>
+                                        <label>Item Description</label>
+                                        <input name="item_description" ng-model="vm.item.item_description" type="text" required>
+                                        <div ng-messages="newItemForm.item_description.$error" role="alert">
+                                            <div ng-message="required">
+                                                <span >Item Description field is required</span>
+                                            </div>
+                                        </div>
+                                    </md-input-container>
 
                                 </div>
                         
-						<div class="actions" layout="row" layout-align="start center">
+                        <div class="actions" layout="row" layout-align="start center">
                             <md-button type="submit" class="md-raised md-accent submit-button" aria-label="Save"
                                        ng-disabled="newItemForm.$invalid || newItemForm.$pristine"
                                        translate="Save" translate-attr-aria-label="Save">
                                 Save
                             </md-button>
-							<md-button ng-click="vm.itemDataClear()" class="md-raised md-accent">Clear</md-button>
-						</div>
-					</form>
+                            <md-button ng-click="vm.itemDataClear()" class="md-raised md-accent">Clear</md-button>
+                        </div>
+                    </form>
                     </div>
                 </md-tab-body>
             </md-tab>
@@ -99,75 +99,76 @@
                         <form>
                             <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>Purchase Price</label>
-										<input ng-model="vm.item.purchase_price" type="text" value="$525" >
-	                                    <div ng-messages="newItemForm.purchase_price.$error" role="alert">
-	                                        <div ng-message="required">
-	                                            <span >Purchase Price field is required</span>
-	                                        </div>
-	                                    </div>
-									</md-input-container>
-									
-									<md-input-container class="md-block" flex-gt-sm>
-										<label>Purchase Description</label>
-										<input ng-model="vm.item.purchase_description" type="text" value="$5648" >
-	                                    <div ng-messages="newItemForm.purchase_description.$error" role="alert">
-	                                        <div ng-message="required">
-	                                            <span >Purchase Description field is required</span>
-	                                        </div>
-	                                    </div>
-									</md-input-container>
+                                        <label>Purchase Price</label>
+                                        <input ng-model="vm.item.purchase_price" type="text" value="$525" >
+                                        <div ng-messages="newItemForm.purchase_price.$error" role="alert">
+                                            <div ng-message="required">
+                                                <span >Purchase Price field is required</span>
+                                            </div>
+                                        </div>
+                                    </md-input-container>
+                                    
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Purchase Description</label>
+                                        <input ng-model="vm.item.purchase_description" type="text" value="$5648" >
+                                        <div ng-messages="newItemForm.purchase_description.$error" role="alert">
+                                            <div ng-message="required">
+                                                <span >Purchase Description field is required</span>
+                                            </div>
+                                        </div>
+                                    </md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>Preferred Supplier</label>
+                                        <label>Preferred Supplier</label>
                                         <md-select ng-model="vm.item.supplier_id" name="supplier" >
                                             <md-option ng-repeat="supplier in get_suppliers" value="{{supplier.supplier_id}}">
                                                 {{supplier.name}}
                                             </md-option>
                                         </md-select>
-	                                    <div ng-messages="newItemForm.supplier_id.$error" role="alert">
-	                                        <div ng-message="required">
-	                                            <span >Preferred Supplier field is required</span>
-	                                        </div>
-	                                    </div>
-									</md-input-container>
+                                        <div ng-messages="newItemForm.supplier_id.$error" role="alert">
+                                            <div ng-message="required">
+                                                <span >Preferred Supplier field is required</span>
+                                            </div>
+                                        </div>
+                                    </md-input-container>
                                 </div>
-								<div layout="row" layout-gt-xs="row" flex>
+                                <div layout="row" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex="33">
-										<label>Selling Price</label>
-										<input ng-model="vm.item.selling_price" type="text" value="Lola J Bolden" >
-	                                    <div ng-messages="newItemForm.selling_price.$error" role="alert">
-	                                        <div ng-message="required">
-	                                            <span >Selling Price field is required</span>
-	                                        </div>
-	                                    </div>
-									</md-input-container>
-									<md-input-container class="md-block" flex="33">
-										<label>Selling Description</label>
-										<input ng-model="vm.item.selling_description" type="text" value="Lola J Bolden" >
-	                                    <div ng-messages="newItemForm.selling_description.$error" role="alert">
-	                                        <div ng-message="required">
-	                                            <span >Selling Description field is required</span>
-	                                        </div>
-	                                    </div>
-									</md-input-container>
-									<md-input-container class="md-block" flex="33">
-										<label>Tax</label>
-										<input ng-model="vm.item.tax" type="text" value="Lola J Bolden" >
-	                                    <div ng-messages="newItemForm.tax.$error" role="alert">
-	                                        <div ng-message="required">
-	                                            <span >Tax field is required</span>
-	                                        </div>
-	                                    </div>
-									</md-input-container>
-									
+                                        <label>Selling Price</label>
+                                        <input ng-model="vm.item.selling_price" type="text" value="Lola J Bolden" >
+                                        <div ng-messages="newItemForm.selling_price.$error" role="alert">
+                                            <div ng-message="required">
+                                                <span >Selling Price field is required</span>
+                                            </div>
+                                        </div>
+                                    </md-input-container>
+                                    <md-input-container class="md-block" flex="33">
+                                        <label>Selling Description</label>
+                                        <input ng-model="vm.item.selling_description" type="text" value="Lola J Bolden" >
+                                        <div ng-messages="newItemForm.selling_description.$error" role="alert">
+                                            <div ng-message="required">
+                                                <span >Selling Description field is required</span>
+                                            </div>
+                                        </div>
+                                    </md-input-container>
+                                    <md-input-container class="md-block" flex="33">
+                                        <label>Tax</label>
+                                        <input type="text"  
+                                                        name="tax"  ng-model="vm.item.tax"  allow-decimal-numbers />  
+                                        <div ng-messages="newItemForm.tax.$error" role="alert">
+                                            <div ng-message="required">
+                                                <span >Tax field is required</span>
+                                            </div>
+                                        </div>
+                                    </md-input-container>
+                                    
                                 </div>
-								
+                                
                         </form>
-						<div class="actions" layout="row" layout-align="start center">
-							<md-button ng-click="vm.saveItem()" class="md-raised md-accent">Save</md-button>
-							<md-button ng-click="vm.itemDataClear()" class="md-raised md-accent">Clear</md-button>
-						</div>
+                        <div class="actions" layout="row" layout-align="start center">
+                            <md-button ng-click="vm.saveItem()" class="md-raised md-accent">Save</md-button>
+                            <md-button ng-click="vm.itemDataClear()" class="md-raised md-accent">Clear</md-button>
+                        </div>
                     </div>
                 </md-tab-body>
             </md-tab>
@@ -182,48 +183,48 @@
                         <form>
                             <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>Item In Stock</label>
-										<input ng-model="vm.item.item_in_stock" type="text" value="22/12/2016" >
-	                                    <div ng-messages="newItemForm.item_in_stock.$error" role="alert">
-	                                        <div ng-message="required">
-	                                            <span >Item In Stock field is required</span>
-	                                        </div>
-	                                    </div>
-									</md-input-container>
-									
-									<md-input-container class="md-block" flex-gt-sm>
-										<label>Max. Level</label>
-										<input ng-model="vm.item.max_level" type="text" value="Lola J Bolden" >
-	                                    <div ng-messages="newItemForm.max_level.$error" role="alert">
-	                                        <div ng-message="required">
-	                                            <span >Max. Level field is required</span>
-	                                        </div>
-	                                    </div>
-									</md-input-container>
+                                        <label>Item In Stock</label>
+                                        <input ng-model="vm.item.item_in_stock" type="text" value="22/12/2016" >
+                                        <div ng-messages="newItemForm.item_in_stock.$error" role="alert">
+                                            <div ng-message="required">
+                                                <span >Item In Stock field is required</span>
+                                            </div>
+                                        </div>
+                                    </md-input-container>
+                                    
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Max. Level</label>
+                                        <input ng-model="vm.item.max_level" type="text" value="Lola J Bolden" >
+                                        <div ng-messages="newItemForm.max_level.$error" role="alert">
+                                            <div ng-message="required">
+                                                <span >Max. Level field is required</span>
+                                            </div>
+                                        </div>
+                                    </md-input-container>
 
                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Min. Level</label>
-										<input ng-model="vm.item.min_level" type="text" value="12/01/2017" >
-	                                    <div ng-messages="newItemForm.min_level.$error" role="alert">
-	                                        <div ng-message="required">
-	                                            <span >Min. Level field is required</span>
-	                                        </div>
-	                                    </div>
-									</md-input-container>
+                                        <label>Min. Level</label>
+                                        <input ng-model="vm.item.min_level" type="text" value="12/01/2017" >
+                                        <div ng-messages="newItemForm.min_level.$error" role="alert">
+                                            <div ng-message="required">
+                                                <span >Min. Level field is required</span>
+                                            </div>
+                                        </div>
+                                    </md-input-container>
                                 </div>
-								
+                                
                         </form>
-						
-						<div class="actions" layout="row" layout-align="start center">
-							<md-button ng-click="vm.saveItem()" class="md-raised md-accent">Save</md-button>
-							<md-button ng-click="vm.itemDataClear()" class="md-raised md-accent">Clear</md-button>
-						</div>
+                        
+                        <div class="actions" layout="row" layout-align="start center">
+                            <md-button ng-click="vm.saveItem()" class="md-raised md-accent">Save</md-button>
+                            <md-button ng-click="vm.itemDataClear()" class="md-raised md-accent">Clear</md-button>
+                        </div>
                     </div>
                 </md-tab-body>
             </md-tab>
-			
-			
-<!-- 			<md-tab>
+            
+            
+<!--            <md-tab>
                 <md-tab-label>
                     <span>Other Info</span>
                 </md-tab-label>
@@ -233,38 +234,38 @@
                         <form>
                             <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>Date Created</label>
-										<input type="text" value="22/12/2016" >
-									</md-input-container>
-									
-									<md-input-container class="md-block" flex-gt-sm>
-										<label>Created By</label>
-										<input type="text" value="Lola J Bolden" >
-									</md-input-container>
+                                        <label>Date Created</label>
+                                        <input type="text" value="22/12/2016" >
+                                    </md-input-container>
+                                    
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Created By</label>
+                                        <input type="text" value="Lola J Bolden" >
+                                    </md-input-container>
 
                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Date Modified</label>
-										<input type="text" value="12/01/2017" >
-									</md-input-container>
+                                        <label>Date Modified</label>
+                                        <input type="text" value="12/01/2017" >
+                                    </md-input-container>
                                 </div>
-								<div layout="row" layout-gt-xs="row" flex>
+                                <div layout="row" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex="33">
-										<label>Modified By</label>
-										<input type="text" value="Lola J Bolden" >
-									</md-input-container>
+                                        <label>Modified By</label>
+                                        <input type="text" value="Lola J Bolden" >
+                                    </md-input-container>
                                 </div>
-								
+                                
                         </form>
-						
-						<div class="actions" layout="row" layout-align="start center">
-							<md-button class="md-raised md-accent">Save</md-button>
-							<md-button class="md-raised md-accent">Clear</md-button>
-						</div>
+                        
+                        <div class="actions" layout="row" layout-align="start center">
+                            <md-button class="md-raised md-accent">Save</md-button>
+                            <md-button class="md-raised md-accent">Clear</md-button>
+                        </div>
                     </div>
                 </md-tab-body>
             </md-tab> -->
-			
-			
+            
+            
         </md-tabs>
 
     </div>
@@ -273,14 +274,14 @@
 </div>
 
 <!-- ADD BUTTON -->
-	<!-- <div class="add-btn-fixed">
-		<md-button  ng-click="vm.newCustomerPage()" class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
-			<md-icon md-font-icon="icon-plus"></md-icon>
-		</md-button>
-	</div> -->
-	
-	<div class="add-btn-fixed">
-	<md-fab-toolbar md-open="demo.isOpen" count="demo.count"
+    <!-- <div class="add-btn-fixed">
+        <md-button  ng-click="vm.newCustomerPage()" class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
+            <md-icon md-font-icon="icon-plus"></md-icon>
+        </md-button>
+    </div> -->
+    
+    <div class="add-btn-fixed">
+    <md-fab-toolbar md-open="demo.isOpen" count="demo.count"
                   md-direction="{{demo.selectedDirection}}">
     <md-fab-trigger class="align-with-text">
       <md-button aria-label="menu" class="md-fab md-primary">
@@ -293,13 +294,13 @@
         <md-button aria-label="comment" class="md-icon-button">
           <md-icon md-font-icon="icon-menu"></md-icon>
         </md-button>
-		<md-button aria-label="photo" class="md-icon-button">
+        <md-button aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-delete"></md-icon>
         </md-button>
         <md-button aria-label="label" class="md-icon-button">
           <md-icon md-font-icon="icon-pencil"></md-icon>
         </md-button>
-		<md-button aria-label="photo" class="md-icon-button">
+        <md-button aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-comment-plus-outline"></md-icon>
         </md-button>
       </md-fab-actions>

@@ -11,16 +11,16 @@
     {
 
         
-		$scope.isOpen = false;
-		$scope.demo = {
-			isOpen: false,
-			count: 0,
-			selectedDirection: 'left'
-		};
+        $scope.isOpen = false;
+        $scope.demo = {
+            isOpen: false,
+            count: 0,
+            selectedDirection: 'left'
+        };
         $scope.show_table1 = false
         $scope.show_table2 = false
-		
-		var vm = this;
+        
+        var vm = this;
 
         // Data
         vm.search_data = {}
@@ -105,6 +105,6 @@
         vm.searchItemDataClear = function(id){
             vm.search_data = {}
         }
-	
+    
     }
 })();

@@ -71,7 +71,7 @@
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Date Of Birth</label>
-                                        <md-datepicker name="date_of_birth" ng-model="vm.employee.employee_attributes.date_of_birth" md-placeholder=""></md-datepicker>
+                                        <md-datepicker md-open-on-focus onkeydown="return false"  name="date_of_birth" ng-model="vm.employee.employee_attributes.date_of_birth" md-placeholder=""></md-datepicker>
 	                                    <div ng-messages="submitForm.date_of_birth.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Date Of Birth field is required</span>
@@ -156,7 +156,7 @@
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Mobile</label>
-										<input ng-model="vm.employee.employee_attributes.mobile" name="mobile" type="number" required>
+										<input ng-model="vm.employee.employee_attributes.mobile" name="mobile" type="text" required numbers-only>
 	                                    <div ng-messages="submitForm.mobile.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Mobile field is required</span>
@@ -168,7 +168,7 @@
 								<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Phone Office</label>
-										<input ng-model="vm.employee.employee_attributes.phone_office" name="phone_office" type="number">
+										<input ng-model="vm.employee.employee_attributes.phone_office" name="phone_office" type="text" numbers-only>
 	                                    <div ng-messages="submitForm.phone_office.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Phone Office field is required</span>
@@ -178,7 +178,7 @@
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Phone Home</label>
-										<input ng-model="vm.employee.employee_attributes.phone_home" name="phone_home" type="number">
+										<input ng-model="vm.employee.employee_attributes.phone_home" name="phone_home" type="text" numbers-only>
 	                                    <div ng-messages="submitForm.phone_home.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Phone Home field is required</span>

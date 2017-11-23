@@ -1,0 +1,185 @@
+<div id="e-commerce-product" class="page-layout simple tabbed" layout="column">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="space-between">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a ng-click="vm.ItemsPage()" href="">Inventory Management </a>&nbsp; / &nbsp; <a ng-click="vm.ItemsPage()" href="">Inventory Item </a> </span>&nbsp; / &nbsp; Edit
+            </div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <md-tabs md-dynamic-height>
+
+            <md-tab>
+                <md-tab-label>
+                    <span>General Info</span>
+                </md-tab-label>
+
+           <md-tab-body>
+                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+                        <form ng-submit="vm.updateInventoryItems()" name="newItemForm" novalidate>
+
+                                   <div layout="column" layout-gt-xs="row" flex>
+                                   <md-input-container class="md-block" flex-gt-sm>
+                                        <label>ICC</label>
+                                        <input name="icc" ng-model="vm.inventory.icc" type="text" required>
+                                        <div ng-messages="newItemForm.icc.$error" role="alert">
+                                            <div ng-message="required">
+                                                <span >ICC field is required</span>
+                                            </div>
+                                        </div> 
+                                    </md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Serial</label>
+                                        <input name="serial" ng-model="vm.inventory.serial" type="text" required>
+                                        <div ng-messages="newItemForm.serial.$error" role="alert">
+                                            <div ng-message="required">
+                                                <span >Serial field is required</span>
+                                            </div>
+                                        </div> 
+                                    </md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Make</label>
+                                        <input name="make" ng-model="vm.inventory.make" type="text" required>
+                                       <div ng-messages="newItemForm.make.$error" role="alert">
+                                            <div ng-message="required">
+                                                <span >Make field is required</span>
+                                            </div>
+                                        </div> 
+                                    </md-input-container>
+                            </div>
+                            <div layout="column" layout-gt-xs="row" flex>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>Model</label>
+                                    <input name="model" ng-model="vm.inventory.model" type="text" required>
+                                    <div ng-messages="newItemForm.model.$error" role="alert">
+                                        <div ng-message="required">
+                                            <span >Model field is required</span>
+                                        </div>
+                                    </div> 
+                                </md-input-container>
+
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>Status</label>
+                                    <input name="status" ng-model="vm.inventory.status" type="text">
+                                </md-input-container>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>Location</label>
+                                    <input name="location" ng-model="vm.inventory.location" type="text">
+                                </md-input-container>
+                            
+                            </div> 
+                             <div layout="column" layout-gt-xs="row" flex>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>Notes</label>
+                                    <input name="notes" ng-model="vm.inventory.notes" type="text">
+                                </md-input-container>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>Acquisition Cost</label>
+                                    <input name="acquisition_cost" ng-model="vm.inventory.acquisition_cost" type="number" required>
+                                    <div ng-messages="newItemForm.acquisition_cost.$error" role="alert">
+                                        <div ng-message="required">
+                                            <span >Acquisition Cost field is required</span>
+                                        </div>
+                                    </div> 
+                                </md-input-container>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>Cached Profit Share Percent(%)</label>
+                                    <input name="cached_profit_share_percent" ng-model="vm.inventory.cached_profit_share_percent" 
+                                                    type="number">
+                                </md-input-container>
+                            </div> 
+                            <div layout="column" layout-gt-xs="row" flex>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>Details</label>
+                                    <input name="details" ng-model="vm.inventory.details" type="text" >
+                                </md-input-container>
+
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>Check Value</label>
+                                    <input name="check_value" ng-model="vm.inventory.check_value" type="text" >
+                                </md-input-container>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>Category Name</label>
+                                    <input name="item_category_name" ng-model="vm.inventory.item_category_name" type="text">
+                                </md-input-container>
+                            </div> 
+                              <div layout="column" layout-gt-xs="row" flex>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                      <md-checkbox ng-model="vm.inventory.archived" aria-label="Checkbox 1">
+                                        Archived
+                                      </md-checkbox>
+                                </md-input-container>
+                                </md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Listing</label>
+                                        <md-select ng-model="vm.inventory.listing_id" name="listing_id">
+                                            <md-option ng-repeat="listing in get_listing" value="{{listing.id}}">
+                                                {{listing.title}}
+                                            </md-option>
+                                        </md-select>
+                                         <div ng-messages="newItemForm.listing_id.$error" role="alert">
+                                                <div ng-message="required">
+                                                    <span >Listing field is required</span>
+                                                </div>
+                                         </div> 
+                                    </md-input-container>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                </md-input-container>
+                            </div> 
+                             <div class="actions" layout="row" layout-align="start center">
+                                <md-button type="submit" class="md-raised md-accent submit-button" aria-label="Save"
+                                       ng-disabled="newItemForm.$invalid || newItemForm.$pristine"
+                                       translate="Save" translate-attr-aria-label="Save">Save</md-button>                
+                    </form>
+                    </div>
+                </md-tab-body>
+            </md-tab>
+		</md-tabs>
+    </div>
+    <!-- / CONTENT -->
+
+</div>
+
+
+<!-- ADD BUTTON -->
+	<!-- <div class="add-btn-fixed">
+		<md-button  ng-click="vm.newCustomerPage()" class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
+			<md-icon md-font-icon="icon-plus"></md-icon>
+		</md-button>
+	</div> -->
+	
+	<div class="add-btn-fixed">
+	<md-fab-toolbar md-open="demo.isOpen" count="demo.count"
+                  md-direction="{{demo.selectedDirection}}">
+    <md-fab-trigger class="align-with-text">
+      <md-button aria-label="menu" class="md-fab md-primary">
+        <md-icon md-font-icon="icon-menu"></md-icon>
+      </md-button>
+    </md-fab-trigger>
+
+    <md-toolbar>
+      <md-fab-actions class="md-toolbar-tools">
+        <md-button aria-label="comment" class="md-icon-button">
+          <md-icon md-font-icon="icon-menu"></md-icon>
+        </md-button>
+		<md-button aria-label="photo" class="md-icon-button">
+          <md-icon md-font-icon="icon-delete"></md-icon>
+        </md-button>
+         <md-button aria-label="label" class="md-icon-button">
+          <md-icon md-font-icon="icon-pencil"></md-icon>
+        </md-button> 
+		<md-button ng-click="vm.newItemPage()" aria-label="photo" class="md-icon-button">
+          <md-icon md-font-icon="icon-comment-plus-outline"></md-icon>
+        </md-button>
+      </md-fab-actions>
+    </md-toolbar>
+  </md-fab-toolbar>
+  </div>
+  
+<!-- / ADD BUTTON -->

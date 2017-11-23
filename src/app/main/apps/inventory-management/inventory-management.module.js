@@ -258,6 +258,169 @@
                 bodyClass: 'crm'
             })
 			
+			/* -New 10.13.2017 Start- */
+			
+			/* page */
+			.state('app.inventory-management.inventory-item', {
+                url      : '/inventory-item',
+                views    : {
+                    'content@app': {
+                        templateUrl: 'app/main/apps/inventory-management/views/pages/inventory-item.html',
+                        controller : 'inventoryItemController as vm'
+                    }
+                },
+                bodyClass: 'order-management'
+            })
+			
+			.state('app.inventory-management.listing', {
+                url      : '/listing',
+                views    : {
+                    'content@app': {
+                        templateUrl: 'app/main/apps/inventory-management/views/pages/listing.html',
+                        controller : 'listingController as vm'
+                    }
+                },
+                bodyClass: 'order-management'
+            })
+			
+			.state('app.inventory-management.item-source', {
+                url      : '/item-source',
+                views    : {
+                    'content@app': {
+                        templateUrl: 'app/main/apps/inventory-management/views/pages/item-source.html',
+                        controller : 'itemSourceController as vm'
+                    }
+                },
+                bodyClass: 'order-management'
+            })
+			
+			/* new */
+			
+			.state('app.inventory-management.inventory-item-new', {
+                url      : '/inventory-item-new',
+                views    : {
+                    'content@app': {
+                        templateUrl: 'app/main/apps/inventory-management/views/new/inventory-item-new.html',
+                        controller : 'newInventoryItemController as vm'
+                    }
+                },
+                bodyClass: 'order-management'
+            })
+			
+			.state('app.inventory-management.listing-new', {
+                url      : '/listing-new',
+                views    : {
+                    'content@app': {
+                        templateUrl: 'app/main/apps/inventory-management/views/new/listing-new.html',
+                        controller : 'newListingController as vm'
+                    }
+                },
+                bodyClass: 'order-management'
+            })
+			
+			.state('app.inventory-management.item-source-new', {
+                url      : '/item-source-new',
+                views    : {
+                    'content@app': {
+                        templateUrl: 'app/main/apps/inventory-management/views/new/item-source-new.html',
+                        controller : 'newItemSourceController as vm'
+                    }
+                },
+                bodyClass: 'order-management'
+            })
+			
+			/* edit */
+			
+			.state('app.inventory-management.inventory-item-edit', {
+                url      : '/inventory-item-edit',
+                views    : {
+                    'content@app': {
+                        templateUrl: 'app/main/apps/inventory-management/views/edit/inventory-item-edit.html',
+                        controller : 'editInventoryItemController as vm'
+                    }
+                },
+                params: {
+                 obj: null
+                },
+                bodyClass: 'order-management'
+            })
+			
+			.state('app.inventory-management.listing-edit', {
+                url      : '/listing-edit',
+                views    : {
+                    'content@app': {
+                        templateUrl: 'app/main/apps/inventory-management/views/edit/listing-edit.html',
+                        controller : 'editListing as vm'
+                    }
+                },
+                params: {
+                 obj: null
+                },
+                bodyClass: 'order-management'
+            })
+			
+			.state('app.inventory-management.item-source-edit', {
+                url      : '/item-source-edit',
+                views    : {
+                    'content@app': {
+                        templateUrl: 'app/main/apps/inventory-management/views/edit/item-source-edit.html',
+                        controller : 'editItemSourceController as vm'
+                    }
+                },
+                params: {
+                 obj: null
+                },
+                bodyClass: 'order-management'
+            })
+			
+			/* view */
+			
+			.state('app.inventory-management.inventory-item-view', {
+                url      : '/inventory-item-view',
+                views    : {
+                    'content@app': {
+                        templateUrl: 'app/main/apps/inventory-management/views/view/inventory-item-view.html',
+                        controller : 'viewInventoryItemController as vm'
+                    }
+                },
+                params: {
+                 obj: null
+                },
+                bodyClass: 'order-management'
+            })
+			
+			.state('app.inventory-management.listing-view', {
+                url      : '/listing-view',
+                views    : {
+                    'content@app': {
+                        templateUrl: 'app/main/apps/inventory-management/views/view/listing-view.html',
+                        controller : 'viewListingController as vm'
+                    }
+                },
+                params: {
+                 obj: null
+                },
+                bodyClass: 'order-management'
+            })
+			
+			.state('app.inventory-management.item-source-view', {
+                url      : '/item-source-view',
+                views    : {
+                    'content@app': {
+                        templateUrl: 'app/main/apps/inventory-management/views/view/item-source-view.html',
+                        controller : 'viewItemSourceController as vm'
+                    }
+                },
+                params: {
+                 obj: null
+                },
+                bodyClass: 'order-management'
+            })
+			
+			/* -New 10.13.2017 End- */
+			
+			
+			
         // Navigation
 		
         msNavigationServiceProvider.saveItem('apps.inventory-management', {
@@ -285,5 +448,24 @@
             title: 'Purchase Orders',
             state: 'app.inventory-management.purchase-orders'
         });
+		
+		/* new 13.10.2017 start */
+		
+		msNavigationServiceProvider.saveItem('apps.inventory-management.inventory-item', {
+            title: 'Inventory Item',
+            state: 'app.inventory-management.inventory-item'
+        });
+		
+		msNavigationServiceProvider.saveItem('apps.inventory-management.listing', {
+            title: 'Listing',
+            state: 'app.inventory-management.listing'
+        });
+		
+		msNavigationServiceProvider.saveItem('apps.inventory-management.item-source', {
+            title: 'Item Source',
+            state: 'app.inventory-management.item-source'
+        });
+		
+		/* new 13.10.2017 start */
     }
 })();

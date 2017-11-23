@@ -28,21 +28,23 @@
                         <form>
                             <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>ID</label>
-										<input type="text" value="{{sales_order_data.code}}" disabled>
+										<label>UID</label>
+										<input type="text" value="{{sales_order_data.uid}}" disabled>
 									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
-										<label>Subject</label>
-										<input type="text" value="{{sales_order_data.name}}" disabled>
+										<label>Customer</label>
+										<input type="text" 
+											value="{{customerName}}" disabled>
 									</md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>Order ID</label>
-										<input type="text" value="{{sales_order_data.uid}}" disabled>
+										<label>Contact</label>
+										<input type="text" 
+											value="{{contactName}}" disabled>
 									</md-input-container>
                                 </div>
-								<div layout="column" layout-gt-xs="row" flex>
+								<!-- <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Order Date</label>
                                         <input type="text" value="{{sales_order_data.create_timestamp}}" disabled>
@@ -115,15 +117,15 @@
 									</md-input-container>
 									<md-input-container class="md-block" flex-gt-sm>
 									</md-input-container>
-                                </div>
+                                </div> -->
                         </form>
-						<div class="actions" layout="row" layout-align="start center" >
+						<!-- <div class="actions" layout="row" layout-align="start center" >
 							<md-button ng-click="vm.createInvoice(sales_order_data.id)" class="md-raised md-accent">Create Invoice</md-button>
-						</div>
+						</div> -->
                     </div>
                 </md-tab-body>
             </md-tab>
-
+<!-- 
             <md-tab>
                 <md-tab-label>
                     <span>Buyer Info</span>
@@ -272,11 +274,6 @@
 											<span class="column-title">Price</span>
 										</div>
 									</th>
-<!-- 									<th class="secondary-text">
-										<div class="">
-											<span class="column-title">Action</span>
-										</div>
-									</th> -->
 								</tr>
 							</thead>
 							<tbody>
@@ -285,11 +282,6 @@
 									<td>{{item.item_price}}</td>
 									<td>{{item.quantity}}</td>
 									<td>{{item.item_price * item.quantity}}</td>
-<!-- 									<td>
-										<a href="">
-										   <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
-										</a>
-									</td> -->
 								</tr>
 							</tbody>
 							<tfoot>
@@ -306,13 +298,10 @@
 									<td class="secondary-text7">
 									{{ sales_order_data.total_price }}
 									</td>
-<!-- 									<td class="secondary-text7">
-										
-									</td> -->
 								</tr>
 							</tfoot>
 						</table>
-						</div>
+					</div>
                 </md-tab-body>
             </md-tab>
 			
@@ -443,11 +432,6 @@
 											<span class="column-title">Created By</span>
 										</div>
 									</th>
-<!-- 									<th class="secondary-text">
-										<div class="">
-											<span class="column-title">Action</span>
-										</div>
-									</th> -->
 								</tr>
 							</thead>
 							<tbody>
@@ -462,20 +446,6 @@
 									<td>{{invoice.grand_total}}</td>
 									<td>{{invoice.created_at}}</td>
 									<td>{{invoice.created_by}}</td>
-<!-- 									<td>
-										<a ng-click="vm.editSalesOrderInvoice(invoice.id)" class="edit-button md-icon-button"
-										   aria-label="Product details" href="">
-										   <md-icon md-font-icon="icon-pencil" class="s16"></md-icon>
-										</a>
-										<a ng-click="vm.salesOrderView(invoice.id)" class="edit-button md-icon-button"
-										   aria-label="Product details" href="">
-										   <md-icon md-font-icon="icon-eye" class="s16"></md-icon>
-										</a>
-										<a ng-click="vm.deleteSalesOrderInvoice(invoice.id)" href="">
-										   <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
-										</a>
-										
-									</td> -->
 								</tr>
 							</tbody>
 						</table>
@@ -486,7 +456,7 @@
 					</div>
                 </md-tab-body>
             </md-tab>
-
+ -->
 
         </md-tabs>
 
@@ -521,10 +491,10 @@
 		<md-button ng-click="vm.deleteSalesOrder(sales_order_data.id)" aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-delete"></md-icon>
         </md-button>
-        <md-button ng-click="vm.editSalesOrder(sales_order_data.id)" aria-label="label" class="md-icon-button">
+        <md-button ng-click="vm.editSalesOrder(sales_order_data)" aria-label="label" class="md-icon-button">
           <md-icon md-font-icon="icon-pencil"></md-icon>
         </md-button>
-		<md-button aria-label="photo" class="md-icon-button">
+		<md-button aria-label="photo" ng-click="vm.SalesOrderNew()"  class="md-icon-button">
           <md-icon md-font-icon="icon-comment-plus-outline"></md-icon>
         </md-button>
       </md-fab-actions>

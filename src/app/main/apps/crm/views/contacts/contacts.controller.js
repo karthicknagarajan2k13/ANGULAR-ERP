@@ -4,12 +4,32 @@
 
     angular
         .module('app.crm')
-        .controller('contactsController', contactsController);
+        .controller('contactsController', contactsController)
+          .factory('storageService', ['$rootScope', function($rootScope) {
+                return {
+                    get: function(key) {
+                        return sessionStorage.getItem(key);
+                    },
+                    save: function(key, data) {
+                        sessionStorage.setItem(key, data);
+                    },
+                    getModel: function(key) {
+                        return sessionStorage.getItem(key);
+                    },
+                    setModel: function(key, data) {
+                        sessionStorage.setItem(key, data);
+                    }
+            };
+        }]);
+
 
     /** @ngInject */
-    function contactsController($timeout,$scope, crmApi, User, $rootScope, $window, $state, Contact)
+    function contactsController(storageService,$cookies,$timeout,$scope, crmApi, User, $rootScope, $window, $state, Contact)
     {
-		
+		if(storageService.get('key')=== undefined){
+             storageService.save('key', "new");
+        }
+
 		$scope.isOpen = false;
 		$scope.demo = {
 			isOpen: false,
@@ -22,31 +42,43 @@
         var vm = this;
 
         // Data
-        var dataPromise = crmApi.getContacts({});
-        dataPromise.then(function(result) { 
-            vm.contacts_data = result;
-            vm.dtInstance = {};
-            vm.dtOptions = {
-                dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
-                columnDefs  : [
-                    {
-                        // Target the id column
-                        targets: 0,
-                        width  : '72px'
-                    }
-                ],
-                initComplete: initComplete,
-                pagingType  : 'simple',
-                lengthMenu  : [10, 20, 30, 50, 100],
-                pageLength  : 20,
-                scrollY     : 'auto',
-                responsive  : true
-            };
-            $timeout(function(){
-                $scope.show_table2 = true
-            }, 2000);
-            
-        });
+        if( storageService.get('key') === null || storageService.get('key')  === "new"){
+            var dataPromise = crmApi.getContacts({});
+            dataPromise.then(function(result) { 
+                vm.contacts_data = result;
+                
+                
+            });   
+        }else{
+            storageService.save('key', "new");
+            var data = $cookies.getObject('search');
+            var dataPromise = crmApi.getContacts(data);
+            dataPromise.then(function(result) { 
+                vm.contacts_data = result;
+                
+            });
+             
+         }
+         vm.dtInstance = {};
+         vm.dtOptions = {
+            dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
+            columnDefs  : [
+                {
+                    // Target the id column
+                    targets: 0,
+                    width  : '72px'
+                }
+            ],
+            initComplete: initComplete,
+            pagingType  : 'simple',
+            lengthMenu  : [10, 20, 30, 50, 100],
+            pageLength  : 20,
+            scrollY     : 'auto',
+            responsive  : true
+        };
+        $timeout(function(){
+            $scope.show_table2 = true
+        }, 2000);
 		
 		
 		
@@ -75,10 +107,12 @@
             $state.go('app.crm.contact-detail-new'); 
         }
         vm.searchContactData = function(){
-            var dataPromise = crmApi.getContacts(vm.search_data);
-            dataPromise.then(function(result) { 
-                vm.contacts_data = result;
-            });
+
+
+            $cookies.putObject("search",vm.search_data);
+            storageService.save('key', "search");
+           
+            $state.reload();
         }   
         vm.searchContactDataClear = function(){
             vm.search_data = {}

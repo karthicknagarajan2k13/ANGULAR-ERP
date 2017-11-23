@@ -54,7 +54,7 @@
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Subtotal</label>
-										<input ng-model="vm.purchase_order.sub_total" name="sub_total" type="number" ng-change="vm.total_calculation()" required>
+										<input ng-model="vm.purchase_order.sub_total" name="sub_total" type="text" ng-change="vm.total_calculation()"  allow-decimal-numbers required>
 	                                    <div ng-messages="newSupplierForm.sub_total.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Subtotal field is required</span>
@@ -64,7 +64,7 @@
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Tax</label>
-										<input ng-model="vm.purchase_order.tax" name="tax" type="number" ng-change="vm.total_calculation()" required>
+										<input ng-model="vm.purchase_order.tax" name="tax" type="text" ng-change="vm.total_calculation()"  allow-decimal-numbers required>
 	                                    <div ng-messages="newSupplierForm.tax.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Tax field is required</span>
@@ -74,12 +74,12 @@
                                     <md-input-container class="md-block" flex-gt-sm>
 
 										<label>Grand Total</label>
-										<input ng-model="vm.purchase_order.grand_total" name="grand_total" type="number" value="Oklahoma" required>
-	                                    <div ng-messages="newSupplierForm.grand_total.$error" role="alert">
+										<input ng-model="vm.purchase_order.grand_total" name="grand_total" type="text" value="Oklahoma"  allow-decimal-numbers disabled="">
+	                                  <!--   <div ng-messages="newSupplierForm.grand_total.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Grand Total field is required</span>
 	                                        </div>
-	                                    </div>
+	                                    </div> -->
 									</md-input-container>
 
 

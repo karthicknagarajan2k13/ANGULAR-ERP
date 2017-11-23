@@ -12,7 +12,8 @@
 </div>
 
 
-<div style="height:auto; min-height:auto; margin-top:20px; margin-bottom: -20px;" class="page-layout carded fullwidth" layout="row">
+<div style="height:auto; min-height:auto; margin-top:20px; margin-bottom: -20px;" 
+            class="page-layout carded fullwidth" layout="row">
     <!-- CENTER -->
     <div class="center" layout="row" flex>
         <!-- CONTENT CARD -->
@@ -24,57 +25,36 @@
 					<md-input-container flex>
 						<md-icon md-font-icon="icon-magnify"></md-icon>
 						<label>Search</label>
-                        <input ng-keyup="$event.keyCode == 13 && vm.searchSalesOrdersData()" ng-model="vm.search_data.search_text">
-						<md-icon ng-model="collapsed" ng-click="collapsed=!collapsed" md-font-icon="icon-chevron-down"></md-icon>
+                        <input ng-keyup="$event.keyCode == 13 && vm.searchSalesOrdersData()" ng-model="vm.search_data.search_box">
+						<md-icon ng-model="collapsed" class="cursor-pointer" ng-click="collapsed=!collapsed" md-font-icon="icon-chevron-down"></md-icon>
 					
 						<div style="padding-top:49px;" ng-show="collapsed">
 							<div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>ID</label>
-										<input ng-model="vm.search_data.code">
-									</md-input-container>
-									
-									<md-input-container class="md-block" flex-gt-sm>
-										<label>Order ID</label>
+										<label>UID</label>
 										<input ng-model="vm.search_data.uid">
 									</md-input-container>
-
-                                    <md-input-container class="md-block" flex-gt-sm>
-										<label>Subject</label>
-										<input ng-model="vm.search_data.name">
-									</md-input-container>
-                                </div>
-								<div layout="column" layout-gt-xs="row" flex>
-                                    <md-input-container flex>
-										<md-datepicker ng-model="vm.search_data.create_timestamp" md-placeholder="Order Date"></md-datepicker>
-									</md-input-container>
 									
 									<md-input-container class="md-block" flex-gt-sm>
-										<label>Total</label>
-										<input ng-model="vm.search_data.grand_total">
-									</md-input-container>
-
-                                    <md-input-container class="md-block" flex-gt-sm>
 										<label>Customer</label>
-										<input ng-model="vm.search_data.customer_user_id">
-									</md-input-container>
-                                </div>
-								
-								<div layout="column" layout-gt-xs="row" flex>
-                                    <md-input-container flex>
-										<label>Status</label>
-                                        <input ng-model="vm.search_data.status">
-									</md-input-container>
-									
-									<md-input-container class="md-block" flex-gt-sm>
-										<md-datepicker ng-model="vm.search_data.created_at" md-placeholder="Date Created"></md-datepicker>
+									    <md-select ng-model="vm.search_data.customer_user_id"> 
+                                            <md-option ng-repeat="customer in vm.get_customers" 
+                                                value="{{customer.customer_id}}">
+                                                {{customer.name}}
+                                            </md-option>
+                                        </md-select>
 									</md-input-container>
 
                                     <md-input-container class="md-block" flex-gt-sm>
-                                    </md-input-container>
+										<label>Contact</label>
+										<md-select ng-model="vm.search_data.contact_user_id" required>
+                                            <md-option ng-repeat="contact in vm.get_contacts" value="{{contact.contact_id}}">
+                                                {{contact.name}}
+                                            </md-option>
+                                        </md-select>
+									</md-input-container>
                                 </div>
-								
-								
+							
 								<div class="actions" layout="row" layout-align="start center">
 									<md-button ng-click="vm.searchSalesOrdersData()" class="md-raised md-accent">Search</md-button>
 									<md-button ng-click="vm.searchSalesOrdersDataClear()" class="md-raised md-accent">Clear</md-button>
@@ -132,27 +112,7 @@
                             </th>
                             <th class="secondary-text">
                                 <div class="table-header">
-                                    <span class="column-title">ID</span>
-                                </div>
-                            </th>
-                            <th class="secondary-text">
-                                <div class="table-header">
-                                    <span class="column-title">Order ID</span>
-                                </div>
-                            </th>
-                            <th class="secondary-text">
-                                <div class="table-header">
-                                    <span class="column-title">Subject</span>
-                                </div>
-                            </th>                            
-                            <th class="secondary-text">
-                                <div class="table-header">
-                                    <span class="column-title">Order Date</span>
-                                </div>
-                            </th>
-                            <th class="secondary-text">
-                                <div class="table-header">
-                                    <span class="column-title">Total</span>
+                                    <span class="column-title">UID</span>
                                 </div>
                             </th>
                             <th class="secondary-text">
@@ -160,11 +120,11 @@
                                     <span class="column-title">Customer</span>
                                 </div>
                             </th>
-							<th class="secondary-text">
+                            <th class="secondary-text">
                                 <div class="table-header">
-                                    <span class="column-title">Status</span>
+                                    <span class="column-title">Contact</span>
                                 </div>
-                            </th>
+                            </th>                            
 							<th class="secondary-text">
                                 <div class="table-header">
                                     <span class="column-title">Date Created</span>
@@ -177,14 +137,10 @@
                             <td ng-click="$event.stopPropagation()"><md-checkbox ng-model="order.checked" aria-label="Checkbox 1">
 								</md-checkbox>
 							</td>
-                            <td>{{order.code}}</td>
                             <td>{{order.uid}}</td>
-                            <td>{{order.name}}</td>
-							<td>{{order.create_timestamp}}</td>
-							<td>{{order.grand_total}}</td>
-							<td>{{order.customer}}</td>
-                            <td>{{order.status}}</td>
-                            <td>{{order.created_at}}</td>
+                            <td>{{vm.get_customers.length > 0 ? getByID(vm.get_customers,order.customer_user_id,"customer") :""}}</td>
+							<td>{{vm.get_contacts.length > 0 ? getByID(vm.get_contacts,order.contact_user_id,"contact"):""}}</td>
+                            <td>{{order.created_at | date}}</td>
                          </tr>
                     </tbody>
                 </table>

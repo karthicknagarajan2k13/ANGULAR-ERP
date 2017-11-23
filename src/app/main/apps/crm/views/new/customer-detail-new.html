@@ -36,7 +36,7 @@
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Phone#</label>
-										<input type="number" name="phone" ng-model="vm.customer.customer_attributes.phone" required>
+										<input type="text" name="phone" ng-model="vm.customer.customer_attributes.phone" required  numbers-only>
                                         <div ng-messages="newCustomerForm.phone.$error" role="alert">
                                             <div ng-message="required">
                                                 <span >Phone field is required</span>
@@ -104,12 +104,12 @@
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Postal Code</label>
-										<input type="number" name="postal_code" ng-model="vm.customer.customer_attributes.postal_code">
-                                        <div ng-messages="newCustomerForm.postal_code.$error" role="alert">
+										<input type="text" name="postal_code" ng-model="vm.customer.customer_attributes.postal_code" numbers-only>
+                                        <!--  <div ng-messages="newCustomerForm.postal_code.$error" role="alert">
                                             <div ng-message="required">
                                                 <span >Postal Code field is required</span>
                                             </div>
-                                        </div>
+                                        </div>  -->
 									</md-input-container>
                                     <md-input-container class="md-block" flex-gt-sm>
                                         <label>Customer Type</label>
@@ -131,7 +131,8 @@
 
 									<md-input-container class="md-block" flex="33">
 										<label>Customer Since</label>
-                                        <md-datepicker ng-model="vm.customer.customer_attributes.customer_since" md-placeholder=""></md-datepicker>
+                                        <md-datepicker  md-open-on-focus onkeydown="return false"  ng-model="vm.customer.customer_attributes.customer_since" 
+                                          md-placeholder=""  readonly="readonly"></md-datepicker>
                                     </md-input-container>
 
                                 </div>

@@ -20,7 +20,21 @@
            });
         };
         api.deleteAllSalesOrder = function(data) {
-           return $http({method:"GET", url: api.baseUrl+"sales_orders/delete_all.json",params: data}).then(function(result){
+          console.log("---->"+JSON.stringify(data));
+          return $http({method:"POST", url: api.baseUrl+"sales_orders/sales_order_delete",params: data}).then(function(result){
+               return result.data;
+           });
+         /*  return $http({method:"GET", url: api.baseUrl+"sales_orders/delete_all.json",params: data}).then(function(result){
+               return result.data;
+           });*/
+        };
+        api.getCustomers = function(data) {
+           return $http({method:"GET", url: api.baseUrl+"customers.json",params: data}).then(function(result){
+               return result.data;
+           });
+        };
+        api.getContacts = function(data) {
+           return $http({method:"GET", url: api.baseUrl+"contacts.json",params: data}).then(function(result){
                return result.data;
            });
         };
@@ -29,15 +43,24 @@
                return result.data;
            });
         };
-        api.viewSalesOrder = function(id) {
-           return $http({method:"GET", url: api.baseUrl+"sales_orders/"+id+".json"}).then(function(result){
+        api.viewSalesOrder = function(data) {
+           /*return $http({method:"GET", url: api.baseUrl+"sales_orders/"+id+".json"}).then(function(result){
+               return result.data;
+           });*/
+           return $http({data: data, method:"POST", url: api.baseUrl+"sales_orders/view_sales_orders"}).then(function(result){
                return result.data;
            });
         };
         api.editSalesOrder = function(data) {
-           return $http({method:"GET", url: api.baseUrl+"sales_orders/edit_form.json",params: data}).then(function(result){
+         /*  return $http({method:"GET", url: api.baseUrl+"sales_orders/edit_form.json",params: data}).then(function(result){
+               return result.data;
+           });*/
+           console.log("----"+JSON.stringify(data));
+           return $http({method:"POST", url: api.baseUrl+"sales_orders/edit_sales_orders",params: data}).then(function(result){
                return result.data;
            });
+
+
         };
         api.editSalesOrderInvoice = function(data) {
            return $http({method:"GET", url: api.baseUrl+"sales_order_invoices/edit_form.json",params: data}).then(function(result){
@@ -130,13 +153,20 @@
                return result.data;
            });
         };
+        api.createSalesOrder = function(data) {
+          console.log(JSON.stringify(data));
+           return $http({data: data, method:"POST", url: api.baseUrl+"sales_orders/create_sales_order"}).then(function(result){
+               return result.data;
+           });
+        };
+
         api.createInvoice = function(data) {
            return $http({data: data, method:"POST", url: api.baseUrl+"sales_order_invoices/create_invoice.json"}).then(function(result){
                return result.data;
            });
         };
         api.get_SalesOrders = function(data) {
-           return $http({method:"GET", url: api.baseUrl+"sales_orders/get_sales_orders.json"}).then(function(result){
+           return $http({data: data, method:"POST", url: api.baseUrl+"sales_orders/get_sales_orders"}).then(function(result){
                return result.data;
            });
         };
@@ -150,6 +180,13 @@
                return result.data;
            });
         };
+        api.getSearchSalesOrders = function(data) {
+          console.log(JSON.stringify(data))
+           return $http({data: data, method:"POST", url: api.baseUrl+"sales_orders/search_sales_orders"}).then(function(result){
+               return result.data;
+           });
+        };
+        
         return api;
     }
 

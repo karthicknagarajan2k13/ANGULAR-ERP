@@ -44,7 +44,7 @@
 								</md-input-container>
                                 <md-input-container class="md-block" flex-gt-sm>
 									<label>Tax</label>
-									<input type="number" name="tax" ng-model="vm.category.tax" required>
+									<input type="text" name="tax" ng-model="vm.category.tax"  allow-decimal-numbers required>
                                     <div ng-messages="newCategoryForm.tax.$error" role="alert">
                                         <div ng-message="required">
                                             <span >Tax field is required</span>

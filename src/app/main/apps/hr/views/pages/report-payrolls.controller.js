@@ -4,16 +4,38 @@
 
     angular
         .module('app.hr')
-        .controller('ReportPayrollsController', ReportPayrollsController);
+        .controller('ReportPayrollsController', ReportPayrollsController)
+            .factory('storageService', ['$rootScope', function($rootScope) {
+                return {
+                    get: function(key) {
+                        return sessionStorage.getItem(key);
+                    },
+                    save: function(key, data) {
+                        sessionStorage.setItem(key, data);
+                    },
+                    getModel: function(key) {
+                        return sessionStorage.getItem(key);
+                    },
+                    setModel: function(key, data) {
+                        sessionStorage.setItem(key, data);
+                    }
+            };
+        }]);
 
     /** @ngInject */
-    function ReportPayrollsController($window, hrApi, $scope, $state)
+    function ReportPayrollsController(storageService,$cookies,$window, hrApi, $scope, $state)
     {
 
         var vm = this;
-
+        if(storageService.get('key')=== undefined){
+             storageService.save('key', "new");
+        }
+        
         // Data
         vm.search_data = {}
+
+
+    if( storageService.get('key') === null || storageService.get('key')  === "new"){
         var dataPromise = hrApi.getReportPayrolls({});
         dataPromise.then(function(result) { 
             $scope.payrolls_data = result;
@@ -33,11 +55,34 @@
                 ]);
             });
         });
-        var dataPromise = hrApi.get_employees({});
-        dataPromise.then(function(result) { 
-            $scope.get_employees = result;
-            console.log($scope.get_employees)
-        });
+    }else{
+          storageService.save('key', "new");
+            var data = $cookies.getObject('search');
+            var dataPromise = hrApi.getReportPayrolls(data);
+            dataPromise.then(function(result) { 
+                $scope.payrolls_data = result; 
+            $scope.table_data = [[ 'ID', 'Subject', 'Employee', 'Base Pay', 'Allowances', 'Deductions', 'Expenses', 'Tax', 'Total', 'Date' ]]
+            angular.forEach($scope.payrolls_data, function(value, key) {
+                $scope.table_data.push([
+                    value.code,
+                    value.subject,
+                    value.employee,
+                    value.base_pay,
+                    value.allowances,
+                    value.deductions,
+                    value.expenses,
+                    value.tax,
+                    value.total,
+                    value.created_at,
+                ]);
+            });
+            }); 
+}
+    var dataPromise = hrApi.get_employees({});
+    dataPromise.then(function(result) { 
+        $scope.get_employees = result;
+        console.log($scope.get_employees)
+    });
 
         vm.pdfPayrollData = function(){
             var docDefinition = {
@@ -87,10 +132,10 @@
         };
 
         vm.searchPayrollData = function(id){
-            var dataPromise = hrApi.getReportPayrolls(vm.search_data);
-            dataPromise.then(function(result) { 
-                $scope.payrolls_data = result; 
-            }); 
+            $cookies.putObject("search",vm.search_data);
+            storageService.save('key', "search");
+           
+            $state.reload();
         }
         vm.searchPayrollDataClear = function(id){
             vm.search_data = {}

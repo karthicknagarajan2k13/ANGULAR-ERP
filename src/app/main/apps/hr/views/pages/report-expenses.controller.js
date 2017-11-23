@@ -4,16 +4,36 @@
 
     angular
         .module('app.hr')
-        .controller('ReportExpensesController', ReportExpensesController);
+        .controller('ReportExpensesController', ReportExpensesController)
+         .factory('storageService', ['$rootScope', function($rootScope) {
+                return {
+                    get: function(key) {
+                        return sessionStorage.getItem(key);
+                    },
+                    save: function(key, data) {
+                        sessionStorage.setItem(key, data);
+                    },
+                    getModel: function(key) {
+                        return sessionStorage.getItem(key);
+                    },
+                    setModel: function(key, data) {
+                        sessionStorage.setItem(key, data);
+                    }
+            };
+        }]);
 
     /** @ngInject */
-    function ReportExpensesController($window, hrApi, $scope, $state)
+    function ReportExpensesController(storageService,$cookies,$window, hrApi, $scope, $state)
     {
 
         var vm = this;
+        if(storageService.get('key')=== undefined){
+             storageService.save('key', "new");
+        }
 
         // Data
         vm.search_data = {}
+         if( storageService.get('key') === null || storageService.get('key')  === "new"){
         var dataPromise = hrApi.getReportExpenses({});
         dataPromise.then(function(result) { 
             $scope.expenses_data = result;
@@ -30,6 +50,26 @@
                 ]);
             });
         });
+    }else{
+          storageService.save('key', "new");
+            var data = $cookies.getObject('search');
+            var dataPromise = hrApi.getReportExpenses(data);
+            dataPromise.then(function(result) { 
+                $scope.expenses_data = result;
+                $scope.table_data = [[ 'EXP-ID', 'Subject', 'Employee', 'Amount', 'Status', 'Date Created', 'Created By']]
+                angular.forEach($scope.expenses_data, function(value, key) {
+                    $scope.table_data.push([
+                        value.code,
+                        value.subject,
+                        value.employee,
+                        value.amount,
+                        value.status,
+                        value.created_at,
+                        value.created_by,
+                    ]);
+                });
+            }); 
+}
         var dataPromise = hrApi.get_employees({});
         dataPromise.then(function(result) { 
             $scope.get_employees = result;
@@ -82,10 +122,15 @@
         };
 
         vm.searchExpenseData = function(id){
-            var dataPromise = hrApi.getReportExpenses(vm.search_data);
+          /*  var dataPromise = hrApi.getReportExpenses(vm.search_data);
             dataPromise.then(function(result) { 
                 $scope.expenses_data = result; 
-            }); 
+            }); */
+
+            $cookies.putObject("search",vm.search_data);
+            storageService.save('key', "search");
+           
+            $state.reload();
         }
         vm.searchExpenseDataClear = function(id){
             vm.search_data = {}

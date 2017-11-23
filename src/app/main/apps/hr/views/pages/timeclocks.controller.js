@@ -4,12 +4,31 @@
 
     angular
         .module('app.hr')
-        .controller('TimeclocksController', TimeclocksController);
+        .controller('TimeclocksController', TimeclocksController)
+         .factory('storageService', ['$rootScope', function($rootScope) {
+                return {
+                    get: function(key) {
+                        return sessionStorage.getItem(key);
+                    },
+                    save: function(key, data) {
+                        sessionStorage.setItem(key, data);
+                    },
+                    getModel: function(key) {
+                        return sessionStorage.getItem(key);
+                    },
+                    setModel: function(key, data) {
+                        sessionStorage.setItem(key, data);
+                    }
+            };
+        }]);
+
 
     /** @ngInject */
-    function TimeclocksController($timeout,$window, hrApi, $scope, $state)
+    function TimeclocksController(storageService,$cookies,$timeout,$window, hrApi, $scope, $state)
     {
-
+        if(storageService.get('key')=== undefined){
+             storageService.save('key', "new");
+        }
         
 		$scope.isOpen = false;
 		$scope.demo = {
@@ -23,6 +42,7 @@
 
         // Data
         vm.search_data = {}
+          if( storageService.get('key') === null || storageService.get('key')  === "new"){
         var dataPromise = hrApi.getTimeclocks({});
         dataPromise.then(function(result) { 
             $scope.timeclocks_data = result;
@@ -47,6 +67,38 @@
                 $scope.show_table2 = true
             }, 2000);
         });
+    }else{
+
+            storageService.save('key', "new");
+            var data = $cookies.getObject('search');
+               var dataPromise = hrApi.getTimeclocks(data);
+                dataPromise.then(function(result) { 
+                $scope.timeclocks_data = result; 
+                vm.dtInstance = {};
+                vm.dtOptions = {
+                    dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
+                    columnDefs  : [
+                        {
+                            // Target the id column
+                            targets: 0,
+                            width  : '10px'
+                        }
+                    ],
+                    initComplete: initComplete,
+                    pagingType  : 'simple',
+                    lengthMenu  : [10, 20, 30, 50, 100],
+                    pageLength  : 20,
+                    scrollY     : 'auto',
+                    responsive  : true
+                };
+                $timeout(function(){
+                    $scope.show_table2 = true
+                }, 2000);
+            }); 
+                        
+
+
+    }
         var dataPromise = hrApi.get_employees({});
         dataPromise.then(function(result) { 
             $scope.get_employees = result;
@@ -93,10 +145,11 @@
             $window.location.reload();
         };
         vm.searchTimeclockData = function(id){
-            var dataPromise = hrApi.getTimeclocks(vm.search_data);
-            dataPromise.then(function(result) { 
-                $scope.timeclocks_data = result; 
-            }); 
+            $cookies.putObject("search",vm.search_data);
+            storageService.save('key', "search");
+           
+            $state.reload();
+
         }
         vm.searchTimeclockDataClear = function(id){
             vm.search_data = {}

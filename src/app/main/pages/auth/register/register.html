@@ -65,10 +65,15 @@
                     <input type="password" name="password_confirmation" ng-model="user.password_confirmation"
                            placeholder="Password (Confirm)"
                            translate translate-attr-placeholder="REGISTER.PASSWORD_CONFIRM"
-                           required>
+                           required confirm-pwd="user.password" >
                     <div ng-messages="registerForm.password_confirmation.$error" role="alert">
                         <div ng-message="required">
-                            <span translate="REGISTER.ERRORS.PASSWORD_CONFIRM_REQUIRED">Password (Confirm) field is required</span>
+                            <span translate="REGISTER.ERRORS.PASSWORD_CONFIRM_REQUIRED">
+                                        Password (Confirm) field is required</span>
+                            <span ng-message="password">Password different</span>
+                        </div>
+                        <div ng-message="password">
+                            <span>Passwords doesn't match.</span>
                         </div>
                     </div>
                 </md-input-container>

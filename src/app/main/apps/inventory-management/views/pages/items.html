@@ -17,27 +17,27 @@
     <div class="center" layout="row" flex>
         <!-- CONTENT CARD -->
         <div class="content-card" layout="column" flex>
-			<div style="padding:20px 20px 0px 20px; font-size:18px;">
-				<div layout="column" layout-gt-xs="row">
-				
-					
-					<md-input-container flex>
-						<md-icon md-font-icon="icon-magnify"></md-icon>
-						<label>Search</label>
+            <div style="padding:20px 20px 0px 20px; font-size:18px;">
+                <div layout="column" layout-gt-xs="row">
+                
+                    
+                    <md-input-container flex>
+                        <md-icon md-font-icon="icon-magnify"></md-icon>
+                        <label>Search</label>
                         <input ng-keyup="$event.keyCode == 13 && vm.searchItemData()" ng-model="vm.search_data.search_text">
-						<md-icon ng-model="collapsed" ng-click="collapsed=!collapsed" md-font-icon="icon-chevron-down"></md-icon>
-					
-						<div style="padding-top:49px;" ng-show="collapsed">
-							<div layout="column" layout-gt-xs="row" flex>
+                        <md-icon ng-model="collapsed" class="cursor-pointer" ng-click="collapsed=!collapsed" md-font-icon="icon-chevron-down"></md-icon>
+                    
+                        <div style="padding-top:49px;" ng-show="collapsed">
+                            <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
-										<label>Item ID</label>
-										<input ng-model="vm.search_data.code">
-									</md-input-container>
-									
-									<md-input-container class="md-block" flex-gt-sm>
-										<label>Item Name</label>
-										<input ng-model="vm.search_data.name">
-									</md-input-container>
+                                        <label>Item ID</label>
+                                        <input ng-model="vm.search_data.code">
+                                    </md-input-container>
+                                    
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Item Name</label>
+                                        <input ng-model="vm.search_data.name">
+                                    </md-input-container>
 
 
                                     <md-input-container class="md-block" flex-gt-sm>
@@ -60,19 +60,19 @@
                                         </md-option>
                                     </md-select>
                                 </md-input-container>
-                                </div>								
-								<div class="actions" layout="row" layout-align="start center">
+                                </div>                              
+                                <div class="actions" layout="row" layout-align="start center">
                                     <md-button ng-click="vm.searchItemData()" class="md-raised md-accent">Search</md-button>
                                     <md-button ng-click="vm.searchItemDataClear()" class="md-raised md-accent">Clear</md-button>
-								</div>							
-						</div>
-					
-					</md-input-container>
-					
-					
+                                </div>                          
+                        </div>
+                    
+                    </md-input-container>
+                    
+                    
                 </div>
-				
-			</div>
+                
+            </div>
         </div>
         <!-- / CONTENT CARD -->
     </div>
@@ -88,8 +88,8 @@
 
         <!-- CONTENT CARD -->
         <div class="content-card" layout="column" flex>
-			
-			<div style="padding:25px; font-size:18px;"> Items </div>
+            
+            <div style="padding:25px; font-size:18px;"> Items </div>
 
             <!-- CONTENT TOOLBAR -->
 
@@ -141,18 +141,18 @@
                                     <span class="column-title">Purchase Price</span>
                                 </div>
                             </th>
-							<th class="secondary-text">
+                            <th class="secondary-text">
                                 <div class="table-header">
                                     <span class="column-title">Selling Price</span>
                                 </div>
                             </th>
-							
-							<th class="secondary-text">
+                            
+                            <th class="secondary-text">
                                 <div class="table-header">
                                     <span class="column-title">Date Created</span>
                                 </div>
                             </th>
-							<!-- 
+                            <!-- 
                             <th class="secondary-text">
                                 <div class="">
                                     <span class="column-title">Action</span>
@@ -163,12 +163,12 @@
                     <tbody ng-show="show_table1 && show_table2">
                         <tr ng-click="vm.viewItemPage(item.id)" ng-repeat="item in items_data">
                             <td ng-click="$event.stopPropagation()"><md-checkbox ng-model="item.checked" aria-label="Checkbox 1">
-								</md-checkbox>
-							</td>
+                                </md-checkbox>
+                            </td>
                             <td>{{item.code}}</td>
                             <td>{{item.name}}</td>
-							<td>{{item.category}}</td>
-							<td>{{item.unit}}</td>
+                            <td>{{item.category}}</td>
+                            <td>{{item.unit}}</td>
                             <td>{{item.purchase_price}}</td>
                             <td>{{item.selling_price}}</td>
                             <td>{{item.created_at}}</td><!-- 
@@ -186,7 +186,7 @@
                                 <a ng-click="vm.deleteItem(item.id)" href="">
                                    <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
                                 </a>
-								
+                                
                             </td> -->
                         </tr>
                     </tbody>
@@ -194,9 +194,9 @@
 
             </div>
             <!-- / CONTENT -->
-<!-- 			<div class="actions" layout="row" layout-align="start center">
+<!--            <div class="actions" layout="row" layout-align="start center">
                 <md-button ng-click="vm.deleteAllItem()" class="md-raised md-accent">Delete</md-button>
-			</div> -->
+            </div> -->
 
         </div>
         <!-- / CONTENT CARD -->
@@ -207,14 +207,14 @@
 </div>
 
 <!-- ADD BUTTON -->
-	<!-- <div class="add-btn-fixed">
-		<md-button  ng-click="vm.newCustomerPage()" class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
-			<md-icon md-font-icon="icon-plus"></md-icon>
-		</md-button>
-	</div> -->
-	
-	<div class="add-btn-fixed">
-	<md-fab-toolbar md-open="demo.isOpen" count="demo.count"
+    <!-- <div class="add-btn-fixed">
+        <md-button  ng-click="vm.newCustomerPage()" class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
+            <md-icon md-font-icon="icon-plus"></md-icon>
+        </md-button>
+    </div> -->
+    
+    <div class="add-btn-fixed">
+    <md-fab-toolbar md-open="demo.isOpen" count="demo.count"
                   md-direction="{{demo.selectedDirection}}">
     <md-fab-trigger class="align-with-text">
       <md-button aria-label="menu" class="md-fab md-primary">
@@ -227,13 +227,13 @@
         <md-button aria-label="comment" class="md-icon-button">
           <md-icon md-font-icon="icon-menu"></md-icon>
         </md-button>
-		<md-button ng-click="vm.deleteAllItem()" aria-label="photo" class="md-icon-button">
+        <md-button ng-click="vm.deleteAllItem()" aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-delete"></md-icon>
         </md-button>
         <md-button aria-label="label" class="md-icon-button">
           <md-icon md-font-icon="icon-pencil"></md-icon>
         </md-button>
-		<md-button ng-click="vm.newItemPage()" aria-label="photo" class="md-icon-button">
+        <md-button ng-click="vm.newItemPage()" aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-comment-plus-outline"></md-icon>
         </md-button>
       </md-fab-actions>

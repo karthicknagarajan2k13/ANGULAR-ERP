@@ -25,8 +25,10 @@
                         <form>
                             <div layout="column" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex-gt-sm>
-                                        <label>ID</label>
-                                        <input type="text" value="{{sales_order.code}}" disabled>
+                                        <label>UID</label>
+                                       <!--  <input type="text" value="{{sales_order.code}}" disabled> -->
+                                       <input type="text" value="{{sales_order.uid}}"  ng-model="sales_order.uid"> 
+
                                     </md-input-container>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Customer</label>
@@ -82,7 +84,7 @@
         <md-button aria-label="comment" class="md-icon-button">
           <md-icon md-font-icon="icon-menu"></md-icon>
         </md-button>
-		<md-button aria-label="photo" class="md-icon-button">
+	<!-- 	<md-button aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-delete"></md-icon>
         </md-button>
         <md-button aria-label="label" class="md-icon-button">
@@ -90,7 +92,18 @@
         </md-button>
 		<md-button aria-label="photo" class="md-icon-button">
           <md-icon md-font-icon="icon-comment-plus-outline"></md-icon>
+        </md-button> -->
+        <md-button ng-click="vm.deleteSalesOrder(salesID)" aria-label="photo" class="md-icon-button">
+          <md-icon md-font-icon="icon-delete"></md-icon>
         </md-button>
+        <md-button aria-label="label" class="md-icon-button">
+          <md-icon md-font-icon="icon-pencil"></md-icon>
+        </md-button>
+        <md-button aria-label="photo" ng-click="vm.SalesOrderNew()"  class="md-icon-button">
+          <md-icon md-font-icon="icon-comment-plus-outline"></md-icon>
+        </md-button>
+
+
       </md-fab-actions>
     </md-toolbar>
   </md-fab-toolbar>

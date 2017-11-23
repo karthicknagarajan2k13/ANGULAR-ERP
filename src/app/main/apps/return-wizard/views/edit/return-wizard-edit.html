@@ -53,15 +53,15 @@
 								<div layout="row" layout-gt-xs="row" flex>
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Original Amount</label>
-										<input type="text"  ng-change="vm.calculateRefundedAmount()" ng-model="vm.return_wizard.return_wizard.original_amount" value="">
+										<input type="text"  allow-decimal-numbers ng-change="vm.calculateRefundedAmount()" ng-model="vm.return_wizard.return_wizard.original_amount" value="">
 									</md-input-container>
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Shipping Charges</label>
-										<input type="text"  ng-change="vm.calculateRefundedAmount()"  ng-model="vm.return_wizard.return_wizard.shipping_charges" value="">
+										<input type="text"  allow-decimal-numbers ng-change="vm.calculateRefundedAmount()"  ng-model="vm.return_wizard.return_wizard.shipping_charges" value="">
 									</md-input-container>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Amount to be Refunded</label>
-										<input type="text" ng-model="vm.return_wizard.return_wizard.amount_to_be_refunded" value="">
+										<input type="text" allow-decimal-numbers ng-model="vm.return_wizard.return_wizard.amount_to_be_refunded" value="">
 									</md-input-container>
 								</div>
 								
@@ -84,7 +84,7 @@
 									</md-input-container>
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Date Paid</label>
-                                        <md-datepicker ng-model="vm.return_wizard.return_wizard.date_paid"  md-placeholder="Date Paid"></md-datepicker>
+                                        <md-datepicker md-open-on-focus onkeydown="return false" ng-model="vm.return_wizard.return_wizard.date_paid"  md-placeholder="Date Paid"></md-datepicker>
 									</md-input-container>
 								</div>
 								

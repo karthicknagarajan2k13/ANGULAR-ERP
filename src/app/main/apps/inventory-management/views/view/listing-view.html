@@ -1,0 +1,117 @@
+<div id="e-commerce-product" class="page-layout simple tabbed" layout="column">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="space-between">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <span style="color:#00bcff; font-weight:normal; font-size:14px;" class="parent"> <a ng-click="vm.ItemsPage()" href="">Inventory Management </a>&nbsp; / &nbsp;<a ng-click="vm.ItemsPage()" href="">Listing </a> </span>&nbsp; / &nbsp; View
+            </div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <md-tabs md-dynamic-height>
+
+            <md-tab>
+                <md-tab-label>
+                    <span>General Info</span>
+                </md-tab-label>
+
+                <md-tab-body>
+                    <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+                        <form>
+                    	     <div layout="column" layout-gt-xs="row" flex>
+                                <md-input-container class="md-block" flex-gt-sm>
+  									<label>Title</label>
+  									<input type="text" value="{{data.title}}" disabled>
+			                 	</md-input-container>
+								
+								<md-input-container class="md-block" flex-gt-sm>
+									<label>Make</label>
+									<input type="text" value="{{data.make}}" disabled>
+								</md-input-container>
+
+                			 <md-input-container class="md-block" flex-gt-sm>
+									<label>Model</label>
+									<input type="text" value="{{data.model}}" disabled>
+								</md-input-container>
+                             </div>
+							 <div layout="column" layout-gt-xs="row" flex>
+                                <md-input-container class="md-block" flex-gt-sm>
+                									<label>Item Category</label>
+                                  <input type="text" value="{{categoryName}}" disabled>
+                				</md-input-container>
+								
+								<md-input-container class="md-block" flex-gt-sm>
+									<label>Cost</label>
+									<input type="text" value="{{data.cost | number:2}}" disabled>
+								</md-input-container>
+
+                                <md-input-container class="md-block" flex-gt-sm>
+                                  <label>Publish on</label>
+                                  <input type="text" value="{{data.publish_on|date}}" disabled>
+                                </md-input-container>
+                            </div>
+
+                             <div layout="column" layout-gt-xs="row" flex>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                  <label>Description</label>
+                                  <input type="text" value="{{data.description}}" disabled>
+                                </md-input-container>
+                            </div>
+
+                        </form>
+                    </div>
+                </md-tab-body>
+            </md-tab>
+			
+			
+        </md-tabs>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>
+
+<!-- ADD BUTTON -->
+	<!-- <div class="add-btn-fixed">
+		<md-button  ng-click="vm.newCustomerPage()" class="md-fab md-accent md-icon-button" id="add-contact-button" aria-label="add contact">
+			<md-icon md-font-icon="icon-plus"></md-icon>
+		</md-button>
+	</div> -->
+	
+	<div class="add-btn-fixed">
+	<md-fab-toolbar md-open="demo.isOpen" count="demo.count"
+                  md-direction="{{demo.selectedDirection}}">
+    <md-fab-trigger class="align-with-text">
+      <md-button aria-label="menu" class="md-fab md-primary">
+        <md-icon md-font-icon="icon-menu"></md-icon>
+      </md-button>
+    </md-fab-trigger>
+
+
+    <md-toolbar>
+      <md-fab-actions class="md-toolbar-tools">
+        <md-button aria-label="comment" class="md-icon-button">
+          <md-icon md-font-icon="icon-menu"></md-icon>
+        </md-button>
+    <md-button ng-click="vm.deleteListing(data.id)" aria-label="photo" class="md-icon-button">
+          <md-icon md-font-icon="icon-delete"></md-icon>
+        </md-button>
+        <md-button ng-click="vm.editListingPage(data)" aria-label="label" class="md-icon-button">
+          <md-icon md-font-icon="icon-pencil"></md-icon>
+        </md-button>
+        <md-button aria-label="photo" ng-click="vm.newItemPage()" class="md-icon-button">
+          <md-icon md-font-icon="icon-comment-plus-outline"></md-icon>
+        </md-button>
+      </md-fab-actions>
+    </md-toolbar>
+  </md-fab-toolbar>
+  </div>
+  
+<!-- / ADD BUTTON -->
+
+

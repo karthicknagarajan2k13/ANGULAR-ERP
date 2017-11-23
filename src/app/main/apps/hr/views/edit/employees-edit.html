@@ -71,7 +71,7 @@
 									
 									<md-input-container class="md-block" flex-gt-sm>
 										<label>Date Of Birth</label>
-                                        <md-datepicker name="date_of_birth" ng-model="employee.employee_attributes.date_of_birth" md-placeholder=""></md-datepicker>
+                                        <md-datepicker md-open-on-focus onkeydown="return false"  name="date_of_birth" ng-model="employee.employee_attributes.date_of_birth" md-placeholder=""></md-datepicker>
 	                                    <div ng-messages="submitForm.date_of_birth.$error" role="alert">
 	                                        <div ng-message="required">
 	                                            <span >Date Of Birth field is required</span>
@@ -350,7 +350,7 @@
 									</md-input-container>
                                     <md-input-container class="md-block" flex="33">
 										<label>Date Of Joining</label>
-                                        <md-datepicker ng-model="employee.employee_attributes.date_of_joining"></md-datepicker>
+                                        <md-datepicker md-open-on-focus onkeydown="return false" ng-model="employee.employee_attributes.date_of_joining"></md-datepicker>
 									</md-input-container>
                                 </div>
                         </form>
@@ -394,13 +394,13 @@
 
                                     <md-input-container class="md-block" flex-gt-sm>
 										<label>Password</label>
-										<input type="text" ng-model="employee.password">
+										<input type="password" ng-model="employee.password">
 									</md-input-container>
                                 </div>
 								<div layout="row" layout-gt-xs="row" flex>
                                     <md-input-container class="md-block" flex="33">
 										<label>Retype Password</label>
-										<input type="text" ng-model="employee.password_confirmation">
+										<input type="password" ng-model="employee.password_confirmation" >
 									</md-input-container>
 									
                                 </div>
