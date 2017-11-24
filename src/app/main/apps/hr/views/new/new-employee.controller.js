@@ -62,24 +62,37 @@
         vm.employee = {}
         
         vm.saveEmployee = function(){
-            var dataPromise = hrApi.createEmployee({employee:vm.employee});
-            dataPromise.then(function(result) { 
-                console.log("-->"+JSON.stringify(result));
-                $scope.data = result; 
-                if( typeof($scope.data.message) !== "undefined"){
-                    var pinTo = $scope.getToastPosition();
-                    $mdToast.show(
-                      $mdToast.simple()
-                        .textContent($scope.data.message)
-                        .position(pinTo )
-                        .hideDelay(3000)
-                    );
-                }else{
-                    if( typeof($scope.data.employee_id) !== "undefined"){
-                        $state.go('app.hr.employees-view', {obj:{id: $scope.data.employee_id}}); 
-                    }
-                }
-            }); 
+            if(vm.employee.password !== vm.employee.password_confirmation){
+                        var pinTo = $scope.getToastPosition();
+                        $mdToast.show(
+                          $mdToast.simple()
+                            .textContent("Password and Confirm Password doesn't match")
+                            .position(pinTo )
+                            .hideDelay(3000)
+                        );
+            }else{
+
+             /*   console.log("--->"+JSON.stringify(vm.employee));*/
+                var dataPromise = hrApi.createEmployee({employee:vm.employee});
+                dataPromise.then(function(result) { 
+                    console.log("-->"+JSON.stringify(result));
+                    $scope.data = result; 
+                    if($scope.data.id !== "undefined"){
+                        var pinTo = $scope.getToastPosition();
+                        $mdToast.show(
+                          $mdToast.simple()
+                            .textContent("New Employee created.")
+                            .position(pinTo )
+                            .hideDelay(3000)
+                        );
+                         $state.go('app.hr.employees-view', {obj:{id: $scope.data.employee_id}}); 
+                    }/*else{
+                        if( typeof($scope.data.employee_id) !== "undefined"){
+                            $state.go('app.hr.employees-view', {obj:{id: $scope.data.employee_id}}); 
+                        }
+                    }*/
+                }); 
+            }
         }
         vm.newEmployeePage = function(){
             $state.go('app.hr.employees-new'); 

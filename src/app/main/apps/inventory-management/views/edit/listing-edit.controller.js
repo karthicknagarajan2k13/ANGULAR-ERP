@@ -105,6 +105,10 @@
             $state.go('app.inventory-management.listing-new'); 
         }
 
+        vm.ListingPage = function(){
+            $state.go('app.inventory-management.listing'); 
+        }
+
   
     }
 })();

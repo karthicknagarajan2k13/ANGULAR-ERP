@@ -56,6 +56,7 @@
             var dataPromise = hrApi.getReportExpenses(data);
             dataPromise.then(function(result) { 
                 $scope.expenses_data = result;
+                vm.search_data  = data;
                 $scope.table_data = [[ 'EXP-ID', 'Subject', 'Employee', 'Amount', 'Status', 'Date Created', 'Created By']]
                 angular.forEach($scope.expenses_data, function(value, key) {
                     $scope.table_data.push([
@@ -120,7 +121,11 @@
             scrollY     : 'auto',
             responsive  : true
         };
-
+        vm.refreshData = function(){
+            storageService.save('key', "new");
+            $cookies.putObject("search",'');
+            $state.reload();
+        }
         vm.searchExpenseData = function(id){
           /*  var dataPromise = hrApi.getReportExpenses(vm.search_data);
             dataPromise.then(function(result) { 

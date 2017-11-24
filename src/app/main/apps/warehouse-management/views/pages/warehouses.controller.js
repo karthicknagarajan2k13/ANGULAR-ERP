@@ -53,6 +53,7 @@
             var dataPromise = whApi.getWarehouses(data);
             dataPromise.then(function(result) { 
                 $scope.warehouses_data = result; 
+                 vm.search_data  = data;
             }); 
         }
 
@@ -89,6 +90,13 @@
         function initComplete(){
             $scope.show_table1 = true
         }
+
+         vm.refreshData = function(){
+            storageService.save('key', "new");
+            $cookies.putObject("search",'');
+            $state.reload();
+        }
+        
         
         vm.newWarehousePage = function(){
             $state.go('app.warehouse-management.warehouse-new'); 

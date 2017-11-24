@@ -46,5 +46,8 @@
                 $state.go('app.inventory-management.item-source'); 
             }); 
         }
+        vm.ItemSourcePage = function(){
+             $state.go('app.inventory-management.item-source'); 
+        }
     }
 })();

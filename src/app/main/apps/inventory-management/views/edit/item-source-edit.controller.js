@@ -94,5 +94,8 @@
         vm.itemDataClear = function(){
             vm.item_source = {}
         }
+        vm.ItemSourcePage = function(){
+             $state.go('app.inventory-management.item-source'); 
+        }
     }
 })();

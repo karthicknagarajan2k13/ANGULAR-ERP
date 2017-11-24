@@ -55,6 +55,7 @@
             var dataPromise = accApi.getChequeRegisters(data);
             dataPromise.then(function(result) { 
                 $scope.cheque_registers_data = result;
+                vm.search_data  = data;
             }); 
         }
         vm.dtInstance = {};
@@ -82,6 +83,11 @@
 
         function initComplete(){
             $scope.show_table1 = true
+        }
+        vm.refreshData = function(){
+            storageService.save('key', "new");
+            $cookies.putObject("search",'');
+            $state.reload();
         }
         
         vm.newChequeRegisterPage = function(){

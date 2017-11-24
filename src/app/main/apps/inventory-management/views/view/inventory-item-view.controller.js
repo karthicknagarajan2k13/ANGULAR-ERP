@@ -52,6 +52,10 @@
                 }); 
         }
 
+        vm.InventoryItemsPage = function(){
+              $state.go('app.inventory-management.inventory-item'); 
+        }
+
 
     }
 })();

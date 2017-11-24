@@ -28,6 +28,7 @@
         if(storageService.get('key')=== undefined){
              storageService.save('key', "new");
         }
+        $cookies.putObject("contactSearch",'');
 
 		$scope.isOpen = false;
 		$scope.demo = {
@@ -39,20 +40,22 @@
         $scope.show_table2 = false
 		
         var vm = this;
-                vm.search_data = {};
+        vm.search_data = {};
+
+
         if( storageService.get('key') === null || storageService.get('key')  === "new"){
-                var dataPromise = crmApi.getCustomers({});
-                dataPromise.then(function(result) { 
-                    vm.customers_data = result;
-                  
-                });
+            var dataPromise = crmApi.getCustomers({});
+            dataPromise.then(function(result) { 
+                vm.customers_data = result;
+            });           
          }else{
             storageService.save('key', "new");
             var data = $cookies.getObject('search');
             var dataPromise = crmApi.getCustomers(data);
             dataPromise.then(function(result) { 
                 vm.customers_data = result;
-            });
+                vm.search_data  = data;
+            });    
              
          }
            vm.dtInstance = {};
@@ -79,6 +82,12 @@
         vm.search_data = {};
         vm.search_data.c_type1 = []
 
+    
+        vm.refreshData = function(){
+            storageService.save('key', "new");
+            $cookies.putObject("contactSearch",'');
+            $state.reload();
+        }
 
 
         var session = $window.JSON.parse($window.localStorage.getItem('current_user'))

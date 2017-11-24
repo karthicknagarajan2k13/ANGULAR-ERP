@@ -26,7 +26,7 @@
     /** @ngInject */
     function SalesOrderController($cookies,storageService,$timeout,$mdToast,$window, omApi, $scope, $state)
     {
-         if(storageService.get('key')=== undefined){
+        if(storageService.get('key')=== undefined){
              storageService.save('key', "new");
         }
         var session = $window.JSON.parse($window.localStorage.getItem('userInfo'));
@@ -80,7 +80,7 @@
        
             dataPromise.then(function(result) { 
                 $scope.sales_orders_data = result.search; 
-            
+                vm.search_data  = data;
             }); 
 
          }
@@ -139,7 +139,7 @@
         }
         
 		// Methods
-        vm.searchSalesOrdersData = function(){
+            vm.searchSalesOrdersData = function(){
             var search_sales_orders = {
                 "search_sales_orders[uid]": vm.search_data.uid,
                 "search_sales_orders[customer_user_id]": vm.search_data.customer_user_id,
@@ -157,6 +157,7 @@
         vm.searchSalesOrdersDataClear = function(){
             vm.search_data = {}
         }
+
         vm.deleteAllSalesOrder = function () {
             var delete_ids = [];
             angular.forEach($scope.sales_orders_data, function (checked) {
@@ -182,6 +183,8 @@
 
         };
         vm.refreshSalesOrder = function () {
+              storageService.save('key', "new");
+            $cookies.putObject("search",'');
             $state.reload()
           /*  omApi.refreshSalesOrder().then(function(result){
                 var dataPromise = omApi.getSalesOrders({});

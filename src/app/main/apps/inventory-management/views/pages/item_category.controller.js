@@ -54,7 +54,13 @@
             var dataPromise = imApi.getCategories(data);
             dataPromise.then(function(result) { 
                 $scope.categories_data = result; 
+                vm.search_data  = data;
             }); 
+        }
+         vm.refreshData = function(){
+            storageService.save('key', "new");
+            $cookies.putObject("search",'');
+            $state.reload();
         }
 
         vm.dtInstance = {};

@@ -56,13 +56,20 @@
         }else{
             storageService.save('key', "new");
             $scope.searchListData = $cookies.getObject("search");
+               var search_data = $cookies.getObject("searchData");
             var dataPromise = imApi.getSearchInventoryItems($scope.searchListData);
             dataPromise.then(function(result) { 
                  $scope.get_inventory_item = [];
                  $scope.get_inventory_item = result.search; 
+                 vm.search_data  =search_data;
                  $cookies.put("type",undefined);
                  
             }); 
+        }
+         vm.refreshData = function(){
+            storageService.save('key', "new");
+            $cookies.putObject("search",'');
+            $state.reload();
         }
 
          vm.dtInstance = {};
@@ -153,6 +160,7 @@
             };
             storageService.save('key', "search");
             $cookies.putObject("search",$scope.search_inventory_item_data);
+             $cookies.putObject("searchData",vm.search_data);
             $state.reload();
           
         }

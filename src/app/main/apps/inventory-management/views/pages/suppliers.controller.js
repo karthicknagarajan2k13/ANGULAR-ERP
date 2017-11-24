@@ -56,8 +56,11 @@
             var dataPromise = imApi.getSuppliers(data);
             dataPromise.then(function(result) { 
                 $scope.suppliers_data = result; 
+                vm.search_data  = data;
             }); 
         }
+
+
         vm.dtInstance = {};
         vm.dtOptions = {
             dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
@@ -81,6 +84,11 @@
 
         function initComplete(){
             $scope.show_table1 = true
+        }
+         vm.refreshData = function(){
+            storageService.save('key', "new");
+            $cookies.putObject("search",'');
+            $state.reload();
         }
         
         vm.newSupplierPage = function(){
@@ -110,13 +118,14 @@
                 });
             }
         };
+
+
         vm.deleteSupplier = function (id) {
             var delete_ids = JSON.stringify([id])
             imApi.deleteAllSupplier({ids: delete_ids})
             $window.location.reload();
         };
         vm.searchSupplierData = function(id){
-  
             $cookies.putObject("search",vm.search_data);
             storageService.save('key', "search");
             $state.reload();

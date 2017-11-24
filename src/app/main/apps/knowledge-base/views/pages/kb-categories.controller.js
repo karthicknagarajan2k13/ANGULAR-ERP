@@ -53,6 +53,7 @@
             var dataPromise = kbApi.getKbCategories(data);
             dataPromise.then(function(result) { 
                 $scope.kb_categories_data = result; 
+                vm.search_data  = data;
             });   
 
         }
@@ -83,7 +84,11 @@
         }); 
 
 
-
+        vm.refreshData = function(){
+            storageService.save('key', "new");
+            $cookies.putObject("search",'');
+            $state.reload();
+        }
 
         function initComplete(){
             $scope.show_table1 = true

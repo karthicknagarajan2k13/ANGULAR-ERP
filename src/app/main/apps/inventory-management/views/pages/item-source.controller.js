@@ -60,6 +60,11 @@
         vm.viewItemSourcePage = function(id){
             $state.go('app.inventory-management.item-source-view', {obj:{id: id}}); 
         }
+         vm.refreshData = function(){
+            storageService.save('key', "new");
+            $cookies.putObject("search",'');
+            $state.reload();
+        }
 
 
         vm.searchItemSourceData = function(id){
@@ -71,6 +76,7 @@
                 "user_id": session.id
             };
             $cookies.putObject("search",search_item_source_data);
+             $cookies.putObject("searchData",vm.search_data);
             storageService.save('key', "search");
            
             $state.reload();
@@ -135,10 +141,12 @@
         }else{
             storageService.save('key', "new");
             var data = $cookies.getObject('search');
+               var search_data = $cookies.getObject("searchData");
             var dataPromise = imApi.getItemSourceData(data);
             /*var dataPromise = imApi.getItemSourceData({'search_item_source':vm.search_data,'user_id':session.id});*/
             dataPromise.then(function(result) { 
                 $scope.get_item_source = result.search;
+                vm.search_data  = search_data;
               
             }); 
 

@@ -53,6 +53,7 @@
             var dataPromise = mfgApi.getMaterials(data);
             dataPromise.then(function(result) { 
                 $scope.materials_data = result; 
+                vm.search_data  = data;
             }); 
 
         }
@@ -78,6 +79,13 @@
         $timeout(function(){
             $scope.show_table2 = true
         }, 2000);
+
+        vm.refreshData = function(){
+            storageService.save('key', "new");
+            $cookies.putObject("search",'');
+            $state.reload();
+        }
+
 
         var dataPromise = mfgApi.get_manufacturings({});
         dataPromise.then(function(result) { 

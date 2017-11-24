@@ -4,13 +4,33 @@
 
     angular
         .module('app.inventory-management')
-        .controller('itemController', itemController);
+        .controller('itemController', itemController)
+          .factory('storageService', ['$rootScope', function($rootScope) {
+                return {
+                    get: function(key) {
+                        return sessionStorage.getItem(key);
+                    },
+                    save: function(key, data) {
+                        sessionStorage.setItem(key, data);
+                    },
+                    getModel: function(key) {
+                        return sessionStorage.getItem(key);
+                    },
+                    setModel: function(key, data) {
+                        sessionStorage.setItem(key, data);
+                    }
+            };
+        }]);
 
     /** @ngInject */
-    function itemController($timeout,$window, imApi, $scope, $state)
+    function itemController($cookies,storageService,$timeout,$window, imApi, $scope, $state)
     {
 
-        
+        if(storageService.get('key')=== undefined){
+             storageService.save('key', "new");
+        }
+
+
         $scope.isOpen = false;
         $scope.demo = {
             isOpen: false,
@@ -24,11 +44,28 @@
 
         // Data
         vm.search_data = {}
-        var dataPromise = imApi.getItems({});
-        dataPromise.then(function(result) { 
-            $scope.items_data = result;
+        if( storageService.get('key') === null || storageService.get('key')  === "new"){     
+                var dataPromise = imApi.getItems({});
+                dataPromise.then(function(result) { 
+                    $scope.items_data = result;
+                });
+        }else{
+             storageService.save('key', "new");
+             var data = $cookies.getObject('search');
+                var dataPromise = imApi.getItems(data);
+                dataPromise.then(function(result) { 
+                    $scope.items_data = result; 
+                    vm.search_data  = data;
+                }); 
+        }
 
-            vm.dtInstance = {};
+         vm.refreshData = function(){
+            storageService.save('key', "new");
+            $cookies.putObject("search",'');
+            $state.reload();
+        }
+
+         vm.dtInstance = {};
             vm.dtOptions = {
                 dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
                 columnDefs  : [
@@ -48,7 +85,6 @@
             $timeout(function(){
                 $scope.show_table2 = true
             }, 2000);
-        });
         var dataPromise = imApi.get_suppliers({});
         dataPromise.then(function(result) { 
             $scope.get_suppliers = result;
@@ -96,11 +132,10 @@
             $window.location.reload();
         };
         vm.searchItemData = function(id){
-            console.log("vm.search_data",vm.search_data)
-            var dataPromise = imApi.getItems(vm.search_data);
-            dataPromise.then(function(result) { 
-                $scope.items_data = result; 
-            }); 
+            $cookies.putObject("search",vm.search_data);
+            storageService.save('key', "search");
+           
+            $state.reload();
         }
         vm.searchItemDataClear = function(id){
             vm.search_data = {}

@@ -50,7 +50,8 @@
             var data = $cookies.getObject('search');
             var dataPromise = amApi.getAssets(data);
             dataPromise.then(function(result) { 
-                $scope.assets_data = result;    
+                $scope.assets_data = result;  
+                vm.search_data  = data;  
             }); 
 
         }
@@ -80,6 +81,12 @@
             $scope.get_users = result;
         }); 
 
+
+        vm.refreshData = function(){
+            storageService.save('key', "new");
+            $cookies.putObject("search",'');
+            $state.reload();
+        }
 
 
 

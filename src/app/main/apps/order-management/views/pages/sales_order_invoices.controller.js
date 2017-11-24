@@ -54,6 +54,7 @@
             var dataPromise = omApi.getSalesOrderInvoices(data);
             dataPromise.then(function(result) { 
                 $scope.sales_order_invoices_data = result; 
+                vm.search_data  = data;
             }); 
 
         }
@@ -82,14 +83,23 @@
         function initComplete(){
             $scope.show_table1 = true
         }
+
         
 		// Methods
         vm.searchSalesOrderInvoicesData = function(){
             $cookies.putObject("search",vm.search_data);
-            storageService.save('key', "search");
-           
+            storageService.save('key', "search"); 
             $state.reload();
         }   
+
+    
+        vm.refreshData = function(){
+            storageService.save('key', "new");
+            $cookies.putObject("search",'');
+            $state.reload();
+        }
+
+
         vm.searchSalesOrderInvoicesDataClear = function(){
             vm.search_data = {}
         }

@@ -57,6 +57,7 @@
             var dataPromise = mfgApi.getManufacturings(data);
             dataPromise.then(function(result) { 
                 $scope.manufacturings_data = result;
+                vm.search_data  = data;
              /* vm.search_data.status = ""
                 vm.search_data.m_type = ""*/
             });
@@ -88,7 +89,11 @@
             $scope.get_users = result;
         }); 
 
-
+         vm.refreshData = function(){
+            storageService.save('key', "new");
+            $cookies.putObject("search",'');
+            $state.reload();
+        }
 
 
         function initComplete(){

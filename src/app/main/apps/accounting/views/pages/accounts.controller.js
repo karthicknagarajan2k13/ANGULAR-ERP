@@ -55,6 +55,7 @@
             var dataPromise = accApi.getAccounts(data);
             dataPromise.then(function(result) { 
                 $scope.accounts_data = result;
+                vm.search_data  = data;
                 /*vm.search_data.acc_type = ""*/
             }); 
 
@@ -81,7 +82,11 @@
             $scope.show_table2 = true
         }, 2000);
 
-
+         vm.refreshData = function(){
+            storageService.save('key', "new");
+            $cookies.putObject("search",'');
+            $state.reload();
+        }
 
         function initComplete(){
             $scope.show_table1 = true

@@ -54,6 +54,7 @@
             var dataPromise = accApi.getLedgerEntries(data);
             dataPromise.then(function(result) { 
                 $scope.ledger_entries_data = result; 
+                vm.search_data  = data;
             }); 
         }
 
@@ -91,6 +92,12 @@
             $scope.get_invoices = result;
         });
 
+
+        vm.refreshData = function(){
+            storageService.save('key', "new");
+            $cookies.putObject("search",'');
+            $state.reload();
+        }
 
 
         function initComplete(){

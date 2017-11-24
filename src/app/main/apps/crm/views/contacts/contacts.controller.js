@@ -29,7 +29,7 @@
 		if(storageService.get('key')=== undefined){
              storageService.save('key', "new");
         }
-
+        $cookies.putObject("contactSearch",'');
 		$scope.isOpen = false;
 		$scope.demo = {
 			isOpen: false,
@@ -46,19 +46,18 @@
             var dataPromise = crmApi.getContacts({});
             dataPromise.then(function(result) { 
                 vm.contacts_data = result;
-                
-                
             });   
         }else{
-            storageService.save('key', "new");
-            var data = $cookies.getObject('search');
-            var dataPromise = crmApi.getContacts(data);
-            dataPromise.then(function(result) { 
-                vm.contacts_data = result;
-                
+               storageService.save('key', "new");
+               var data = $cookies.getObject('contactSearch');
+               var dataPromise = crmApi.getContacts(data);
+                dataPromise.then(function(result) { 
+                    vm.contacts_data = result;
+                    vm.search_data  = data;
             });
-             
+              console.log("old")
          }
+
          vm.dtInstance = {};
          vm.dtOptions = {
             dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
@@ -80,12 +79,15 @@
             $scope.show_table2 = true
         }, 2000);
 		
-		
-		
-		
+
+        vm.refreshData = function(){
+            storageService.save('key', "new");
+            $cookies.putObject("contactSearch",'');
+            $state.reload();
+        }
 
         vm.search_data = {};
-
+        vm.search_data = data;
         var session = $window.JSON.parse($window.localStorage.getItem('current_user'))
         vm.get_customers = User.get_customers({token:session.email});
 
@@ -107,11 +109,8 @@
             $state.go('app.crm.contact-detail-new'); 
         }
         vm.searchContactData = function(){
-
-
-            $cookies.putObject("search",vm.search_data);
+            $cookies.putObject("contactSearch",vm.search_data);
             storageService.save('key', "search");
-           
             $state.reload();
         }   
         vm.searchContactDataClear = function(){

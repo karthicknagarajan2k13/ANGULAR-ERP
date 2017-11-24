@@ -125,6 +125,11 @@
                             </th>
                             <th class="secondary-text">
                                 <div class="table-header">
+                                    <span class="column-title">Location</span>
+                                </div>
+                            </th>
+                            <th class="secondary-text">
+                                <div class="table-header">
                                     <span class="column-title">Acquisition Cost</span>
                                 </div>
                             </th>
@@ -156,6 +161,7 @@
                             <td>{{item.serial}}</td>
                             <td>{{item.make}}</td>
                             <td>{{item.model}}</td>
+                            <td>{{item.location}}</td>
                             <td>{{item.acquisition_cost| number : 2}}</td>
                             <td>{{item.cached_profit_share_percent| number : 2}}%</td>
                             <td>{{item.created_at | date}}</td>
@@ -178,6 +184,9 @@
                     </tbody>
                 </table>
             </div>
+            <div class="actions" layout="row" layout-align="start center">
+                <md-button ng-click="vm.refreshData()" class="md-raised md-accent">Refresh</md-button>
+            </div>            
             <!-- / CONTENT -->
 <!-- 			<div class="actions" layout="row" layout-align="start center">
                 <md-button ng-click="vm.deleteAllItem()" class="md-raised md-accent">Delete</md-button>

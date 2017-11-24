@@ -52,6 +52,7 @@
             var dataPromise = amApi.getMaintanances(data);
             dataPromise.then(function(result) { 
                 $scope.maintanance_data = result; 
+                vm.search_data  = data;
             }); 
 
         }
@@ -92,7 +93,11 @@
             $scope.get_kb_categories = result;
         });
 
-
+         vm.refreshData = function(){
+            storageService.save('key', "new");
+            $cookies.putObject("search",'');
+            $state.reload();
+        }
 
         function initComplete(){
             $scope.show_table1 = true

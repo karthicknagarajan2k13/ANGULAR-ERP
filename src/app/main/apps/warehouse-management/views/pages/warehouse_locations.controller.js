@@ -56,6 +56,7 @@
             var dataPromise = whApi.getWarehouseLocations(data);
             dataPromise.then(function(result) { 
                 $scope.warehouse_locations_data = result; 
+                 vm.search_data  = data;
                 /*vm.search_data.status = ''*/
             });
         }
@@ -78,7 +79,14 @@
         };
         $timeout(function(){
             $scope.show_table2 = true
-        }, 2000);            
+        }, 2000); 
+
+         vm.refreshData = function(){
+            storageService.save('key', "new");
+            $cookies.putObject("search",'');
+            $state.reload();
+        }
+                   
 
         var dataPromise = whApi.get_warehouses({});
         dataPromise.then(function(result) { 

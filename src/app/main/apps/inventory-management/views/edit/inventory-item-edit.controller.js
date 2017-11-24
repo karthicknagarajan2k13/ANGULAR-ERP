@@ -98,5 +98,10 @@
         vm.itemDataClear = function(){
             vm.inventory = {}
         }  
+        
+        vm.InventoryItemsPage = function(){
+              $state.go('app.inventory-management.inventory-item'); 
+        }
+
     }
 })();

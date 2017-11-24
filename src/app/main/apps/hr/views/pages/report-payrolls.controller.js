@@ -61,6 +61,7 @@
             var dataPromise = hrApi.getReportPayrolls(data);
             dataPromise.then(function(result) { 
                 $scope.payrolls_data = result; 
+                  vm.search_data  = data;
             $scope.table_data = [[ 'ID', 'Subject', 'Employee', 'Base Pay', 'Allowances', 'Deductions', 'Expenses', 'Tax', 'Total', 'Date' ]]
             angular.forEach($scope.payrolls_data, function(value, key) {
                 $scope.table_data.push([
@@ -130,7 +131,11 @@
             scrollY     : 'auto',
             responsive  : true
         };
-
+        vm.refreshData = function(){
+            storageService.save('key', "new");
+            $cookies.putObject("search",'');
+            $state.reload();
+        }
         vm.searchPayrollData = function(id){
             $cookies.putObject("search",vm.search_data);
             storageService.save('key', "search");

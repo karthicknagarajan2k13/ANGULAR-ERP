@@ -62,6 +62,9 @@
                           $state.go('app.inventory-management.listing'); 
              		}); 
         }
+        vm.ListingPage = function(){
+            $state.go('app.inventory-management.listing'); 
+        }
 
 
     }

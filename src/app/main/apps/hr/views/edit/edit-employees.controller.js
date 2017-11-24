@@ -75,23 +75,36 @@
 /*            console.log($scope.employee.password +"--------"+ $scope.employee.password_confirmation);
             var password_status = angular.equals($scope.employee.password, $scope.employee.password_confirmation);
             if(password_status === true){*/
+            if($scope.employee.password !== $scope.employee.password_confirmation){
+                        var pinTo = $scope.getToastPosition();
+                        $mdToast.show(
+                          $mdToast.simple()
+                            .textContent("Password and Confirm Password doesn't match")
+                            .position(pinTo )
+                            .hideDelay(3000)
+                        );
+            }else{
+
+              console.log(JSON.stringify($scope.employee))
                var dataPromise = hrApi.updateEmployee($scope.employee.id,$scope.employee);
                 dataPromise.then(function(result) { 
                     $scope.data = result; 
                     if( typeof($scope.data.message) !== "undefined"){
+                      
+                    }else{
                         var pinTo = $scope.getToastPosition();
                         $mdToast.show(
                           $mdToast.simple()
-                            .textContent($scope.data.message)
+                            .textContent("Updated Successfully")
                             .position(pinTo )
                             .hideDelay(3000)
                         );
-                    }else{
                         if( typeof($scope.data.employee_id) !== "undefined"){
                             $state.go('app.hr.employees-view', {obj:{id: $scope.data.employee_id}}); 
                         }
                     }
                 }); 
+              }
          /*   }else{
                var pinTo = $scope.getToastPosition();
                         $mdToast.show(

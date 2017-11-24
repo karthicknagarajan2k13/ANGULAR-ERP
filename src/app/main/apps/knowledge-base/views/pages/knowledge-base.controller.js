@@ -52,6 +52,7 @@
             var dataPromise = kbApi.getKnowledgeBases(data);
             dataPromise.then(function(result) { 
                 $scope.knowledge_bases_data = result; 
+                vm.search_data  = data;
             }); 
 
         }
@@ -90,6 +91,12 @@
 
         function initComplete(){
             $scope.show_table1 = true
+        }
+
+        vm.refreshData = function(){
+            storageService.save('key', "new");
+            $cookies.putObject("search",'');
+            $state.reload();
         }
         
         vm.newKnowledgeBasePage = function(){

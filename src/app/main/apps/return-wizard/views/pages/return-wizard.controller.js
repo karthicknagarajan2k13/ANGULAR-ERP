@@ -54,7 +54,8 @@
             var data = $cookies.getObject('search');
             var dataPromise = rwApi.getReturnWizards(data);
             dataPromise.then(function(result) { 
-                $scope.return_wizards_data = result; 
+                $scope.return_wizards_data = result;
+                vm.search_data  = data; 
                /* vm.search_data.status = ''
                 vm.search_data.reason_for_return = ''*/
             });
@@ -84,7 +85,11 @@
             $scope.show_table2 = true
         }, 2000);
 
-
+        vm.refreshData = function(){
+            storageService.save('key', "new");
+            $cookies.putObject("search",'');
+            $state.reload();
+        }
 
         var dataPromise = crmApi.get_customers({});
         dataPromise.then(function(result) { 

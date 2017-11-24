@@ -37,9 +37,11 @@
 			count: 0,
 			selectedDirection: 'left'
 		};
-        $scope.show_table1 = false
-        $scope.show_table2 = false
+        $scope.show_table1 = false;
+        $scope.show_table2 = false;
+
         var vm = this;
+
 
         // Data
         if( storageService.get('key') === null || storageService.get('key')  === "new"){
@@ -50,11 +52,11 @@
             });
         }else{
             storageService.save('key', "new");
-            var data = $cookies.getObject('search');
+            var data = $cookies.getObject('noteSearch');
             var dataPromise = crmApi.getNotes(data);
             dataPromise.then(function(result) { 
                 vm.notes_data = result;
-             
+                vm.search_data  = data;
             });
         }
 
@@ -80,7 +82,16 @@
         }, 2000);           
 
          
+        vm.refreshData = function(){
+            storageService.save('key', "new");
+            $cookies.putObject("noteSearch",'');
+            $state.reload();
+        }
+
+
         vm.search_data = {};
+
+        vm.search_data = data;
         var session = $window.JSON.parse($window.localStorage.getItem('current_user'))
 
         vm.get_customers = User.get_customers({token:session.email});
@@ -104,7 +115,7 @@
         vm.searchNoteData = function(){
 
 
-            $cookies.putObject("search",vm.search_data);
+            $cookies.putObject("noteSearch",vm.search_data);
             storageService.save('key', "search");
            
             $state.reload();
