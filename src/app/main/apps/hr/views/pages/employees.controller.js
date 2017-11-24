@@ -5,20 +5,20 @@
     angular
         .module('app.hr')
         .controller('EmployeesController', EmployeesController)
-          .factory('storageService', ['$rootScope', function($rootScope) {
-                return {
-                    get: function(key) {
-                        return sessionStorage.getItem(key);
-                    },
-                    save: function(key, data) {
-                        sessionStorage.setItem(key, data);
-                    },
-                    getModel: function(key) {
-                        return sessionStorage.getItem(key);
-                    },
-                    setModel: function(key, data) {
-                        sessionStorage.setItem(key, data);
-                    }
+        .factory('storageService', ['$rootScope', function($rootScope) {
+            return {
+                get: function(key) {
+                    return sessionStorage.getItem(key);
+                },
+                save: function(key, data) {
+                    sessionStorage.setItem(key, data);
+                },
+                getModel: function(key) {
+                    return sessionStorage.getItem(key);
+                },
+                setModel: function(key, data) {
+                    sessionStorage.setItem(key, data);
+                }
             };
         }]);
 

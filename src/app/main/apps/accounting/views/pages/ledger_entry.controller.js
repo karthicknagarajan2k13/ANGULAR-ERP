@@ -4,11 +4,32 @@
 
     angular
         .module('app.accounting')
-        .controller('LedgerEntryController', LedgerEntryController);
+        .controller('LedgerEntryController', LedgerEntryController)
+         .factory('storageService', ['$rootScope', function($rootScope) {
+                return {
+                    get: function(key) {
+                        return sessionStorage.getItem(key);
+                    },
+                    save: function(key, data) {
+                        sessionStorage.setItem(key, data);
+                    },
+                    getModel: function(key) {
+                        return sessionStorage.getItem(key);
+                    },
+                    setModel: function(key, data) {
+                        sessionStorage.setItem(key, data);
+                    }
+            };
+        }]);
 
     /** @ngInject */
-    function LedgerEntryController($timeout,crmApi,omApi,$window, accApi, $scope, $state)
+    function LedgerEntryController($cookies,storageService, $timeout,crmApi,omApi,$window, accApi, $scope, $state)
     {
+        if(storageService.get('key')=== undefined){
+             storageService.save('key', "new");
+        }
+
+
         $scope.isOpen = false;
         $scope.demo = {
             isOpen: false,
@@ -21,9 +42,21 @@
 
         // Data
         vm.search_data = {}
-        var dataPromise = accApi.getLedgerEntries({});
-        dataPromise.then(function(result) { 
-            $scope.ledger_entries_data = result;
+        if( storageService.get('key') === null || storageService.get('key')  === "new"){
+                var dataPromise = accApi.getLedgerEntries({});
+                dataPromise.then(function(result) { 
+                    $scope.ledger_entries_data = result;
+
+                }); 
+        }else{
+            storageService.save('key', "new");
+            var data = $cookies.getObject('search');
+            var dataPromise = accApi.getLedgerEntries(data);
+            dataPromise.then(function(result) { 
+                $scope.ledger_entries_data = result; 
+            }); 
+        }
+
             vm.dtInstance = {};
             vm.dtOptions = {
                 dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
@@ -44,7 +77,6 @@
             $timeout(function(){
                 $scope.show_table2 = true
             }, 2000);
-        }); 
 
         var dataPromise = crmApi.get_customers({});
         dataPromise.then(function(result) { 
@@ -90,10 +122,14 @@
             } 
         };
         vm.searchLedgerEntryData = function(id){
-            var dataPromise = accApi.getLedgerEntries(vm.search_data);
+           /* var dataPromise = accApi.getLedgerEntries(vm.search_data);
             dataPromise.then(function(result) { 
                 $scope.ledger_entries_data = result; 
-            }); 
+            }); */
+            $cookies.putObject("search",vm.search_data);
+            storageService.save('key', "search");
+            /*vm.search_data.c_type = ''*/
+            $state.reload();
         }
         vm.searchLedgerEntryDataClear = function(id){
             vm.search_data = {}

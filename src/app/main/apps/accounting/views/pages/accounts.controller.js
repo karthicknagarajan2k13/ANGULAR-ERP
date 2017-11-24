@@ -4,11 +4,32 @@
 
     angular
         .module('app.accounting')
-        .controller('AccountController', AccountController);
+        .controller('AccountController', AccountController)
+          .factory('storageService', ['$rootScope', function($rootScope) {
+                return {
+                    get: function(key) {
+                        return sessionStorage.getItem(key);
+                    },
+                    save: function(key, data) {
+                        sessionStorage.setItem(key, data);
+                    },
+                    getModel: function(key) {
+                        return sessionStorage.getItem(key);
+                    },
+                    setModel: function(key, data) {
+                        sessionStorage.setItem(key, data);
+                    }
+            };
+        }]);
+
 
     /** @ngInject */
-    function AccountController($timeout,$window, accApi, $scope, $state)
+    function AccountController($cookies,storageService,$timeout,$window, accApi, $scope, $state)
     {
+        if(storageService.get('key')=== undefined){
+             storageService.save('key', "new");
+        }
+
         $scope.isOpen = false;
         $scope.demo = {
             isOpen: false,
@@ -22,31 +43,43 @@
         // Data
         vm.search_data = {}
         vm.search_data.acc_type1 = []
+         if( storageService.get('key') === null || storageService.get('key')  === "new"){
 
-        var dataPromise = accApi.getAccounts({});
-        dataPromise.then(function(result) { 
-            $scope.accounts_data = result;
-            vm.dtInstance = {};
-            vm.dtOptions = {
-                dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
-                columnDefs  : [
-                    {
-                        // Target the id column
-                        targets: 0,
-                        width  : '10px'
-                    }
-                ],
-                initComplete: initComplete,
-                pagingType  : 'simple',
-                lengthMenu  : [10, 20, 30, 50, 100],
-                pageLength  : 20,
-                scrollY     : 'auto',
-                responsive  : true
-            };
-            $timeout(function(){
-                $scope.show_table2 = true
-            }, 2000);
-        }); 
+            var dataPromise = accApi.getAccounts({});
+            dataPromise.then(function(result) { 
+                $scope.accounts_data = result;
+            }); 
+        }else{
+            storageService.save('key', "new");
+            var data = $cookies.getObject('search');
+            var dataPromise = accApi.getAccounts(data);
+            dataPromise.then(function(result) { 
+                $scope.accounts_data = result;
+                /*vm.search_data.acc_type = ""*/
+            }); 
+
+        }
+
+        vm.dtInstance = {};
+        vm.dtOptions = {
+            dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
+            columnDefs  : [
+                {
+                    // Target the id column
+                    targets: 0,
+                    width  : '10px'
+                }
+            ],
+            initComplete: initComplete,
+            pagingType  : 'simple',
+            lengthMenu  : [10, 20, 30, 50, 100],
+            pageLength  : 20,
+            scrollY     : 'auto',
+            responsive  : true
+        };
+        $timeout(function(){
+            $scope.show_table2 = true
+        }, 2000);
 
 
 
@@ -79,12 +112,15 @@
             } 
         };
         vm.searchAccountData = function(id){
-            vm.search_data.acc_type =  JSON.stringify(vm.search_data.acc_type1)
+           /* vm.search_data.acc_type =  JSON.stringify(vm.search_data.acc_type1)
             var dataPromise = accApi.getAccounts(vm.search_data);
             dataPromise.then(function(result) { 
                 $scope.accounts_data = result;
                 vm.search_data.acc_type = ""
-            }); 
+            }); */
+             $cookies.putObject("search",vm.search_data);
+            storageService.save('key', "search");
+            $state.reload();
         }
         vm.searchAccountDataClear = function(id){
             vm.search_data = {}

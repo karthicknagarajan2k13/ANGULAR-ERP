@@ -64,6 +64,7 @@
         vm.saveEmployee = function(){
             var dataPromise = hrApi.createEmployee({employee:vm.employee});
             dataPromise.then(function(result) { 
+                console.log("-->"+JSON.stringify(result));
                 $scope.data = result; 
                 if( typeof($scope.data.message) !== "undefined"){
                     var pinTo = $scope.getToastPosition();

@@ -46,26 +46,7 @@
             var dataPromise = omApi.getSalesOrderInvoices({});
             dataPromise.then(function(result) { 
                 $scope.sales_order_invoices_data = result;  
-                vm.dtInstance = {};
-                vm.dtOptions = {
-                    dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
-                    columnDefs  : [
-                        {
-                            // Target the id column
-                            targets: 0,
-                            width  : '10px'
-                        }
-                    ],
-                    initComplete: initComplete,
-                    pagingType  : 'simple',
-                    lengthMenu  : [10, 20, 30, 50, 100],
-                    pageLength  : 20,
-                    scrollY     : 'auto',
-                    responsive  : true
-                };
-                $timeout(function(){
-                    $scope.show_table2 = true
-                }, 2000);            
+              
             }); 
         }else{
             storageService.save('key', "new");
@@ -73,30 +54,29 @@
             var dataPromise = omApi.getSalesOrderInvoices(data);
             dataPromise.then(function(result) { 
                 $scope.sales_order_invoices_data = result; 
-                vm.dtInstance = {};
-                vm.dtOptions = {
-                    dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
-                    columnDefs  : [
-                        {
-                            // Target the id column
-                            targets: 0,
-                            width  : '10px'
-                        }
-                    ],
-                    initComplete: initComplete,
-                    pagingType  : 'simple',
-                    lengthMenu  : [10, 20, 30, 50, 100],
-                    pageLength  : 20,
-                    scrollY     : 'auto',
-                    responsive  : true
-                };
-                $timeout(function(){
-                    $scope.show_table2 = true
-                }, 2000);            
             }); 
 
         }
-
+            vm.dtInstance = {};
+            vm.dtOptions = {
+                dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
+                columnDefs  : [
+                    {
+                        // Target the id column
+                        targets: 0,
+                        width  : '10px'
+                    }
+                ],
+                initComplete: initComplete,
+                pagingType  : 'simple',
+                lengthMenu  : [10, 20, 30, 50, 100],
+                pageLength  : 20,
+                scrollY     : 'auto',
+                responsive  : true
+            };
+            $timeout(function(){
+                $scope.show_table2 = true
+            }, 2000);            
 
 
         function initComplete(){

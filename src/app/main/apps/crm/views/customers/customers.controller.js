@@ -39,6 +39,7 @@
         $scope.show_table2 = false
 		
         var vm = this;
+                vm.search_data = {};
         if( storageService.get('key') === null || storageService.get('key')  === "new"){
                 var dataPromise = crmApi.getCustomers({});
                 dataPromise.then(function(result) { 
@@ -51,8 +52,6 @@
             var dataPromise = crmApi.getCustomers(data);
             dataPromise.then(function(result) { 
                 vm.customers_data = result;
-                
-
             });
              
          }

@@ -4,11 +4,30 @@
 
     angular
         .module('app.inventory-management')
-        .controller('itemCategoryController', itemCategoryController);
+        .controller('itemCategoryController', itemCategoryController)
+        .factory('storageService', ['$rootScope', function($rootScope) {
+                return {
+                    get: function(key) {
+                        return sessionStorage.getItem(key);
+                    },
+                    save: function(key, data) {
+                        sessionStorage.setItem(key, data);
+                    },
+                    getModel: function(key) {
+                        return sessionStorage.getItem(key);
+                    },
+                    setModel: function(key, data) {
+                        sessionStorage.setItem(key, data);
+                    }
+            };
+        }]);
 
     /** @ngInject */
-    function itemCategoryController($timeout,$window, imApi, $scope, $state)
+    function itemCategoryController($cookies,storageService,$timeout,$window, imApi, $scope, $state)
     {
+        if(storageService.get('key')=== undefined){
+             storageService.save('key', "new");
+        }
 
         
 		$scope.isOpen = false;
@@ -24,32 +43,42 @@
 
         // Data
         vm.search_data = {}
-        var dataPromise = imApi.getCategories({});
-        dataPromise.then(function(result) { 
-            $scope.categories_data = result;
-            vm.dtInstance = {};
-            vm.dtOptions = {
-                dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
-                columnDefs  : [
-                    {
-                        // Target the id column
-                        targets: 0,
-                        width  : '10px'
-                    }
-                ],
-                initComplete: initComplete,
-                pagingType  : 'simple',
-                lengthMenu  : [10, 20, 30, 50, 100],
-                pageLength  : 20,
-                scrollY     : 'auto',
-                responsive  : true
-            };
-            $timeout(function(){
-                $scope.show_table2 = true
-            }, 2000);
-            
-            console.log("$scope.categories_data",$scope.categories_data)
-        }); 
+        if( storageService.get('key') === null || storageService.get('key')  === "new"){
+            var dataPromise = imApi.getCategories({});
+            dataPromise.then(function(result) { 
+            $scope.categories_data = result; 
+         }); 
+        }else{
+            storageService.save('key', "new");
+            var data = $cookies.getObject('search');
+            var dataPromise = imApi.getCategories(data);
+            dataPromise.then(function(result) { 
+                $scope.categories_data = result; 
+            }); 
+        }
+
+        vm.dtInstance = {};
+        vm.dtOptions = {
+            dom         : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
+            columnDefs  : [
+                {
+                    // Target the id column
+                    targets: 0,
+                    width  : '10px'
+                }
+            ],
+            initComplete: initComplete,
+            pagingType  : 'simple',
+            lengthMenu  : [10, 20, 30, 50, 100],
+            pageLength  : 20,
+            scrollY     : 'auto',
+            responsive  : true
+        };
+        $timeout(function(){
+            $scope.show_table2 = true
+        }, 2000);
+
+
         var dataPromise = imApi.getUsers({});
         dataPromise.then(function(result) { 
             $scope.get_users = result;
@@ -94,11 +123,14 @@
             $window.location.reload();
         };
         vm.searchCategoryData = function(id){
-            console.log("vm.search_data",vm.search_data)
+            /*console.log("vm.search_data",vm.search_data)
             var dataPromise = imApi.getCategories(vm.search_data);
             dataPromise.then(function(result) { 
                 $scope.categories_data = result; 
-            }); 
+            }); */
+            $cookies.putObject("search",vm.search_data);
+            storageService.save('key', "search");
+            $state.reload();
         }
         vm.searchCategoryDataClear = function(id){
             vm.search_data = {}
